@@ -33,7 +33,7 @@ $TwoFA = new TwoFactorAuth();
 
 $Email = apcu_exists('DBKEY') ? Crypto::decrypt($Email) : '[Encrypted]';
 
-if ($UserID !== $LoggedUser['ID'] && !check_perms('users_edit_profiles', $Class)) {
+if ($UserID != $LoggedUser['ID'] && !check_perms('users_edit_profiles', $Class)) {
     error(403);
 }
 

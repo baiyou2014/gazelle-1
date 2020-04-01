@@ -5,7 +5,7 @@ if (!empty($_GET['userid'])) {
     error(403);
   }
   $UserID = $_GET['userid'];
-  $Sneaky = $UserID !== $LoggedUser['ID'];
+  $Sneaky = $UserID != $LoggedUser['ID'];
   if (!is_number($UserID)) {
     error(404);
   }
@@ -18,7 +18,7 @@ if (!empty($_GET['userid'])) {
   $UserID = $LoggedUser['ID'];
 }
 
-$Sneaky = $UserID !== $LoggedUser['ID'];
+$Sneaky = $UserID != $LoggedUser['ID'];
 
 //$ArtistList = Bookmarks::all_bookmarks('artist', $UserID);
 

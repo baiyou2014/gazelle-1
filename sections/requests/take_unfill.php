@@ -125,7 +125,7 @@ if ($UploaderID != $FillerID) {
 
 $Cache->delete_value("user_stats_$FillerID");
 
-if ($UserID !== $LoggedUser['ID']) {
+if ($UserID != $LoggedUser['ID']) {
   Misc::send_pm($UserID, 0, 'A request you created has been unfilled', "The request \"[url=".site_url()."requests.php?action=view&amp;id=$RequestID]$FullName"."[/url]\" was unfilled by [url=".site_url().'user.php?id='.$LoggedUser['ID'].']'.$LoggedUser['Username']."[/url] for the reason: [quote]".$_POST['reason'].'[/quote]');
 }
 

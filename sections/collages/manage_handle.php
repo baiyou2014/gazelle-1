@@ -12,7 +12,7 @@ $DB->query("
   FROM collages
   WHERE ID = '$CollageID'");
 list($UserID, $CategoryID) = $DB->next_record();
-if ($CategoryID === '0' && $UserID !== $LoggedUser['ID'] && !check_perms('site_collages_delete')) {
+if ($CategoryID === '0' && $UserID != $LoggedUser['ID'] && !check_perms('site_collages_delete')) {
   error(403);
 }
 

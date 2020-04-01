@@ -12,7 +12,7 @@ $DB->query("
   WHERE ID = '$CollageID'");
 list($Name, $CategoryID, $UserID) = $DB->next_record(MYSQLI_NUM, false);
 
-if (!check_perms('site_collages_delete') && $UserID !== $LoggedUser['ID']) {
+if (!check_perms('site_collages_delete') && $UserID != $LoggedUser['ID']) {
   error(403);
 }
 

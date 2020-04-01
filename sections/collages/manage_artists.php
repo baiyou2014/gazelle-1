@@ -9,7 +9,7 @@ $DB->query("
   FROM collages
   WHERE ID = '$CollageID'");
 list($Name, $UserID, $CategoryID) = $DB->next_record();
-if ($CategoryID === '0' && $UserID !== $LoggedUser['ID'] && !check_perms('site_collages_delete')) {
+if ($CategoryID === '0' && $UserID != $LoggedUser['ID'] && !check_perms('site_collages_delete')) {
   error(403);
 }
 if ($CategoryID != array_search(ARTIST_COLLAGE, $CollageCats)) {

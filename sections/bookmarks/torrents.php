@@ -28,7 +28,7 @@ if (!empty($_GET['userid'])) {
     $UserID = $LoggedUser['ID'];
 }
 
-$Sneaky = $UserID !== $LoggedUser['ID'];
+$Sneaky = $UserID != $LoggedUser['ID'];
 $Title = $Sneaky ? "$Username's bookmarked torrent groups" : 'Your bookmarked torrent groups';
 
 // Loop through the result set, building up $Collage and $TorrentTable
