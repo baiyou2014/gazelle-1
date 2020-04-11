@@ -147,7 +147,12 @@ ul.thin li { margin:0px 0px; padding:0px; }
 #logo {
   width: 250px;
   height: 50px;
-  background: url('/static/common/logo-purple.png') no-repeat center center;
+  width: 250px;
+  height: 50px;
+  background-image: url('/static/common/logo-purple.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   margin: 0 0 0 10%;
 }
 
