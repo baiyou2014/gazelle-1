@@ -45,7 +45,7 @@ $WikiBody = Text::full_format($WikiBody);
 $Artists = Artists::get_artist($GroupID);
 
 if ($GroupNameRJ && $GroupNameRJ !== $GroupName) {
-    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;';
+    $Label = '<br />🦠&nbsp;';
     $DisplayName .= "$Label<em>$GroupNameRJ</em>";
 }
 
