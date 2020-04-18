@@ -325,7 +325,7 @@ class TorrentForm
   <tr id="audio_tr">
     <td class="label">Version</td>
     <td>
-      <input type="text" id="audioformat" name="audioformat" size="10" pattern="\d+\.\d+\.\d+"
+      <input type="text" id="audioformat" name="audioformat" size="10" pattern="\d+\.*\d*\.*\d*"
         value="<?= display_str($Torrent['AudioFormat']) ?>"
         <?= $this->Disabled ?>/><br />
       Please see <a href="https://semver.org target=" _blank">Semantic Versioning</a>; start with 0.1.0

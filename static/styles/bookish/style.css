@@ -1105,7 +1105,7 @@ input.inputtext:focus {
   display: inline-block;
 }
 
-.border, .alertbar, #userinfo_minor > li > ul, .permissions {
+.alertbar, #userinfo_minor > li > ul, .permissions {
 /* .box, .border, .alertbar, .artist_table, .request_table, .forum_index, #userinfo_minor > li > ul, .permissions table { */
     box-shadow: 2px 2px 10px -2px gainsboro;
 }

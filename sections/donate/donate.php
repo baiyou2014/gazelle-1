@@ -45,14 +45,29 @@ View::show_header('Donate');
     </p>
 
     <ul>
-      <li><strong>Tracker Server.</strong> We currently use one budget VPS at 2.50€ per month, and can add more at the
-        same price as needed.</li>
-      <li><strong>Seedbox Server.</strong> A dedicated seedbox in Europe to supplement my home servers in North America
-        is forthcoming. It's not expected to exceed $20 per month.</li>
-      <li><strong>Domain Name.</strong> The site domain name costs $15 per year. The SSL certificate is gratis.</li>
-      <li><strong>Parent Company.</strong> Because I'm handling personal information such as email and IP addresses, and
-        soliciting donations from the public, legal protection is prudent. An LLC is forthcoming and not expected to
-        exceed $75 per year.</li>
+      <li>
+        <strong>Tracker Server.</strong>
+        We currently use one budget VPS at 2.50€ per month, and can add more at the same price as needed.
+      </li>
+
+      <li>
+        <strong>Seedbox Server.</strong>
+        A dedicated seedbox from <a href="https://pulsedmedia.com/clients/aff.php?aff=1275" target="_blank">Pulsed Media
+          (affiliate link)</a> costs 75€ per year.
+        Please see the <a href="/user.php?id=28">seedbox user account stats</a>.
+      </li>
+
+      <li>
+        <strong>Domain Name.</strong>
+        The site domain name costs $15 per year. The SSL certificate is gratis.
+      </li>
+
+      <li>
+        <strong>Parent Company.</strong>
+        Because I'm handling personal information such as email and IP addresses, and soliciting donations from the
+        public, legal protection is prudent.
+        An LLC is forthcoming and not expected to exceed $75 per year.
+      </li>
     </ul>
   </div>
 
