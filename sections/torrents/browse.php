@@ -879,9 +879,9 @@ die();
       </span>
       <a href="torrents.php?id=<?=$GroupID?>&amp;torrentid=<?=$TorrentID?>#torrent<?=$TorrentID?>"
         class="torrent_label tl_reported tooltip search_link"><strong>Details</strong></a>
-      / <?=Torrents::torrent_info($Data)?>
+      | <?=Torrents::torrent_info($Data)?>
       <?php if ($Reported) { ?>
-      / <strong class="torrent_label tl_reported tooltip search_link important_text"
+      | <strong class="torrent_label tl_reported tooltip search_link important_text"
         title="Type: <?=ucfirst($Reports[0]['Type'])?><br>
                 Comment: <?=htmlentities(htmlentities($Reports[0]['UserComment']))?>">Reported</strong><?php } ?>
     </td>
