@@ -41,17 +41,7 @@ $DisplayName = $GroupName;
 $AltName = $GroupName; // Goes in the alt text of the image
 $Title = $GroupName; // Goes in <title>
 $WikiBody = Text::full_format($WikiBody);
-
 $Artists = Artists::get_artist($GroupID);
-
-if ($GroupNameRJ && $GroupNameRJ !== $GroupName) {
-    $Label = '<br />🦠&nbsp;';
-    $DisplayName .= "$Label<em>$GroupNameRJ</em>";
-}
-
-if ($GroupNameJP && $GroupNameJP !== $GroupName) {
-    $DisplayName .= ' '.$GroupNameJP;
-}
 
 if ($GroupCategoryID) {
     $DisplayName = '<div class="'.Format::css_category($GroupCategoryID).' group_cat"></div>'.$DisplayName;
@@ -70,12 +60,23 @@ if ($GroupStudio) {
 }
 
 if ($GroupCatalogueNumber) {
-    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
     $DisplayName .= $Label.$GroupCatalogueNumber;
 }
 
+if ($GroupNameRJ && $GroupNameRJ !== $GroupName) {
+    $Label = '<br />🦠&nbsp;';
+    $DisplayName .= "$Label<em>$GroupNameRJ</em>";
+}
+
+if ($GroupNameJP && $GroupNameJP !== $GroupName) {
+    $DisplayName .= ' '.$GroupNameJP;
+}
+
 if ($Artists) {
-    $DisplayName .= '<br />'.Artists::display_artists($Artists, true);
+    # Emoji in classes/astists.class.php
+    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+    $DisplayName .= $Label.Artists::display_artists($Artists, true);
 }
 
 /*
@@ -519,7 +520,7 @@ foreach ($TorrentList as $Torrent) {
   </table>';
 
     $ExtraInfo = ''; // String that contains information on the torrent (e.g., format and encoding)
-    $AddExtra = '&nbsp;|&nbsp;'; // Separator between torrent properties
+    $AddExtra = ' | '; // Separator between torrent properties
 
   // Similar to Torrents::torrent_info()
     if ($Media) {

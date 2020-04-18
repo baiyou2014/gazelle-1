@@ -726,6 +726,10 @@ ul.poll li.graph {
   border: none;
 }
 
+.torrent_title {
+  font-size: larger;
+}
+
 .torrent_table tr {
   /* vertical-align: top; */
   vertical-align: middle;

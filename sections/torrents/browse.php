@@ -678,6 +678,7 @@ die();
       if (empty($GroupInfo['Torrents'])) {
           continue;
       }
+
       $CategoryID = $GroupInfo['CategoryID'];
       $GroupYear = $GroupInfo['Year'];
       $Artists = $GroupInfo['Artists'];
@@ -686,6 +687,9 @@ die();
       $GroupStudio = $GroupInfo['Studio'];
       $GroupDLsiteID = $GroupInfo['DLSiteID'];
       $GroupName = empty($GroupInfo['Name']) ? (empty($GroupInfo['NameRJ']) ? $GroupInfo['NameJP'] : $GroupInfo['NameRJ']) : $GroupInfo['Name'];
+      $GroupNameRJ = $GroupInfo['NameRJ'];
+      $GroupNameJP = $GroupInfo['NameJP'];
+      
       if ($GroupResults) {
           $Torrents = $GroupInfo['Torrents'];
           $GroupTime = $MaxSize = $TotalLeechers = $TotalSeeders = $TotalSnatched = 0;
@@ -721,7 +725,7 @@ die();
       if ($GroupResults && (count($Torrents) > 1 && isset($GroupedCategories[$CategoryID - 1]))) {
           // These torrents are in a group
           $CoverArt = $GroupInfo['WikiImage'];
-          $DisplayName .= "<a class=\"torrent_title\" href=\"torrents.php?id=$GroupID\" ";
+          $DisplayName .= "<a class='torrent_title' href='torrents.php?id=$GroupID' ";
 
           # No cover art
           if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
@@ -729,14 +733,7 @@ die();
           }
 
           # Japanese
-          $DisplayName .= "dir=\"ltr\">$GroupName</a>";
-
-          # Authors
-          if (isset($Artists)) {
-              # Emoji in classes/astists.class.php
-              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
-              $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
-          }
+          $DisplayName .= "dir='ltr'>$GroupName</a>";
 
           # Year
           if ($GroupYear) {
@@ -752,10 +749,29 @@ die();
 
           # Catalogue Number
           if ($GroupCatalogueNumber) {
-              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
               $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
           }
 
+          # Organism
+          if ($GroupNameRJ) {
+              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;';
+              $DisplayName .= $Label."<a href='torrents.php?action=advanced&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
+          }
+                          
+          # Strain/Variety
+          if ($GroupNameJP) {
+              $Label = '&nbsp;';
+              $DisplayName .= $Label."<a href='torrents.php?action=advanced&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
+          }
+        
+          # Authors
+          if (isset($Artists)) {
+              # Emoji in classes/astists.class.php
+              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+              $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
+          }
+        
           /*
           if ($GroupPages) {
               $DisplayName .= " [{$GroupPages}p]";
@@ -917,14 +933,14 @@ die();
           # These are the main torrent search results
           $Data['CategoryID'] = $CategoryID;
           $CoverArt = $GroupInfo['WikiImage'];
-          $DisplayName .= "<a class=\"torrent_name\" href=\"torrents.php?id=$GroupID&amp;torrentid=$TorrentID#torrent$TorrentID\" ";
+          $DisplayName .= "<a class='torrent_title' href='torrents.php?id=$GroupID&amp;torrentid=$TorrentID#torrent$TorrentID' ";
 
           if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
               $DisplayName .= 'data-cover="'.ImageTools::process($CoverArt, 'thumb').'" ';
           }
 
           # Japanese
-          $DisplayName .= "dir=\"ltr\">$GroupName</a>";
+          $DisplayName .= "dir='ltr'>$GroupName</a>";
 
           if (isset($GroupedCategories[$CategoryID - 1])) {
               # Year
@@ -939,19 +955,31 @@ die();
                   $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
               }
 
+              # Catalogue Number
+              if ($GroupCatalogueNumber) {
+                  $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
+                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
+              }
+          
+              # Organism
+              if ($GroupNameRJ) {
+                  $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;';
+                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
+              }
+                
+              # Strain/Variety
+              if ($GroupNameJP) {
+                  $Label = '&nbsp;';
+                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
+              }
+
               # Authors
-              if ($Artists) {
+              if (isset($Artists)) {
                   # Emoji in classes/astists.class.php
                   $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
                   $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
               }
-
-              # Catalogue Number
-              if ($GroupCatalogueNumber) {
-                  $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
-                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
-              }
-
+            
               /*
               if ($GroupPages) {
                   $DisplayName .= " [{$GroupPages}p]";

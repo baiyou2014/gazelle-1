@@ -556,7 +556,7 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
     
             # Catalogue Number
             if ($CatalogueNumber) {
-                $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+                $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
                 $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$CatalogueNumber'>$CatalogueNumber</a>";
             }
     

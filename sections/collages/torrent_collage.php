@@ -100,7 +100,7 @@ foreach ($GroupIDs as $GroupID) {
 
     # Catalogue Number
     if ($GroupCatalogueNumber) {
-        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
         $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
     }
 
