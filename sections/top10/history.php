@@ -141,7 +141,6 @@ if (!empty($_GET['date'])) {
               $ExtraInfo .= $AddExtra.$Encoding;
               $AddExtra = ' / ';
           }
-          //"FLAC / Lossless / Log (100%) / Cue / CD";
           if ($HasLog) {
               $ExtraInfo .= "$AddExtra Log ($LogScore%)";
               $AddExtra = ' / ';

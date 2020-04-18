@@ -211,7 +211,7 @@ foreach ($TorrentList as $Group) {
         $DisplayName = '';
         #$DisplayName = Artists::display_artists(Artists::get_artist($GroupID), true, true);
 
-        $DisplayName .= "<a href=\"torrents.php?id=$GroupID\" class=\"tooltip\" title=\"View torrent group\" ";
+        $DisplayName .= "<a href='torrents.php?id=$GroupID' class='tooltip' title='View torrent group' ";
         if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
             $DisplayName .= 'data-cover="'.ImageTools::process($WikiImage, 'thumb').'" ';
         }
@@ -219,18 +219,18 @@ foreach ($TorrentList as $Group) {
         $GroupName = empty($GroupName) ? (empty($GroupNameRJ) ? $GroupNameJP : $GroupNameRJ) : $GroupName;
 
         # Japanese
-        $DisplayName .= "dir=\"ltr\">$GroupName</a>";
+        $DisplayName .= "dir='ltr'>$GroupName</a>";
 
         # Year
         # Sh!t h4x; Year is mandatory
         if ($GroupYear) {
             $Label = '<br />📅&nbsp;';
-            $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
+            $DisplayName .= $Label."<a href='torrents.php?action=search&year=$GroupYear'>$GroupYear</a>";
         }
         
         # Studio
         if ($GroupStudio) {
-            $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
+            $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
         }
 
         # Authors
@@ -245,7 +245,7 @@ foreach ($TorrentList as $Group) {
         # Catalogue Number
         if ($GroupCatalogueNumber) {
             $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
-            $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
+            $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
         }
 
         /*
@@ -369,7 +369,7 @@ foreach ($TorrentList as $Group) {
 
         # Similar to torrents.class.php and
         # sections/torrents/browse.php
-        $DisplayName .= "<a class=\"torrent_name\" href=\"torrents.php?id=$GroupID&amp;torrentid=$TorrentID#torrent$TorrentID\" ";
+        $DisplayName .= "<a class='torrent_title' href='torrents.php?id=$GroupID&amp;torrentid=$TorrentID#torrent$TorrentID' ";
         
         if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
             $DisplayName .= 'data-cover="'.ImageTools::process($WikiImage, 'thumb').'" ';
@@ -378,18 +378,18 @@ foreach ($TorrentList as $Group) {
         $GroupName = empty($GroupName) ? (empty($GroupNameRJ) ? $GroupNameJP : $GroupNameRJ) : $GroupName;
 
         # Japanese
-        $DisplayName .= "dir=\"ltr\">$GroupName</a>";
+        $DisplayName .= "dir='ltr'>$GroupName</a>";
 
         # Year
         # Sh!t h4x; Year is mandatory
         if ($GroupYear) {
             $Label = '<br />📅&nbsp;';
-            $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
+            $DisplayName .= $Label."<a href='torrents.php?action=search&year=$GroupYear'>$GroupYear</a>";
         }
           
         # Studio
         if ($GroupStudio) {
-            $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
+            $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
         }
 
         # Authors
@@ -404,7 +404,7 @@ foreach ($TorrentList as $Group) {
         # Catalogue Number
         if ($GroupCatalogueNumber) {
             $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
-            $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
+            $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
         }
 
         /*
@@ -812,7 +812,7 @@ if ($NumRequests > 0) {
         $Title = empty($Request['Title']) ? (empty($Request['TitleRJ']) ? display_str($Request['TitleJP']) : display_str($Request['TitleRJ'])) : display_str($Request['Title']);
         $ArtistForm = Requests::get_artists($RequestID);
         $ArtistLink = Artists::display_artists($ArtistForm, true, true);
-        $FullName = $ArtistLink."<a href=\"requests.php?action=view&amp;id=$RequestID\"><span dir=\"ltr\">$Title</span></a>";
+        $FullName = $ArtistLink."<a href='requests.php?action=view&amp;id=$RequestID'><span dir='ltr'>$Title</span></a>";
 
         if ($Request['CatalogueNumber']) {
             $FullName .= " [$Request[CatalogueNumber]]";
@@ -824,7 +824,7 @@ if ($NumRequests > 0) {
         if (!empty($Tags[$RequestID])) {
             $ReqTagList = [];
             foreach ($Tags[$RequestID] as $TagID => $TagName) {
-                $ReqTagList[] = "<a href=\"requests.php?tags=$TagName\">".display_str($TagName).'</a>';
+                $ReqTagList[] = "<a href='requests.php?tags=$TagName'>".display_str($TagName).'</a>';
             }
             $ReqTagList = implode(', ', $ReqTagList);
         } else {

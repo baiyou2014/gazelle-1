@@ -431,7 +431,7 @@ View::show_header($Title, 'requests');
                         checked="checked"<?php } ?> />
                         <label for="cat_<?=($CatKey + 1) ?>"><?=$CatName?></label>
                     </td>
-                    <?php      if ($x % 7 === 0) { ?>
+                    <?php if ($x % 7 === 0) { ?>
                 </tr>
                 <?php
       }
@@ -529,25 +529,34 @@ View::show_header($Title, 'requests');
 
             $ArtistForm = Requests::get_artists($RequestID);
             $ArtistLink = Artists::display_artists($ArtistForm, true, true);
-            $FullName = "$ArtistLink<a href=\"requests.php?action=view&amp;id=$RequestID\"><span ";
+            $FullName = "<a class='torrent_title' href='requests.php?action=view&amp;id=$RequestID'><span ";
+
             if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
                 $FullName .= 'data-cover="'.ImageTools::process($Request['Image']).'" ';
             }
-            $FullName .= "dir=\"ltr\">$Title</span></a>";
+
+            $FullName .= "dir='ltr'>$Title</span></a>";
+            $FullName .= "<br />$ArtistLink";
 
             $ExtraInfo = '';
 
             if (!empty($Request['CatalogueNumber'])) {
-                $ExtraInfo .= " [$Request[CatalogueNumber]]";
+                $Label = '<br />🔑&nbsp;';
+                $ExtraInfo .= $Label.$Request['CatalogueNumber'];
             }
 
+            /*
             if (!empty($Request['DLsiteID'])) {
                 $ExtraInfo .= " [$Request[DLsiteID]]";
             }
+            */
+
             if ($ExtraInfo) {
                 $FullName .= " $ExtraInfo";
             }
+
             $Tags = $Request['Tags']; ?>
+
         <tr class="request">
             <td class="center cats_col">
                 <div title="<?=Format::pretty_category($Request['CategoryID'])?>"

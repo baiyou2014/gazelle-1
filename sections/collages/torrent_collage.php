@@ -69,26 +69,31 @@ foreach ($GroupIDs as $GroupID) {
     $UserAdditions[$UserID]++;
 
     $DisplayName = "$Number. ";
-    $DisplayName .= "<a href=\"torrents.php?id=$GroupID\" ";
+    $DisplayName .= "<a class='torrent_title' href='torrents.php?id=$GroupID' ";
 
     if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
         $DisplayName .= 'data-cover="'.ImageTools::process($WikiImage, 'thumb').'" ';
     }
 
     $GroupName = empty($GroupName) ? (empty($GroupNameRJ) ? $GroupNameJP : $GroupNameRJ) : $GroupName;
-    $DisplayName .= "dir=\"ltr\">$GroupName</a>";
+    $DisplayName .= "dir='ltr'>$GroupName</a>";
 
     # Year
-    # Sh!t h4x; Year is mandatory
     if ($GroupYear) {
         $Label = '<br />📅&nbsp;';
-        $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
+        $DisplayName .= $Label."<a href='torrents.php?action=search&year=$GroupYear'>$GroupYear</a>";
     }
           
     # Studio
     if ($GroupStudio) {
-      $Label = '&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;';
-        $DisplayName .= $Label."<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
+        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;';
+        $DisplayName .= $Label."<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
+    }
+
+    # Catalogue Number
+    if ($GroupCatalogueNumber) {
+        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
+        $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
     }
 
     # Authors
@@ -98,11 +103,6 @@ foreach ($GroupIDs as $GroupID) {
         $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
     }
 
-    # Catalogue Number
-    if ($GroupCatalogueNumber) {
-        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
-        $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
-    }
 
     /*
     if ($GroupDLSiteID) {

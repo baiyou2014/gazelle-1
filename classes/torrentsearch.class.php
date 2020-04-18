@@ -92,11 +92,11 @@ class TorrentSearch
     private static $FormsToFields = [
         # todo: Keep testing the granularity of filter combos
         'searchstr' => '*',
-        'advgroupname' => '*', # todo: Fix this ;)
+        #'advgroupname' => '*', # todo: Fix this ;)
         'numbers' => '(cataloguenumber,audioformat)',
-        'location' => '(studio,series)'
+        'location' => '(studio,series)',
         #'searchstr' => '(groupname,groupnamerj,groupnamejp,artistname,studio,series,dlsiteid,cataloguenumber,yearfulltext)',
-        #'advgroupname' => '(groupname,groupnamerj,groupnamejp)'
+        'advgroupname' => '(groupname,groupnamerj,groupnamejp)',
   ];
 
     // Specify the operator type to use for fields. Empty key sets the default

@@ -197,7 +197,7 @@ View::show_header('Browse Torrents', 'browse');
             </td>
           </tr>
 
-          <tr id="album_torrent_name"
+          <tr id="album_torrent_title"
             class="ftr_advanced<?=$HideAdvanced?>">
             <td class="label">
               <!-- Torrent Title / Organism / Strain or Variety -->
@@ -738,31 +738,31 @@ die();
           # Year
           if ($GroupYear) {
               $Label = '<br />📅&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
+              $DisplayName .= $Label."<a href='torrents.php?action=search&year=$GroupYear'>$GroupYear</a>";
           }
         
           # Studio
           if ($GroupStudio) {
               $Label = '&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
+              $DisplayName .= $Label."<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
           }
 
           # Catalogue Number
           if ($GroupCatalogueNumber) {
               $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
+              $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
           }
 
           # Organism
           if ($GroupNameRJ) {
               $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=advanced&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
+              $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
           }
                           
           # Strain/Variety
           if ($GroupNameJP) {
               $Label = '&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=advanced&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
+              $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
           }
         
           # Authors
@@ -947,30 +947,30 @@ die();
               # Sh!t h4x; Year is mandatory
               if ($GroupYear) {
                   $Label = '<br />📅&nbsp;';
-                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
+                  $DisplayName .= $Label."<a href='torrents.php?action=search&year=$GroupYear'>$GroupYear</a>";
               }
             
               # Studio
               if ($GroupStudio) {
-                  $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
+                  $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
               }
 
               # Catalogue Number
               if ($GroupCatalogueNumber) {
                   $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
-                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
+                  $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
               }
           
               # Organism
               if ($GroupNameRJ) {
                   $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;';
-                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
+                  $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
               }
                 
               # Strain/Variety
               if ($GroupNameJP) {
                   $Label = '&nbsp;';
-                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
+                  $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
               }
 
               # Authors

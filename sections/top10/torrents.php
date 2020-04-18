@@ -521,14 +521,14 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
         // Generate torrent's title
         $DisplayName = '';
 
-        $DisplayName .= "<a href=\"torrents.php?id=$GroupID&amp;torrentid=$TorrentID\" ";
+        $DisplayName .= "<a class='torrent_title' href='torrents.php?id=$GroupID&amp;torrentid=$TorrentID' ";
         if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
             $DisplayName .= 'data-cover="'.ImageTools::process($WikiImage, 'thumb').'" ';
         }
 
 
         $Name = empty($GroupName) ? (empty($GroupNameRJ) ? $GroupNameJP : $GroupNameRJ) : $GroupName;
-        $DisplayName .= "dir=\"ltr\">$Name</a>";
+        $DisplayName .= "dir='ltr'>$Name</a>";
 
         // Append extra info to torrent title
         $ExtraInfo = '';
@@ -539,12 +539,12 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
             # Sh!t h4x; Year is mandatory
             if ($Year) {
                 $Label = '<br />📅&nbsp;';
-                $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$Year'>$Year</a>";
+                $DisplayName .= $Label."<a href='torrents.php?action=search&year=$Year'>$Year</a>";
             }
           
             # Studio
             if ($Studio) {
-                $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$Studio'>$Studio</a>";
+                $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$Studio'>$Studio</a>";
             }
 
             # Authors
@@ -557,7 +557,7 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
             # Catalogue Number
             if ($CatalogueNumber) {
                 $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
-                $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$CatalogueNumber'>$CatalogueNumber</a>";
+                $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$CatalogueNumber'>$CatalogueNumber</a>";
             }
     
             /*
