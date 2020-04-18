@@ -50,7 +50,7 @@ if ($GroupNameRJ && $GroupNameRJ !== $GroupName) {
 }
 
 if ($GroupNameJP && $GroupNameJP !== $GroupName) {
-    $DisplayName .= $GroupNameJP;
+    $DisplayName .= ' '.$GroupNameJP;
 }
 
 if ($GroupCategoryID) {
