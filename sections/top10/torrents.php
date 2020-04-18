@@ -164,6 +164,29 @@ if (!empty($Where)) {
 } else {
     $WhereSum = '';
 }
+
+$BaseQuery = '
+  SELECT
+    t.ID,
+    g.ID,
+    g.Name,
+    g.NameRJ,
+    g.NameJP,
+    g.CategoryID,
+    g.WikiImage,
+    g.TagList,
+    t.Media,
+    g.Year,
+    g.Studio,
+    t.Snatched,
+    t.Seeders,
+    t.Leechers,
+    ((t.Size * t.Snatched) + (t.Size * 0.5 * t.Leechers)) AS Data,
+    t.Size
+  FROM torrents AS t
+    LEFT JOIN torrents_group AS g ON g.ID = t.GroupID';
+
+/*
 $BaseQuery = '
   SELECT
     t.ID,
@@ -183,6 +206,7 @@ $BaseQuery = '
     t.Size
   FROM torrents AS t
     LEFT JOIN torrents_group AS g ON g.ID = t.GroupID';
+*/
 
 if ($Details === 'all' || $Details === 'day') {
     $TopTorrentsActiveLastDay = $Cache->get_value('top10tor_day_'.$Limit.$WhereSum.$GroupBySum);
@@ -264,7 +288,7 @@ if ($Details === 'all' || $Details === 'year') {
             // IMPORTANT NOTE - we use WHERE t.Seeders>200 in order to speed up this query. You should remove it!
             $Query = $BaseQuery.' WHERE ';
             if ($Details === 'all' && !$Filtered) {
-//        $Query .= 't.Seeders>=200 AND ';
+                // $Query .= 't.Seeders>=200 AND ';
                 if (!empty($Where)) {
                     $Query .= $Where.' AND ';
                 }
@@ -405,24 +429,24 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
         <?php
     switch ($Limit) {
       case 100: ?>
-        - <a href="top10.php?details=<?=$Tag?>" class="brackets">Top
+        – <a href="top10.php?details=<?=$Tag?>" class="brackets">Top
             10</a>
-        - <span class="brackets">Top 100</span>
-        - <a href="top10.php?type=torrents&amp;limit=250&amp;details=<?=$Tag?>"
+        – <span class="brackets">Top 100</span>
+        – <a href="top10.php?type=torrents&amp;limit=250&amp;details=<?=$Tag?>"
             class="brackets">Top 250</a>
         <?php        break;
       case 250: ?>
-        - <a href="top10.php?details=<?=$Tag?>" class="brackets">Top
+        – <a href="top10.php?details=<?=$Tag?>" class="brackets">Top
             10</a>
-        - <a href="top10.php?type=torrents&amp;limit=100&amp;details=<?=$Tag?>"
+        – <a href="top10.php?type=torrents&amp;limit=100&amp;details=<?=$Tag?>"
             class="brackets">Top 100</a>
-        - <span class="brackets">Top 250</span>
+        – <span class="brackets">Top 250</span>
         <?php        break;
       default: ?>
-        - <span class="brackets">Top 10</span>
-        - <a href="top10.php?type=torrents&amp;limit=100&amp;details=<?=$Tag?>"
+        – <span class="brackets">Top 10</span>
+        – <a href="top10.php?type=torrents&amp;limit=100&amp;details=<?=$Tag?>"
             class="brackets">Top 100</a>
-        - <a href="top10.php?type=torrents&amp;limit=250&amp;details=<?=$Tag?>"
+        – <a href="top10.php?type=torrents&amp;limit=250&amp;details=<?=$Tag?>"
             class="brackets">Top 250</a>
         <?php    } ?>
     </small>
@@ -482,7 +506,12 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
 
     foreach ($Details as $Detail) {
         list($TorrentID, $GroupID, $GroupName, $GroupNameRJ, $GroupNameJP, $GroupCategoryID, $WikiImage, $TagsList,
+      $Media, $Year, $Studio, $Snatched, $Seeders, $Leechers, $Data, $Size) = $Detail;
+  
+        /*
+        list($TorrentID, $GroupID, $GroupName, $GroupNameRJ, $GroupNameJP, $GroupCategoryID, $WikiImage, $TagsList,
       $Media, $Year, $Snatched, $Seeders, $Leechers, $Data, $Size) = $Detail;
+      */
 
         $IsBookmarked = Bookmarks::has_bookmarked('torrent', $GroupID);
         $IsSnatched = Torrents::has_snatched($TorrentID);
@@ -491,10 +520,6 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
 
         // Generate torrent's title
         $DisplayName = '';
-
-        if (!empty($Artists[$GroupID])) {
-            $DisplayName = Artists::display_artists($Artists[$GroupID], true, true);
-        }
 
         $DisplayName .= "<a href=\"torrents.php?id=$GroupID&amp;torrentid=$TorrentID\" ";
         if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
@@ -510,22 +535,55 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
         $AddExtra = '';
 
         if (empty($GroupBy)) {
+            # Year
+            # Sh!t h4x; Year is mandatory
+            if ($Year) {
+                $Label = '<br />📅&nbsp;';
+                $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$Year'>$Year</a>";
+            }
+          
+            # Studio
+            if ($Studio) {
+                $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$Studio'>$Studio</a>";
+            }
+
+            # Authors
+            if ($Artists) {
+                # Emoji in classes/astists.class.php
+                $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+                $DisplayName .= $Label.Artists::display_artists($Artists[$GroupID], true, true);
+            }
+    
+            # Catalogue Number
+            if ($CatalogueNumber) {
+                $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+                $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$CatalogueNumber'>$CatalogueNumber</a>";
+            }
+    
+            /*
             if ($Year > 0) {
                 $ExtraInfo .= $Year;
             }
+            */
 
+            /*
             if ($Media) {
                 $ExtraInfo .= " / $Media";
             }
+            */
 
+            /*
             if ($IsSnatched) {
                 $ExtraInfo .= ' / ';
                 $ExtraInfo .= Format::torrent_label('Snatched!', 'bold');
             }
+            */
 
+            /*
             if ($ExtraInfo !== '') {
                 $ExtraInfo = "<br />$ExtraInfo";
             }
+            */
         }
 
         $TorrentTags = new Tags($TagsList);

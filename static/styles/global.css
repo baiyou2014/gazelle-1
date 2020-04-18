@@ -1,12 +1,15 @@
 .box h3 {
   font-size: 140%;
 }
+
 .box h4 {
   font-size: 130%;
 }
+
 .box h5 {
   font-size: 120%;
 }
+
 .box h6 {
   font-size: 110%;
 }
@@ -18,6 +21,7 @@
 .flex_input_container {
   display: flex;
 }
+
 .flex_input_container > input[type=text]{
   flex-grow: 1;
   box-sizing: border-box;
@@ -84,9 +88,11 @@ ul.collage_images li {
   border: none;
   float: left;
   margin: 0;
-/*  width: 118px;
+  /*
+  width: 118px;
   height: 118px;
-  width: 146px; */
+  width: 146px;
+  */
   width: 146px;
   list-style: none;
   list-style-type: none;
@@ -94,13 +100,13 @@ ul.collage_images li {
 
 ul.collage_images li a {
   display: block;
-/*  height: 118px; */
+  /* height: 118px; */
   width: 100%;
   overflow: hidden;
 }
 
 ul.collage_images img {
-/*  height: 118px;
+  /* height: 118px;
   width: 118px; */
 }
 
@@ -159,11 +165,9 @@ abbr[title] {
 }
 
 .line_unchanged {
-
 }
 
 .log1 {
-
 }
 
 .log2 {
@@ -278,10 +282,12 @@ div#AddArtists a {
   text-align: center;
   display: inline-block;
 }
+
 .bbcode_bar > li {
   display: inline-block;
   margin: 0px;
 }
+
 .bbcode_bar > li > a {
   display: inline-block;
   height: 26px;
@@ -290,6 +296,7 @@ div#AddArtists a {
   min-width: 20px;
   margin: 0px 4px;
 }
+
 .bbcode_bar .emoji_box {
   position: absolute;
   width: 200px;
@@ -298,9 +305,11 @@ div#AddArtists a {
   padding: 8px;
   font-size: 20px;
 }
+
 .bbcode_bar .emoji_box > a {
   cursor: pointer;
 }
+
 .bbcode_bar .emoji_box > br {
   content: "";
   display: block;
@@ -429,9 +438,8 @@ tr.torrent .bookmark>a:after {
   height: 1.5em;
 }
 
-
 .ui-state-highlight {
-  background: #007DC6 /*{bgColorHighlight}*/;
+  background: #007DC6 /* {bgColorHighlight} */;
   opacity: 0.15;
   width: 50%;
 
@@ -504,18 +512,23 @@ tr.torrent .bookmark>a:after {
 #userinfo .brackets:before, #userinfo .brackets:after {
   content: "";
 }
+
 .group_image {
   overflow: hidden;
 }
+
 .float_left {
   float: left;
 }
+
 .float_right {
   float: right;
 }
+
 .float_clear {
   clear: both;
 }
+
 .group_image + .group_info {
   margin-left: 100px;
 }
@@ -542,37 +555,45 @@ tr.torrent .bookmark>a:after {
   word-break: break-word;
   hyphens: auto;
 }
+
 .filelist_table td:first-child {
   word-break: break-all;
 }
+
 /* Fix long overflow for Opera (doesn't support word-break). */
 .reportinfo_table {
   table-layout: fixed;
 }
+
 /* Wrap release info for consistent DOM and to limit table expansion. */
 .no_overflow {
   width: 100%;
   overflow: hidden;
 }
+
 /* Stylesheet gallery in user profile editing */
 #css_gallery {
   overflow: hidden;
   margin-top: 10px;
 }
+
 .preview_wrapper {
   position: relative;
   display: inline-block;
   width: 40%;
   margin: 0 10px;
 }
+
 .preview_image {
   display: block;
   cursor: pointer;
   overflow: hidden;
 }
+
 .preview_image img {
   width: 100%;
 }
+
 .preview_name {
   text-align: center;
   margin-top: 5px;
@@ -581,6 +602,7 @@ tr.torrent .bookmark>a:after {
 .option_group {
   margin-bottom: 10px;
 }
+
 .option_group:last-child {
   margin-bottom: 0px;
 }
@@ -592,15 +614,18 @@ tr.torrent .bookmark>a:after {
   background: #FFF;
   overflow: auto;
 }
+
 .autocomplete-suggestion {
   padding: 2px 5px;
   white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
 }
+
 .autocomplete-selected {
   background: #F0F0F0;
 }
+
 .autocomplete-suggestions strong {
   font-weight: normal;
   color: #3399FF;
@@ -610,9 +635,11 @@ tr.torrent .bookmark>a:after {
   table-layout: fixed;
   width: 100%;
 }
+
 .process_info_pid {
   width: 70px;
 }
+
 .process_info_data {
   overflow: auto;
 }
@@ -689,7 +716,7 @@ tr.torrent .bookmark>a:after {
 }
 
 .number_column {
-  text-align: right;
+  text-align: center;
 }
 
 .wide_input_text {
@@ -734,6 +761,7 @@ tr.torrent .bookmark>a:after {
   text-align: right;
   width: 150px;
 }
+
 .field_div .input,
 .submit_div .input {
   padding: 0 5px;
@@ -897,11 +925,13 @@ div.torrent_artists {
   vertical-align: top;
   font-size: 10pt;
 }
+
 .net_box > .box {
   min-height: 60px;
   display: flex;
   align-items: center;
 }
+
 .net_box > .box > span {
   width: 100%;
 }
@@ -913,9 +943,11 @@ div.torrent_artists {
 .flex {
   display: flex;
 }
+
 .flex > .grow {
   flex-grow: 1
 }
+
 .flex > .shrink {
   flex-shrink: 1
 }
@@ -936,9 +968,11 @@ input[type="search"] {
   display: flex;
   justify-content: space-between;
 }
+
 .sidebar .box_tags > ul.stats > li > a {
   word-break: break-all;
 }
+
 .edit_tags_votes {
   display: flex;
 }
@@ -961,6 +995,7 @@ form.edit_form[name=screenshots_form] input[type=text], form.edit_form[name=scre
   top: 10px;
   right: 10px;
 }
+
 #dbcrypt:after {
   content: "!";
   display: block;

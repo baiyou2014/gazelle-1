@@ -59,9 +59,11 @@ button, input[type=button], input[type=submit] {
   background: #fbe180;
   box-shadow: 2px 2px 10px -5px gray;
 }
+
 button:hover, input[type=button]:hover, input[type=submit]:hover {
   background: #fff9c7;
 }
+
 button:focus, input[type=button]:focus, input[type=submit]:focus {
   background: #fff9c7;
 }
@@ -383,19 +385,24 @@ ul.thin li { margin:0px 0px; padding:0px; }
   margin: 2em auto;
   padding: 10px;
 }
+
 .alertbar.warning {
   background-color: #ffe68a;
 }
+
 .alertbar.error {
   background-color: #ff8a8a;
 }
+
 .alertbar a {
   color: black;
   text-decoration: none;
 }
+
 .alertbar.modbar a {
   margin: 0px 5px;
 }
+
 .alertbar a:hover {
   color: black;
   text-decoration: underline;
@@ -724,9 +731,11 @@ ul.poll li.graph {
   vertical-align: middle;
 }
 
+/*
 .torrent_table .number_column {
   text-align: center;
 }
+*/
 
 .torrent_table, .torrent_table td {
   border: none;
@@ -739,9 +748,11 @@ ul.poll li.graph {
 .torrent_table tr.group {
   background-color: white;
 }
+
 .torrent_table tr.group_torrent {
   background-color: white;
 }
+
 .torrent_table tr.torrent {
   background-color: white;
 }
@@ -750,14 +761,17 @@ ul.poll li.graph {
   padding: 3px;
   width: 21px;
 }
+
 .torrent_table tr.torrent:nth-child(2n),
 .collage_table tr.row:nth-child(2n) {
   background-color: whitesmoke;
 }
+
 .torrent_table tr.torrent:nth-child(2n-1),
 .collage_table tr.row:nth-child(2n-1) {
   background-color: white;
 }
+
 .torrent_table tr.group {
   background-color: white;
 }
@@ -832,17 +846,21 @@ td.avatar {
   max-height: 400px;
   overflow-y: scroll;
 }
+
 .box_description, table.forum_post td.body {
   word-break: break-word;
   word-wrap: break-word;
   display: inline-block;
 }
+
 .box_description {
   width: 100%;
 }
+
 .thin > table.forum_post td.body {
   width: 690px;
 }
+
 #torrent_comments table.forum_post td.body {
   width: 422px;
 }
@@ -881,6 +899,7 @@ tr.unreadpm {
   width: 300px;
   padding: 5px;
 }
+
 .permission_container input {
   margin: 0px 3px 5px 0px;
   vertical-align: top;
@@ -978,6 +997,7 @@ ul .invitetree {
 tr.torrent .bookmark > a:before {
   color: black;
 }
+
 tr.torrent .bookmark > a:after {
   color: black;
 }
@@ -1006,12 +1026,15 @@ div[class~=tooltipster-content] > a {
 #request_top_contrib {
   border: none;
 }
+
 #request_top_contrib tr:first-child th {
   border-top: 0;
 }
+
 #request_top_contrib tr:last-child td {
   border-bottom: 0;
 }
+
 #request_top_contrib tr td:first-child,
 #request_top_contrib tr th:first-child,
 #request_top_contrib tr td:nth-child(2),
@@ -1019,6 +1042,7 @@ div[class~=tooltipster-content] > a {
   border-left: 0;
   border-top: 0;
 }
+
 #request_top_contrib tr td:last-child,
 #request_top_contrib tr th:last-child {
   border-right: 0;
@@ -1027,9 +1051,11 @@ div[class~=tooltipster-content] > a {
 #request_table {
   margin-bottom: 5px;
 }
+
 #request_table .request:nth-of-type(odd){
   background: #edeae5;
 }
+
 #request_table .request:nth-of-type(even){
   background: white;
 }
@@ -1052,9 +1078,11 @@ ol {
   padding: 5px;
   box-shadow: 2px 2px 10px -2px gray;
 }
+
 #coverCont img {
   background-color: #fff9c7;
 }
+
 .torrent_info {
   font-size: 100%;
   font-weight: 100;
@@ -1080,6 +1108,7 @@ input.inputtext {
   outline: none;
   transition: ease-in-out 0.12s;
 }
+
 input.inputtext:focus {
   border-bottom: 1px solid #fbe180;
 }
@@ -1089,6 +1118,7 @@ input.inputtext:focus {
   border: 1px solid #c7c7c7;
   border-bottom: none;
 }
+
 .bbcode_bar .emoji_box {
   background-color: white;
 }
@@ -1102,6 +1132,7 @@ input.inputtext:focus {
 .box, .border, .alertbar, .artist_table, .request_table, .forum_index, #userinfo_minor > li > ul, .permissions table {
   box-shadow: 2px 2px 10px -2px gray;
 }
+
 #userinfo {
   box-shadow: 0 2px 10px -2px gray;
 
@@ -1112,7 +1143,8 @@ input.inputtext:focus {
 }
 */
 
-#comm_badge_tr .badge_icon, #user_badge_edit_tr .badge_icon {
+#comm_badge_tr .badge_icon,
+#user_badge_edit_tr .badge_icon {
   margin-right: 1em;
   margin-left: 2px;
 }
@@ -1131,6 +1163,7 @@ input.inputtext:focus {
 .hnr-yes {
   color: red;
 }
+
 .hnr-no {
   color: green;
 }
@@ -1142,13 +1175,16 @@ input.inputtext:focus {
 .point_gift_box p {
   margin: 7px 2px 0px;
 }
+
 .point_gift_box input[type="text"], .point_gift_box textarea {
   width: 100%;
   box-sizing: border-box;
 }
+
 .dead {
   opacity: 0.5;
 }
+
 .search_warning {
   fill: #E197E5;
 }
@@ -1156,14 +1192,17 @@ input.inputtext:focus {
 .tl_reported {
   color: red;
 }
+
 .tl_snatched {
-  color: #C35C1C;
+  color: green;
 }
+
 .tl_leeching {
-  color: #BD0D0D;
+  color: orange;
 }
+
 .tl_seeding {
-  color: #068206;
+  color: green;
 }
 
 caption {

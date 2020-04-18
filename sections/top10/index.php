@@ -1,22 +1,24 @@
-<?
+<?php
+
 enforce_login();
 
 if (!check_perms('site_top10')) {
-  View::show_header();
-?>
+    View::show_header(); ?>
+
 <div class="content_basiccontainer">
   You do not have access to view this feature.
 </div>
-<?
+
+<?php
   View::show_footer();
-  die();
+    die();
 }
 
 include(SERVER_ROOT.'/sections/torrents/functions.php'); //Has get_reports($TorrentID);
 if (empty($_GET['type']) || $_GET['type'] == 'torrents') {
-  include(SERVER_ROOT.'/sections/top10/torrents.php');
+    include(SERVER_ROOT.'/sections/top10/torrents.php');
 } else {
-  switch ($_GET['type']) {
+    switch ($_GET['type']) {
     case 'users':
       include(SERVER_ROOT.'/sections/top10/users.php');
       break;
@@ -34,4 +36,3 @@ if (empty($_GET['type']) || $_GET['type'] == 'torrents') {
       break;
   }
 }
-?>

@@ -87,7 +87,8 @@ foreach ($GroupIDs as $GroupID) {
           
     # Studio
     if ($GroupStudio) {
-        $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
+      $Label = '&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;';
+        $DisplayName .= $Label."<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
     }
 
     # Authors
