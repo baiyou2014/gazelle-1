@@ -37,7 +37,7 @@ if (!$GroupName) {
 }
 
 # Make the main headings
-$DisplayName = "$GroupName";
+$DisplayName = $GroupName;
 $AltName = $GroupName; // Goes in the alt text of the image
 $Title = $GroupName; // Goes in <title>
 $WikiBody = Text::full_format($WikiBody);
@@ -45,37 +45,37 @@ $WikiBody = Text::full_format($WikiBody);
 $Artists = Artists::get_artist($GroupID);
 
 if ($GroupNameRJ && $GroupNameRJ !== $GroupName) {
-    $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;<em>$GroupNameRJ</em> ";
+    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;';
+    $DisplayName .= "$Label<em>$GroupNameRJ</em>";
 }
 
 if ($GroupNameJP && $GroupNameJP !== $GroupName) {
-    $DisplayName .= "$GroupNameJP";
+    $DisplayName .= $GroupNameJP;
 }
 
-    $DisplayName .= '<br />';
-
 if ($GroupCategoryID) {
-    $DisplayName = '<div class="'.Format::css_category($GroupCategoryID).' group_cat"></div>' . "$DisplayName";
+    $DisplayName = '<div class="'.Format::css_category($GroupCategoryID).' group_cat"></div>'.$DisplayName;
 }
 
 if ($GroupYear > 0) {
-    $DisplayName .= "📅&nbsp;$GroupYear";
-    $AltName .= "📅&nbsp;$GroupYear";
-    $Title .= "📅&nbsp;$GroupYear";
+    $Label = '<br />📅&nbsp;';
+    $DisplayName .= $Label.$GroupYear;
+    $AltName .= $Label.$GroupYear;
+    $Title .= $Label.$GroupYear;
 }
 
 if ($GroupStudio) {
-    $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;$GroupStudio";
+    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;';
+    $DisplayName .= $Label.$GroupStudio;
 }
 
 if ($GroupCatalogueNumber) {
-    $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;$GroupCatalogueNumber";
+    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+    $DisplayName .= $Label.$GroupCatalogueNumber;
 }
 
-$DisplayName .= '<br />';
-
 if ($Artists) {
-    $DisplayName .= Artists::display_artists($Artists, true);
+    $DisplayName .= '<br />'.Artists::display_artists($Artists, true);
 }
 
 /*
@@ -519,32 +519,27 @@ foreach ($TorrentList as $Torrent) {
   </table>';
 
     $ExtraInfo = ''; // String that contains information on the torrent (e.g., format and encoding)
-    $AddExtra = ''; // Separator between torrent properties
+    $AddExtra = '&nbsp;|&nbsp;'; // Separator between torrent properties
 
   // Similar to Torrents::torrent_info()
     if ($Media) {
         $ExtraInfo .= display_str($Media);
-        $AddExtra = " | ";
     }
 
     if ($Container) {
         $ExtraInfo .= $AddExtra . display_str($Container);
-        $AddExtra = ' | ';
     }
 
     if ($Archive) {
         $ExtraInfo .= $AddExtra . display_str($Archive);
-        $AddExtra = ' | ';
     }
 
     if ($Codec) {
         $ExtraInfo .= $AddExtra . display_str($Codec);
-        $AddExtra = ' | ';
     }
 
     if ($Resolution) {
         $ExtraInfo .= $AddExtra . display_str($Resolution);
-        $AddExtra = ' | ';
     }
 
     /*
@@ -578,36 +573,28 @@ foreach ($TorrentList as $Torrent) {
 
     if ($Censored) {
         $ExtraInfo .= $AddExtra . display_str('Aligned');
-        $AddExtra = ' | ';
     } else {
         $ExtraInfo .= $AddExtra . display_str('Not Aligned');
-        $AddExtra = ' | ';
     }
 
     if (!$ExtraInfo) {
         $ExtraInfo = $GroupName;
-        $AddExtra = ' | ';
     }
 
     if ($IsLeeching) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Leeching', 'important_text');
-        $AddExtra=' | ';
     } elseif ($IsSeeding) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Seeding', 'important_text_alt');
-        $AddExtra = ' | ';
     } elseif ($IsSnatched) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Snatched!', 'bold');
-        $AddExtra = ' | ';
     }
 
     if ($FreeTorrent === '1') {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Freeleech!', 'important_text_alt');
-        $AddExtra= ' | ';
     }
 
     if ($FreeTorrent === '2') {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Neutral Leech!', 'bold');
-        $AddExtra = ' | ';
     }
 
     // Freleechizer

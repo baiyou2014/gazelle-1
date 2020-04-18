@@ -68,8 +68,7 @@ foreach ($GroupIDs as $GroupID) {
     }
     $UserAdditions[$UserID]++;
 
-    $DisplayName = "$Number - ";
-    $DisplayName .= Artists::display_artists($Artists);
+    $DisplayName = "$Number. ";
     $DisplayName .= "<a href=\"torrents.php?id=$GroupID\" ";
 
     if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
@@ -79,16 +78,29 @@ foreach ($GroupIDs as $GroupID) {
     $GroupName = empty($GroupName) ? (empty($GroupNameRJ) ? $GroupNameJP : $GroupNameRJ) : $GroupName;
     $DisplayName .= "dir=\"ltr\">$GroupName</a>";
 
-    if ($GroupYear > 0) {
-        $DisplayName = "$DisplayName<br />$GroupYear";
+    # Year
+    # Sh!t h4x; Year is mandatory
+    if ($GroupYear) {
+        $Label = '<br />📅&nbsp;';
+        $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
     }
-
+          
+    # Studio
     if ($GroupStudio) {
-        $DisplayName .= " / $GroupStudio";
+        $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
     }
 
+    # Authors
+    if ($Artists) {
+        # Emoji in classes/astists.class.php
+        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+        $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
+    }
+
+    # Catalogue Number
     if ($GroupCatalogueNumber) {
-        $DisplayName .= " / $GroupCatalogueNumber";
+        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+        $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
     }
 
     /*
@@ -188,7 +200,11 @@ foreach ($GroupIDs as $GroupID) {
     }
     } else {
         // Viewing a type that does not require grouping
-
+        $Data = current($Torrents);
+        $ExtraInfo = Torrents::torrent_info($Data, true, true);
+        $DisplayName .= "<span style='font-weight: normal;'>$ExtraInfo</span>";
+    
+        /*
         $TorrentID = key($Torrents);
         $Torrent = current($Torrents);
 
@@ -201,12 +217,13 @@ foreach ($GroupIDs as $GroupID) {
         }
 
         if ($Torrent['FreeTorrent'] == '1') {
-            $DisplayName .= ' / ' . Format::torrent_label('Freeleech!', 'important_text_alt');
+            $DisplayName .= ' | ' . Format::torrent_label('Freeleech!', 'important_text_alt');
         } elseif ($Torrent['FreeTorrent'] == '2') {
-            $DisplayName .= ' / ' . Format::torrent_label('Neutral Leech!', 'bold');
+            $DisplayName .= ' | ' . Format::torrent_label('Neutral Leech!', 'bold');
         } elseif ($Torrent['PersonalFL']) {
-            $DisplayName .= ' / ' . Format::torrent_label('Personal Freeleech!', 'important_text_alt');
+            $DisplayName .= ' | ' . Format::torrent_label('Personal Freeleech!', 'important_text_alt');
         }
+        */
 
         $SnatchedTorrentClass = ($Torrent['IsSnatched'] ? ' snatched_torrent' : ''); ?>
 

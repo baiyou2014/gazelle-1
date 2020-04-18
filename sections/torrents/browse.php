@@ -940,7 +940,7 @@ die();
               }
 
               # Authors
-              if (isset($Artists)) {
+              if ($Artists) {
                   # Emoji in classes/astists.class.php
                   $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
                   $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';

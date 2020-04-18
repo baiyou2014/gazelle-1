@@ -760,7 +760,7 @@ class Torrents
             $Info[] = $HTMLy ? Format::torrent_label('Personal Freeleech!', 'important_text_alt') : 'Personal Freeleech!';
         }
 
-        return implode(' | ', $Info);
+        return implode('&nbsp;|&nbsp;', $Info);
     }
 
     /**
