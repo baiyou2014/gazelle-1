@@ -165,7 +165,7 @@ foreach ($GroupIDs as $GroupID) {
       | <a href="reportsv2.php?action=report&amp;id=<?=$TorrentID?>"
         class="tooltip" title="Report">RP</a>
     </span>
-    &nbsp;&nbsp;&raquo;&nbsp; <a
+    &nbsp;&nbsp;»&nbsp; <a
       href="torrents.php?id=<?=$GroupID?>&amp;torrentid=<?=$TorrentID?>"><?=Torrents::torrent_info($Torrent)?></a>
   </td>
 
@@ -193,19 +193,19 @@ foreach ($GroupIDs as $GroupID) {
         $Torrent = current($Torrents);
 
         if ($Torrent['IsLeeching']) {
-            $DisplayName .= ' ' . Format::torrent_label('Leeching');
+            $DisplayName .= ' ' . Format::torrent_label('Leeching', 'important_text');
         } elseif ($Torrent['IsSeeding']) {
-            $DisplayName .= ' ' . Format::torrent_label('Seeding');
+            $DisplayName .= ' ' . Format::torrent_label('Seeding', 'important_text_alt');
         } elseif ($Torrent['IsSnatched']) {
-            $DisplayName .= ' ' . Format::torrent_label('Snatched');
+            $DisplayName .= ' ' . Format::torrent_label('Snatched', 'bold');
         }
 
         if ($Torrent['FreeTorrent'] == '1') {
-            $DisplayName .= ' ' . Format::torrent_label('Freeleech!');
+            $DisplayName .= ' / ' . Format::torrent_label('Freeleech!', 'important_text_alt');
         } elseif ($Torrent['FreeTorrent'] == '2') {
-            $DisplayName .= ' ' . Format::torrent_label('Neutral Leech!');
+            $DisplayName .= ' / ' . Format::torrent_label('Neutral Leech!', 'bold');
         } elseif ($Torrent['PersonalFL']) {
-            $DisplayName .= ' ' . Format::torrent_label('Personal Freeleech!');
+            $DisplayName .= ' / ' . Format::torrent_label('Personal Freeleech!', 'important_text_alt');
         }
 
         $SnatchedTorrentClass = ($Torrent['IsSnatched'] ? ' snatched_torrent' : ''); ?>
@@ -697,7 +697,7 @@ if ($CollageCovers != 0) { ?>
         |
         <a href="#" class="pageslink"
           onclick="collageShow.page(<?=ceil($NumGroups / $CollageCovers) - 1?>, this); return false;">
-          <strong>Last »</strong>
+          <strong>Last&nbsp;»</strong>
         </a>
       </span>
     </div>

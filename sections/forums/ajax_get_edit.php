@@ -63,7 +63,7 @@ if ($Depth != 0) {
         <br />
 
 <? if ($Depth < count($Edits)) { ?>
-          <a href="#edit_info_<?=$PostID?>" onclick="LoadEdit('<?=$Type?>', <?=$PostID?>, <?=($Depth + 1)?>); return false;">&laquo;</a>
+          <a href="#edit_info_<?=$PostID?>" onclick="LoadEdit('<?=$Type?>', <?=$PostID?>, <?=($Depth + 1)?>); return false;">«</a>
           <?=(($Depth == 0) ? 'Last edited by' : 'Edited by')?>
           <?=Users::format_username($UserID, false, false, false) ?> <?=time_diff($Time, 2, true, true)?>
 <? } else { ?>
@@ -71,6 +71,6 @@ if ($Depth != 0) {
 <? }
 
 if ($Depth > 0) { ?>
-          <a href="#edit_info_<?=$PostID?>" onclick="LoadEdit('<?=$Type?>', <?=$PostID?>, <?=($Depth - 1)?>); return false;">&raquo;</a>
+          <a href="#edit_info_<?=$PostID?>" onclick="LoadEdit('<?=$Type?>', <?=$PostID?>, <?=($Depth - 1)?>); return false;">»</a>
 <? } ?>
 

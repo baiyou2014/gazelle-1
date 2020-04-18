@@ -295,7 +295,7 @@ if ($ThreadInfo['NoPoll'] == 0) {
         }
         if ($Votes[0] > 0) {
             ?>
-          <li><?=($UserResponse == '0' ? '&raquo; ' : '')?>(Blank)
+          <li><?=($UserResponse == '0' ? '»&nbsp;' : '')?>(Blank)
             (<?=number_format((float)($Votes[0] / $TotalVotes * 100), 2)?>%)
           </li>
           <li class="graph">
@@ -354,7 +354,7 @@ if ($ThreadInfo['NoPoll'] == 0) {
       } ?>
         <li>
           <a
-            href="forums.php?action=change_vote&amp;threadid=<?=$ThreadID?>&amp;auth=<?=$LoggedUser['AuthKey']?>&amp;vote=0"><?=($UserResponse == '0' ? '&raquo; ' : '')?>Blank</a>
+            href="forums.php?action=change_vote&amp;threadid=<?=$ThreadID?>&amp;auth=<?=$LoggedUser['AuthKey']?>&amp;vote=0"><?=($UserResponse == '0' ? '»&nbsp;' : '')?>Blank</a>
           - <?=$StaffVotes[0]?>&nbsp;(<?=number_format(((float)$Votes[0] / $TotalVotes) * 100, 2)?>%)
         </li>
       </ul>
@@ -567,7 +567,7 @@ foreach ($Thread as $Key => $Post) {
           <div class="last_edited">
             <?php    if (check_perms('site_admin_forums')) { ?>
             <a href="#content<?=$PostID?>"
-              onclick="LoadEdit('forums', <?=$PostID?>, 1); return false;">&laquo;</a>
+              onclick="LoadEdit('forums', <?=$PostID?>, 1); return false;">«</a>
             <?php    } ?>
             Last edited by
             <?=Users::format_username($EditedUserID, false, false, false, false, false, $IsDonorForum) ?>

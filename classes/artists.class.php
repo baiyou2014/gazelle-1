@@ -102,7 +102,7 @@ class Artists
     {
         if (!empty($Artists)) {
             $ampersand = ($Escape) ? ' &amp; ' : ' & ';
-            $link = '';
+            $link = ($IncludeHyphen? '🧑‍🔬&nbsp;':'');
     
             switch (count($Artists)) {
             case 0:
@@ -114,10 +114,10 @@ class Artists
               $link .= Artists::display_artist($Artists[1], $MakeLink, $Escape). ", ";
               // no break
             case 1:
-              $link .= Artists::display_artist($Artists[0], $MakeLink, $Escape).($IncludeHyphen? ' – ':'');
+              $link .= Artists::display_artist($Artists[0], $MakeLink, $Escape);
               break;
             default:
-            $link = Artists::display_artist($Artists[0], $MakeLink, $Escape).'  et al.'.($IncludeHyphen? ' – ':'');
+            $link = ($IncludeHyphen? '🧑‍🔬&nbsp;':'').Artists::display_artist($Artists[0], $MakeLink, $Escape).'  et al.';
             #$link = "Various".($IncludeHyphen?' – ':'');
         }
             return $link;

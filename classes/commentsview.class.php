@@ -100,7 +100,7 @@ class CommentsView
         <div class="last_edited">
           <?php if (check_perms('site_admin_forums')) { ?>
           <a href="#content<?=$PostID?>"
-            onclick="LoadEdit('<?=substr($Link, 0, strcspn($Link, '.'))?>', <?=$PostID?>, 1); return false;">&laquo;</a>
+            onclick="LoadEdit('<?=substr($Link, 0, strcspn($Link, '.'))?>', <?=$PostID?>, 1); return false;">«</a>
           <?php } ?>
           Last edited by
           <?=Users::format_username($EditedUserID, false, false, false) ?>

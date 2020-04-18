@@ -184,8 +184,7 @@ View::show_header('Browse Torrents', 'browse');
         } ?>
 
         <table class="layout">
-          <tr id="numbers"
-            class="ftr_advanced<?=$HideAdvanced?>">
+          <tr id="numbers" class="ftr_advanced<?=$HideAdvanced?>">
             <td class="label">
               <!--
                 Catalogue Number / AudioFormat
@@ -194,8 +193,7 @@ View::show_header('Browse Torrents', 'browse');
             </td>
             <td class="ft_numbers">
               <input type="search" size="30" name="numbers" class="inputtext smallest fti_advanced"
-                placeholder="Accession Number / Version"
-                value="<?Format::form('numbers')?>" />
+                placeholder="Accession Number / Version" value="<?Format::form('numbers')?>" />
             </td>
           </tr>
 
@@ -219,8 +217,7 @@ View::show_header('Browse Torrents', 'browse');
             <td class="ft_artistname">
               <input type="search" spellcheck="false" size="65" id="artist" name="artistname"
                 class="inputtext smaller fti_advanced" placeholder="Author (ORCiD pending)"
-                value="<?Format::form('artistname')?>"
-                <?php Users::has_autocomplete_enabled('other'); ?>/>
+                value="<?Format::form('artistname')?>" <?php Users::has_autocomplete_enabled('other'); ?>/>
             </td>
           </tr>
 
@@ -230,14 +227,11 @@ View::show_header('Browse Torrents', 'browse');
             </td>
             <td class="ft_location">
               <input type="search" name="location" class="inputtext smallest fti_advanced"
-                placeholder="Department or Lab / Location"
-                value="<?Format::form('location')?>"
-                size="40" />
+                placeholder="Department or Lab / Location" value="<?Format::form('location')?>" size="40" />
 
               <!-- Year -->
               <input type="search" name="year" class="inputtext smallest fti_advanced" placeholder="Year"
-                value="<?Format::form('year')?>"
-                size="20" />
+                value="<?Format::form('year')?>" size="20" />
             </td>
           </tr>
 
@@ -260,8 +254,7 @@ View::show_header('Browse Torrents', 'browse');
             </td>
             <td class="ft_filelist">
               <input type="search" spellcheck="false" size="65" name="filelist" class="inputtext fti_advanced"
-                placeholder="File List"
-                value="<?Format::form('filelist')?>" /><br /><br />
+                placeholder="File List" value="<?Format::form('filelist')?>" /><br /><br />
               Universal Search finds info hashes
             </td>
           </tr>
@@ -275,8 +268,9 @@ View::show_header('Browse Torrents', 'browse');
               <select name="media" class="ft_media fti_advanced">
                 <option value="">Sequencing</option>
                 <?php  foreach ($Media as $MediaName) { ?>
-                <option value="<?=display_str($MediaName); # pcs-comment-start; keep quote ?>"
-                <?Format::selected('media', $MediaName)?>><?=display_str($MediaName); ?>
+                <option
+                  value="<?=display_str($MediaName); # pcs-comment-start; keep quote?>"
+                  <?Format::selected('media', $MediaName)?>><?=display_str($MediaName); ?>
                 </option>
                 <?php  } ?>
               </select>
@@ -284,8 +278,9 @@ View::show_header('Browse Torrents', 'browse');
               <select name="media" class="ft_media fti_advanced">
                 <option value="">Imaging</option>
                 <?php  foreach ($MediaManga as $MediaName) { ?>
-                <option value="<?=display_str($MediaName); # pcs-comment-start; keep quote ?>"
-                <?Format::selected('media', $MediaName)?>><?=display_str($MediaName); ?>
+                <option
+                  value="<?=display_str($MediaName); # pcs-comment-start; keep quote?>"
+                  <?Format::selected('media', $MediaName)?>><?=display_str($MediaName); ?>
                 </option>
                 <?php  } ?>
               </select>
@@ -302,7 +297,8 @@ View::show_header('Browse Torrents', 'browse');
               <select id=" container" name="container" class="ft_container fti_advanced">
                 <option value="">DNA/RNA</option>
                 <?php foreach ($Containers as $Key => $Container) { ?>
-                <option value="<?=display_str($Key);?>" <?Format::selected('container', $Key)?>><?=display_str($Key);?>
+                <option value="<?=display_str($Key);?>"
+                  <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
                 <?php } ?>
               </select>
@@ -311,7 +307,8 @@ View::show_header('Browse Torrents', 'browse');
               <select id=" container" name="container" class="ft_container fti_advanced">
                 <option value="">Proteins</option>
                 <?php foreach ($ContainersProt as $Key => $Container) { ?>
-                <option value="<?=display_str($Key);?>" <?Format::selected('container', $Key)?>><?=display_str($Key);?>
+                <option value="<?=display_str($Key);?>"
+                  <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
                 <?php } ?>
               </select>
@@ -320,7 +317,8 @@ View::show_header('Browse Torrents', 'browse');
               <select id=" container" name="container" class="ft_container fti_advanced">
                 <option value="">Imaging</option>
                 <?php foreach ($ContainersGames as $Key => $Container) { ?>
-                <option value="<?=display_str($Key);?>" <?Format::selected('container', $Key)?>><?=display_str($Key);?>
+                <option value="<?=display_str($Key);?>"
+                  <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
                 <?php } ?>
               </select>
@@ -329,7 +327,8 @@ View::show_header('Browse Torrents', 'browse');
               <select id=" container" name="container" class="ft_container fti_advanced">
                 <option value="">Extras</option>
                 <?php foreach ($ContainersExtra as $Key => $Container) { ?>
-                  <option value="<?=display_str($Key);?>" <?Format::selected('container', $Key)?>><?=display_str($Key);?>
+                <option value="<?=display_str($Key);?>"
+                  <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
                 <?php } ?>
               </select>
@@ -344,8 +343,9 @@ View::show_header('Browse Torrents', 'browse');
               <select name="resolution" class="ft_resolution fti_advanced">
                 <option value="">Assembly Level</option>
                 <?php  foreach ($Resolutions as $Resolution) { ?>
-                <option value="<?=display_str($Resolution); # pcs-comment-start; keep quote ?>"
-                <?Format::selected('resolution', $Resolution)?>><?=display_str($Resolution); ?>
+                <option
+                  value="<?=display_str($Resolution); # pcs-comment-start; keep quote?>"
+                  <?Format::selected('resolution', $Resolution)?>><?=display_str($Resolution); ?>
                 </option>
                 <?php  } ?>
               </select>
@@ -376,7 +376,8 @@ View::show_header('Browse Torrents', 'browse');
               <select name="codec" class="ft_codec fti_advanced">
                 <option value="">License</option>
                 <?php  foreach ($Codecs as $Codec) { ?>
-                <option value="<?=display_str($Codec); ?>" <?Format::selected('codec', $Codec)?>><?=display_str($Codec); ?>
+                <option value="<?=display_str($Codec); ?>"
+                  <?Format::selected('codec', $Codec)?>><?=display_str($Codec); ?>
                 </option>
                 <?php  } ?>
               </select>
@@ -388,12 +389,10 @@ View::show_header('Browse Torrents', 'browse');
             <td class="label">Size</td>
             <td class="ft_size">
               <input type="size_min" spellcheck="false" size="6" name="size_min" class="inputtext smaller fti_advanced"
-                placeholder="Min"
-                value="<?Format::form('size_min')?>" />
+                placeholder="Min" value="<?Format::form('size_min')?>" />
               &ndash;
               <input type="size_max" spellcheck="false" size="6" name="size_max" class="inputtext smaller fti_advanced"
-                placeholder="Max"
-                value="<?Format::form('size_max')?>" />
+                placeholder="Max" value="<?Format::form('size_max')?>" />
               <select name="size_unit" class="ft_size fti_advanced">
                 <option value="">Unit</option>
                 <option value="0" <?Format::selected('size_unit', 0)?>>B
@@ -417,9 +416,7 @@ View::show_header('Browse Torrents', 'browse');
             </td>
             <td class="ftb_searchstr">
               <input type="search" spellcheck="false" size="48" name="searchstr" class="inputtext fti_basic"
-                placeholder="Universal Search"
-                value="<?Format::form('searchstr')?>"
-                aria-label="Terms to search">
+                placeholder="Universal Search" value="<?Format::form('searchstr')?>" aria-label="Terms to search">
             </td>
           </tr>
 
@@ -433,9 +430,17 @@ View::show_header('Browse Torrents', 'browse');
                 value="<?=display_str($Search->get_terms('taglist'))?>"
                 <?php Users::has_autocomplete_enabled('other'); ?>
               aria-label="Tags to search">&nbsp;
-              <input type="radio" name="tags_type" id="tags_type0" value="0" <?Format::selected('tags_type', 0, 'checked')?>
+              <input type="radio" name="tags_type" id="tags_type0" value="0" <?Format::selected(
+            'tags_type',
+            0,
+            'checked'
+        )?>
               /><label for="tags_type0"> Any</label>&nbsp;&nbsp;
-              <input type="radio" name="tags_type" id="tags_type1" value="1" <?Format::selected('tags_type', 1, 'checked')?>
+              <input type="radio" name="tags_type" id="tags_type1" value="1" <?Format::selected(
+                    'tags_type',
+                    1,
+                    'checked'
+                )?>
               /><label for="tags_type1"> All</label><br /><br />
               Use !tag to exclude tags
             </td>
@@ -698,11 +703,16 @@ die();
 
       $TorrentTags = new Tags($GroupInfo['TagList']);
 
+      # Start making $DisplayName (first torrent result line)
+      $DisplayName = '';
+
+      /*
       if (isset($Artists)) {
           $DisplayName = '<div class="torrent_artists">'.Artists::display_artists($Artists).'</div> ';
       } else {
           $DisplayName = '';
       }
+      */
 
       $SnatchedGroupClass = $GroupInfo['Flags']['IsSnatched'] ? ' snatched_group' : '';
 
@@ -721,19 +731,29 @@ die();
           # Japanese
           $DisplayName .= "dir=\"ltr\">$GroupName</a>";
 
+          # Authors
+          if (isset($Artists)) {
+              # Emoji in classes/astists.class.php
+              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+              $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
+          }
+
           # Year
           if ($GroupYear) {
-              $DisplayName .= "<br /><a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
+              $Label = '<br />📅&nbsp;';
+              $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
           }
         
           # Studio
           if ($GroupStudio) {
-              $DisplayName .= " &ndash; <a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
+              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;';
+              $DisplayName .= $Label."<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
           }
 
           # Catalogue Number
           if ($GroupCatalogueNumber) {
-              $DisplayName .= " &ndash; <a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
+              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+              $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
           }
 
           /*
@@ -857,14 +877,12 @@ die();
           href="reportsv2.php?action=report&amp;id=<?=$TorrentID?>"
           class="tooltip" title="Report">RP</a> ]
       </span>
-          <a
-          href="torrents.php?id=<?=$GroupID?>&amp;torrentid=<?=$TorrentID?>#torrent<?=$TorrentID?>"
-          class="torrent_label tl_reported tooltip search_link"><strong>Details</strong></a>
-          / <?=Torrents::torrent_info($Data)?>
-          <?php if ($Reported) { ?>
-            / <strong
-              class="torrent_label tl_reported tooltip search_link important_text"
-              title="Type: <?=ucfirst($Reports[0]['Type'])?><br>
+      <a href="torrents.php?id=<?=$GroupID?>&amp;torrentid=<?=$TorrentID?>#torrent<?=$TorrentID?>"
+        class="torrent_label tl_reported tooltip search_link"><strong>Details</strong></a>
+      / <?=Torrents::torrent_info($Data)?>
+      <?php if ($Reported) { ?>
+      / <strong class="torrent_label tl_reported tooltip search_link important_text"
+        title="Type: <?=ucfirst($Reports[0]['Type'])?><br>
                 Comment: <?=htmlentities(htmlentities($Reports[0]['UserComment']))?>">Reported</strong><?php } ?>
     </td>
     <td class="number_column"><?=$Data['FileCount']?>
@@ -912,17 +930,26 @@ die();
               # Year
               # Sh!t h4x; Year is mandatory
               if ($GroupYear) {
-                  $DisplayName .= "<br /><a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
+                  $Label = '<br />📅&nbsp;';
+                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
               }
-
+            
               # Studio
               if ($GroupStudio) {
-                  $DisplayName .= " &ndash; <a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
+                  $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
+              }
+
+              # Authors
+              if (isset($Artists)) {
+                  # Emoji in classes/astists.class.php
+                  $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+                  $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
               }
 
               # Catalogue Number
               if ($GroupCatalogueNumber) {
-                  $DisplayName .= " &ndash; <a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
+                  $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+                  $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
               }
 
               /*
@@ -1003,8 +1030,7 @@ die();
         <?=$DisplayName?>
         <br />
         <div style="display: inline;" class="torrent_info"><?=$ExtraInfo?><?php if ($Reported) { ?>
-        / <strong
-            class="torrent_label tl_reported tooltip important_text"
+          / <strong class="torrent_label tl_reported tooltip important_text"
             title="Type: <?=ucfirst($Reports[0]['Type'])?><br>Comment: <?=htmlentities(htmlentities($Reports[0]['UserComment']))?>">Reported</strong><?php } ?>
         </div>
         <div class="tags"><?=$TorrentTags->format("torrents.php?$Action&amp;taglist=")?>

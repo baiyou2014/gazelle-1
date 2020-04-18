@@ -37,7 +37,7 @@ if (!$GroupName) {
 }
 
 # Make the main headings
-$DisplayName = "$GroupName<br />";
+$DisplayName = "$GroupName";
 $AltName = $GroupName; // Goes in the alt text of the image
 $Title = $GroupName; // Goes in <title>
 $WikiBody = Text::full_format($WikiBody);
@@ -45,39 +45,37 @@ $WikiBody = Text::full_format($WikiBody);
 $Artists = Artists::get_artist($GroupID);
 
 if ($GroupNameRJ && $GroupNameRJ !== $GroupName) {
-    $DisplayName .= "<em>$GroupNameRJ</em> ";
+    $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;<em>$GroupNameRJ</em> ";
 }
 
 if ($GroupNameJP && $GroupNameJP !== $GroupName) {
     $DisplayName .= "$GroupNameJP";
 }
 
-if ($GroupNameRJ || $GroupNameJP) {
     $DisplayName .= '<br />';
-}
-
-if ($Artists) {
-    $DisplayName = Artists::display_artists($Artists, true) . "$DisplayName";
-    $AltName = display_str(Artists::display_artists($Artists, false)) . $AltName;
-    $Title = $AltName;
-}
 
 if ($GroupCategoryID) {
     $DisplayName = '<div class="'.Format::css_category($GroupCategoryID).' group_cat"></div>' . "$DisplayName";
 }
 
 if ($GroupYear > 0) {
-    $DisplayName .= "$GroupYear";
-    $AltName .= " [$GroupYear]";
-    $Title .= " [$GroupYear]";
+    $DisplayName .= "📅&nbsp;$GroupYear";
+    $AltName .= "📅&nbsp;$GroupYear";
+    $Title .= "📅&nbsp;$GroupYear";
 }
 
 if ($GroupStudio) {
-    $DisplayName .= " &ndash; $GroupStudio";
+    $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;$GroupStudio";
 }
 
 if ($GroupCatalogueNumber) {
-    $DisplayName .= "  &ndash; $GroupCatalogueNumber";
+    $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;$GroupCatalogueNumber";
+}
+
+$DisplayName .= '<br />';
+
+if ($Artists) {
+    $DisplayName .= Artists::display_artists($Artists, true);
 }
 
 /*
@@ -526,27 +524,27 @@ foreach ($TorrentList as $Torrent) {
   // Similar to Torrents::torrent_info()
     if ($Media) {
         $ExtraInfo .= display_str($Media);
-        $AddExtra = " / ";
+        $AddExtra = " | ";
     }
 
     if ($Container) {
         $ExtraInfo .= $AddExtra . display_str($Container);
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if ($Archive) {
         $ExtraInfo .= $AddExtra . display_str($Archive);
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if ($Codec) {
         $ExtraInfo .= $AddExtra . display_str($Codec);
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if ($Resolution) {
         $ExtraInfo .= $AddExtra . display_str($Resolution);
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     /*
@@ -580,36 +578,36 @@ foreach ($TorrentList as $Torrent) {
 
     if ($Censored) {
         $ExtraInfo .= $AddExtra . display_str('Aligned');
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     } else {
         $ExtraInfo .= $AddExtra . display_str('Not Aligned');
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if (!$ExtraInfo) {
         $ExtraInfo = $GroupName;
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if ($IsLeeching) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Leeching', 'important_text');
-        $AddExtra=' / ';
+        $AddExtra=' | ';
     } elseif ($IsSeeding) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Seeding', 'important_text_alt');
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     } elseif ($IsSnatched) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Snatched!', 'bold');
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if ($FreeTorrent === '1') {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Freeleech!', 'important_text_alt');
-        $AddExtra=' / ';
+        $AddExtra= ' | ';
     }
 
     if ($FreeTorrent === '2') {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Neutral Leech!', 'bold');
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     // Freleechizer
@@ -626,29 +624,29 @@ foreach ($TorrentList as $Torrent) {
 
     if ($PersonalFL) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Personal Freeleech!', 'important_text_alt');
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if ($Reported) {
         $HtmlReportType = ucfirst($Reports[0]['Type']);
         $HtmlReportComment = htmlentities(htmlentities($Reports[0]['UserComment']));
         $ExtraInfo .= $AddExtra . "<strong class='torrent_label tl_reported tooltip' title='Type: $HtmlReportType<br>Comment: $HtmlReportComment'>".Format::torrent_label('Reported', 'important_text')."</strong>";
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if (!empty($BadTags)) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Bad Tags', 'important_text');
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if (!empty($BadFolders)) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Bad Folders', 'important_text');
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     if (!empty($BadFiles)) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Bad File Names', 'important_text');
-        $AddExtra = ' / ';
+        $AddExtra = ' | ';
     }
 
     $TorrentDL = "torrents.php?action=download&amp;id=".$TorrentID."&amp;authkey=".$LoggedUser['AuthKey']."&amp;torrent_pass=".$LoggedUser['torrent_pass'];
@@ -695,7 +693,7 @@ foreach ($TorrentList as $Torrent) {
               | <a href="torrents.php?torrentid=<?=$TorrentID ?>"
                 class="tooltip" title="Permalink">PL</a>
               ]</span>
-            &raquo; <a
+            »&nbsp;<a
               data-toggle-target="#torrent_<?=$TorrentID?>"><?=$ExtraInfo; ?></a>
           </td>
           <td class="number_column nobr"><?=Format::get_size($Size)?>
@@ -825,7 +823,8 @@ $filename = "BioTorrents.de-$TorrentID";
               -->
 
               <!-- Both tags must be on the same line -->
-              <input type="button" class="spoilerButton" value="Show BibTeX" /><pre class="hidden">
+              <input type="button" class="spoilerButton" value="Show BibTeX" />
+              <pre class="hidden">
                 <?=$bibtex?>
               </pre>
             </div>

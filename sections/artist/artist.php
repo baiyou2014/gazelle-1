@@ -208,7 +208,8 @@ foreach ($TorrentList as $Group) {
     if (count($Torrents) > 1) {
         $TorrentTags = new Tags($TagList, false);
 
-        $DisplayName = Artists::display_artists(Artists::get_artist($GroupID), true, true);
+        $DisplayName = '';
+        #$DisplayName = Artists::display_artists(Artists::get_artist($GroupID), true, true);
 
         $DisplayName .= "<a href=\"torrents.php?id=$GroupID\" class=\"tooltip\" title=\"View torrent group\" ";
         if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
@@ -217,23 +218,47 @@ foreach ($TorrentList as $Group) {
 
         $GroupName = empty($GroupName) ? (empty($GroupNameRJ) ? $GroupNameJP : $GroupNameRJ) : $GroupName;
 
+        # Japanese
         $DisplayName .= "dir=\"ltr\">$GroupName</a>";
 
+        # Year
+        # Sh!t h4x; Year is mandatory
         if ($GroupYear) {
-            $DisplayName .= " [$GroupYear]";
+            $Label = '<br />📅&nbsp;';
+            $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
         }
+        
+        # Studio
         if ($GroupStudio) {
-            $DisplayName .= " [$GroupStudio]";
+            $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
         }
+
+        # Authors
+        /*
+        if (isset($Artists)) {
+            # Emoji in classes/astists.class.php
+            $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+            $DisplayName .= $Label.Artists::display_artists(Artists::get_artist($GroupID), true, true);
+        }
+        */
+
+        # Catalogue Number
         if ($GroupCatalogueNumber) {
-            $DisplayName .= " [$GroupCatalogueNumber]";
+            $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+            $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
         }
-        if ($GroupPages) {
-            $DisplayName .= " [{$GroupPages}p]";
-        }
+
+        /*
+          if ($GroupPages) {
+              $DisplayName .= " [{$GroupPages}p]";
+          }
+          */
+
+        /*
         if ($GroupDLSiteID) {
             $DisplayName .= " [$GroupDLSiteID]";
         }
+        */
 
         if (check_perms('users_mod') || check_perms('torrents_fix_ghosts')) {
             $DisplayName .= ' <a href="torrents.php?action=fix_group&amp;groupid='.$GroupID.'&amp;artistid='.$ArtistID.'&amp;auth='.$LoggedUser['AuthKey'].'" class="brackets tooltip" title="Fix ghost DB entry">Fix</a>';
@@ -307,7 +332,7 @@ foreach ($TorrentList as $Group) {
             href="reportsv2.php?action=report&amp;id=<?=$TorrentID?>"
             class="tooltip" title="Report">RP</a> ]
         </span>
-        &nbsp;&nbsp;&raquo;&nbsp; <a
+        &nbsp;&nbsp;»&nbsp; <a
           href="torrents.php?id=<?=$GroupID?>&amp;torrentid=<?=$TorrentID?>"><?=Torrents::torrent_info($Torrent)?></a>
       </td>
       <td class="number_column nobr"><?=Format::get_size($Torrent['Size'])?>
@@ -333,7 +358,8 @@ foreach ($TorrentList as $Group) {
 
         $TorrentTags = new Tags($TagList, false);
 
-        $DisplayName = Artists::display_artists(Artists::get_artist($GroupID), true, true);
+        # Start making $DisplayName (first torrent result line)
+        $DisplayName = '';
 
         $Reported = false;
         $Reports = Torrents::get_reports($TorrentID);
@@ -344,6 +370,7 @@ foreach ($TorrentList as $Group) {
         # Similar to torrents.class.php and
         # sections/torrents/browse.php
         $DisplayName .= "<a class=\"torrent_name\" href=\"torrents.php?id=$GroupID&amp;torrentid=$TorrentID#torrent$TorrentID\" ";
+        
         if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
             $DisplayName .= 'data-cover="'.ImageTools::process($WikiImage, 'thumb').'" ';
         }
@@ -353,16 +380,31 @@ foreach ($TorrentList as $Group) {
         # Japanese
         $DisplayName .= "dir=\"ltr\">$GroupName</a>";
 
+        # Year
+        # Sh!t h4x; Year is mandatory
         if ($GroupYear) {
-            $DisplayName .= "<br />$GroupYear";
+            $Label = '<br />📅&nbsp;';
+            $DisplayName .= $Label."<a href='torrents.php?action=advanced&year=$GroupYear'>$GroupYear</a>";
         }
-
+          
+        # Studio
         if ($GroupStudio) {
-            $DisplayName .= " / $GroupStudio";
+            $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=advanced&location=$GroupStudio'>$GroupStudio</a>";
         }
 
+        # Authors
+        /*
+        if (isset($Artists)) {
+            # Emoji in classes/astists.class.php
+            $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+            $DisplayName .= $Label.Artists::display_artists(Artists::get_artist($GroupID), true, true);
+        }
+        */
+
+        # Catalogue Number
         if ($GroupCatalogueNumber) {
-            $DisplayName .= " / $GroupCatalogueNumber";
+            $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🎯&nbsp;';
+            $DisplayName .= $Label."<a href='torrents.php?action=advanced&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
         }
 
         /*

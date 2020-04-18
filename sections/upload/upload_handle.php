@@ -234,8 +234,8 @@ default:
             'studio',
             '1',
             'string',
-            'Department/Lab must be between 10 and 100 characters.',
-            array('maxlength' => 100, 'minlength' => 10)
+            'Department/Lab must be between 0 and 100 characters.',
+            array('maxlength' => 100, 'minlength' => 0)
         );
 
         # torrents_group.Series

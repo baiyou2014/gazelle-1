@@ -344,7 +344,7 @@ class Format
 
             if ($StartPage && $StartPage < $TotalPages) {
                 $Pages .= " | <a href=\"$Location?page=".($StartPage + 1).$QueryString.$Anchor.'" class="pager_next"><strong>Next ›</strong></a> ';
-                $Pages .= "<a href=\"$Location?page=$TotalPages$QueryString$Anchor\"><strong> Last »</strong></a>";
+                $Pages .= "<a href=\"$Location?page=$TotalPages$QueryString$Anchor\"><strong> Last&nbsp;»</strong></a>";
             }
         }
 

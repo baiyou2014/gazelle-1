@@ -427,7 +427,7 @@ function build_torrents_table($Cache, $DB, $LoggedUser, $GroupID, $GroupName, $G
 <?php  } ?>
               | <a href="torrents.php?torrentid=<?=($TorrentID)?>" class="tooltip" title="Permalink">PL</a>
             ]</span>
-            &raquo; <a data-toggle-target="#torrent_<?=($TorrentID)?>"><?=($ExtraInfo)?></a>
+            »&nbsp;<a data-toggle-target="#torrent_<?=($TorrentID)?>"><?=($ExtraInfo)?></a>
           </td>
           <td class="number_column nobr"><?=(Format::get_size($Size))?></td>
           <td class="number_column"><?=(number_format($Snatched))?></td>

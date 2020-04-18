@@ -536,7 +536,7 @@ p.min_padding {
 }
 
 .tags {
-  padding: 0 0 0 2em;
+  /* padding: 0 0 0 2em; */
   font-style: italic;
 }
 

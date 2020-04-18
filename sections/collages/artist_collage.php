@@ -318,7 +318,7 @@ if ($CollageCovers !== 0) {
 
       <span id="firstpage" class="invisible">
         <a href="#" class="pageslink" onclick="collageShow.page(0, this); return false;">
-          <strong>&raquo; First</strong>
+          <strong>»&nbsp;First</strong>
         </a> |
       </span>
 

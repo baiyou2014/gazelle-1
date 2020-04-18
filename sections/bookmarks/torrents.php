@@ -130,7 +130,7 @@ foreach ($GroupIDs as $GroupID) {
       | <a href="reportsv2.php?action=report&amp;id=<?=$TorrentID?>"
         class="tooltip" title="Report">RP</a> ]
     </span>
-    &nbsp;&nbsp;&raquo;&nbsp; <a
+    &nbsp;&nbsp;»&nbsp; <a
       href="torrents.php?id=<?=$GroupID?>&amp;torrentid=<?=$TorrentID?>"><?=Torrents::torrent_info($Torrent)?></a>
   </td>
   <td class="number_column nobr"><?=Format::get_size($Torrent['Size'])?>
@@ -364,10 +364,10 @@ if ($CollageCovers !== 0) { ?>
   <?php if ($NumGroups > $CollageCovers) { ?>
   <div class="linkbox pager" style="clear: left;" id="pageslinksdiv">
     <span id="firstpage" class="invisible">
-      <a href="#" class="pageslink" onclick="collageShow.page(0, this); return false;">‹ First</a> |
+      <a href="#" class="pageslink" onclick="collageShow.page(0, this); return false;">‹&nbsp;First</a> |
     </span>
     <span id="prevpage" class="invisible">
-      <a href="#" id="prevpage" class="pageslink" onclick="collageShow.prevPage(); return false;">&lsaquo; Prev</a> |
+      <a href="#" id="prevpage" class="pageslink" onclick="collageShow.prevPage(); return false;">‹&nbsp;Prev</a> |
     </span>
     <?php for ($i = 0; $i < $NumGroups / $CollageCovers; $i++) { ?>
     <span id="pagelink<?=$i?>"
@@ -382,13 +382,12 @@ if ($CollageCovers !== 0) { ?>
       | </span>
     <span id="nextpage">
       <a href="#" class="pageslink"
-        onclick="collageShow.nextPage(); wall('.collage_images', '.collage_image', 4); return false;">Next ›</a>
+        onclick="collageShow.nextPage(); wall('.collage_images', '.collage_image', 4); return false;">Next&nbsp;›</a>
     </span>
     <span id="lastpage"
       class="<?=(ceil($NumGroups / $CollageCovers) === 2 ? 'invisible' : '')?>">
       | <a href="#" id="lastpage" class="pageslink"
-        onclick="collageShow.page(<?=(ceil($NumGroups / $CollageCovers) - 1)?>, this); return false;">Last
-        »</a>
+        onclick="collageShow.page(<?=(ceil($NumGroups / $CollageCovers) - 1)?>, this); return false;">Last&nbsp;»</a>
     </span>
   </div>
 

@@ -269,7 +269,7 @@ if (empty($Results)) {
           <br />
           <br />
 <?        if (check_perms('site_moderate_forums')) { ?>
-          <a href="#content<?=$PostID?>" onclick="LoadEdit(<?=$PostID?>, 1);">&laquo;</a>
+          <a href="#content<?=$PostID?>" onclick="LoadEdit(<?=$PostID?>, 1);">«</a>
 <?        } ?>
           Last edited by
           <?=Users::format_username($EditedUserID, false, false, false) ?> <?=time_diff($EditedTime, 2, true, true)?>
