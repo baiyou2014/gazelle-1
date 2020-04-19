@@ -55,12 +55,12 @@ if ($GroupYear > 0) {
 }
 
 if ($GroupStudio) {
-    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;';
+    $Label = '&nbsp;&nbsp;📍&nbsp;';
     $DisplayName .= $Label.$GroupStudio;
 }
 
 if ($GroupCatalogueNumber) {
-    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
+    $Label = '&nbsp;&nbsp;🔑&nbsp;';
     $DisplayName .= $Label.$GroupCatalogueNumber;
 }
 
@@ -75,7 +75,7 @@ if ($GroupNameJP && $GroupNameJP !== $GroupName) {
 
 if ($Artists) {
     # Emoji in classes/astists.class.php
-    $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+    $Label = '&nbsp;&nbsp;';
     $DisplayName .= $Label.Artists::display_artists($Artists, true);
 }
 
@@ -811,8 +811,7 @@ $filename = "BioTorrents.de-$TorrentID";
               -->
 
               <!-- Both tags must be on the same line -->
-              <input type="button" class="spoilerButton" value="Show BibTeX" />
-              <pre class="hidden">
+              <input type="button" class="spoilerButton" value="Show BibTeX" /><pre class="hidden">
                 <?=$bibtex?>
               </pre>
             </div>
@@ -892,32 +891,35 @@ if (count($Collages) > 0) {
         $Indices = range(0, count($Collages) - 1);
         $SeeAll = '';
     } ?>
-    <table class="box collage_table" id="collages">
-      <tr class="colhead">
-        <td width="85%"><a href="#">&uarr;</a>&nbsp;This content is in <?=number_format(count($Collages))?> collection<?=((count($Collages) > 1) ? 's' : '')?><?=$SeeAll?>
-        </td>
-        <td># torrents</td>
-      </tr>
-      <?php  foreach ($Indices as $i) {
+    <div class="box">
+      <table class="collage_table" id="collages">
+        <tr class="colhead">
+          <td width="85%"><a href="#">&uarr;</a>&nbsp;This content is in <?=number_format(count($Collages))?> collection<?=((count($Collages) > 1) ? 's' : '')?><?=$SeeAll?>
+          </td>
+          <td># torrents</td>
+        </tr>
+        <?php  foreach ($Indices as $i) {
         list($CollageName, $CollageTorrents, $CollageID) = $Collages[$i];
         unset($Collages[$i]); ?>
-      <tr>
-        <td><a href="collages.php?id=<?=$CollageID?>"><?=$CollageName?></a></td>
-        <td class="number_column"><?=number_format($CollageTorrents)?>
-        </td>
-      </tr>
-      <?php
+        <tr>
+          <td><a href="collages.php?id=<?=$CollageID?>"><?=$CollageName?></a></td>
+          <td class="number_column"><?=number_format($CollageTorrents)?>
+          </td>
+        </tr>
+        <?php
     }
     foreach ($Collages as $Collage) {
         list($CollageName, $CollageTorrents, $CollageID) = $Collage; ?>
-      <tr class="collage_rows hidden">
-        <td><a href="collages.php?id=<?=$CollageID?>"><?=$CollageName?></a></td>
-        <td class="number_column"><?=number_format($CollageTorrents)?>
-        </td>
-      </tr>
-      <?php
+        <tr class="collage_rows hidden">
+          <td><a href="collages.php?id=<?=$CollageID?>"><?=$CollageName?></a></td>
+          <td class="number_column"><?=number_format($CollageTorrents)?>
+          </td>
+        </tr>
+        <?php
     } ?>
-    </table>
+      </table>
+    </div>
+
     <?php
 }
 

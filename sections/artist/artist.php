@@ -230,21 +230,21 @@ foreach ($TorrentList as $Group) {
         
         # Studio
         if ($GroupStudio) {
-            $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
+            $DisplayName .= "&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
         }
 
         # Authors
         /*
         if (isset($Artists)) {
             # Emoji in classes/astists.class.php
-            $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+            $Label = '&nbsp;&nbsp;';
             $DisplayName .= $Label.Artists::display_artists(Artists::get_artist($GroupID), true, true);
         }
         */
 
         # Catalogue Number
         if ($GroupCatalogueNumber) {
-            $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
+            $Label = '&nbsp;&nbsp;🔑&nbsp;';
             $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
         }
 
@@ -389,21 +389,21 @@ foreach ($TorrentList as $Group) {
           
         # Studio
         if ($GroupStudio) {
-            $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
+            $DisplayName .= "&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
         }
 
         # Authors
         /*
         if (isset($Artists)) {
             # Emoji in classes/astists.class.php
-            $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+            $Label = '&nbsp;&nbsp;';
             $DisplayName .= $Label.Artists::display_artists(Artists::get_artist($GroupID), true, true);
         }
         */
 
         # Catalogue Number
         if ($GroupCatalogueNumber) {
-            $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
+            $Label = '&nbsp;&nbsp;🔑&nbsp;';
             $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
         }
 

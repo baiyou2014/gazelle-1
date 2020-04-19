@@ -86,20 +86,20 @@ foreach ($GroupIDs as $GroupID) {
           
     # Studio
     if ($GroupStudio) {
-        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;';
+        $Label = '&nbsp;&nbsp;📍&nbsp;';
         $DisplayName .= $Label."<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
     }
 
     # Catalogue Number
     if ($GroupCatalogueNumber) {
-        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
+        $Label = '&nbsp;&nbsp;🔑&nbsp;';
         $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
     }
 
     # Authors
     if ($Artists) {
         # Emoji in classes/astists.class.php
-        $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+        $Label = '&nbsp;&nbsp;';
         $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
     }
 

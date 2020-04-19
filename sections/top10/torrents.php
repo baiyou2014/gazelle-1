@@ -544,19 +544,19 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
           
             # Studio
             if ($Studio) {
-                $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$Studio'>$Studio</a>";
+                $DisplayName .= "&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$Studio'>$Studio</a>";
             }
 
             # Authors
             if ($Artists) {
                 # Emoji in classes/astists.class.php
-                $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+                $Label = '&nbsp;&nbsp;';
                 $DisplayName .= $Label.Artists::display_artists($Artists[$GroupID], true, true);
             }
     
             # Catalogue Number
             if ($CatalogueNumber) {
-                $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
+                $Label = '&nbsp;&nbsp;🔑&nbsp;';
                 $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$CatalogueNumber'>$CatalogueNumber</a>";
             }
     

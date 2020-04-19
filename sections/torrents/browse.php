@@ -743,19 +743,19 @@ die();
         
           # Studio
           if ($GroupStudio) {
-              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;';
+              $Label = '&nbsp;&nbsp;📍&nbsp;';
               $DisplayName .= $Label."<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
           }
 
           # Catalogue Number
           if ($GroupCatalogueNumber) {
-              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
+              $Label = '&nbsp;&nbsp;🔑&nbsp;';
               $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
           }
 
           # Organism
           if ($GroupNameRJ) {
-              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;';
+              $Label = '&nbsp;&nbsp;🦠&nbsp;';
               $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
           }
                           
@@ -768,7 +768,7 @@ die();
           # Authors
           if (isset($Artists)) {
               # Emoji in classes/astists.class.php
-              $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+              $Label = '&nbsp;&nbsp;';
               $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
           }
         
@@ -952,18 +952,18 @@ die();
             
               # Studio
               if ($GroupStudio) {
-                  $DisplayName .= "&nbsp;&nbsp;&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
+                  $DisplayName .= "&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
               }
 
               # Catalogue Number
               if ($GroupCatalogueNumber) {
-                  $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🔑&nbsp;';
+                  $Label = '&nbsp;&nbsp;🔑&nbsp;';
                   $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
               }
           
               # Organism
               if ($GroupNameRJ) {
-                  $Label = '&nbsp;&nbsp;&nbsp;&nbsp;🦠&nbsp;';
+                  $Label = '&nbsp;&nbsp;🦠&nbsp;';
                   $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
               }
                 
@@ -976,7 +976,7 @@ die();
               # Authors
               if (isset($Artists)) {
                   # Emoji in classes/astists.class.php
-                  $Label = '&nbsp;&nbsp;&nbsp;&nbsp;';
+                  $Label = '&nbsp;&nbsp;';
                   $DisplayName .= $Label.'<div class="torrent_artists">'.Artists::display_artists($Artists).'</div>';
               }
             
