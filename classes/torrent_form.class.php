@@ -36,8 +36,8 @@ class TorrentForm
 
     # Misc
     public $Codecs = [];
-    public $Resolutions = [];
     public $Archives = [];
+    public $Resolutions = [];
 
     # Deprecated
     #public $Formats = [];
@@ -61,9 +61,10 @@ class TorrentForm
         $this->NewTorrent = $NewTorrent;
         $this->Torrent = $Torrent;
         $this->Error = $Error;
+        $this->TorrentID = $TorrentID;
 
         # See classes/config.php
-        global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Resolutions, $Archives;
+        global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Archives, $Resolutions;
         #global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Resolutions, $Archives;
         #global $UploadForm, $Categories, $Formats, $Bitrates, $Media, $MediaManga, $TorrentID, $Containers, $ContainersGames, $Codecs, $Resolutions, $AudioFormats, $Subbing, $Languages, $Platform, $Archives, $ArchivesManga;
 
@@ -99,10 +100,9 @@ class TorrentForm
         
         # Misc
         $this->Codecs = $Codecs;
-        $this->Resolutions = $Resolutions;
-        $this->TorrentID = $TorrentID;
         $this->Archives = $Archives;
         #$this->ArchivesManga = $ArchivesManga;
+        $this->Resolutions = $Resolutions;
 
         # Deprecated
         #$this->Formats = $Formats;
@@ -111,7 +111,6 @@ class TorrentForm
         #$this->Subbing = $Subbing;
         #$this->Languages = $Languages;
         #$this->Platform = $Platform;
-
 
         if ($this->Torrent && $this->Torrent['GroupID']) {
             $this->Disabled = ' readonly="readonly"';
