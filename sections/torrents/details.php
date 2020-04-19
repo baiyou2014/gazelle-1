@@ -681,8 +681,7 @@ foreach ($TorrentList as $Torrent) {
               | <a href="torrents.php?torrentid=<?=$TorrentID ?>"
                 class="tooltip" title="Permalink">PL</a>
               ]</span>
-            »&nbsp;<a
-              data-toggle-target="#torrent_<?=$TorrentID?>"><?=$ExtraInfo; ?></a>
+            <a data-toggle-target="#torrent_<?=$TorrentID?>"><?=$ExtraInfo; ?></a>
           </td>
           <td class="number_column nobr"><?=Format::get_size($Size)?>
           </td>

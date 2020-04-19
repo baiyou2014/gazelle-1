@@ -54,7 +54,7 @@ if (!empty($_GET['format'])) {
 }
 
 # Get release specifics
-if (isset($_GET['container']) && in_array($_GET['container'], array_unique(array_merge($Containers, $ContainersGames, $ContainersProt)))) {
+if (isset($_GET['container']) && in_array($_GET['container'], array_unique(array_merge($SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats)))) {
     $SearchWhere[] = "t.Container = '".db_string($_GET['container'])."'";
 }
 
@@ -62,7 +62,7 @@ if (isset($_GET['bitrate']) && in_array($_GET['bitrate'], $Bitrates)) {
     $SearchWhere[] = "t.Encoding = '".db_string($_GET['bitrate'])."'";
 }
 
-if (isset($_GET['media']) && in_array($_GET['media'], array_unique(array_merge($Media, $MediaManga)))) {
+if (isset($_GET['media']) && in_array($_GET['media'], array_unique(array_merge($SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms)))) {
     $SearchWhere[] = "t.Media = '".db_string($_GET['media'])."'";
 }
 

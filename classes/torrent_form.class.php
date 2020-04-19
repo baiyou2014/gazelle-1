@@ -63,7 +63,7 @@ class TorrentForm
         $this->Error = $Error;
 
         # See classes/config.php
-        global $UploadForm, $Categories, $TorrentID, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Resolutions, $Archives;
+        global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Resolutions, $Archives;
         #global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Resolutions, $Archives;
         #global $UploadForm, $Categories, $Formats, $Bitrates, $Media, $MediaManga, $TorrentID, $Containers, $ContainersGames, $Codecs, $Resolutions, $AudioFormats, $Subbing, $Languages, $Platform, $Archives, $ArchivesManga;
 
@@ -521,6 +521,8 @@ class TorrentForm
   </tr>
 
   <!-- Platform: Sequences -->
+  <?    var_dump($this->SeqPlatforms); ?>
+
   <tr id="media_tr">
     <td class="label">
       Platform
@@ -530,12 +532,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->SeqPlatforms as $Platform) {
-              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
-              if ($Platform == ($Torrent['Media'] ?? false)) {
+          foreach ($this->SeqPlatforms as $Media) {
+              echo "\t\t\t\t\t\t<option value=\"$Media\"";
+              if ($Media == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Platform</option>\n";
+              echo ">$Media</option>\n";
           } ?>
       </select><br />
       The class of technology used
@@ -552,12 +554,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->GraphPlatforms as $Platform) {
-              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
-              if ($Platform == ($Torrent['Media'] ?? false)) {
+          foreach ($this->GraphPlatforms as $Media) {
+              echo "\t\t\t\t\t\t<option value=\"$Media\"";
+              if ($Media == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Platform</option>\n";
+              echo ">$Media</option>\n";
           } ?>
       </select><br />
       The class of technology used
@@ -574,12 +576,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->ImgPlatforms as $Platform) {
-              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
-              if ($Platform == ($Torrent['Media'] ?? false)) {
+          foreach ($this->ImgPlatforms as $Media) {
+              echo "\t\t\t\t\t\t<option value=\"$Media\"";
+              if ($Media == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Platform</option>\n";
+              echo ">$Media</option>\n";
           } ?>
       </select><br />
       The class of technology used
@@ -596,12 +598,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->DocPlatforms as $Platform) {
-              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
-              if ($Platform == ($Torrent['Media'] ?? false)) {
+          foreach ($this->DocPlatforms as $Media) {
+              echo "\t\t\t\t\t\t<option value=\"$Media\"";
+              if ($Media == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Platform</option>\n";
+              echo ">$Media</option>\n";
           } ?>
       </select><br />
       The class of technology used
@@ -618,12 +620,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->RawPlatforms as $Platform) {
-              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
-              if ($Platform == ($Torrent['Media'] ?? false)) {
+          foreach ($this->RawPlatforms as $Media) {
+              echo "\t\t\t\t\t\t<option value=\"$Media\"";
+              if ($Media == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Platform</option>\n";
+              echo ">$Media</option>\n";
           } ?>
       </select><br />
       The class of technology used

@@ -1390,18 +1390,24 @@ input.inputtext:focus {
 
 .tl_reported {
   color: red;
+  font-weight: bold;
 }
 
-.tl_snatched {
-  color: green;
+.tl_snatched,
+.tl_neutral_leech {
+  color: black;
+  font-weight: bold;
 }
 
 .tl_leeching {
   color: orange;
+  font-weight: bold;
 }
 
-.tl_seeding {
+.tl_seeding,
+.tl_freeleech {
   color: green;
+  font-weight: bold;
 }
 
 caption {

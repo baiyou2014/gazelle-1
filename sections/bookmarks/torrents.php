@@ -130,7 +130,7 @@ foreach ($GroupIDs as $GroupID) {
       | <a href="reportsv2.php?action=report&amp;id=<?=$TorrentID?>"
         class="tooltip" title="Report">RP</a> ]
     </span>
-    &nbsp;&nbsp;»&nbsp; <a
+    <a
       href="torrents.php?id=<?=$GroupID?>&amp;torrentid=<?=$TorrentID?>"><?=Torrents::torrent_info($Torrent)?></a>
   </td>
   <td class="number_column nobr"><?=Format::get_size($Torrent['Size'])?>
