@@ -48,18 +48,18 @@ $Properties['CategoryName'] = $Type;
 #    ...
 #  ];
 $Properties['FileTypes'] = [
-    'DNA'      => $Containers,
-    'RNA'      => $Containers,
-    'Proteins' => $ContainersProt,
-    'Imaging'  => $ContainersGames,
-    'Extras'   => $ContainersExtra
-];
-$Properties['ArchiveTypes'] = [
-    'DNA'      => $Archives,
-    'RNA'      => $Archives,
-    'Proteins' => $Archives,
-    'Imaging'  => $Archives,
-    'Extras'   => $Archives
+    'Sequences'       => array_merge($SeqFormats, $ProtFormats, $PlainFormats),
+    'Graphs'          => array_merge($GraphXmlFormats, $GraphTxtFormats, $PlainFormats),
+    'Systems'         => array_merge($GraphXmlFormats, $GraphTxtFormats, $PlainFormats),
+    'Geometric'       => array_merge($GraphXmlFormats, $GraphTxtFormats, $PlainFormats),
+    'Scalars+Vectors' => array_merge($GraphXmlFormats, $GraphTxtFormats, $PlainFormats),
+    'Patterns'        => array_merge($GraphXmlFormats, $GraphTxtFormats, $PlainFormats),
+    'Constraints'     => array_merge($GraphXmlFormats, $GraphTxtFormats, $PlainFormats),
+    'Images'          => array_merge($ImgFormats, $PlainFormats),
+    'Spatial'         => array_merge($MapVectorFormats, $MapRasterFormats, $ImgFormats, $PlainFormats),
+    'Models'          => array_merge($MapVectorFormats, $MapRasterFormats, $PlainFormats),
+    'Documents'   => array_merge($BinDocFormats, $CpuGenFormats, $PlainFormats),
+    'Machine Data'    => array_merge($PlainFormats),
 ];
 
 $Properties['Title'] = $_POST['title'];
@@ -264,7 +264,12 @@ default:
             '1',
             'inarray',
             'Please select a valid platform.',
-            array('inarray' => array_merge($Media, $MediaManga))
+            array('inarray' => array_merge(
+                $SeqPlatforms,
+                $GraphPlatforms,
+                $ImgPlatforms,
+                $DocPlatforms,
+                $RawPlatforms))
         );
 
         /*
@@ -450,10 +455,10 @@ if ($T['Archive'] === 'Autofill') {
         $Tor->file_list(),
 
         # $Category
-        $T['CategoryName'],
+        keys($Archives),
 
         # $FileTypes
-        $T['ArchiveTypes'],
+        array_merge($Archives),
     );
 }
 

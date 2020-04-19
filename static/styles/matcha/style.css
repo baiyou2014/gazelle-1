@@ -50,7 +50,7 @@ body {
   background-size: contain;
 }
 
-.cats_scalars\/vectors {
+.cats_scalars\+vectors {
   background: url('/static/common/bioicons/scalars_vectors.png') no-repeat center center;
   background-size: contain;
 }
@@ -80,13 +80,13 @@ body {
   background-size: contain;
 }
 
-.cats_prose {
-  background: url('/static/common/bioicons/prose.png') no-repeat center center;
+.cats_documents {
+  background: url('/static/common/bioicons/documents.png') no-repeat center center;
   background-size: contain;
 }
 
-.cats_hypotheses\/evidence {
-  background: url('/static/common/bioicons/hypotheses_evidence.png') no-repeat center center;
+.cats_machine_data {
+  background: url('/static/common/bioicons/machine_data.png') no-repeat center center;
   background-size: contain;
 }
 
@@ -862,7 +862,8 @@ ul.poll li.graph {
 }
 
 .filter_torrents {
-  width: 750px;
+  width: 720px;
+  /* width: 750px; */
   margin: auto;
   background: white;
 }

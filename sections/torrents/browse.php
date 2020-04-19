@@ -265,25 +265,46 @@ View::show_header('Browse Torrents', 'browse');
             <td class="label">Platforms</td>
             <td class="nobr ft_ripspecifics">
 
-              <select name="media" class="ft_media fti_advanced">
-                <option value="">Sequencing</option>
-                <?php  foreach ($Media as $MediaName) { ?>
+            <select name="media" class="ft_media fti_advanced">
+                <option value="">Sequences</option>
+                <?php foreach ($SeqPlatforms as $Platform) { ?>
                 <option
-                  value="<?=display_str($MediaName); # pcs-comment-start; keep quote?>"
-                  <?Format::selected('media', $MediaName)?>><?=display_str($MediaName); ?>
+                  value="<?=display_str($Platform); # pcs-comment-start; keep quote?>"
+                  <?Format::selected('media', $Platform)?>><?=display_str($Platform); ?>
                 </option>
-                <?php  } ?>
+                <?php } ?>
               </select>
 
               <select name="media" class="ft_media fti_advanced">
-                <option value="">Imaging</option>
-                <?php  foreach ($MediaManga as $MediaName) { ?>
+                <option value="">Graphs</option>
+                <?php foreach ($GraphPlatforms as $Platform) { ?>
                 <option
-                  value="<?=display_str($MediaName); # pcs-comment-start; keep quote?>"
-                  <?Format::selected('media', $MediaName)?>><?=display_str($MediaName); ?>
+                  value="<?=display_str($Platform); # pcs-comment-start; keep quote?>"
+                  <?Format::selected('media', $Platform)?>><?=display_str($Platform); ?>
                 </option>
-                <?php  } ?>
+                <?php } ?>
               </select>
+
+              <select name="media" class="ft_media fti_advanced">
+                <option value="">Images</option>
+                <?php foreach ($ImgPlatforms as $Platform) { ?>
+                <option
+                  value="<?=display_str($Platform); # pcs-comment-start; keep quote?>"
+                  <?Format::selected('media', $Platform)?>><?=display_str($Platform); ?>
+                </option>
+                <?php } ?>
+              </select>
+
+              <select name="media" class="ft_media fti_advanced">
+                <option value="">Documents</option>
+                <?php foreach ($DocPlatforms as $Platform) { ?>
+                <option
+                  value="<?=display_str($Platform); # pcs-comment-start; keep quote?>"
+                  <?Format::selected('media', $Platform)?>><?=display_str($Platform); ?>
+                </option>
+                <?php } ?>
+              </select>
+
             </td>
           </tr>
 
@@ -293,45 +314,52 @@ View::show_header('Browse Torrents', 'browse');
             <td class="label">Formats</td>
             <td class="nobr ft_ripspecifics">
 
-              <!-- 1 -->
-              <select id=" container" name="container" class="ft_container fti_advanced">
-                <option value="">DNA/RNA</option>
-                <?php foreach ($Containers as $Key => $Container) { ?>
+            <select id=" container" name="container" class="ft_container fti_advanced">
+                <option value="">Sequences</option>
+                <?php foreach (array_merge($SeqFormats, $ProtFormats, $PlainFormats) as $Key => $Container) { ?>
                 <option value="<?=display_str($Key);?>"
                   <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
                 <?php } ?>
               </select>
 
-              <!-- 2 -->
+
               <select id=" container" name="container" class="ft_container fti_advanced">
-                <option value="">Proteins</option>
-                <?php foreach ($ContainersProt as $Key => $Container) { ?>
+                <option value="">Graphs</option>
+                <?php foreach (array_merge($GraphXmlFormats, $GraphTxtFormats, $PlainFormats) as $Key => $Container) { ?>
                 <option value="<?=display_str($Key);?>"
                   <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
                 <?php } ?>
               </select>
 
-              <!-- 3 -->
               <select id=" container" name="container" class="ft_container fti_advanced">
-                <option value="">Imaging</option>
-                <?php foreach ($ContainersGames as $Key => $Container) { ?>
+                <option value="">Images</option>
+                <?php foreach (array_merge($ImgFormats, $PlainFormats) as $Key => $Container) { ?>
                 <option value="<?=display_str($Key);?>"
                   <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
                 <?php } ?>
               </select>
 
-              <!-- 4 -->
               <select id=" container" name="container" class="ft_container fti_advanced">
-                <option value="">Extras</option>
-                <?php foreach ($ContainersExtra as $Key => $Container) { ?>
+                <option value="">Spatial</option>
+                <?php foreach (array_merge($MapVectorFormats, $MapRasterFormats, $PlainFormats) as $Key => $Container) { ?>
                 <option value="<?=display_str($Key);?>"
                   <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
                 <?php } ?>
               </select>
+
+              <select id=" container" name="container" class="ft_container fti_advanced">
+                <option value="">Documents</option>
+                <?php foreach (array_merge($BinDocFormats, $CpuGenFormats, $PlainFormats) as $Key => $Container) { ?>
+                <option value="<?=display_str($Key);?>"
+                  <?Format::selected('container', $Key)?>><?=display_str($Key);?>
+                </option>
+                <?php } ?>
+              </select>
+
             </td>
           </tr>
 
