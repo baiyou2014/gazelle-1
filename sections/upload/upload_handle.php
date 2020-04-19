@@ -58,7 +58,7 @@ $Properties['FileTypes'] = [
     'Images'          => array_merge($ImgFormats, $PlainFormats),
     'Spatial'         => array_merge($MapVectorFormats, $MapRasterFormats, $ImgFormats, $PlainFormats),
     'Models'          => array_merge($MapVectorFormats, $MapRasterFormats, $PlainFormats),
-    'Documents'   => array_merge($BinDocFormats, $CpuGenFormats, $PlainFormats),
+    'Documents'       => array_merge($BinDocFormats, $CpuGenFormats, $PlainFormats),
     'Machine Data'    => array_merge($PlainFormats),
 ];
 

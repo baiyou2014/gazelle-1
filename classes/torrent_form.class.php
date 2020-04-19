@@ -6,20 +6,48 @@ class TorrentForm
 {
     public $UploadForm = '';
     public $Categories = [];
-    #public $Formats = [];
-    #public $Bitrates = [];
-    public $Media = [];
-    public $MediaManga = [];
-    public $Containers = [];
-    public $ContainersGames = [];
-    public $ContainersProt = [];
-    public $ContainersExtra = [];
+
+    # Platforms
+    # See classes/config.php
+    public $SeqPlatforms = [];
+    public $GraphPlatforms = [];
+    public $ImgPlatforms = [];
+    public $DocPlatforms = [];
+    public $RawPlatforms = [];
+    #public $Media = [];
+    #public $MediaManga = [];
+
+    # Formats
+    # See classes/config.php
+    public $SeqFormats = [];
+    public $ProtFormats = [];
+    public $GraphXmlFormats = [];
+    public $GraphTxtFormats = [];
+    public $ImgFormats = [];
+    public $MapVectorFormats = [];
+    public $MapRasterFormats = [];
+    public $BinDocFormats = [];
+    public $CpuGenFormats = [];
+    public $PlainFormats = [];
+    #public $Containers = [];
+    #public $ContainersGames = [];
+    #public $ContainersProt = [];
+    #public $ContainersExtra = [];
+
+    # Misc
     public $Codecs = [];
     public $Resolutions = [];
+    public $Archives = [];
+
+    # Deprecated
+    #public $Formats = [];
     #public $AudioFormats = [];
+    #public $Bitrates = [];
     #public $Subbing = [];
     #public $Languages = [];
     #public $Platform = [];
+
+    # Gazelle
     public $NewTorrent = false;
     public $Torrent = [];
     public $Error = false;
@@ -29,32 +57,61 @@ class TorrentForm
 
     public function __construct($Torrent = false, $Error = false, $NewTorrent = true)
     {
+        # Gazelle
         $this->NewTorrent = $NewTorrent;
         $this->Torrent = $Torrent;
         $this->Error = $Error;
 
-        global $UploadForm, $Categories, $Media,  $MediaManga, $TorrentID, $Containers, $ContainersGames, $ContainersProt, $ContainersExtra, $Codecs, $Resolutions, $Archives;
+        # See classes/config.php
+        global $UploadForm, $Categories, $TorrentID, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Resolutions, $Archives;
+        #global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Resolutions, $Archives;
         #global $UploadForm, $Categories, $Formats, $Bitrates, $Media, $MediaManga, $TorrentID, $Containers, $ContainersGames, $Codecs, $Resolutions, $AudioFormats, $Subbing, $Languages, $Platform, $Archives, $ArchivesManga;
 
         $this->UploadForm = $UploadForm;
         $this->Categories = $Categories;
-        #$this->Formats = $Formats;
-        #$this->Bitrates = $Bitrates;
-        $this->Media = $Media;
-        $this->MediaManga = $MediaManga;
-        $this->Containers = $Containers;
-        $this->ContainersGames = $ContainersGames;
-        $this->ContainersProt = $ContainersProt;
-        $this->ContainersExtra = $ContainersExtra;
+
+        # Platforms
+        # See classes/config.php
+        $this->$SeqPlatforms = $SeqPlatforms;
+        $this->$GraphPlatforms = $GraphPlatforms;
+        $this->$ImgPlatforms = $ImgPlatforms;
+        $this->$DocPlatforms = $DocPlatforms;
+        $this->$RawPlatforms = $RawPlatforms;
+        #$this->Media = $Media;
+        #$this->MediaManga = $MediaManga;
+       
+        # Formats
+        # See classes/config.php
+        $this->$SeqFormats = $SeqFormats;
+        $this->$ProtFormats = $ProtFormats;
+        $this->$GraphXmlFormats = $GraphXmlFormats;
+        $this->$GraphTxtFormats = $GraphTxtFormats;
+        $this->$ImgFormats = $ImgFormats;
+        $this->$MapVectorFormats = $MapVectorFormats;
+        $this->$MapRasterFormats = $MapRasterFormats;
+        $this->$BinDocFormats = $BinDocFormats;
+        $this->$CpuGenFormats = $CpuGenFormats;
+        $this->$PlainFormats = $PlainFormats;
+        #$this->Containers = $Containers;
+        #$this->ContainersGames = $ContainersGames;
+        #$this->ContainersProt = $ContainersProt;
+        #$this->ContainersExtra = $ContainersExtra;
+        
+        # Misc
         $this->Codecs = $Codecs;
         $this->Resolutions = $Resolutions;
-        #$this->AudioFormats = $AudioFormats;
-        #$this->Subbing = $Subbing;
-        #$this->Languages = $Languages;
         $this->TorrentID = $TorrentID;
-        #$this->Platform = $Platform;
         $this->Archives = $Archives;
         #$this->ArchivesManga = $ArchivesManga;
+
+        # Deprecated
+        #$this->Formats = $Formats;
+        #$this->AudioFormats = $AudioFormats;
+        #$this->Bitrates = $Bitrates;
+        #$this->Subbing = $Subbing;
+        #$this->Languages = $Languages;
+        #$this->Platform = $Platform;
+
 
         if ($this->Torrent && $this->Torrent['GroupID']) {
             $this->Disabled = ' readonly="readonly"';
@@ -400,7 +457,7 @@ class TorrentForm
     </td>
   </tr>
 
-  <!-- Production studio -->
+  <!-- Production Studio -->
   <tr id="studio_tr">
     <td class="label">
       Department/Lab
@@ -463,7 +520,7 @@ class TorrentForm
     </td>
   </tr>
 
-  <!-- Media type -->
+  <!-- Platform: Sequences -->
   <tr id="media_tr">
     <td class="label">
       Platform
@@ -473,20 +530,20 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->Media as $Media) {
-              echo "\t\t\t\t\t\t<option value=\"$Media\"";
-              if ($Media == ($Torrent['Media'] ?? false)) {
+          foreach ($this->SeqPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Media</option>\n";
+              echo ">$Platform</option>\n";
           } ?>
       </select><br />
       The class of technology used
     </td>
   </tr>
 
-  <!-- Alternate media -->
-  <tr id="media_manga_tr">
+  <!-- Platform: Graphs -->
+  <tr id="media_graphs_tr">
     <td class="label">
       Platform
       <strong class="important_text">*</strong>
@@ -495,19 +552,85 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-            foreach ($this->MediaManga as $Media) {
-                echo "\t\t\t\t\t\t<option value=\"$Media\"";
-                if ($Media === ($Torrent['Media'] ?? false)) {
-                    echo " selected";
-                }
-                echo ">$Media</option>\n";
-            } ?>
+          foreach ($this->GraphPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
+                  echo " selected";
+              }
+              echo ">$Platform</option>\n";
+          } ?>
       </select><br />
       The class of technology used
     </td>
   </tr>
 
-  <!-- Multiple container fields -->
+  <!-- Platform: Images -->
+  <tr id="media_images_tr">
+    <td class="label">
+      Platform
+      <strong class="important_text">*</strong>
+    </td>
+    <td>
+      <select name="media">
+        <option>---</option>
+        <?php
+          foreach ($this->ImgPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
+                  echo " selected";
+              }
+              echo ">$Platform</option>\n";
+          } ?>
+      </select><br />
+      The class of technology used
+    </td>
+  </tr>
+
+  <!-- Platform: Documents -->
+  <tr id="media_documents_tr">
+    <td class="label">
+      Platform
+      <strong class="important_text">*</strong>
+    </td>
+    <td>
+      <select name="media">
+        <option>---</option>
+        <?php
+          foreach ($this->DocPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
+                  echo " selected";
+              }
+              echo ">$Platform</option>\n";
+          } ?>
+      </select><br />
+      The class of technology used
+    </td>
+  </tr>
+
+  <!-- Platform: Machine Data -->
+  <tr id="media_machine_tr">
+    <td class="label">
+      Platform
+      <strong class="important_text">*</strong>
+    </td>
+    <td>
+      <select name="media">
+        <option>---</option>
+        <?php
+          foreach ($this->RawPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value=\"$Platform\"";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
+                  echo " selected";
+              }
+              echo ">$Platform</option>\n";
+          } ?>
+      </select><br />
+      The class of technology used
+    </td>
+  </tr>
+
+  <!-- Format: Sequences -->
   <tr id="container_tr">
     <td class="label">
       Format
@@ -517,20 +640,20 @@ class TorrentForm
       <select id="container" name="container">
         <option value="Autofill">Autofill</option>
         <?php
-            foreach ($this->Containers as $Name => $Container) {
-                echo "\t\t\t\t\t\t<option value=\"$Name\"";
-                if ($Name === ($Torrent['Container'] ?? false)) {
+            foreach (array_merge($this->SeqFormats, $this->ProtFormats, $this->PlainFormats) as $Type => $Extensions) {
+                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
-                echo ">$Name</option>\n";
+                echo ">$Type</option>\n";
             } ?>
       </select><br />
       Data file format, or detect from file list
     </td>
   </tr>
 
-  <!-- 2 -->
-  <tr id="container_games_tr">
+  <!-- Format: Graphs -->
+  <tr id="container_graphs_tr">
     <td class="label">
       Format
       <strong class="important_text">*</strong>
@@ -539,20 +662,20 @@ class TorrentForm
       <select id="container" name="container">
         <option value="Autofill">Autofill</option>
         <?php
-            foreach ($this->ContainersGames as $Name => $Container) {
-                echo "\t\t\t\t\t\t<option value=\"$Name\"";
-                if ($Name === ($Torrent['Container'] ?? false)) {
+            foreach (array_merge($this->GraphXmlFormats, $this->GraphTxtFormats, $this->PlainFormats) as $Type => $Extensions) {
+                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
-                echo ">$Name</option>\n";
+                echo ">$Type</option>\n";
             } ?>
       </select><br />
       Data file format, or detect from file list
     </td>
   </tr>
 
-  <!-- 3 -->
-  <tr id="container_prot_tr">
+  <!-- Format: Images -->
+  <tr id="container_images_tr">
     <td class="label">
       Format
       <strong class="important_text">*</strong>
@@ -561,20 +684,20 @@ class TorrentForm
       <select id="container" name="container">
         <option value="Autofill">Autofill</option>
         <?php
-            foreach ($this->ContainersProt as $Name => $Container) {
-                echo "\t\t\t\t\t\t<option value=\"$Name\"";
-                if ($Name === ($Torrent['Container'] ?? false)) {
+            foreach (array_merge($this->ImgFormats, $this->PlainFormats) as $Type => $Extensions) {
+                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
-                echo ">$Name</option>\n";
+                echo ">$Type</option>\n";
             } ?>
       </select><br />
       Data file format, or detect from file list
     </td>
   </tr>
 
-  <!-- 4 -->
-  <tr id="container_extra_tr">
+  <!-- Format: Spatial -->
+  <tr id="container_spatial_tr">
     <td class="label">
       Format
       <strong class="important_text">*</strong>
@@ -583,12 +706,78 @@ class TorrentForm
       <select id="container" name="container">
         <option value="Autofill">Autofill</option>
         <?php
-            foreach ($this->ContainersExtra as $Name => $Container) {
-                echo "\t\t\t\t\t\t<option value=\"$Name\"";
-                if ($Name === ($Torrent['Container'] ?? false)) {
+            foreach (array_merge($this->MapVectorFormats, $this->MapRasterFormats, $this->ImgFormats, $this->PlainFormats) as $Type => $Extensions) {
+                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
-                echo ">$Name</option>\n";
+                echo ">$Type</option>\n";
+            } ?>
+      </select><br />
+      Data file format, or detect from file list
+    </td>
+  </tr>
+
+  <!-- Format: Models -->
+  <tr id="container_models_tr">
+    <td class="label">
+      Format
+      <strong class="important_text">*</strong>
+    </td>
+    <td>
+      <select id="container" name="container">
+        <option value="Autofill">Autofill</option>
+        <?php
+            foreach (array_merge($this->MapVectorFormats, $this->MapRasterFormats, $this->PlainFormats) as $Type => $Extensions) {
+                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                if ($Type === ($Torrent['Container'] ?? false)) {
+                    echo " selected";
+                }
+                echo ">$Type</option>\n";
+            } ?>
+      </select><br />
+      Data file format, or detect from file list
+    </td>
+  </tr>
+
+  <!-- Format: Documents -->
+  <tr id="container_documents_tr">
+    <td class="label">
+      Format
+      <strong class="important_text">*</strong>
+    </td>
+    <td>
+      <select id="container" name="container">
+        <option value="Autofill">Autofill</option>
+        <?php
+            foreach (array_merge($this->BinDocFormats, $this->CpuGenFormats, $this->PlainFormats) as $Type => $Extensions) {
+                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                if ($Type === ($Torrent['Container'] ?? false)) {
+                    echo " selected";
+                }
+                echo ">$Type</option>\n";
+            } ?>
+      </select><br />
+      Data file format, or detect from file list
+    </td>
+  </tr>
+
+  <!-- Format: Machine Data -->
+  <tr id="container_machine_tr">
+    <td class="label">
+      Format
+      <strong class="important_text">*</strong>
+    </td>
+    <td>
+      <select id="container" name="container">
+        <option value="Autofill">Autofill</option>
+        <?php
+            foreach (array_merge($this->PlainFormats) as $Type => $Extensions) {
+                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                if ($Type === ($Torrent['Container'] ?? false)) {
+                    echo " selected";
+                }
+                echo ">$Type</option>\n";
             } ?>
       </select><br />
       Data file format, or detect from file list
@@ -605,12 +794,12 @@ class TorrentForm
       <select id="archive" name="archive">
         <option value="Autofill">Autofill</option>
         <?php
-            foreach ($this->Archives as $Name => $Archive) {
-                echo "\t\t\t\t\t\t<option value=\"$Name\"";
-                if ($Name === ($Torrent['Archive'] ?? false)) {
+            foreach ($this->Archives as $Type => $Archive) {
+                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                if ($Type === ($Torrent['Archive'] ?? false)) {
                     echo " selected";
                 }
-                echo ">$Name</option>\n";
+                echo ">$Type</option>\n";
             } ?>
       </select><br />
       Compression algorithm, or detect from file list

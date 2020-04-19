@@ -35,30 +35,59 @@ function Categories() {
   ]
 
   let cats = [
-    { // DNA
+    { // Sequences
       'media': {}, // Platform
       'container': {}, // Format
     },
-    { // RNA
-      'media': {}, // Platform
-      'container': {}, // Format
+    { // Graphs
+      'media_graphs': {}, // Platform
+      'container_graphs': {}, // Format
     },
-    { // Proteins
-      'media': {}, // Platform
-      'container_prot': {}, // Format
+    { // Systems
+      'media_graphs': {}, // Platform
+      'container_graphs': {}, // Format
     },
-    { // Imaging
-      'media_manga': {}, // Platform
-      'container_games': {}, // Format
+    { // Geometric
+      'media_graphs': {}, // Platform
+      'container_graphs': {}, // Format
     },
-    { // Extras
-      'media': {}, // Platform
-      'container_extra': {}, // Format
-    }
+    { // Scalars+Vectors
+      'media_graphs': {}, // Platform
+      'container_graphs': {}, // Format
+    },
+    { // Patterns
+      'media_graphs': {}, // Platform
+      'container_graphs': {}, // Format
+    },
+    { // Constraints
+      'media_graphs': {}, // Platform
+      'container_graphs': {}, // Format
+    },
+    { // Images
+      'media_images': {}, // Platform
+      'container_images': {}, // Format
+    },
+    { // Spatial
+      'media_graphs': {}, // Platform
+      'container_spatial': {}, // Format
+    },
+    { // Models
+      'media_graphs': {}, // Platform
+      'container_models': {}, // Format
+    },
+    { // Documents
+      'media_documents': {}, // Platform
+      'container_documents': {}, // Format
+    },
+    { // Machine Data
+      'media_machine': {}, // Platform
+      'container_machine': {}, // Format
+    },
   ]
 
   let active = {}
   for (let field of def) active[field] = {}
+
   let category = 0
   if ($('input[name="type"]').raw()) category = $('input[name="type"]').raw().value
   if ($('#categories').raw()) category = $('#categories').raw().value
