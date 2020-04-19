@@ -341,7 +341,7 @@ View::show_header('Browse Torrents', 'browse');
             <td class="nobr ft_misc">
 
               <select name="resolution" class="ft_resolution fti_advanced">
-                <option value="">Assembly Level</option>
+                <option value="">Scope</option>
                 <?php  foreach ($Resolutions as $Resolution) { ?>
                 <option
                   value="<?=display_str($Resolution); # pcs-comment-start; keep quote?>"
@@ -933,7 +933,7 @@ die();
           # These are the main torrent search results
           $Data['CategoryID'] = $CategoryID;
           $CoverArt = $GroupInfo['WikiImage'];
-          $DisplayName .= "<a class='torrent_title' href='torrents.php?id=$GroupID&amp;torrentid=$TorrentID#torrent$TorrentID' ";
+          $DisplayName .= "<a class='torrent_title' href='torrents.php?id=$GroupID&amp;torrentid=$TorrentID' ";
 
           if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
               $DisplayName .= 'data-cover="'.ImageTools::process($CoverArt, 'thumb').'" ';

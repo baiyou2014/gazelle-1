@@ -387,7 +387,7 @@ View::show_header('Uploading Rules', 'rules');
         </li>
 
         <li id="r3.16"><a href="#h3"><strong>&uarr;</strong></a> <a href="#r3.16">3.16</a>
-          <strong>Assembly Level.</strong>
+          <strong>Scope.</strong>
           The resolution of the data.
           How much information about the organism does it represent?
           The options correspond in higher conceptual language to:

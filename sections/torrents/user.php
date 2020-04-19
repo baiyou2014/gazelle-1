@@ -378,7 +378,7 @@ $Pages = Format::get_pages($Page, $TorrentCount, TORRENTS_PER_PAGE);
             </select>
 
             <select id="resolution" name="resolution" class="ft_resolution">
-              <option value="">Assembly Level</option>
+              <option value="">Scope</option>
               <?php foreach ($Resolutions as $ResolutionName) { ?>
               <option value="<?= display_str($ResolutionName); ?>"
                 <?php Format::selected('resolution', $ResolutionName) ?>><?= display_str($ResolutionName); ?>

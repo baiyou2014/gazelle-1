@@ -27,6 +27,19 @@ body {
 .cats_imaging  { width: 4em; height: 4em; background: url('/static/common/bioicons/imaging.png')  no-repeat center center; background-size: contain; }
 .cats_extras   { width: 4em; height: 4em; background: url('/static/common/bioicons/extras.png')   no-repeat center center; background-size: contain; }
 
+.cats_sequences      { width: 4em; height: 4em; background: url('/static/common/bioicons/sequences.png')      no-repeat center center; background-size: contain; }
+.cats_graphs      { width: 4em; height: 4em; background: url('/static/common/bioicons/graphs.png')      no-repeat center center; background-size: contain; }
+.cats_systems { width: 4em; height: 4em; background: url('/static/common/bioicons/systems.png') no-repeat center center; background-size: contain; }
+.cats_geometric  { width: 4em; height: 4em; background: url('/static/common/bioicons/geometric.png')  no-repeat center center; background-size: contain; }
+.cats_scalars\/vectors   { width: 4em; height: 4em; background: url('/static/common/bioicons/scalars_vectors.png')   no-repeat center center; background-size: contain; }
+.cats_patterns   { width: 4em; height: 4em; background: url('/static/common/bioicons/patterns3.png')   no-repeat center center; background-size: contain; }
+.cats_constraints   { width: 4em; height: 4em; background: url('/static/common/bioicons/constraints2.png')   no-repeat center center; background-size: contain; }
+.cats_images   { width: 4em; height: 4em; background: url('/static/common/bioicons/images.png')   no-repeat center center; background-size: contain; }
+.cats_spatial   { width: 4em; height: 4em; background: url('/static/common/bioicons/spatial.png')   no-repeat center center; background-size: contain; }
+.cats_models   { width: 4em; height: 4em; background: url('/static/common/bioicons/models.png')   no-repeat center center; background-size: contain; }
+.cats_prose   { width: 4em; height: 4em; background: url('/static/common/bioicons/prose.png')   no-repeat center center; background-size: contain; }
+.cats_hypotheses\/evidence   { width: 4em; height: 4em; background: url('/static/common/bioicons/hypotheses_evidence2.png')   no-repeat center center; background-size: contain; }
+
 
 /*
  * Common Elements

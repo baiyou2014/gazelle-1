@@ -21,7 +21,7 @@ function Categories() {
     'year', // Year
     'codec', // License
     // Platform changes below
-    'resolution', // Assembly Level
+    'resolution', // Scope
     // Format changes below
     'archive', // Archive
     'tags', // Tags

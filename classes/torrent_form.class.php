@@ -620,7 +620,7 @@ class TorrentForm
   <!-- Resolution -->
   <tr id="resolution_tr">
     <td class="label">
-      Assembly Level
+      Scope
       <strong class="important_text">*</strong>
     </td>
     <td>
