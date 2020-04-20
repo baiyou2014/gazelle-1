@@ -733,31 +733,31 @@ class Torrents
         */
 
         if ($Data['IsLeeching']) {
-            $Info[] = $HTMLy ? Format::torrent_label('Leeching', 'tl_leeching') : 'Leeching';
+            $Info[] = $HTMLy ? Format::torrent_label('Leeching', 'important_text_semi') : 'Leeching';
         } elseif ($Data['IsSeeding']) {
-            $Info[] = $HTMLy ? Format::torrent_label('Seeding', 'tl_seeding') : 'Seeding';
+            $Info[] = $HTMLy ? Format::torrent_label('Seeding', 'important_text_alt') : 'Seeding';
         } elseif ($Data['IsSnatched']) {
-            $Info[] = $HTMLy ? Format::torrent_label('Snatched', 'tl_snatched') : 'Snatched';
+            $Info[] = $HTMLy ? Format::torrent_label('Snatched', 'bold') : 'Snatched';
         }
 
         if ($Data['FreeTorrent'] === '1') {
             if ($Data['FreeLeechType'] === '3') {
                 if ($Data['ExpiryTime']) {
-                    $Info[] = ($HTMLy ? Format::torrent_label('Freeleech', 'tl_freeleech') : 'Freeleech') . ($HTMLy ? " <strong>(" : " (") . str_replace(['week','day','hour','min','Just now','s',' '], ['w','d','h','m','0m'], time_diff(max(strtotime($Data['ExpiryTime']), time()), 1, false)) . ($HTMLy ? ")</strong>" : ")");
+                    $Info[] = ($HTMLy ? Format::torrent_label('Freeleech', 'important_text_alt') : 'Freeleech') . ($HTMLy ? " <strong>(" : " (") . str_replace(['week','day','hour','min','Just now','s',' '], ['w','d','h','m','0m'], time_diff(max(strtotime($Data['ExpiryTime']), time()), 1, false)) . ($HTMLy ? ")</strong>" : ")");
                 } else {
-                    $Info[] = $HTMLy ? Format::torrent_label('Freeleech', 'tl_freeleech') : 'Freeleech';
+                    $Info[] = $HTMLy ? Format::torrent_label('Freeleech', 'important_text_alt') : 'Freeleech';
                 }
             } else {
-                $Info[] = $HTMLy ? Format::torrent_label('Freeleech', 'tl_freeleech') : 'Freeleech';
+                $Info[] = $HTMLy ? Format::torrent_label('Freeleech', 'important_text_alt') : 'Freeleech';
             }
         }
 
         if ($Data['FreeTorrent'] == '2') {
-            $Info[] = $HTMLy ? Format::torrent_label('Neutral Leech', 'tl_neutral_leech') : 'Neutral Leech';
+            $Info[] = $HTMLy ? Format::torrent_label('Neutral Leech', 'bold') : 'Neutral Leech';
         }
 
         if ($Data['PersonalFL']) {
-            $Info[] = $HTMLy ? Format::torrent_label('Personal Freeleech', 'tl_freeleech') : 'Personal Freeleech';
+            $Info[] = $HTMLy ? Format::torrent_label('Personal Freeleech', 'important_text_alt') : 'Personal Freeleech';
         }
 
         return implode(' | ', $Info);

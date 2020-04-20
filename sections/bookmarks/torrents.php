@@ -162,15 +162,15 @@ foreach ($GroupIDs as $GroupID) {
         $DisplayName .=' class="tooltip" title="View torrent group" dir="ltr">'.$GroupName.'</a>';
 
         if ($Torrent['IsSnatched']) {
-            $DisplayName .= ' ' . Format::torrent_label('Snatched', 'tl_snatched');
+            $DisplayName .= ' ' . Format::torrent_label('Snatched', 'bold');
         }
 
         if ($Torrent['FreeTorrent'] === '1') {
-            $DisplayName .= ' ' . Format::torrent_label('Freeleech', 'tl_freeleech');
+            $DisplayName .= ' ' . Format::torrent_label('Freeleech', 'important_text_alt');
         } elseif ($Torrent['FreeTorrent'] === '2') {
-            $DisplayName .= ' ' . Format::torrent_label('Neutral Leech', 'tl_neutral_leech');
+            $DisplayName .= ' ' . Format::torrent_label('Neutral Leech', 'bold');
         } elseif ($Torrent['PersonalFL']) {
-            $DisplayName .= ' ' . Format::torrent_label('Personal Freeleech', 'tl_freeleech');
+            $DisplayName .= ' ' . Format::torrent_label('Personal Freeleech', 'important_text_alt');
         }
 
         $SnatchedTorrentClass = $Torrent['IsSnatched'] ? ' snatched_torrent' : ''; ?>

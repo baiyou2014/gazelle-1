@@ -200,11 +200,11 @@ if (!$NumResults) {
 
                     $DisplayName .= "dir=\"ltr\">".($GroupName ? $GroupName : ($GroupNameRJ ? $GroupNameRJ : $GroupNameJP))."</a>";
                     if ($Torrent['IsSnatched']) {
-                        $DisplayName .= ' ' . Format::torrent_label('Snatched', 'tl_snatched');
+                        $DisplayName .= ' ' . Format::torrent_label('Snatched', 'bold');
                     }
 
                     if (!empty($Torrent['FreeTorrent'])) {
-                        $DisplayName .= ' ' . Format::torrent_label('Freeleech', 'tl_freeleech');
+                        $DisplayName .= ' ' . Format::torrent_label('Freeleech', 'important_text_alt');
                     }
                     $SnatchedTorrentClass = $Torrent['IsSnatched'] ? ' snatched_torrent' : ''; ?>
 

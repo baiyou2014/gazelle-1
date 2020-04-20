@@ -386,24 +386,24 @@ function build_torrents_table($Cache, $DB, $LoggedUser, $GroupID, $GroupName, $G
         }
 
         if ($IsLeeching) {
-            $ExtraInfo .= $AddExtra.Format::torrent_label('Leeching', 'tl_leeching');
+            $ExtraInfo .= $AddExtra.Format::torrent_label('Leeching', 'important_text_semi');
         } elseif ($IsSeeding) {
-            $ExtraInfo .= $AddExtra.Format::torrent_label('Seeding', 'tl_seeding');
+            $ExtraInfo .= $AddExtra.Format::torrent_label('Seeding', 'important_text_alt');
         } elseif ($IsSnatched) {
-            $ExtraInfo .= $AddExtra.Format::torrent_label('Snatched', 'tl_snatched');
+            $ExtraInfo .= $AddExtra.Format::torrent_label('Snatched', 'bold');
         }
 
         # todo: Check strict equality
         if ($FreeTorrent == '1') {
-            $ExtraInfo .= $AddExtra.Format::torrent_label('Freeleech', 'tl_freeleech');
+            $ExtraInfo .= $AddExtra.Format::torrent_label('Freeleech', 'important_text_alt');
         }
 
         if ($FreeTorrent == '2') {
-            $ExtraInfo .= $AddExtra.Format::torrent_label('Neutral Leech', 'tl_neutral_leech');
+            $ExtraInfo .= $AddExtra.Format::torrent_label('Neutral Leech', 'bold');
         }
 
         if ($PersonalFL) {
-            $ExtraInfo .= $AddExtra.Format::torrent_label('Personal Freeleech', 'tl_freeleech');
+            $ExtraInfo .= $AddExtra.Format::torrent_label('Personal Freeleech', 'important_text_alt');
         }
 
         if ($Reported) {
