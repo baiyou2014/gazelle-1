@@ -265,7 +265,7 @@ View::show_header('Browse Torrents', 'browse');
             <td class="label">Platforms</td>
             <td class="nobr ft_ripspecifics">
 
-            <select name="media" class="ft_media fti_advanced">
+              <select name="media" class="ft_media fti_advanced">
                 <option value="">Sequences</option>
                 <?php foreach ($SeqPlatforms as $Platform) { ?>
                 <option
@@ -314,9 +314,18 @@ View::show_header('Browse Torrents', 'browse');
             <td class="label">Formats</td>
             <td class="nobr ft_ripspecifics">
 
-            <select id=" container" name="container" class="ft_container fti_advanced">
-                <option value="">Sequences</option>
-                <?php foreach (array_merge($SeqFormats, $ProtFormats, $PlainFormats) as $Key => $Container) { ?>
+              <select id=" container" name="container" class="ft_container fti_advanced">
+                <option value="">NucleoSeq</option>
+                <?php foreach (array_merge($SeqFormats, $PlainFormats) as $Key => $Container) { ?>
+                <option value="<?=display_str($Key);?>"
+                  <?Format::selected('container', $Key)?>><?=display_str($Key);?>
+                </option>
+                <?php } ?>
+              </select>
+
+              <select id=" container" name="container" class="ft_container fti_advanced">
+                <option value="">ProtSeq</option>
+                <?php foreach (array_merge($ProtFormats, $PlainFormats) as $Key => $Container) { ?>
                 <option value="<?=display_str($Key);?>"
                   <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
@@ -325,7 +334,7 @@ View::show_header('Browse Torrents', 'browse');
 
 
               <select id=" container" name="container" class="ft_container fti_advanced">
-                <option value="">Graphs</option>
+                <option value="">XMLs</option>
                 <?php foreach (array_merge($GraphXmlFormats, $GraphTxtFormats, $PlainFormats) as $Key => $Container) { ?>
                 <option value="<?=display_str($Key);?>"
                   <?Format::selected('container', $Key)?>><?=display_str($Key);?>
@@ -334,8 +343,8 @@ View::show_header('Browse Torrents', 'browse');
               </select>
 
               <select id=" container" name="container" class="ft_container fti_advanced">
-                <option value="">Images</option>
-                <?php foreach (array_merge($ImgFormats, $PlainFormats) as $Key => $Container) { ?>
+                <option value="">Raster</option>
+                <?php foreach (array_merge($ImgFormats, $MapRasterFormats, $PlainFormats) as $Key => $Container) { ?>
                 <option value="<?=display_str($Key);?>"
                   <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
@@ -343,8 +352,8 @@ View::show_header('Browse Torrents', 'browse');
               </select>
 
               <select id=" container" name="container" class="ft_container fti_advanced">
-                <option value="">Spatial</option>
-                <?php foreach (array_merge($MapVectorFormats, $MapRasterFormats, $PlainFormats) as $Key => $Container) { ?>
+                <option value="">Vector</option>
+                <?php foreach (array_merge($MapVectorFormats, $PlainFormats) as $Key => $Container) { ?>
                 <option value="<?=display_str($Key);?>"
                   <?Format::selected('container', $Key)?>><?=display_str($Key);?>
                 </option>
@@ -352,7 +361,7 @@ View::show_header('Browse Torrents', 'browse');
               </select>
 
               <select id=" container" name="container" class="ft_container fti_advanced">
-                <option value="">Documents</option>
+                <option value="">Extras</option>
                 <?php foreach (array_merge($BinDocFormats, $CpuGenFormats, $PlainFormats) as $Key => $Container) { ?>
                 <option value="<?=display_str($Key);?>"
                   <?Format::selected('container', $Key)?>><?=display_str($Key);?>
