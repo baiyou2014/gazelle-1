@@ -562,6 +562,28 @@ class TorrentForm
     </td>
   </tr>
 
+    <!-- Platform: Scalars/Vectors -->
+    <tr id="media_scalars_vectors_tr">
+    <td class="label">
+      Platform
+      <strong class="important_text">*</strong>
+    </td>
+    <td>
+      <select name="media">
+        <option>---</option>
+        <?php
+          foreach (array_merge($this->GraphPlatforms, $this->ImgPlatforms) as $Platform) {
+              echo "<option value='$Platform'";
+              if ($Platform === ($Torrent['Media'] ?? false)) {
+                  echo ' selected';
+              }
+              echo ">$Platform</option>\n";
+          } ?>
+      </select><br />
+      The class of technology used
+    </td>
+  </tr>
+
   <!-- Platform: Images -->
   <tr id="media_images_tr">
     <td class="label">

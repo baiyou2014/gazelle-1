@@ -52,7 +52,7 @@ function Categories() {
       'container_graphs': {}, // Format
     },
     { // Scalars/Vectors
-      'media_graphs': {}, // Platform
+      'media_scalars_vectors': {}, // Platform
       'container_scalars_vectors': {}, // Format
     },
     { // Patterns
