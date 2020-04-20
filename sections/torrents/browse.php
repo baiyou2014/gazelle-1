@@ -1,6 +1,6 @@
 <?php
 
-include(SERVER_ROOT.'/sections/torrents/functions.php');
+include SERVER_ROOT.'/sections/torrents/functions.php';
 
 // The "order by x" links on columns headers
 function header_link($SortKey, $DefaultWay = 'desc')

@@ -862,10 +862,10 @@ ul.poll li.graph {
 }
 
 .filter_torrents {
-  min-width: 720px;
-  /* width: 750px; */
-  margin: auto;
   background: white;
+  margin: auto;
+  width: 765px;
+  /* width: 750px; */
 }
 
 .filter_torrents .submit {
