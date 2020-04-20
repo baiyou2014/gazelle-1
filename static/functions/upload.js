@@ -73,7 +73,7 @@ function Categories() {
     },
     { // Models
       'media_graphs': {}, // Platform
-      'container_models': {}, // Format
+      'container_spatial': {}, // Format
     },
     { // Documents
       'media_documents': {}, // Platform
@@ -81,7 +81,7 @@ function Categories() {
     },
     { // Machine Data
       'media_machine': {}, // Platform
-      'container_machine': {}, // Format
+      'container': {}, // Format
     },
   ]
 

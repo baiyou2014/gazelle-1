@@ -38,19 +38,19 @@ $Properties['BadFolders'] = (isset($_POST['bad_folders']))? 1 : 0;
 $Properties['BadFiles'] = (isset($_POST['bad_files'])) ? 1 : 0;
 $Properties['Trumpable'] = (isset($_POST['make_trumpable'])) ? 1 : 0;
 
-$Properties['Format'] = $_POST['format'];
+#$Properties['Format'] = $_POST['format'];
 $Properties['Media'] = $_POST['media'];
-$Properties['Bitrate'] = $_POST['bitrate'];
-$Properties['Encoding'] = $_POST['bitrate'];
+#$Properties['Bitrate'] = $_POST['bitrate'];
+#$Properties['Encoding'] = $_POST['bitrate'];
 $Properties['TorrentDescription'] = $_POST['release_desc'];
-$Properties['MediaInfo'] = $_POST['mediainfo'];
+#$Properties['MediaInfo'] = $_POST['mediainfo'];
 $Properties['Name'] = $_POST['title'];
 $Properties['Codec'] = $_POST['codec'];
 $Properties['Resolution'] = $_POST['resolution'];
 $Properties['AudioFormat'] = $_POST['audioformat'];
-$Properties['Subbing'] = $_POST['sub'];
-$Properties['Language'] = $_POST['lang'];
-$Properties['Subber']= $_POST['subber'];
+#$Properties['Subbing'] = $_POST['sub'];
+#$Properties['Language'] = $_POST['lang'];
+#$Properties['Subber']= $_POST['subber'];
 
 $Properties['Censored'] = (isset($_POST['censored'])) ? '1' : '0';
 $Properties['Anonymous'] = (isset($_POST['anonymous'])) ? '1' : '0';

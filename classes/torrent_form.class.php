@@ -660,7 +660,7 @@ class TorrentForm
       <select id="container" name="container">
         <option value="Autofill">Autofill</option>
         <?php
-            foreach (array_merge($this->GraphXmlFormats, $this->GraphTxtFormats, $this->PlainFormats) as $Type => $Extensions) {
+            foreach (array_merge($this->GraphXmlFormats, $this->GraphTxtFormats, $this->SeqFormats, $this->ProtFormats, $this->PlainFormats) as $Type => $Extensions) {
                 echo "<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo ' selected';
@@ -716,28 +716,6 @@ class TorrentForm
     </td>
   </tr>
 
-  <!-- Format: Models -->
-  <tr id="container_models_tr">
-    <td class="label">
-      Format
-      <strong class="important_text">*</strong>
-    </td>
-    <td>
-      <select id="container" name="container">
-        <option value="Autofill">Autofill</option>
-        <?php
-            foreach (array_merge($this->MapVectorFormats, $this->MapRasterFormats, $this->PlainFormats) as $Type => $Extensions) {
-                echo "<option value='$Type'";
-                if ($Type === ($Torrent['Container'] ?? false)) {
-                    echo ' selected';
-                }
-                echo ">$Type</option>\n";
-            } ?>
-      </select><br />
-      Data file format, or detect from file list
-    </td>
-  </tr>
-
   <!-- Format: Documents -->
   <tr id="container_documents_tr">
     <td class="label">
@@ -749,28 +727,6 @@ class TorrentForm
         <option value="Autofill">Autofill</option>
         <?php
             foreach (array_merge($this->BinDocFormats, $this->CpuGenFormats, $this->PlainFormats) as $Type => $Extensions) {
-                echo "<option value='$Type'";
-                if ($Type === ($Torrent['Container'] ?? false)) {
-                    echo ' selected';
-                }
-                echo ">$Type</option>\n";
-            } ?>
-      </select><br />
-      Data file format, or detect from file list
-    </td>
-  </tr>
-
-  <!-- Format: Machine Data -->
-  <tr id="container_machine_tr">
-    <td class="label">
-      Format
-      <strong class="important_text">*</strong>
-    </td>
-    <td>
-      <select id="container" name="container">
-        <option value="Autofill">Autofill</option>
-        <?php
-            foreach (array_merge($this->PlainFormats) as $Type => $Extensions) {
                 echo "<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo ' selected';
