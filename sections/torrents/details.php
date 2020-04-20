@@ -582,19 +582,19 @@ foreach ($TorrentList as $Torrent) {
     }
 
     if ($IsLeeching) {
-        $ExtraInfo .= $AddExtra . Format::torrent_label('Leeching', 'important_text');
+        $ExtraInfo .= $AddExtra . Format::torrent_label('Leeching', 'tl_leeching');
     } elseif ($IsSeeding) {
-        $ExtraInfo .= $AddExtra . Format::torrent_label('Seeding', 'important_text_alt');
+        $ExtraInfo .= $AddExtra . Format::torrent_label('Seeding', 'tl_seeding');
     } elseif ($IsSnatched) {
-        $ExtraInfo .= $AddExtra . Format::torrent_label('Snatched!', 'bold');
+        $ExtraInfo .= $AddExtra . Format::torrent_label('Snatched!', 'tl_snatched');
     }
 
     if ($FreeTorrent === '1') {
-        $ExtraInfo .= $AddExtra . Format::torrent_label('Freeleech!', 'important_text_alt');
+        $ExtraInfo .= $AddExtra . Format::torrent_label('Freeleech', 'tl_freeleech');
     }
 
     if ($FreeTorrent === '2') {
-        $ExtraInfo .= $AddExtra . Format::torrent_label('Neutral Leech!', 'bold');
+        $ExtraInfo .= $AddExtra . Format::torrent_label('Neutral Leech', 'tl_neutral_leech');
     }
 
     // Freleechizer
@@ -610,7 +610,7 @@ foreach ($TorrentList as $Torrent) {
     }
 
     if ($PersonalFL) {
-        $ExtraInfo .= $AddExtra . Format::torrent_label('Personal Freeleech!', 'important_text_alt');
+        $ExtraInfo .= $AddExtra . Format::torrent_label('Personal Freeleech', 'tl_freeleech');
         $AddExtra = ' | ';
     }
 

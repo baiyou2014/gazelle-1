@@ -153,24 +153,28 @@ foreach ($GroupIDs as $GroupID) {
         $Torrent = current($Torrents);
 
         $DisplayName = Artists::display_artists(Artists::get_artist($GroupID));
-
         $DisplayName .= '<a href="torrents.php?id='.$GroupID.'" ';
+
         if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
             $DisplayName .= 'data-cover="'.ImageTools::process($WikiImage, 'thumb').'" ';
         }
+
         $DisplayName .=' class="tooltip" title="View torrent group" dir="ltr">'.$GroupName.'</a>';
 
         if ($Torrent['IsSnatched']) {
-            $DisplayName .= ' ' . Format::torrent_label('Snatched!');
+            $DisplayName .= ' ' . Format::torrent_label('Snatched', 'tl_snatched');
         }
+
         if ($Torrent['FreeTorrent'] === '1') {
-            $DisplayName .= ' ' . Format::torrent_label('Freeleech!');
+            $DisplayName .= ' ' . Format::torrent_label('Freeleech', 'tl_freeleech');
         } elseif ($Torrent['FreeTorrent'] === '2') {
-            $DisplayName .= ' ' . Format::torrent_label('Neutral leech!');
+            $DisplayName .= ' ' . Format::torrent_label('Neutral Leech', 'tl_neutral_leech');
         } elseif ($Torrent['PersonalFL']) {
-            $DisplayName .= ' ' . Format::torrent_label('Personal Freeleech!');
+            $DisplayName .= ' ' . Format::torrent_label('Personal Freeleech', 'tl_freeleech');
         }
+
         $SnatchedTorrentClass = $Torrent['IsSnatched'] ? ' snatched_torrent' : ''; ?>
+
 <tr
   class="torrent torrent_row<?=$SnatchedTorrentClass . $SnatchedGroupClass?>"
   id="group_<?=$GroupID?>">
@@ -180,6 +184,7 @@ foreach ($GroupIDs as $GroupID) {
       class="tooltip <?=Format::css_category($GroupCategoryID)?>">
     </div>
   </td>
+
   <td>
     <span>
       [ <a
@@ -256,10 +261,12 @@ foreach ($GroupIDs as $GroupID) {
 
 $CollageCovers = isset($LoggedUser['CollageCovers']) ? (int)$LoggedUser['CollageCovers'] : 10;
 $CollagePages = [];
+
 if ($CollageCovers > 0) {
     for ($i = 0; $i < $NumGroups / $CollageCovers; $i++) {
         $Groups = array_slice($Collage, $i * $CollageCovers, $CollageCovers);
         $CollagePage = '';
+
         foreach ($Groups as $Group) {
             $CollagePage .= $Group;
         }
@@ -269,6 +276,7 @@ if ($CollageCovers > 0) {
 
 View::show_header($Title, 'browse,collage,wall');
 ?>
+
 <div class="thin">
   <div class="header">
     <h2><?php if (!$Sneaky) { ?><a

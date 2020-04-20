@@ -192,19 +192,22 @@ if (!$NumResults) {
                     if (isset($Artists)) {
                         $DisplayName .= '<div class="torrent_artists">'.Artists::display_artists($Artists).'</div> ';
                     }
+
                     $DisplayName .= "<a class=\"torrent_title\" href=\"torrents.php?id=$GroupID\" ";
                     if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
                         $DisplayName .= 'data-cover="'.ImageTools::process($WikiImage).'" ';
                     }
-                    $DisplayName .= "dir=\"ltr\">".($GroupName ? $GroupName : ($GroupNameRJ ? $GroupNameRJ : $GroupNameJP))."</a>";
 
+                    $DisplayName .= "dir=\"ltr\">".($GroupName ? $GroupName : ($GroupNameRJ ? $GroupNameRJ : $GroupNameJP))."</a>";
                     if ($Torrent['IsSnatched']) {
-                        $DisplayName .= ' ' . Format::torrent_label('Snatched!');
+                        $DisplayName .= ' ' . Format::torrent_label('Snatched', 'tl_snatched');
                     }
+
                     if (!empty($Torrent['FreeTorrent'])) {
-                        $DisplayName .= ' ' . Format::torrent_label('Freeleech!');
+                        $DisplayName .= ' ' . Format::torrent_label('Freeleech', 'tl_freeleech');
                     }
                     $SnatchedTorrentClass = $Torrent['IsSnatched'] ? ' snatched_torrent' : ''; ?>
+
   <tr class="torrent<?=$SnatchedTorrentClass?>"
     id="group_<?=$CollageID?>_<?=$GroupID?>">
     <td></td>
@@ -296,6 +299,6 @@ if (!$NumResults) {
     } // else -- if (empty($NumResults))
 ?>
 </div>
-<?php
 
+<?php
 View::show_footer();
