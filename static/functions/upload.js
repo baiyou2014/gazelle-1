@@ -51,9 +51,9 @@ function Categories() {
       'media_graphs': {}, // Platform
       'container_graphs': {}, // Format
     },
-    { // Scalars+Vectors
+    { // Scalars/Vectors
       'media_graphs': {}, // Platform
-      'container_graphs': {}, // Format
+      'container_scalars_vectors': {}, // Format
     },
     { // Patterns
       'media_graphs': {}, // Platform
@@ -80,7 +80,7 @@ function Categories() {
       'container_documents': {}, // Format
     },
     { // Machine Data
-      'media_machine': {}, // Platform
+      'media_machine_data': {}, // Platform
       'container': {}, // Format
     },
   ]

@@ -50,7 +50,7 @@ body {
   background-size: contain;
 }
 
-.cats_scalars\+vectors {
+.cats_scalars\/vectors {
   background: url('/static/common/bioicons/scalars_vectors.png') no-repeat center center;
   background-size: contain;
 }

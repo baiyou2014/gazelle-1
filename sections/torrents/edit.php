@@ -185,10 +185,10 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
           <td class="label">Category</td>
           <td>
             <select id="newcategoryid" name="newcategoryid">
-              <?php    foreach ($Categories as $CatID => $CatName) { ?>
+              <?php foreach ($Categories as $CatID => $CatName) { ?>
               <option value="<?=($CatID + 1)?>" <?Format::selected('CategoryID', $CatID + 1, 'selected', $Properties)?>><?=($CatName)?>
               </option>
-              <?php    } ?>
+              <?php } ?>
             </select>
           </td>
         </tr>

@@ -550,7 +550,7 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->GraphPlatforms as $Platform) {
+          foreach (array_merge($this->GraphPlatforms, $this->SeqPlatforms) as $Platform) {
               echo "<option value='$Platform'";
               if ($Platform === ($Torrent['Media'] ?? false)) {
                   echo ' selected';
@@ -607,7 +607,7 @@ class TorrentForm
   </tr>
 
   <!-- Platform: Machine Data -->
-  <tr id="media_machine_tr">
+  <tr id="media_machine_data_tr">
     <td class="label">
       Platform
       <strong class="important_text">*</strong>
@@ -661,6 +661,28 @@ class TorrentForm
         <option value="Autofill">Autofill</option>
         <?php
             foreach (array_merge($this->GraphXmlFormats, $this->GraphTxtFormats, $this->SeqFormats, $this->ProtFormats, $this->PlainFormats) as $Type => $Extensions) {
+                echo "<option value='$Type'";
+                if ($Type === ($Torrent['Container'] ?? false)) {
+                    echo ' selected';
+                }
+                echo ">$Type</option>\n";
+            } ?>
+      </select><br />
+      Data file format, or detect from file list
+    </td>
+  </tr>
+
+  <!-- Format: Scalars/Vectors -->
+  <tr id="container_scalars_vectors_tr">
+    <td class="label">
+      Format
+      <strong class="important_text">*</strong>
+    </td>
+    <td>
+      <select id="container" name="container">
+        <option value="Autofill">Autofill</option>
+        <?php
+            foreach (array_merge($this->ImgFormats, $this->SeqFormats, $this->ProtFormats, $this->PlainFormats) as $Type => $Extensions) {
                 echo "<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo ' selected';
