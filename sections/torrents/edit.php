@@ -68,9 +68,7 @@ if (($LoggedUser['ID'] !== $Properties['UserID'] && !check_perms('torrents_edit'
 }
 
 View::show_header('Edit torrent', 'upload,torrent,bbcode');
-
 $TorrentForm = new TorrentForm($Properties, $Err, false);
-
 $TorrentForm->upload_form();
 
 if (check_perms('torrents_edit') || check_perms('users_mod')) {

@@ -110,6 +110,7 @@ function Categories() {
       if (active[field].name) {
         tr.children[0].innerHTML = active[field].name
       }
+
       let notes = $(`#${tr.id} p.notes`).raw()
       if (notes) notes.innerHTML = active[field].notes || ''
       show(tr)

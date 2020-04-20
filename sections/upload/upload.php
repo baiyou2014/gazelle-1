@@ -88,6 +88,7 @@ if (!$GenreTags) {
     FROM tags
     WHERE TagType = 'genre'
     ORDER BY Name");
+    
     $GenreTags = $DB->collect('Name');
     $Cache->cache_value('genre_tags', $GenreTags, 3600 * 6);
 }

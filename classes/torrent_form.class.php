@@ -65,7 +65,6 @@ class TorrentForm
 
         # See classes/config.php
         global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Archives, $Resolutions;
-        #global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Resolutions, $Archives;
         #global $UploadForm, $Categories, $Formats, $Bitrates, $Media, $MediaManga, $TorrentID, $Containers, $ContainersGames, $Codecs, $Resolutions, $AudioFormats, $Subbing, $Languages, $Platform, $Archives, $ArchivesManga;
 
         $this->UploadForm = $UploadForm;
@@ -232,7 +231,7 @@ class TorrentForm
           <select id="categories" name="type" onchange="Categories()" <?= ($this->DisabledFlag) ? ' disabled="disabled"' : '' ?>>
             <?php
             foreach (Misc::display_array($this->Categories) as $Index => $Cat) {
-                echo "\t\t\t\t\t\t<option value=\"$Index\"";
+                echo "\t\t\t\t\t\t<option value='$Index'";
                 if ($Cat === $this->Torrent['CategoryName']) {
                     echo ' selected="selected"';
                 }
@@ -424,7 +423,7 @@ class TorrentForm
     </td>
   </tr>
 
-  <!-- Multiple artists -->
+  <!-- Multiple Artists -->
   <tr id="idols_tr">
     <td class="label">
       Authors(s)
@@ -507,7 +506,7 @@ class TorrentForm
         <option>---</option>
         <?php
           foreach ($this->Codecs as $Codec) {
-              echo "\t\t\t\t\t\t<option value=\"$Codec\"";
+              echo "\t\t\t\t\t\t<option value='$Codec'";
               if ($Codec === ($Torrent['Codec'] ?? false)) {
                   echo " selected";
               }
@@ -520,8 +519,6 @@ class TorrentForm
   </tr>
 
   <!-- Platform: Sequences -->
-  <?    var_dump($this->SeqPlatforms); ?>
-
   <tr id="media_tr">
     <td class="label">
       Platform
@@ -531,12 +528,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->SeqPlatforms as $Media) {
-              echo "\t\t\t\t\t\t<option value=\"$Media\"";
-              if ($Media == ($Torrent['Media'] ?? false)) {
+          foreach ($this->SeqPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value='$Platform'";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Media</option>\n";
+              echo ">$Platform</option>\n";
           } ?>
       </select><br />
       The class of technology used
@@ -553,12 +550,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->GraphPlatforms as $Media) {
-              echo "\t\t\t\t\t\t<option value=\"$Media\"";
-              if ($Media == ($Torrent['Media'] ?? false)) {
+          foreach ($this->GraphPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value='$Platform'";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Media</option>\n";
+              echo ">$Platform</option>\n";
           } ?>
       </select><br />
       The class of technology used
@@ -575,12 +572,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->ImgPlatforms as $Media) {
-              echo "\t\t\t\t\t\t<option value=\"$Media\"";
-              if ($Media == ($Torrent['Media'] ?? false)) {
+          foreach ($this->ImgPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value='$Platform'";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Media</option>\n";
+              echo ">$Platform</option>\n";
           } ?>
       </select><br />
       The class of technology used
@@ -597,12 +594,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->DocPlatforms as $Media) {
-              echo "\t\t\t\t\t\t<option value=\"$Media\"";
-              if ($Media == ($Torrent['Media'] ?? false)) {
+          foreach ($this->DocPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value='$Platform'";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Media</option>\n";
+              echo ">$Platform</option>\n";
           } ?>
       </select><br />
       The class of technology used
@@ -619,12 +616,12 @@ class TorrentForm
       <select name="media">
         <option>---</option>
         <?php
-          foreach ($this->RawPlatforms as $Media) {
-              echo "\t\t\t\t\t\t<option value=\"$Media\"";
-              if ($Media == ($Torrent['Media'] ?? false)) {
+          foreach ($this->RawPlatforms as $Platform) {
+              echo "\t\t\t\t\t\t<option value='$Platform'";
+              if ($Platform == ($Torrent['Media'] ?? false)) {
                   echo " selected";
               }
-              echo ">$Media</option>\n";
+              echo ">$Platform</option>\n";
           } ?>
       </select><br />
       The class of technology used
@@ -642,7 +639,7 @@ class TorrentForm
         <option value="Autofill">Autofill</option>
         <?php
             foreach (array_merge($this->SeqFormats, $this->ProtFormats, $this->PlainFormats) as $Type => $Extensions) {
-                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                echo "\t\t\t\t\t\t<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
@@ -664,7 +661,7 @@ class TorrentForm
         <option value="Autofill">Autofill</option>
         <?php
             foreach (array_merge($this->GraphXmlFormats, $this->GraphTxtFormats, $this->PlainFormats) as $Type => $Extensions) {
-                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                echo "\t\t\t\t\t\t<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
@@ -686,7 +683,7 @@ class TorrentForm
         <option value="Autofill">Autofill</option>
         <?php
             foreach (array_merge($this->ImgFormats, $this->PlainFormats) as $Type => $Extensions) {
-                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                echo "\t\t\t\t\t\t<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
@@ -708,7 +705,7 @@ class TorrentForm
         <option value="Autofill">Autofill</option>
         <?php
             foreach (array_merge($this->MapVectorFormats, $this->MapRasterFormats, $this->ImgFormats, $this->PlainFormats) as $Type => $Extensions) {
-                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                echo "\t\t\t\t\t\t<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
@@ -730,7 +727,7 @@ class TorrentForm
         <option value="Autofill">Autofill</option>
         <?php
             foreach (array_merge($this->MapVectorFormats, $this->MapRasterFormats, $this->PlainFormats) as $Type => $Extensions) {
-                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                echo "\t\t\t\t\t\t<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
@@ -752,7 +749,7 @@ class TorrentForm
         <option value="Autofill">Autofill</option>
         <?php
             foreach (array_merge($this->BinDocFormats, $this->CpuGenFormats, $this->PlainFormats) as $Type => $Extensions) {
-                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                echo "\t\t\t\t\t\t<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
@@ -774,7 +771,7 @@ class TorrentForm
         <option value="Autofill">Autofill</option>
         <?php
             foreach (array_merge($this->PlainFormats) as $Type => $Extensions) {
-                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+                echo "\t\t\t\t\t\t<option value='$Type'";
                 if ($Type === ($Torrent['Container'] ?? false)) {
                     echo " selected";
                 }
@@ -795,8 +792,8 @@ class TorrentForm
       <select id="archive" name="archive">
         <option value="Autofill">Autofill</option>
         <?php
-            foreach ($this->Archives as $Type => $Archive) {
-                echo "\t\t\t\t\t\t<option value=\"$Type\"";
+            foreach ($this->Archives as $Type => $Extensions) {
+                echo "\t\t\t\t\t\t<option value='$Type'";
                 if ($Type === ($Torrent['Archive'] ?? false)) {
                     echo " selected";
                 }
@@ -818,7 +815,7 @@ class TorrentForm
         <option>---</option>
         <?php
           foreach ($this->Resolutions as $Res) {
-              echo "\t\t\t\t\t\t<option value=\"$Res\"";
+              echo "\t\t\t\t\t\t<option value='$Res'";
               if ($Res === ($Torrent['Resolution'] ?? false)
               || (!isset($FoundRes) && ($Torrent['Resolution'] ?? false)
               && $Res === 'Other')) {
