@@ -51,7 +51,6 @@ if ($GroupYear > 0) {
     $Label = '<br />📅&nbsp;';
     $DisplayName .= $Label.$GroupYear;
     $AltName .= $Label.$GroupYear;
-    $Title .= $Label.$GroupYear;
 }
 
 if ($GroupStudio) {
