@@ -1,4 +1,5 @@
-<?
+<?php
+
 //------------- Give out invites! ---------------------------------------//
 
 /*
@@ -32,12 +33,13 @@ $DB->query("
 
 $UserIDs = $DB->collect('ID');
 if (count($UserIDs) > 0) {
-  foreach ($UserIDs as $UserID) {
-      $Cache->begin_transaction("user_info_heavy_$UserID");
-      $Cache->update_row(false, array('Invites' => '+1'));
-      $Cache->commit_transaction(0);
-  }
-  $DB->query('
+    foreach ($UserIDs as $UserID) {
+        $Cache->begin_transaction("user_info_heavy_$UserID");
+        $Cache->update_row(false, array('Invites' => '+1'));
+        $Cache->commit_transaction(0);
+    }
+
+    $DB->query('
     UPDATE users_main
     SET Invites = Invites + 1
     WHERE ID IN ('.implode(',', $UserIDs).')');
@@ -75,12 +77,13 @@ $DB->query("
 
 $UserIDs = $DB->collect('ID');
 if (count($UserIDs) > 0) {
-  foreach ($UserIDs as $UserID) {
-      $Cache->begin_transaction("user_info_heavy_$UserID");
-      $Cache->update_row(false, array('Invites' => '+1'));
-      $Cache->commit_transaction(0);
-  }
-  $DB->query('
+    foreach ($UserIDs as $UserID) {
+        $Cache->begin_transaction("user_info_heavy_$UserID");
+        $Cache->update_row(false, array('Invites' => '+1'));
+        $Cache->commit_transaction(0);
+    }
+
+    $DB->query('
     UPDATE users_main
     SET Invites = Invites + 1
     WHERE ID IN ('.implode(',', $UserIDs).')');
@@ -103,12 +106,13 @@ $DB->query("
 
 $UserIDs = $DB->collect('ID');
 if (count($UserIDs) > 0) {
-  foreach ($UserIDs as $UserID) {
-      $Cache->begin_transaction("user_info_heavy_$UserID");
-      $Cache->update_row(false, array('Invites' => '+1'));
-      $Cache->commit_transaction(0);
-  }
-  $DB->query('
+    foreach ($UserIDs as $UserID) {
+        $Cache->begin_transaction("user_info_heavy_$UserID");
+        $Cache->update_row(false, array('Invites' => '+1'));
+        $Cache->commit_transaction(0);
+    }
+
+    $DB->query('
     UPDATE users_main
     SET Invites = Invites + 1
     WHERE ID IN ('.implode(',', $UserIDs).')');
@@ -128,14 +132,14 @@ $DB->query("
 
 $UserIDs = $DB->collect('ID');
 if (count($UserIDs) > 0) {
-  foreach ($UserIDs as $UserID) {
-      $Cache->begin_transaction("user_info_heavy_$UserID");
-      $Cache->update_row(false, array('Invites' => '+1'));
-      $Cache->commit_transaction(0);
-  }
-  $DB->query('
+    foreach ($UserIDs as $UserID) {
+        $Cache->begin_transaction("user_info_heavy_$UserID");
+        $Cache->update_row(false, array('Invites' => '+1'));
+        $Cache->commit_transaction(0);
+    }
+    
+    $DB->query('
     UPDATE users_main
     SET Invites = Invites + 1
     WHERE ID IN ('.implode(',', $UserIDs).')');
 }
-?>

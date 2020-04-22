@@ -1,14 +1,14 @@
-<?
-//------------- Front page stats ----------------------------------------//
+<?php
 
-//Love or hate, this makes things a hell of a lot faster
+//------------- Front page stats ----------------------------------------//
+// Love or hate, this makes things a hell of a lot faster
 
 if ($Hour % 2 == 0) {
-  $DB->query("
+    $DB->query("
     SELECT COUNT(uid) AS Snatches
     FROM xbt_snatched");
-  list($SnatchStats) = $DB->next_record();
-  $Cache->cache_value('stats_snatches', $SnatchStats, 0);
+    list($SnatchStats) = $DB->next_record();
+    $Cache->cache_value('stats_snatches', $SnatchStats, 0);
 }
 
 $DB->query("
@@ -17,6 +17,7 @@ $DB->query("
   FROM xbt_files_users
   WHERE active = 1
   GROUP BY Type");
+  
 $PeerCount = $DB->to_array(0, MYSQLI_NUM, false);
 $SeederCount = isset($PeerCount['Seeding'][1]) ? $PeerCount['Seeding'][1] : 0;
 $LeecherCount = isset($PeerCount['Leeching'][1]) ? $PeerCount['Leeching'][1] : 0;
@@ -44,4 +45,3 @@ $DB->query("
 list($UserStats['Month']) = $DB->next_record();
 
 $Cache->cache_value('stats_users', $UserStats, 0);
-?>

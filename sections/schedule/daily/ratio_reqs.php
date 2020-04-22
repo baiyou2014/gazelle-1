@@ -1,4 +1,5 @@
-<?
+<?php
+
 //------------------- Ratio requirements -----------------------//
 
 // Clear old seed time history
@@ -63,26 +64,22 @@ $DB->query("
   WHERE s.NumSnatches > 0");
 
 
-// TODO: change from PHP_INT_MAX to INF when we get prepared statements working (because apparently that works)
+// todo: Change from PHP_INT_MAX to INF when we get prepared statements working (because apparently that works)
 $DownloadBarrier = PHP_INT_MAX;
-
 foreach (RATIO_REQUIREMENTS as $Requirement) {
-  list($Download, $Ratio, $MinRatio) = $Requirement;
+    list($Download, $Ratio, $MinRatio) = $Requirement;
 
-  $DB->query("
-    UPDATE users_main
-    SET RequiredRatio = RequiredRatioWork * $Ratio
-    WHERE Downloaded >= $Download
-      AND Downloaded < $DownloadBarrier");
+    $DB->query("
+      UPDATE users_main
+      SET RequiredRatio = RequiredRatioWork * $Ratio
+      WHERE Downloaded >= $Download
+        AND Downloaded < $DownloadBarrier");
 
-  $DB->query("
-    UPDATE users_main
-    SET RequiredRatio = $MinRatio
-    WHERE Downloaded >= $Download
-      AND Downloaded < $DownloadBarrier
-      AND RequiredRatio < $MinRatio");
-
-  $DownloadBarrier = $Download;
+    $DB->query("
+      UPDATE users_main
+      SET RequiredRatio = $MinRatio
+      WHERE Downloaded >= $Download
+        AND Downloaded < $DownloadBarrier
+        AND RequiredRatio < $MinRatio");
+    $DownloadBarrier = $Download;
 }
-
-?>
