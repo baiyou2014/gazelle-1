@@ -1,5 +1,4 @@
-<?php
-
+<?
 //------------- Demote users --------------------------------------------//
 
 // Disabled in favor of store-based promotions
@@ -53,3 +52,4 @@ while (list($UserID) = $DB->next_record()) {*/
 }
 echo "demoted 4\n";
 */
+?>

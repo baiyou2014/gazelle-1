@@ -1,9 +1,7 @@
-<?php
-
+<?
 //------------- Cycle auth keys -----------------------------------------//
 
-$DB->query(
-    "
+$DB->query("
   UPDATE users_info
   SET AuthKey =
     MD5(
@@ -17,3 +15,4 @@ $DB->query(
       )
     );"
 );
+?>

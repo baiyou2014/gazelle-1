@@ -1,5 +1,4 @@
-<?php
-
+<?
 $DB->query('TRUNCATE TABLE top_snatchers;');
 $DB->query("
   INSERT INTO top_snatchers (UserID)
@@ -8,3 +7,4 @@ $DB->query("
   GROUP BY uid
   ORDER BY COUNT(uid) DESC
   LIMIT 100;");
+?>

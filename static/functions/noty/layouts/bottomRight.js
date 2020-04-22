@@ -16,7 +16,7 @@
           width: '310px',
           height: 'auto',
           margin: 0,
-          padding: 0,
+          padding: '0 2em',
           listStyleType: 'none',
           zIndex: 10000000
         });

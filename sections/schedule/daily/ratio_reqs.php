@@ -1,8 +1,4 @@
-<?php
-
-# todo: Set the HnR time long (4 months) anddo something to incentivize seeding,
-# e.g., you don't start getting BP until the HnR time passes
-
+<?
 //------------------- Ratio requirements -----------------------//
 
 // Clear old seed time history
@@ -34,7 +30,7 @@ $DB->query("
   SET Weight = NumTorrents * Time");
 
 // Calculate average time spent seeding each of the currently active torrents.
-// This rounds the results to the nearest integer because SeedingAvg is an int column
+// This rounds the results to the nearest integer because SeedingAvg is an int column.
 $DB->query("TRUNCATE TABLE users_torrent_history_temp");
 $DB->query("
   INSERT INTO users_torrent_history_temp
@@ -67,24 +63,26 @@ $DB->query("
   WHERE s.NumSnatches > 0");
 
 
-// todo: Change from PHP_INT_MAX to INF when we get prepared statements working (because apparently that works)
+// TODO: change from PHP_INT_MAX to INF when we get prepared statements working (because apparently that works)
 $DownloadBarrier = PHP_INT_MAX;
 
 foreach (RATIO_REQUIREMENTS as $Requirement) {
-    list($Download, $Ratio, $MinRatio) = $Requirement;
+  list($Download, $Ratio, $MinRatio) = $Requirement;
 
-    $DB->query("
+  $DB->query("
     UPDATE users_main
     SET RequiredRatio = RequiredRatioWork * $Ratio
     WHERE Downloaded >= $Download
       AND Downloaded < $DownloadBarrier");
 
-    $DB->query("
+  $DB->query("
     UPDATE users_main
     SET RequiredRatio = $MinRatio
     WHERE Downloaded >= $Download
       AND Downloaded < $DownloadBarrier
       AND RequiredRatio < $MinRatio");
 
-    $DownloadBarrier = $Download;
+  $DownloadBarrier = $Download;
 }
+
+?>

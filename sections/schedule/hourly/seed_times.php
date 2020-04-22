@@ -1,5 +1,4 @@
-<?php
-
+<?
 //------------- Update seed times ---------------------------------------//
 
 $DB->query("
@@ -7,3 +6,4 @@ $DB->query("
   INNER JOIN xbt_files_users AS xfu
     ON xs.uid = xfu.uid AND xs.fid = xfu.fid
   SET xs.seedtime = xs.seedtime + (xfu.active & ~xfu.completed)");
+?>
