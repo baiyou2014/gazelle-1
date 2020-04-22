@@ -253,17 +253,14 @@ View::show_header('Uploading Rules', 'rules');
           The site will force torrent privacy and dynamically construct <code>.torrent</code> files with your passkey embedded.
           This passkey lets the tracker know who's uploading and downloading, and leaking it will nuke your ratio.
           Please don't share any <code>.torrent</code> files you download for this reason.
-          I'm formalizing a process to release GPG-signed torrents and a redacted database schema (no user data) after the site's inevitable demise.
-          It's okay to share the files themselves any way you see fit.
           <br /><br />
         </li>
 
         <li id="r3.2"><a href="#h3"><strong>&uarr;</strong></a> <a href="#r3.2">3.2</a>
           <strong>Category.</strong>
-          The categories loosely follow the central dogma.
-          It depends on what alphabet the sequence uses, e.g., ACGT vs. ACGU vs. amino acids.
-          All medical imaging data goes in the Imaging category.
-          Toolkits, documentation, disk images, and other things that aren't strictly biology data go in Extras.
+          Please see the
+          <a href="/wiki.php?action=article&id=29">Site Categories wiki page</a>
+          for detailed info about the top-level organization.
           <br /><br />
         </li>
 
