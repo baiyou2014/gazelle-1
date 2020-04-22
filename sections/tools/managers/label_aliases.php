@@ -15,7 +15,7 @@ $OrderBy = $_GET['order'] === 'BadLabels' ? 'BadLabel' : 'AliasLabel';
 /*
 $LabelID = (int)$_GET['id'];
 $LabelNameSQL = '';
-// todo: Join with labels table to get label name
+//TODO join with labels table to get label name
 if (!empty($LabelID)) {
   $DB->query("
     SELECT name

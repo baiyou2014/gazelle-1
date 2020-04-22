@@ -35,7 +35,7 @@ $OrderBy = "uer.Timestamp";
 $OrderWay = "DESC";
 
 // Build query for different views
-// todo: Work with encrypted values
+// TODO: Work with encrypted values
 if (!isset($_GET['view'])) {
   $_GET['view'] = 'main';
 }

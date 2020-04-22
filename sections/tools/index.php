@@ -41,10 +41,10 @@ if (substr($_REQUEST['action'],0,16) == 'rerender_gallery' && !isset($argv[1])) 
 }
 
 include(SERVER_ROOT.'/classes/validate.class.php');
-$Val = new Validate;
+$Val = new VALIDATE;
 
 include(SERVER_ROOT.'/classes/feed.class.php');
-$Feed = new Feed;
+$Feed = new FEED;
 
 switch ($_REQUEST['action']) {
   case 'phpinfo':
@@ -351,7 +351,7 @@ switch ($_REQUEST['action']) {
     break;
 
   case 'ip_ban':
-    // todo: Clean up DB table ip_bans
+    //TODO: Clean up DB table ip_bans.
     include(SERVER_ROOT.'/sections/tools/managers/bans.php');
     break;
   case 'quick_ban':
