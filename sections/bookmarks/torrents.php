@@ -5,7 +5,6 @@ ini_set('max_execution_time', 600);
 set_time_limit(0);
 
 //~~~~~~~~~~~ Main bookmarks page ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
 function compare($X, $Y)
 {
     return($Y['count'] - $X['count']);
@@ -15,14 +14,16 @@ if (!empty($_GET['userid'])) {
     if (!check_perms('users_override_paranoia')) {
         error(403);
     }
+
     $UserID = $_GET['userid'];
     if (!is_number($UserID)) {
         error(404);
     }
+
     $DB->query("
-    SELECT Username
-    FROM users_main
-    WHERE ID = '$UserID'");
+      SELECT Username
+      FROM users_main
+      WHERE ID = '$UserID'");
     list($Username) = $DB->next_record();
 } else {
     $UserID = $LoggedUser['ID'];
@@ -44,13 +45,13 @@ foreach ($GroupIDs as $GroupID) {
     if (!isset($TorrentList[$GroupID])) {
         continue;
     }
+
     $Group = $TorrentList[$GroupID];
     extract(Torrents::array_group($Group));
     list(, $Sort, $AddedTime) = array_values($CollageDataList[$GroupID]);
 
     // Handle stats and stuff
     $NumGroups++;
-
     if ($Artists) {
         foreach ($Artists as $Artist) {
             if (!isset($ArtistCount[$Artist['id']])) {
@@ -62,15 +63,14 @@ foreach ($GroupIDs as $GroupID) {
     }
 
     $TorrentTags = new Tags($TagList);
-
     $DisplayName = Artists::display_artists($Artists);
-
     $GroupName = empty($GroupName) ? (empty($GroupNameRJ) ? $GroupNameJP : $GroupNameRJ) : $GroupName;
-
+    
     $DisplayName .= '<a href="torrents.php?id='.$GroupID.'" ';
     if (!isset($LoggedUser['CoverArt']) || $LoggedUser['CoverArt']) {
         $DisplayName .= 'data-cover="'.ImageTools::process($WikiImage, 'thumb').'" ';
     }
+
     $DisplayName .= ' class="tooltip" title="View torrent group" dir="ltr">'.$GroupName.'</a>';
     if ($GroupYear > 0) {
         $DisplayName = "$DisplayName [$GroupYear]";
@@ -92,11 +92,13 @@ foreach ($GroupIDs as $GroupID) {
         title="Collapse this group. Hold &quot;Ctrl&quot; while clicking to collape all groups on this page."></a>
     </div>
   </td>
+
   <td class="center">
     <div title="<?=$TorrentTags->title()?>"
       class="tooltip <?=Format::css_category($GroupCategoryID)?>">
     </div>
   </td>
+
   <td colspan="5">
     <?=$DisplayName?>
     <span style="text-align: right;" class="float_right">
@@ -112,6 +114,7 @@ foreach ($GroupIDs as $GroupID) {
     </div>
   </td>
 </tr>
+
 <?php
     foreach ($Torrents as $TorrentID => $Torrent) {
         $SnatchedTorrentClass = $Torrent['IsSnatched'] ? ' snatched_torrent' : ''; ?>

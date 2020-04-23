@@ -1,22 +1,21 @@
 <?php
 
-include(SERVER_ROOT.'/classes/feed.class.php'); // RSS feeds
+include SERVER_ROOT.'/classes/feed.class.php'; // RSS feeds
 authorize();
 
 if (!Bookmarks::can_bookmark($_GET['type'])) {
     error(404);
 }
-$Feed = new Feed;
 
+$Feed = new Feed;
 $Type = $_GET['type'];
 
 list($Table, $Col) = Bookmarks::bookmark_schema($Type);
-
 if (!is_number($_GET['id'])) {
     error(0);
 }
-$PageID = $_GET['id'];
 
+$PageID = $_GET['id'];
 $DB->query("
   SELECT UserID
   FROM $Table
@@ -46,7 +45,7 @@ if (!$DB->has_results()) {
     }
 
     $Cache->delete_value('bookmarks_'.$Type.'_'.$LoggedUser['ID']);
-    if ($Type == 'torrent') {
+    if ($Type === 'torrent') {
         $Cache->delete_value("bookmarks_group_ids_$UserID");
         $DB->query("
           SELECT Name, Year, WikiBody, TagList
@@ -57,10 +56,10 @@ if (!$DB->has_results()) {
         $TagList = str_replace('_', '.', $TagList);
 
         /*
-            $DB->query("
-              SELECT ID, Format, Encoding, HasLog, HasCue, LogScore, Media, Scene, FreeTorrent, UserID
-              FROM torrents
-              WHERE GroupID = $PageID");
+        $DB->query("
+          SELECT ID, Format, Encoding, HasLog, HasCue, LogScore, Media, Scene, FreeTorrent, UserID
+          FROM torrents
+          WHERE GroupID = $PageID");
         */
 
         $DB->query("
@@ -75,6 +74,7 @@ if (!$DB->has_results()) {
             $Title .= " [$Year] - ";
             $Title .= "$Format / $Bitrate";
 
+            // todo: Check type and formatting of $HasLog, etc.
             if ($HasLog == "'1'") {
                 $Title .= ' / Log';
             }
@@ -111,7 +111,7 @@ if (!$DB->has_results()) {
             );
             $Feed->populate('torrents_bookmarks_t_'.$LoggedUser['torrent_pass'], $Item);
         }
-    } elseif ($Type == 'request') {
+    } elseif ($Type === 'request') {
         $DB->query("
           SELECT UserID
           FROM $Table
