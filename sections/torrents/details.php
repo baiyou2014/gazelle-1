@@ -519,7 +519,7 @@ foreach ($TorrentList as $Torrent) {
   </table>';
 
     $ExtraInfo = ''; // String that contains information on the torrent (e.g., format and encoding)
-    $AddExtra = ' | '; // Separator between torrent properties
+    $AddExtra = '&thinsp;|&thinsp;'; // Separator between torrent properties
 
   // Similar to Torrents::torrent_info()
     if ($Media) {
@@ -586,54 +586,50 @@ foreach ($TorrentList as $Torrent) {
     } elseif ($IsSeeding) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Seeding', 'important_text_alt');
     } elseif ($IsSnatched) {
-        $ExtraInfo .= $AddExtra . Format::torrent_label('Snatched!', 'bold');
+        $ExtraInfo .= $AddExtra . Format::torrent_label('Snatched', 'bold');
     }
 
-    if ($FreeTorrent === '1') {
+    if ($FreeTorrent === 1) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Freeleech', 'important_text_alt');
     }
 
-    if ($FreeTorrent === '2') {
+    if ($FreeTorrent === 2) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Neutral Leech', 'bold');
     }
 
     // Freleechizer
-    if ($FreeLeechType === '3') {
+    if ($FreeLeechType === 3) {
         $DB->query("
-      SELECT UNIX_TIMESTAMP(ExpiryTime)
-      FROM shop_freeleeches
-      WHERE TorrentID = $TorrentID");
+          SELECT UNIX_TIMESTAMP(ExpiryTime)
+          FROM shop_freeleeches
+          WHERE TorrentID = $TorrentID");
+
         if ($DB->has_results()) {
             $ExpiryTime = $DB->next_record(MYSQLI_NUM, false)[0];
-            $ExtraInfo .= " <strong>(" . str_replace(['week','day','hour','min','Just now','s',' '], ['w','d','h','m','0m'], time_diff(max($ExpiryTime, time()), 1, false)) . ")</strong>";
+            $ExtraInfo .= " <strong>(".str_replace(['month','week','day','hour','min'], ['m','w','d','h','m'], time_diff(max($ExpiryTime, time()), 1, false)).")</strong>";
         }
     }
 
     if ($PersonalFL) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Personal Freeleech', 'important_text_alt');
-        $AddExtra = ' | ';
     }
 
     if ($Reported) {
         $HtmlReportType = ucfirst($Reports[0]['Type']);
         $HtmlReportComment = htmlentities(htmlentities($Reports[0]['UserComment']));
         $ExtraInfo .= $AddExtra . "<strong class='torrent_label tl_reported tooltip' title='Type: $HtmlReportType<br>Comment: $HtmlReportComment'>".Format::torrent_label('Reported', 'important_text')."</strong>";
-        $AddExtra = ' | ';
     }
 
     if (!empty($BadTags)) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Bad Tags', 'important_text');
-        $AddExtra = ' | ';
     }
 
     if (!empty($BadFolders)) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Bad Folders', 'important_text');
-        $AddExtra = ' | ';
     }
 
     if (!empty($BadFiles)) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Bad File Names', 'important_text');
-        $AddExtra = ' | ';
     }
 
     $TorrentDL = "torrents.php?action=download&amp;id=".$TorrentID."&amp;authkey=".$LoggedUser['AuthKey']."&amp;torrent_pass=".$LoggedUser['torrent_pass'];

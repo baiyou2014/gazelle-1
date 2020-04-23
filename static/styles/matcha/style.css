@@ -1397,6 +1397,22 @@ caption {
   font-weight: bold;
 }
 
+.tl_reported {
+  color: red;
+}
+
+.tl_snatched {
+  color: black;
+}
+
+.tl_leeching {
+  color: orange;
+}
+
+.tl_seeding {
+  color: green;
+}
+
 /*
 .tag_parody {
 	color: #e08e00 !important;

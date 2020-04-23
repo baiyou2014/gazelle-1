@@ -5,6 +5,7 @@ ini_set('max_execution_time', 600);
 set_time_limit(0);
 
 //~~~~~~~~~~~ Main bookmarks page ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
 function compare($X, $Y)
 {
     return($Y['count'] - $X['count']);

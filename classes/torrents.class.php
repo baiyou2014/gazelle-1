@@ -743,7 +743,7 @@ class Torrents
         if ($Data['FreeTorrent'] === '1') {
             if ($Data['FreeLeechType'] === '3') {
                 if ($Data['ExpiryTime']) {
-                    $Info[] = ($HTMLy ? Format::torrent_label('Freeleech', 'important_text_alt') : 'Freeleech') . ($HTMLy ? " <strong>(" : " (") . str_replace(['week','day','hour','min','Just now','s',' '], ['w','d','h','m','0m'], time_diff(max(strtotime($Data['ExpiryTime']), time()), 1, false)) . ($HTMLy ? ")</strong>" : ")");
+                    $Info[] = ($HTMLy ? Format::torrent_label('Freeleech', 'important_text_alt') : 'Freeleech') . ($HTMLy ? " <strong>(" : " (").str_replace(['month','week','day','hour','min'], ['mo','w','d','h','m'], time_diff(max(strtotime($Data['ExpiryTime']), time()), 1, false)).($HTMLy ? ")</strong>" : ")");
                 } else {
                     $Info[] = $HTMLy ? Format::torrent_label('Freeleech', 'important_text_alt') : 'Freeleech';
                 }
@@ -778,15 +778,16 @@ class Torrents
 
         $QueryID = G::$DB->get_query_id();
         G::$DB->query("
-        UPDATE torrents
-        SET FreeTorrent = '$FreeNeutral', FreeLeechType = '$FreeLeechType'
+          UPDATE torrents
+          SET FreeTorrent = '$FreeNeutral', FreeLeechType = '$FreeLeechType'
           WHERE ID IN (".implode(', ', $TorrentIDs).')');
 
         G::$DB->query('
-        SELECT ID, GroupID, info_hash
-        FROM torrents
+          SELECT ID, GroupID, info_hash
+          FROM torrents
           WHERE ID IN ('.implode(', ', $TorrentIDs).')
-        ORDER BY GroupID ASC');
+            ORDER BY GroupID ASC');
+
         $Torrents = G::$DB->to_array(false, MYSQLI_NUM, false);
         $GroupIDs = G::$DB->collect('GroupID');
         G::$DB->set_query_id($QueryID);
@@ -797,6 +798,7 @@ class Torrents
             G::$Cache->delete_value("torrent_download_$TorrentID");
             Misc::write_log((G::$LoggedUser['Username']??'System')." marked torrent $TorrentID freeleech type $FreeLeechType");
             Torrents::write_group_log($GroupID, $TorrentID, (G::$LoggedUser['ID']??0), "marked as freeleech type $FreeLeechType", 0);
+            
             if ($Announce && ($FreeLeechType === 1 || $FreeLeechType === 3)) {
                 send_irc('PRIVMSG '.BOT_ANNOUNCE_CHAN.' FREELEECH - '.site_url()."torrents.php?id=$GroupID / ".site_url()."torrents.php?action=download&id=$TorrentID");
             }
@@ -823,9 +825,10 @@ class Torrents
         }
 
         G::$DB->query('
-        SELECT ID
-        FROM torrents
+          SELECT ID
+          FROM torrents
           WHERE GroupID IN ('.implode(', ', $GroupIDs).')');
+
         if (G::$DB->has_results()) {
             $TorrentIDs = G::$DB->collect('ID');
             Torrents::freeleech_torrents($TorrentIDs, $FreeNeutral, $FreeLeechType);
@@ -849,13 +852,16 @@ class Torrents
         $UserID = G::$LoggedUser['ID'];
         if (!isset($TokenTorrents)) {
             $TokenTorrents = G::$Cache->get_value("users_tokens_$UserID");
+
             if ($TokenTorrents === false) {
                 $QueryID = G::$DB->get_query_id();
+
                 G::$DB->query("
-                SELECT TorrentID
-                FROM users_freeleeches
+                  SELECT TorrentID
+                  FROM users_freeleeches
                   WHERE UserID = ?
-                  AND Expired = 0", $UserID);
+                    AND Expired = 0", $UserID);
+
                 $TokenTorrents = array_fill_keys(G::$DB->collect('TorrentID', false), true);
                 G::$DB->set_query_id($QueryID);
                 G::$Cache->cache_value("users_tokens_$UserID", $TokenTorrents);
@@ -875,6 +881,7 @@ class Torrents
         if (empty(G::$LoggedUser)) {
             return false;
         }
+
         return (G::$LoggedUser['FLTokens'] > 0
       && $Torrent['Size'] <= 10737418240
       && !$Torrent['PersonalFL']
@@ -1213,7 +1220,7 @@ class Torrents
    */
     public static function display_string($GroupID, $Mode = self::DISPLAYSTRING_DEFAULT)
     {
-        global $ReleaseTypes; // I hate this
+        #global $ReleaseTypes; // I hate this
 
         $GroupInfo = self::get_groups(array($GroupID), true, true, false)[$GroupID];
         $ExtendedArtists = $GroupInfo['ExtendedArtists'];
@@ -1250,7 +1257,7 @@ class Torrents
 
     public static function edition_string(array $Torrent, array $Group)
     {
-        $AddExtra = ' / ';
+        $AddExtra = '&thinsp;|&thinsp;';
         $EditionName = 'Original Release';
         $EditionName .= $AddExtra . display_str($Torrent['Media']);
         return $EditionName;

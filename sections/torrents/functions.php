@@ -377,9 +377,9 @@ function build_torrents_table($Cache, $DB, $LoggedUser, $GroupID, $GroupName, $G
         $FileTable .= '</table>';
 
         $ExtraInfo = ''; // String that contains information on the torrent (e.g. format and encoding)
-        $AddExtra = ' | '; // Separator between torrent properties
+        $AddExtra = '&thinsp;|&thinsp;'; // Separator between torrent properties
 
-  $TorrentUploader = $Username; // Save this for "Uploaded by:" below
+        $TorrentUploader = $Username; // Save this for "Uploaded by:" below
         // Similar to Torrents::torrent_info()
         if (!$ExtraInfo) {
             $ExtraInfo = $GroupName;
@@ -393,12 +393,11 @@ function build_torrents_table($Cache, $DB, $LoggedUser, $GroupID, $GroupName, $G
             $ExtraInfo .= $AddExtra.Format::torrent_label('Snatched', 'bold');
         }
 
-        # todo: Check strict equality
-        if ($FreeTorrent == '1') {
+        if ($FreeTorrent === 1) {
             $ExtraInfo .= $AddExtra.Format::torrent_label('Freeleech', 'important_text_alt');
         }
 
-        if ($FreeTorrent == '2') {
+        if ($FreeTorrent === 2) {
             $ExtraInfo .= $AddExtra.Format::torrent_label('Neutral Leech', 'bold');
         }
 

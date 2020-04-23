@@ -126,45 +126,47 @@ if (!empty($_GET['date'])) {
 
           $DisplayName .= "<a href=\"torrents.php?id=$GroupID&amp;torrentid=$TorrentID\" class=\"tooltip\" title=\"View torrent\" dir=\"ltr\">$GroupName</a>";
 
-          if ($GroupCategoryID == 1 && $GroupYear > 0) {
+          if ($GroupCategoryID === 1 && $GroupYear > 0) {
               $DisplayName .= " [$GroupYear]";
           }
 
-          // append extra info to torrent title
+          // Append extra info to torrent title
           $ExtraInfo = '';
-          $AddExtra = '';
+          $AddExtra = '&thinsp;|&thinsp;';
+
           if ($Format) {
               $ExtraInfo .= $Format;
-              $AddExtra = ' / ';
           }
+
           if ($Encoding) {
               $ExtraInfo .= $AddExtra.$Encoding;
-              $AddExtra = ' / ';
           }
+
           if ($HasLog) {
               $ExtraInfo .= "$AddExtra Log ($LogScore%)";
-              $AddExtra = ' / ';
           }
+
           if ($HasCue) {
               $ExtraInfo .= "{$AddExtra}Cue";
-              $AddExtra = ' / ';
           }
+
           if ($Media) {
               $ExtraInfo .= $AddExtra.$Media;
-              $AddExtra = ' / ';
           }
+
           if ($Scene) {
               $ExtraInfo .= "{$AddExtra}Scene";
-              $AddExtra = ' / ';
           }
+
           if ($Year > 0) {
               $ExtraInfo .= $AddExtra.$Year;
-              $AddExtra = ' ';
           }
+
           if ($RemasterTitle) {
               $ExtraInfo .= $AddExtra.$RemasterTitle;
           }
-          if ($ExtraInfo != '') {
+
+          if ($ExtraInfo !== '') {
               $ExtraInfo = "- [$ExtraInfo]";
           }
 

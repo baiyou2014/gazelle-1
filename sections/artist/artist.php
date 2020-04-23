@@ -474,9 +474,14 @@ foreach ($TorrentList as $Group) {
           </div>
           <?=$DisplayName?>
           <br />
-          <div style="display: inline;" class="torrent_info"><?=$ExtraInfo?><?php if ($Reported) { ?> / <?= Format::torrent_label('Reported', 'important_text') ?><?php } ?>
+          <div style="display: inline;" class="torrent_info">
+            <?=$ExtraInfo?>
+            <?php if ($Reported) { ?>
+            / <?= Format::torrent_label('Reported', 'important_text') ?>
+            <?php } ?>
           </div>
-          <div class="tags"><?=$TorrentTags->format('torrents.php?taglist=', $Name)?>
+          <div class="tags">
+            <?=$TorrentTags->format('torrents.php?taglist=', $Name)?>
           </div>
         </div>
       </td>

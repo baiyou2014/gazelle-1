@@ -68,7 +68,7 @@ class Rules
   <li>
     <strong>Please use the
       <strong class="important_text_alt">vanity.house</strong>
-      tag for sequences that you or your lab produced.</strong>
+      tag for data you or your lab produced.</strong>
     This helps us promote the DIYbio community's original contributions.
   </li>
 
