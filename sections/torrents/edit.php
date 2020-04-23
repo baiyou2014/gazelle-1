@@ -9,8 +9,7 @@
 // most members.                                                        //
 //**********************************************************************//
 
-require_once(SERVER_ROOT.'/classes/torrent_form.class.php');
-
+require_once SERVER_ROOT.'/classes/torrent_form.class.php';
 if (!is_number($_GET['id']) || !$_GET['id']) {
     error(0);
 }
@@ -36,6 +35,7 @@ $DB->query("
     t.MediaInfo,
     tg.CategoryID,
     tg.Name AS Title,
+    tg.NameRJ AS TitleRJ,
     tg.NameJP AS TitleJP,
     tg.Year,
     tg.Studio,
@@ -62,27 +62,26 @@ if (!$Properties) {
 }
 
 $UploadForm = $Categories[$Properties['CategoryID'] - 1];
-
 if (($LoggedUser['ID'] !== $Properties['UserID'] && !check_perms('torrents_edit')) || $LoggedUser['DisableWiki']) {
     error(403);
 }
 
+# See classes/torrent_form.class.php
 View::show_header('Edit torrent', 'upload,torrent,bbcode');
 $TorrentForm = new TorrentForm($Properties, $Err, false);
 $TorrentForm->upload_form();
 
 if (check_perms('torrents_edit') || check_perms('users_mod')) {
-    # Start the HTML edit form
+    # Start the other edit forms
     ?>
 <div class="thin">
-  <?php
-  #if ($Properties['CategoryID'] !== 5) {
-      ?>
-
   <br />
+
+  <!-- Change Group -->
   <div class="header">
     <h2>Change Group</h2>
   </div>
+
   <div class="box pad">
     <form class="edit_form" name="torrent_group" action="torrents.php" method="post">
       <input type="hidden" name="action" value="editgroupid" />
@@ -92,6 +91,7 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
         value="<?=$TorrentID?>" />
       <input type="hidden" name="oldgroupid"
         value="<?=$Properties['GroupID']?>" />
+
       <table class="layout">
         <tr>
           <td class="label">Group ID</td>
@@ -101,6 +101,7 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
               size="10" />
           </td>
         </tr>
+
         <tr>
           <td colspan="2" class="center">
             <input type="submit" value="Change Group ID" />
@@ -108,9 +109,10 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
         </tr>
       </table>
     </form>
-  </div>
+  </div> <!-- class="box pad" -->
   <br />
 
+  <!-- Split off into new group -->
   <h2>Split off into new group</h2>
   <div class="box pad">
     <form class="split_form" name="torrent_group" action="torrents.php" method="post">
@@ -121,6 +123,7 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
         value="<?=$TorrentID?>" />
       <input type="hidden" name="oldgroupid"
         value="<?=$Properties['GroupID']?>" />
+
       <table class="layout">
         <tr>
           <td class="label">Author</td>
@@ -130,6 +133,7 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
               size="50" />
           </td>
         </tr>
+
         <tr>
           <td class="label">Torrent Title</td>
           <td>
@@ -138,6 +142,16 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
               size="50" />
           </td>
         </tr>
+
+        <tr>
+          <td class="label">Organism</td>
+          <td>
+            <input type="test" name="title_rj"
+              value="<?=$Properties['TitleRJ']?>"
+              size=50" />
+          </td>
+        </tr>
+
         <tr>
           <td class="label">Strain/Variety</td>
           <td>
@@ -145,6 +159,8 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
               value="<?=$Properties['TitleJP']?>"
               size=50" />
           </td>
+        </tr>
+
         <tr>
           <td class="label">Year</td>
           <td>
@@ -153,6 +169,7 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
               size="10" />
           </td>
         </tr>
+
         <tr>
           <td colspan="2" class="center">
             <input type="submit" value="Split into new group" />
@@ -164,8 +181,9 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
   <br />
 
   <?php
-  #}
     if (check_perms('users_mod')) { ?>
+
+  <!-- Change Category -->
   <h2>Change Category</h2>
   <div class="box pad">
     <form action="torrents.php" method="post">
@@ -180,26 +198,30 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
         value="<?=$Properties['ArtistID']?>" />
       <input type="hidden" name="oldcategoryid"
         value="<?=$Properties['CategoryID']?>" />
+
       <table>
         <tr>
           <td class="label">Category</td>
           <td>
             <select id="newcategoryid" name="newcategoryid">
               <?php foreach ($Categories as $CatID => $CatName) { ?>
-              <option value="<?=($CatID + 1)?>" <?Format::selected('CategoryID', $CatID + 1, 'selected', $Properties)?>><?=($CatName)?>
+              <option value="<?=($CatID + 1)?>"
+                <?Format::selected('CategoryID', $CatID + 1, 'selected', $Properties)?>><?=($CatName)?>
               </option>
               <?php } ?>
             </select>
           </td>
         </tr>
+
         <tr id="split_artist">
-          <td class="label">Artist</td>
+          <td class="label">Author</td>
           <td>
             <input type="text" name="artist"
               value="<?=$Properties['ArtistName']?>"
               size="50" />
           </td>
         </tr>
+
         <tr id="split_title">
           <td class="label">Torrent Title</td>
           <td>
@@ -208,6 +230,7 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
               size="50" />
           </td>
         </tr>
+
         <tr id="split_year">
           <td class="label">Year</td>
           <td>
@@ -216,6 +239,7 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
               size="10" />
           </td>
         </tr>
+
         <tr>
           <td colspan="2" class="center">
             <input type="submit" value="Change Category" />
@@ -232,5 +256,4 @@ if (check_perms('torrents_edit') || check_perms('users_mod')) {
 </div>
 <?php
 } // if check_perms('torrents_edit')
-
 View::show_footer();
