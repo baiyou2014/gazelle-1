@@ -162,11 +162,11 @@ View::show_header('Donate');
         <br /><br />
         <pre>
 @misc{ biotorrents,
-  author = {BioTorrents.de Staff},
-  title = {Serving P2P biology data on Debian 9 with BitTorrent},
-  year = {2020},
-  url = \href{https://pjc.is/biotorrents/announcement}{biotorrents/announcement},
-  note = {Online; accessed <?=date('Y-m-d')?>},
+  author = {Omics Tools LLC},
+  title  = {Serving P2P biology data on Debian 9 with BitTorrent},
+  year   = {2020},
+  url    = \href{https://pjc.is/biotorrents/announcement}{biotorrents/announcement},
+  note   = {Online; accessed <?=date('Y-m-d')?>},
 }
         </pre>
       </li>

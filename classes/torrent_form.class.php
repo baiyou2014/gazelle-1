@@ -57,15 +57,15 @@ class TorrentForm
 
     public function __construct($Torrent = false, $Error = false, $NewTorrent = true)
     {
-        # Gazelle
-        $this->NewTorrent = $NewTorrent;
-        $this->Torrent = $Torrent;
-        $this->Error = $Error;
-
         # See classes/config.php
         global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Archives, $Resolutions;
         #global $UploadForm, $Categories, $Formats, $Bitrates, $Media, $MediaManga, $TorrentID, $Containers, $ContainersGames, $Codecs, $Resolutions, $AudioFormats, $Subbing, $Languages, $Platform, $Archives, $ArchivesManga;
 
+        # Gazelle
+        $this->NewTorrent = $NewTorrent;
+        $this->Torrent = $Torrent;
+        $this->Error = $Error;
+        
         $this->UploadForm = $UploadForm;
         $this->Categories = $Categories;
         $this->TorrentID = $TorrentID;
@@ -149,15 +149,13 @@ class TorrentForm
       $Announces = ANNOUNCE_URLS[0];
       #$Announces = call_user_func_array('array_merge', ANNOUNCE_URLS);
       foreach ($Announces as $Announce) {
-          # Loop through tracker URLs
-            ?>
+          # Loop through tracker URLs?>
     <strong>Announce</strong>
     <input type="text"
-      value="<?= $Announce . '/' . G::$LoggedUser['torrent_pass'] . '/announce' ?>"
+      value="<?=$Announce.'/'.G::$LoggedUser['torrent_pass'].'/announce'?>"
       size="74" onclick="this.select();" readonly="readonly" /> <br />
     <?php
-      }
-    ?>
+      } ?>
 
     <!-- Source -->
     <strong>Source</strong>
@@ -170,7 +168,7 @@ class TorrentForm
     <?php
       }
         if ($this->Error) {
-            echo "\t".'<p style="color: red; text-align: center;">' . $this->Error . "</p>\n";
+            echo "\t".'<p style="color: red; text-align: center;">'.$this->Error."</p>\n";
         } ?>
   </p>
 
@@ -190,16 +188,14 @@ class TorrentForm
       <?php
         } else {
             if ($this->Torrent && $this->Torrent['GroupID']) {
-                # Find groups and requests
-      ?>
+                # Find groups and requests?>
       <input type="hidden" name="groupid"
         value="<?= display_str($this->Torrent['GroupID']) ?>" />
       <input type="hidden" name="type"
         value="<?= display_str($this->Torrent['CategoryID']-1) ?>" />
       <?php
             }
-            if ($this->Torrent && ($this->Torrent['RequestID'] ?? false)) {
-                ?>
+            if ($this->Torrent && ($this->Torrent['RequestID'] ?? false)) { ?>
       <input type="hidden" name="requestid"
         value="<?=display_str($this->Torrent['RequestID'])?>" />
       <?php
@@ -260,19 +256,18 @@ class TorrentForm
     <table cellpadding="3" cellspacing="1" border="0" class="layout slice" width="100%">
       <?php
         if (!$this->NewTorrent) {
-            if (check_perms('torrents_freeleech')) {
-                ?>
+            if (check_perms('torrents_freeleech')) { ?>
 
       <tr id="freetorrent">
         <td class="label">Freeleech</td>
         <td>
           <select name="freeleech">
             <?php
-              $FL = array("Normal", "Free", "Neutral");
+              $FL = array('Normal', 'Free', 'Neutral');
                 foreach ($FL as $Key => $Name) {
-                    # Cycle types
-            ?>
-            <option value="<?= $Key ?>" <?= ($Key === $Torrent['FreeTorrent'] ? ' selected="selected"' : '') ?>><?= $Name ?>
+                    # Cycle types?>
+            <option value="<?=$Key?>" <?=($Key === $Torrent['FreeTorrent'] ? ' selected="selected"' : '')?>>
+              <?=$Name?>
             </option>
             <?php
                 } ?>
@@ -280,11 +275,11 @@ class TorrentForm
           because
           <select name="freeleechtype">
             <?php
-              $FL = array("N/A", "Staff Pick", "Perma-FL", "Freeleechizer", "Site-Wide FL");
+              $FL = array('N/A', 'Staff Pick', 'Perma-FL', 'Freeleechizer', 'Site-Wide FL');
                 foreach ($FL as $Key => $Name) {
-                    # Cycle reasons
-            ?>
-            <option value="<?=$Key?>" <?= ($Key === $Torrent['FreeLeechType'] ? ' selected="selected"' : '') ?>><?= $Name ?>
+                    # Cycle reasons?>
+            <option value="<?=$Key?>" <?=($Key === $Torrent['FreeLeechType'] ? ' selected="selected"' : '')?>>
+              <?=$Name?>
             </option>
             <?php
                 } ?>
@@ -333,24 +328,19 @@ class TorrentForm
         $QueryID = G::$DB->get_query_id();
         $this->head();
         $Torrent = $this->Torrent; ?>
-
-<!-- Catalogue number autofill -->
 <table cellpadding="3" cellspacing="1" border="0" class="layout slice" width="100%">
-  <?php if ($this->NewTorrent) { ?>
 
+  <!-- Catalogue number autofill -->
   <tr id="javdb_tr">
     <td class="label tooltip" title="">Accession Number</td>
     <td>
       <input type="text" id="catalogue" name="catalogue" size="10"
-        value="<?= display_str($Torrent['CatalogueNumber']) ?>"
-        <?= $this->Disabled ?>/>
-      <?php if (!$this->DisabledFlag) { ?>
+        value="<?= display_str($Torrent['CatalogueNumber']) ?>" />
       <input type="button" autofill="jav" value="Autofill" style="pointer-events: none; opacity: 0.5;">
       </input><br />
       <!-- Autofill only supports RefSeq and UniProt; -->
       Enter any ID number that corresponds to the data,
       preferring RefSeq and UniProt
-      <?php } ?>
     </td>
   </tr>
 
@@ -381,12 +371,12 @@ class TorrentForm
     <td class="label">Version</td>
     <td>
       <input type="text" id="audioformat" name="audioformat" size="10" pattern="\d+\.*\d*\.*\d*"
-        value="<?= display_str($Torrent['AudioFormat']) ?>"
-        <?= $this->Disabled ?>/><br />
+        value="<?= display_str($Torrent['AudioFormat']) ?>" /><br />
       Please see <a href="https://semver.org target=" _blank">Semantic Versioning</a>; start with 0.1.0
     </td>
   </tr>
 
+  <?php if ($this->NewTorrent) { ?>
   <!-- Three title fields -->
   <tr id="title_tr">
     <td class="label">
@@ -479,6 +469,7 @@ class TorrentForm
       Physical location, e.g., Berkeley, CA 94720
     </td>
   </tr>
+  <?php } # End if NewTorrent?>
 
   <!-- Year -->
   <tr id="year_tr">
@@ -488,12 +479,10 @@ class TorrentForm
     </td>
     <td>
       <input type="text" id="year" name="year" maxlength="4" size="5"
-        value="<?= display_str($Torrent['Year']) ?>"
-        <?= $this->Disabled ?>/><br />
+        value="<?= display_str($Torrent['Year']) ?>" /><br />
       Original publication year
     </td>
   </tr>
-  <?php } # End if NewTorrent line 256?>
 
   <!-- Encoding -->
   <tr id="codec_tr">
@@ -518,6 +507,7 @@ class TorrentForm
     </td>
   </tr>
 
+  <?php if ($this->NewTorrent) { ?>
   <!-- Platform: Sequences -->
   <tr id="media_tr">
     <td class="label">
@@ -649,6 +639,7 @@ class TorrentForm
       The class of technology used
     </td>
   </tr>
+  <?php } # End if NewTorrent?>
 
   <!-- Format: Sequences -->
   <tr id="container_tr">
@@ -826,8 +817,9 @@ class TorrentForm
           } ?>
       </select>
 
-      <input type="text" id="resolution" name="resolution" size="10" class="hidden"
-        value="<?= ($Torrent['Resolution']??'') ?>"
+      <!-- Enter your own -->
+      <input type="text" id="resolution" name="resolution" size="10" maxlength="20" class="hidden"
+        value="<?=($Torrent['Resolution']??'')?>"
         readonly>
       </input>
       <script>
@@ -840,8 +832,8 @@ class TorrentForm
     </td>
   </tr>
 
-  <!-- Tags -->
   <?php if ($this->NewTorrent) { ?>
+  <!-- Tags -->
   <tr id="tags_tr">
     <td class="label">
       Tags
@@ -860,15 +852,17 @@ class TorrentForm
             G::$Cache->cache_value('genre_tags', $GenreTags, 3600*6);
         }
       ?>
+
       <select id="genre_tags" name="genre_tags" onchange="add_tag(); return false;" <?= ($this->DisabledFlag) ? ' disabled="disabled"' : '' ?>>
         <option>---</option>
         <?php foreach (Misc::display_array($GenreTags) as $Genre) { ?>
-        <option value="<?= $Genre ?>"><?= $Genre ?>
+        <option value="<?=$Genre?>"><?=$Genre?>
         </option>
         <?php } ?>
       </select>
+
       <input type="text" id="tags" name="tags" size="60"
-        value="<?= display_str(implode(', ', explode(',', $Torrent['TagList']))) ?>"
+        value="<?=display_str(implode(', ', explode(',', $Torrent['TagList'])))?>"
         <?php Users::has_autocomplete_enabled('other'); ?>
       /><br />
       Comma-seperated list of at least 5 tags
@@ -880,8 +874,8 @@ class TorrentForm
     <td class="label">Picture</td>
     <td>
       <input type="text" id="image" name="image" size="60"
-        value="<?= display_str($Torrent['Image']) ?>"
-        <?= $this->Disabled ?> /><br />
+        value="<?=display_str($Torrent['Image'])?>"
+        <?=$this->Disabled?> /><br />
       A meaningful picture, e.g., the specimen or a thumbnail
     </td>
   </tr>
@@ -892,10 +886,10 @@ class TorrentForm
     <td class="label">Mirrors</td>
     <td>
       <textarea rows="1" cols="60" name="mirrors"
-        id="mirrors"><?= display_str($Torrent['Mirrors'])?></textarea>
+        id="mirrors"><?=display_str($Torrent['Mirrors'])?></textarea>
       <strong class="important_text">Experimental.</strong>
-      Up to two FTP/HTTP addresses that either point directly to a file, or for multi-file torrents, to the enclosing
-      folder
+      Up to two FTP/HTTP addresses that either point directly to a file,
+      or for multi-file torrents, to the enclosing folder
   </tr>
   <?php } ?>
 
@@ -905,7 +899,7 @@ class TorrentForm
     <td class="label">Publications</td>
     <td>
       <textarea rows="8" cols="60" name="screenshots"
-        id="screenshots"><?= display_str($Torrent['Screenshots'])?></textarea>
+        id="screenshots"><?=display_str($Torrent['Screenshots'])?></textarea>
       Up to ten DOI numbers, one per line
   </tr>
   <?php } ?>
@@ -933,7 +927,7 @@ class TorrentForm
       General info about the torrent subject's function or significance
     </td>
   </tr>
-  <?php } # End if NewTorrent line 646?>
+  <?php } # End if NewTorrent?>
 
   <!-- Torrent description -->
   <tr id="release_desc_tr">
