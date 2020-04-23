@@ -24,7 +24,7 @@ $Owner = display_str($Owner);
 ?>
 <div class="header">
   <h2>Reports v2 Information</h2>
-<?  include('header.php'); ?>
+<?php include('header.php'); ?>
 </div>
 <div class="thin float_clear">
   <div class="two_columns pad">
@@ -264,7 +264,7 @@ foreach ($Results as $Result) {
         </td>
         <td class="number_column"><?=number_format($Array['Count'])?></td>
       </tr>
-<?  } ?>
+<?php } ?>
     </table>
     <h3>Different view modes by report type</h3>
 <?

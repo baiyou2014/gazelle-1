@@ -13,10 +13,10 @@
 
         <strong>Send to: </strong>
         <select name="level">
-<?      if (!isset(G::$LoggedUser['LockedAccount'])) { ?>
+<?php if (!isset(G::$LoggedUser['LockedAccount'])) { ?>
           <option value="0" selected="selected">First Line Support</option>
           <option value="800">Forum Moderators</option>
-<?      } ?>
+<?php } ?>
           <option value="1000">Staff</option>
         </select>
 

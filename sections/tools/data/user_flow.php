@@ -103,7 +103,7 @@ View::show_header('User Flow', 'chart');
 $DB->set_query_id($RS);
 ?>
 <div class="thin">
-<?  if (!isset($_GET['page'])) { ?>
+<?php if (!isset($_GET['page'])) { ?>
   <div class="box pad center">
     <canvas class="chart" id="chart_user_timeline" data-chart='{
       "type": "line",
@@ -123,7 +123,7 @@ $DB->set_query_id($RS);
       }
     }'></canvas>
   </div>
-<?  } ?>
+<?php } ?>
   <div class="linkbox">
 <?
 $Pages = Format::get_pages($Page, $Results, DAYS_PER_PAGE, 11);
@@ -155,7 +155,7 @@ echo $Pages;
       <td><?=number_format($TotalOut)?></td>
       <td><?=number_format($TotalGrowth)?></td>
     </tr>
-<?  } ?>
+<?php } ?>
   </table>
   </div>
   <div class="linkbox">

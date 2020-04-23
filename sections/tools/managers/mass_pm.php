@@ -22,10 +22,10 @@ View::show_header('Compose Mass PM', 'inbox,bbcode,jquery.validate,form_validate
         <h3>Class</h3>
         <select id="class_id" name="class_id">
           <option>---</option>
-<?          foreach ($Classes as $Class) {
+<?php foreach ($Classes as $Class) {
             if (!in_array($Class['ID'], $SkipClassIDs)) { ?>
               <option value="<?=$Class['ID']?>"><?=$Class['Name']?></option>
-<?            }
+<?php }
           } ?>
         </select>
         <h3>Subject</h3>

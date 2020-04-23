@@ -95,17 +95,17 @@ for ($i = 0; $i < $TagCount / 3; $i++) {
           <td style="text-align: center;"><?=number_format($TagUses1)?></td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td style="text-align: center;">
-<?    if ($TagID2) { ?>
+<?php if ($TagID2) { ?>
             <input type="checkbox" name="oldtags[]" value="<?=$TagID2?>" />
-<?    } ?>
+<?php } ?>
           </td>
           <td><?=$TagName2?></td>
           <td style="text-align: center;"><?=number_format($TagUses2)?></td>
           <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
           <td style="text-align: center;">
-<?    if ($TagID3) { ?>
+<?php if ($TagID3) { ?>
             <input type="checkbox" name="oldtags[]" value="<?=$TagID3?>" />
-<?    } ?>
+<?php } ?>
           </td>
           <td><?=$TagName3?></td>
           <td style="text-align: center;"><?=number_format($TagUses3)?></td>

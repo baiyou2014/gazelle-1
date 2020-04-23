@@ -29,15 +29,15 @@ View::show_header('Slaves');
 <div class="thin">
   <h2>Slavery</h2>
   <div class="box pad">
-<?  if (isset($Owner)) { ?>
+<?php if (isset($Owner)) { ?>
     <h3>You are owned by <?=Users::format_username($Owner, false, true, true)?></h3>
-<?  } else { ?>
+<?php } else { ?>
     <h3>You are free</h3>
-<?  } ?>
+<?php } ?>
   </div>
-<?  if (sizeof($Slaves) == 0) { ?>
+<?php if (sizeof($Slaves) == 0) { ?>
   <h3>You have no slaves</h3>
-<?  } else { ?>
+<?php } else { ?>
   <h2>Your slaves</h2>
   <div class="box">
     <table>
@@ -46,15 +46,15 @@ View::show_header('Slaves');
         <td>Level</td>
         <td>Release</td>
       </tr>
-<?    foreach ($Slaves as $Slave) { ?>
+<?php foreach ($Slaves as $Slave) { ?>
       <tr>
         <td><?=Users::format_username($Slave['ID'], false, true, true)?></td>
         <td><?=number_format($Slave['Level'])?></td>
         <td><form method="post"><button type="submit" name="release" value=<?=$Slave['ID']?>>Release</button></form></td>
       </tr>
-<?    } ?>
+<?php } ?>
     </table>
   </div>
-<?  } ?>
+<?php } ?>
 </div>
 <? View::show_footer(); ?>

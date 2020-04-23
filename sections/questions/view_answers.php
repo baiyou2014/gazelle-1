@@ -40,15 +40,15 @@ View::show_header($UserInfo['Username'] . "'s answers", 'questions,bbcode');
     <h2><?=$UserInfo['Username']?>'s Answers</h2>
   </div>
   <div class="linkbox">
-<?  if (check_perms("users_mod")) { ?>
+<?php if (check_perms("users_mod")) { ?>
     <a class="brackets" href="questions.php">View questions</a>
-<?  } else { ?>
+<?php } else { ?>
     <a class="brackets" href="questions.php">Ask question</a>
-<?  } ?>
+<?php } ?>
     <a class="brackets" href="questions.php?action=answers">View staff answers</a>
     <a class="brackets" href="questions.php?action=popular_questions">Popular questions</a>
   </div>
-<?  foreach($Questions as $Question) { ?>
+<?php foreach($Questions as $Question) { ?>
   <div id="question<?=$Question['ID']?>" class="box box2">
     <div class="head">
       <span>
@@ -56,7 +56,7 @@ View::show_header($UserInfo['Username'] . "'s answers", 'questions,bbcode');
         Question by <?=Users::format_username($Question['UserID'])?> - <?=time_diff($Question['QuestionDate'])?>
       </span>
       <span class="float_right">
-<?    if ($Question['Responses'] > 0) { ?>
+<?php if ($Question['Responses'] > 0) { ?>
         <a href="#" data-gazelle-userid="<?=$UserID?>" id="<?=$Question['ID']?>" class="view_responses brackets"><?=$Question['Responses'] == 1 ? ("View " . $Question['Responses'] . " other response") : ("View " . $Question['Responses'] . " other responses")?></a>
         -
 <?
@@ -74,14 +74,14 @@ View::show_header($UserInfo['Username'] . "'s answers", 'questions,bbcode');
     if ($LoggedUser['ID'] == $UserID) {
 ?>
         <a href="questions.php?action=edit&amp;id=<?=$Question['ID']?>&amp;userid=<?=$UserID?>" class="brackets">Edit</a>
-<?    } ?>
+<?php } ?>
       </span>
     </div>
     <div class="pad">
 <?=     Text::full_format("[quote=" . $Question['Username'] . "]". $Question['Question'] . "[/quote]\n". $Question['Answer'])?>
     </div>
   </div>
-<?  } ?>
+<?php } ?>
 </div>
 <?
 View::show_footer();

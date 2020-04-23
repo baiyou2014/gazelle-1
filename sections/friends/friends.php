@@ -74,7 +74,7 @@ foreach ($Friends as $Friend) {
     <tr class="colhead">
       <td colspan="<?=(Users::has_avatars_enabled() ? 3 : 2)?>">
         <span class="float_left"><?=Users::format_username($FriendID, true, true, true, true)?>
-<?  if (check_paranoia('ratio', $Paranoia, $Class, $FriendID)) { ?>
+<?php if (check_paranoia('ratio', $Paranoia, $Class, $FriendID)) { ?>
         &nbsp;Ratio: <strong><?=Format::get_ratio_html($Uploaded, $Downloaded)?></strong>
 <?
   }
@@ -86,19 +86,19 @@ foreach ($Friends as $Friend) {
   if (check_paranoia('downloaded', $Paranoia, $Class, $FriendID)) {
 ?>
         &nbsp;Down: <strong><?=Format::get_size($Downloaded)?></strong>
-<?  } ?>
+<?php } ?>
         </span>
-<?  if (check_paranoia('lastseen', $Paranoia, $Class, $FriendID)) { ?>
+<?php if (check_paranoia('lastseen', $Paranoia, $Class, $FriendID)) { ?>
         <span class="float_right"><?=time_diff($LastAccess)?></span>
-<?  } ?>
+<?php } ?>
       </td>
     </tr>
     <tr>
-<?  if (Users::has_avatars_enabled()) { ?>
+<?php if (Users::has_avatars_enabled()) { ?>
       <td class="col_avatar avatar" valign="top">
         <?=Users::show_avatar($Avatar, $FriendID, $Username, $HeavyInfo['DisableAvatars'])?>
       </td>
-<?  } ?>
+<?php } ?>
       <td valign="top">
         <input type="hidden" name="friendid" value="<?=$FriendID?>" />
 

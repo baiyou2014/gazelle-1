@@ -79,9 +79,9 @@ View::show_header($Title);
         <?=$User['IconMouseOverText']?>
       </td>
       <td style="word-wrap: break-word;">
-<?    if (!empty($User['CustomIcon'])) { ?>
+<?php if (!empty($User['CustomIcon'])) { ?>
         <img src="<?=ImageTools::process($User['CustomIcon'])?>" width="15" height="13" alt="" />
-<?    } ?>
+<?php } ?>
       </td>
       <td style="word-wrap: break-word;">
         <?=$User['CustomIconLink']?>

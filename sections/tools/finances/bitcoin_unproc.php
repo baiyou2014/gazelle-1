@@ -60,7 +60,7 @@ if (!empty($NewDonations)) {
       <td><?=(int)Donations::get_rank($UserID)?></td>
       <td><?=(int)Donations::get_special_rank($UserID)?></td>
     </tr>
-<?  }
+<?php }
 } else { ?>
     <tr>
       <td colspan="7">No unprocessed Bitcoin donations</td>

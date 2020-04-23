@@ -69,13 +69,13 @@ if (!$ContestSettings['start'] || !$ContestSettings['end']) {
           <td>User</td>
           <td>Score</td>
         </tr>
-  <?   foreach ($Scores as $Place => $Score) { ?>
+  <?php foreach ($Scores as $Place => $Score) { ?>
     <tr class="row">
       <td><?=($Place+1)?></td>
       <td><a href="/user.php?id=<?=$Score['ID']?>"><?=$Score['Username']?></a></td>
       <td><?=$Score['Uploads']?></td>
     </tr>
-  <?   } ?>
+  <?php } ?>
       </table>
   <? } else { ?>
       <h2>No Scores Yet</h2>

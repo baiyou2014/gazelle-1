@@ -116,9 +116,9 @@ if (check_perms('admin_manage_blog')) {
         <div class="pad">
           <input type="hidden" name="action" value="<?=empty($_GET['action']) ? 'takenewblog' : 'takeeditblog'?>" />
           <input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
-<?  if (!empty($_GET['action']) && $_GET['action'] == 'editblog') { ?>
+<?php if (!empty($_GET['action']) && $_GET['action'] == 'editblog') { ?>
           <input type="hidden" name="blogid" value="<?=$BlogID; ?>" />
-<?  } ?>
+<?php } ?>
           <h3>Title</h3>
           <input type="text" name="title" size="95"<?=!empty($Title) ? ' value="'.display_str($Title).'"' : '';?> /><br />
           <h3>Body</h3>
@@ -178,17 +178,17 @@ foreach ($Blog as $BlogItem) {
   <div id="blog<?=$BlogID?>" class="box blog_post">
     <div class="head">
       <strong><?=$Title?></strong> - posted <?=time_diff($BlogTime);?> by <a href="user.php?id=<?=$AuthorID?>"><?=$Author?></a>
-<?  if (check_perms('admin_manage_blog')) { ?>
+<?php if (check_perms('admin_manage_blog')) { ?>
       - <a href="blog.php?action=editblog&amp;id=<?=$BlogID?>" class="brackets">Edit</a>
       <a href="blog.php?action=deleteblog&amp;id=<?=$BlogID?>&amp;auth=<?=$LoggedUser['AuthKey']?>" class="brackets">Delete</a>
-<?  } ?>
+<?php } ?>
     </div>
     <div class="pad">
           <?=Text::full_format($Body)?>
-<?  if ($ThreadID) { ?>
+<?php if ($ThreadID) { ?>
       <br /><br />
       <em><a href="forums.php?action=viewthread&amp;threadid=<?=$ThreadID?>">Discuss this post here</a></em>
-<?    if (check_perms('admin_manage_blog')) { ?>
+<?php if (check_perms('admin_manage_blog')) { ?>
       <a href="blog.php?action=deadthread&amp;id=<?=$BlogID?>&amp;auth=<?=$LoggedUser['AuthKey']?>" class="brackets">Remove link</a>
 <?
     }

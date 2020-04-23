@@ -135,9 +135,9 @@ View::show_header('Report a '.$Type['title'], 'bbcode,jquery.validate,form_valid
   <div class="box pad">
     <p>Following these guidelines will help the moderators deal with your report in a timely fashion. </p>
     <ul>
-<?  foreach ($Type['guidelines'] as $Guideline) { ?>
+<?php foreach ($Type['guidelines'] as $Guideline) { ?>
       <li><?=$Guideline?></li>
-<?  } ?>
+<?php } ?>
     </ul>
     <p>In short, please include as much detail as possible when reporting. Thank you. </p>
   </div>
@@ -185,9 +185,9 @@ switch ($Short) {
           <td>
             <select id="releasetype" name="releasetype">
               <option value="0">---</option>
-<?    foreach ($ReleaseTypes as $Key => $Val) { ?>
+<?php foreach ($ReleaseTypes as $Key => $Val) { ?>
               <option value="<?=$Key?>"<?=(!empty($ReleaseType) ? ($Key == $ReleaseType ? ' selected="selected"' : '') : '')?>><?=$Val?></option>
-<?    } ?>
+<?php } ?>
             </select>
           </td>
         </tr>

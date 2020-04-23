@@ -48,7 +48,7 @@ $Results = $DB->to_array();
         <td><?=$Username?></td>
         <td class="number_column"><?=number_format($Reports)?></td>
       </tr>
-<?  } ?>
+<?php } ?>
     </table>
 <?
 $DB->query("
@@ -81,7 +81,7 @@ $Results = $DB->to_array();
         <td><?=$Username?></td>
         <td class="number_column"><?=number_format($Reports)?></td>
       </tr>
-<?  } ?>
+<?php } ?>
     </table>
 <?
 $DB->query("
@@ -114,7 +114,7 @@ $Results = $DB->to_array();
         <td><?=$Username?></td>
         <td class="number_column"><?=number_format($Reports)?></td>
       </tr>
-<?  } ?>
+<?php } ?>
     </table>
 <?
 $DB->query("
@@ -145,7 +145,7 @@ $Results = $DB->to_array();
         <td><?=$Username?></td>
         <td class="number_column"><?=number_format($Reports)?></td>
       </tr>
-<?  } ?>
+<?php } ?>
     </table>
 <?
 } //if (check_perms('admin_reports')) ?>

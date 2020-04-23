@@ -59,7 +59,7 @@ if (($CollageCount < $LoggedUser['Permissions']['MaxCollages']) && check_perms('
 <?
   if (($CollageCount < $LoggedUser['Permissions']['MaxCollages']) && check_perms('site_collages_personal')) { ?>
             <li><strong>Personal</strong> - You can put whatever you want here. It is your own personal collection.</li>
-<?  } ?>
+<?php } ?>
           </ul>
         </td>
       </tr>

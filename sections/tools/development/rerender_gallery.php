@@ -111,7 +111,7 @@ foreach ($Styles as $Style) {
     }
 ?>
           </p>
-<?  } ?>
+<?php } ?>
         </div>
 <? } ?>
       </div>

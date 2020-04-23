@@ -107,7 +107,7 @@ View::show_header('Staff Tools');
 <?=       $ToolsHTML ?>
       </table>
     </div>
-<?  } ?>
+<?php } ?>
   <!-- end left column -->
   </div>
   <div class="permission_container">
@@ -166,7 +166,7 @@ View::show_header('Staff Tools');
 <?=       $ToolsHTML ?>
       </table>
     </div>
-<?  } ?>
+<?php } ?>
   <!-- end middle column -->
   </div>
   <div class="permission_container">
@@ -236,7 +236,7 @@ View::show_header('Staff Tools');
 <?=       $ToolsHTML ?>
       </table>
     </div>
-<?  } ?>
+<?php } ?>
   <!-- end right column -->
   </div>
 </div>

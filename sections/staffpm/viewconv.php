@@ -96,9 +96,9 @@ if ($ConvID = (int)$_GET['id']) {
           <?=$UserString?>
         </strong>
         <?=time_diff($SentDate, 2, true)?>
-<?    if ($Status != 'Resolved') { ?>
+<?php if ($Status != 'Resolved') { ?>
         - <a href="#quickpost" onclick="Quote('<?=$MessageID?>', '<?=$Username?>');" class="brackets">Quote</a>
-<?    } ?>
+<?php } ?>
       </div>
       <div class="body"><?=Text::full_format($Message)?></div>
     </div>
@@ -129,7 +129,7 @@ if ($ConvID = (int)$_GET['id']) {
     while (list($ID, $Name) = $DB->next_record()) {
 ?>
           <option value="<?=$ID?>"><?=$Name?></option>
-<?    } ?>
+<?php } ?>
         </select>
         <input type="button" value="Set message" onclick="SetMessage();" />
         <input type="button" value="Create new / Edit" onclick="location.href='staffpm.php?action=responses&amp;convid=<?=$ConvID?>';" />
@@ -166,11 +166,11 @@ if ($ConvID = (int)$_GET['id']) {
 ?>
           <select id="assign_to" name="assign">
             <optgroup label="User classes">
-<?    // FLS "class"
+<?php // FLS "class"
     $Selected = ((!$AssignedToUser && $PMLevel == 0) ? ' selected="selected"' : '');
 ?>
               <option value="class_0"<?=$Selected?>>First Line Support</option>
-<?    // Staff classes
+<?php // Staff classes
     foreach ($ClassLevels as $Class) {
       // Create one <option> for each staff user class
       if ($Class['Level'] >= 650) {
@@ -183,7 +183,7 @@ if ($ConvID = (int)$_GET['id']) {
 ?>
             </optgroup>
             <optgroup label="Staff">
-<?    // Staff members
+<?php // Staff members
     $DB->query("
       SELECT
         m.ID,
@@ -198,7 +198,7 @@ if ($ConvID = (int)$_GET['id']) {
       $Selected = (($AssignedToUser == $ID) ? ' selected="selected"' : '');
 ?>
               <option value="user_<?=$ID?>"<?=$Selected?>><?=$Name?></option>
-<?    } ?>
+<?php } ?>
             </optgroup>
             <optgroup label="First Line Support">
 <?
@@ -219,11 +219,11 @@ if ($ConvID = (int)$_GET['id']) {
       $Selected = (($AssignedToUser == $ID) ? ' selected="selected"' : '');
 ?>
               <option value="user_<?=$ID?>"<?=$Selected?>><?=$Name?></option>
-<?    } ?>
+<?php } ?>
             </optgroup>
           </select>
           <input type="button" onclick="Assign();" value="Assign" />
-<?  } elseif ($IsFLS) { // FLS assign button ?>
+<?php } elseif ($IsFLS) { // FLS assign button ?>
           <input type="button" value="Assign to staff" onclick="location.href='staffpm.php?action=assign&amp;to=staff&amp;convid=<?=$ConvID?>';" />
           <input type="button" value="Assign to forum staff" onclick="location.href='staffpm.php?action=assign&amp;to=forum&amp;convid=<?=$ConvID?>';" />
 <?
@@ -231,21 +231,21 @@ if ($ConvID = (int)$_GET['id']) {
 
   if ($Status != 'Resolved') { ?>
           <input type="button" value="Resolve" onclick="location.href='staffpm.php?action=resolve&amp;id=<?=$ConvID?>';" />
-<?    if ($IsFLS) { //Moved by request ?>
+<?php if ($IsFLS) { //Moved by request ?>
           <input type="button" value="Common answers" data-toggle-target="#common_answers" />
-<?    } ?>
+<?php } ?>
           <input type="button" id="previewbtn" value="Preview" class="hidden button_preview_<?=$TextPrev->getID()?>" />
           <input type="submit" value="Send message" />
-<?  } else { ?>
+<?php } else { ?>
           <input type="button" value="Unresolve" onclick="location.href='staffpm.php?action=unresolve&amp;id=<?=$ConvID?>';" />
 <?
   }
   if (check_perms('users_give_donor')) { ?>
           <br />
           <input type="button" value="Make Donor" data-toggle-target="#make_donor_form" />
-<?  } ?>
+<?php } ?>
         </form>
-<?  if (check_perms('users_give_donor')) { ?>
+<?php if (check_perms('users_give_donor')) { ?>
         <div id="make_donor_form" class="hidden">
           <form action="staffpm.php" method="post">
             <input type="hidden" name="action" value="make_donor" />
@@ -266,7 +266,7 @@ if ($ConvID = (int)$_GET['id']) {
             <input type="submit" value="Submit" />
           </form>
         </div>
-<?  } ?>
+<?php } ?>
       </div>
     </div>
   </div>

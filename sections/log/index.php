@@ -26,22 +26,22 @@ include(SERVER_ROOT.'/sections/log/sphinx.php');
     </form>
   </div>
 
-<?  if ($TotalMatches > LOG_ENTRIES_PER_PAGE) { ?>
+<?php if ($TotalMatches > LOG_ENTRIES_PER_PAGE) { ?>
   <div class="linkbox">
 <?
   $Pages = Format::get_pages($Page, $TotalMatches, LOG_ENTRIES_PER_PAGE, 9);
   echo $Pages;?>
   </div>
-<?  } ?>
+<?php } ?>
   <div class="box">
   <table cellpadding="6" cellspacing="1" border="0" class="log_table" id="log_table" width="100%">
     <tr class="colhead">
       <td style="width: 180px;"><strong>Time</strong></td>
       <td><strong>Message</strong></td>
     </tr>
-<?  if ($QueryStatus) { ?>
+<?php if ($QueryStatus) { ?>
   <tr class="nobr"><td colspan="2">Search request failed (<?=$QueryError?>).</td></tr>
-<?  } elseif (!$DB->has_results()) { ?>
+<?php } elseif (!$DB->has_results()) { ?>
   <tr class="nobr"><td colspan="2">Nothing found!</td></tr>
 <?
   }

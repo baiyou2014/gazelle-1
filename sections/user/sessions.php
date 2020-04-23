@@ -89,7 +89,7 @@ View::show_header($Username.' &gt; Sessions');
           </form>
         </td>
       </tr>
-<?  } ?>
+<?php } ?>
     </table>
   </div>
 </div>

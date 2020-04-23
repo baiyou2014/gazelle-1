@@ -450,7 +450,7 @@ foreach ($ZIPOptions as $Option) {
     if ($OpenGroup) {
 ?>
           </optgroup>
-<?    } ?>
+<?php } ?>
           <optgroup label="<?=$ZIPGroups[$GroupID]?>">
 <?
     $OpenGroup = true;

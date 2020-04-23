@@ -170,13 +170,13 @@ if ($Sneaky) {
   <h2>Latest notifications</h2>
 </div>
 <div class="linkbox">
-<?  if ($FilterID) { ?>
+<?php if ($FilterID) { ?>
   <a href="torrents.php?action=notify<?=($Sneaky ? "&amp;userid=$UserID" : '')?>" class="brackets">View all</a>&nbsp;&nbsp;&nbsp;
-<?  } elseif (!$Sneaky) { ?>
+<?php } elseif (!$Sneaky) { ?>
   <a href="torrents.php?action=notify_clear&amp;auth=<?=$LoggedUser['AuthKey']?>" class="brackets">Clear all old</a>&nbsp;&nbsp;&nbsp;
   <a href="#" onclick="clearSelected(); return false;" class="brackets">Clear selected</a>&nbsp;&nbsp;&nbsp;
   <a href="torrents.php?action=notify_catchup&amp;auth=<?=$LoggedUser['AuthKey']?>" class="brackets">Catch up</a>&nbsp;&nbsp;&nbsp;
-<?  } ?>
+<?php } ?>
   <a href="user.php?action=notify" class="brackets">Edit filters</a>&nbsp;&nbsp;&nbsp;
 </div>
 <? if ($TorrentCount > NOTIFICATIONS_PER_PAGE) { ?>
@@ -211,19 +211,19 @@ if (empty($Results)) {
 ?>
 <div class="header">
   <h3>
-<?    if ($FilterResults['FilterLabel'] !== false) { ?>
+<?php if ($FilterResults['FilterLabel'] !== false) { ?>
     Matches for <a href="torrents.php?action=notify&amp;filterid=<?=$FilterID.($Sneaky ? "&amp;userid=$UserID" : '')?>"><?=$FilterResults['FilterLabel']?></a>
-<?    } else { ?>
+<?php } else { ?>
     Matches for unknown filter[<?=$FilterID?>]
-<?    } ?>
+<?php } ?>
   </h3>
 </div>
 <div class="linkbox notify_filter_links">
-<?    if (!$Sneaky) { ?>
+<?php if (!$Sneaky) { ?>
   <a href="#" onclick="clearSelected(<?=$FilterID?>); return false;" class="brackets">Clear selected in filter</a>
   <a href="torrents.php?action=notify_clear_filter&amp;filterid=<?=$FilterID?>&amp;auth=<?=$LoggedUser['AuthKey']?>" class="brackets">Clear all old in filter</a>
   <a href="torrents.php?action=notify_catchup_filter&amp;filterid=<?=$FilterID?>&amp;auth=<?=$LoggedUser['AuthKey']?>" class="brackets">Mark all in filter as read</a>
-<?    } ?>
+<?php } ?>
 </div>
 <form class="manage_form" name="torrents" id="notificationform_<?=$FilterID?>" action="">
 <table class="torrent_table cats checkboxes border slight_margin">
@@ -305,13 +305,13 @@ if (empty($Results)) {
       <div class="group_info clear">
         <span>
           [ <a href="torrents.php?action=download&amp;id=<?=$TorrentID?>&amp;authkey=<?=$LoggedUser['AuthKey']?>&amp;torrent_pass=<?=$LoggedUser['torrent_pass']?>" class="tooltip" title="Download">DL</a>
-<?      if (Torrents::can_use_token($TorrentInfo)) { ?>
+<?php if (Torrents::can_use_token($TorrentInfo)) { ?>
           | <a href="torrents.php?action=download&amp;id=<?=$TorrentID?>&amp;authkey=<?=$LoggedUser['AuthKey']?>&amp;torrent_pass=<?=$LoggedUser['torrent_pass']?>&amp;usetoken=1" class="tooltip" title="Use a FL Token" onclick="return confirm('Are you sure you want to use a freeleech token here?');">FL</a>
 <?
       }
       if (!$Sneaky) { ?>
           | <a href="#" onclick="clearItem(<?=$TorrentID?>); return false;" class="tooltip" title="Remove from notifications list">CL</a>
-<?      } ?> ]
+<?php } ?> ]
         </span>
         <?=$DisplayName?>
         <div class="torrent_info">
@@ -319,14 +319,14 @@ if (empty($Results)) {
           <? if ($Result['UnRead']) {
           echo '<strong class="new">New!</strong>';
           } ?>
-<?        if (Bookmarks::has_bookmarked('torrent', $GroupID)) { ?>
+<?php if (Bookmarks::has_bookmarked('torrent', $GroupID)) { ?>
           <span class="remove_bookmark float_right">
             <a href="#" id="bookmarklink_torrent_<?=$GroupID?>" class="brackets" onclick="Unbookmark('torrent', <?=$GroupID?>, 'Bookmark'); return false;">Remove bookmark</a>
           </span>
-<?        } else { ?>
+<?php } else { ?>
           <span class="add_bookmark float_right">
             <a href="#" id="bookmarklink_torrent_<?=$GroupID?>" class="brackets" onclick="Bookmark('torrent', <?=$GroupID?>, 'Remove bookmark'); return false;">Bookmark</a>
-<?        } ?>
+<?php } ?>
           </span>
         </div>
         <div class="tags"><?=$TorrentTags->format()?></div>
@@ -350,6 +350,6 @@ if (empty($Results)) {
 
   if ($Pages) { ?>
   <div class="linkbox"><?=$Pages?></div>
-<?  } ?>
+<?php } ?>
 </div>
 <? View::show_footer(); ?>

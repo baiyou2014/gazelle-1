@@ -202,22 +202,22 @@ View::show_header('Reports V2!', 'reportsv2,bbcode');
 ?>
 <div class="header">
   <h2><?=$Title?></h2>
-<?  include('header.php'); ?>
+<?php include('header.php'); ?>
 </div>
 <div class="buttonbox pad center">
-<?  if ($View !== 'resolved') { ?>
+<?php if ($View !== 'resolved') { ?>
   <span class="tooltip" title="Resolves *all* checked reports with their respective resolutions"><input type="button" onclick="MultiResolve();" value="Multi-resolve" /></span>
   <span class="tooltip" title="Assigns all of the reports on the page to you!"><input type="button" onclick="Grab();" value="Claim all" /></span>
-<?  }
+<?php }
   if ($View === 'staff' && $LoggedUser['ID'] == $ID) { ?>
   | <span class="tooltip" title="Unclaim all of the reports currently displayed"><input type="button" onclick="GiveBack();" value="Unclaim all" /></span>
-<?  } ?>
+<?php } ?>
 </div>
-<?  if ($PageLinks) { ?>
+<?php if ($PageLinks) { ?>
 <div class="linkbox">
   <?=$PageLinks?>
 </div>
-<?  } ?>
+<?php } ?>
 <div id="all_reports" style="width: 80%; margin-left: auto; margin-right: auto;">
 <?
 if (count($Reports) === 0) {
@@ -312,18 +312,18 @@ if (count($Reports) === 0) {
         <tr>
           <td class="label"><a href="reportsv2.php?view=report&amp;id=<?=$ReportID?>">Reported</a> torrent:</td>
           <td colspan="3">
-<?      if (!$GroupID) { ?>
+<?php if (!$GroupID) { ?>
             <a href="log.php?search=Torrent+<?=$TorrentID?>"><?=$TorrentID?></a> (Deleted)
-<?      } else { ?>
+<?php } else { ?>
             <?=$LinkName?>
             <a href="torrents.php?action=download&amp;id=<?=$TorrentID?>&amp;authkey=<?=$LoggedUser['AuthKey']?>&amp;torrent_pass=<?=$LoggedUser['torrent_pass']?>" title="Download" class="brackets tooltip">DL</a>
             uploaded by <a href="user.php?id=<?=$UploaderID?>"><?=$UploaderName?></a> <?=time_diff($Time)?>
             <br />
-<?        if ($ReporterName == '') {
+<?php if ($ReporterName == '') {
           $ReporterName = 'System';
         } ?>
             <div style="text-align: right;">was reported by <a href="user.php?id=<?=$ReporterID?>"><?=$ReporterName?></a> <?=time_diff($ReportedTime)?> for the reason: <strong><?=$ReportType['title']?></strong></div>
-<?        if ($Status != 'Resolved') {
+<?php if ($Status != 'Resolved') {
 
           $DB->query("
             SELECT r.ID
@@ -337,7 +337,7 @@ if (count($Reports) === 0) {
             <div style="text-align: right;">
               <a href="reportsv2.php?view=group&amp;id=<?=$GroupID?>">There <?=(($GroupOthers > 1) ? "are $GroupOthers other reports" : "is 1 other report")?> for torrent(s) in this group</a>
             </div>
-<?          }
+<?php }
 
           $DB->query("
             SELECT t.UserID
@@ -351,7 +351,7 @@ if (count($Reports) === 0) {
             <div style="text-align: right;">
               <a href="reportsv2.php?view=uploader&amp;id=<?=$UploaderID?>">There <?=(($UploaderOthers > 1) ? "are $UploaderOthers other reports" : "is 1 other report")?> for torrent(s) uploaded by this user</a>
             </div>
-<?          }
+<?php }
 
           $DB->query("
             SELECT DISTINCT req.ID,
@@ -372,14 +372,14 @@ if (count($Reports) === 0) {
             <div style="text-align: right;">
               <strong class="important_text"><a href="user.php?id=<?=$FillerID?>"><?=$FillerName?></a> used this torrent to fill <a href="requests.php?action=view&amp;id=<?=$RequestID?>">this request</a> <?=time_diff($FilledTime)?></strong>
             </div>
-<?            }
+<?php }
           }
         }
       }
 ?>
           </td>
         </tr>
-<?      if ($Tracks) { ?>
+<?php if ($Tracks) { ?>
         <tr>
           <td class="label">Relevant tracks:</td>
           <td colspan="3">
@@ -402,7 +402,7 @@ if (count($Reports) === 0) {
           }
 ?>
             <a href="<?=$Link?>"><?=$Link?></a>
-<?        } ?>
+<?php } ?>
           </td>
         </tr>
 <?
@@ -476,7 +476,7 @@ if (count($Reports) === 0) {
         foreach ($Images as $Image) {
 ?>
             <img style="max-width: 200px;" class="lightbox-init" src="<?=ImageTools::process($Image)?>" alt="Relevant image" />
-<?        } ?>
+<?php } ?>
           </td>
         </tr>
 <?
@@ -485,7 +485,7 @@ if (count($Reports) === 0) {
           <td class="label">User comment:</td>
           <td colspan="3" class="wrap_overflow"><?=Text::full_format($UserComment)?></td>
         </tr>
-<?            // END REPORTED STUFF :|: BEGIN MOD STUFF
+<?php // END REPORTED STUFF :|: BEGIN MOD STUFF
       if ($Status == 'InProgress') { ?>
         <tr>
           <td class="label">In progress by:</td>
@@ -493,7 +493,7 @@ if (count($Reports) === 0) {
             <a href="user.php?id=<?=$ResolverID?>"><?=$ResolverName?></a>
           </td>
         </tr>
-<?      }
+<?php }
       if ($Status != 'Resolved') { ?>
         <tr>
           <td class="label">Report comment:</td>
@@ -518,21 +518,21 @@ if (count($Reports) === 0) {
 
         foreach ($TypeList as $Type => $Data) { ?>
               <option value="<?=$Type?>"><?=$Data['title']?></option>
-<?        } ?>
+<?php } ?>
             </select>
             <span id="options<?=$ReportID?>">
-<?        if (check_perms('torrents_delete')) { ?>
+<?php if (check_perms('torrents_delete')) { ?>
               <span class="tooltip" title="Delete torrent?">
                 <label for="delete<?=$ReportID?>"><strong>Delete</strong></label>
                 <input type="checkbox" name="delete" id="delete<?=$ReportID?>" />
               </span>
-<?        } ?>
+<?php } ?>
               <span class="tooltip" title="Warning length in weeks">
                 <label for="warning<?=$ReportID?>"><strong>Warning</strong></label>
                 <select name="warning" id="warning<?=$ReportID?>">
-<?        for ($i = 0; $i < 9; $i++) { ?>
+<?php for ($i = 0; $i < 9; $i++) { ?>
                   <option value="<?=$i?>"><?=$i?></option>
-<?        } ?>
+<?php } ?>
                 </select>
               </span>
               <span class="tooltip" title="Remove upload privileges?">
@@ -582,16 +582,16 @@ if (count($Reports) === 0) {
           <td colspan="4" style="text-align: center;">
             <input type="button" value="Invalidate report" onclick="Dismiss(<?=$ReportID?>);" />
             <input type="button" value="Resolve report manually" onclick="ManualResolve(<?=$ReportID?>);" />
-<?          if ($Status == 'InProgress' && $LoggedUser['ID'] == $ResolverID) { ?>
+<?php if ($Status == 'InProgress' && $LoggedUser['ID'] == $ResolverID) { ?>
             | <input type="button" value="Unclaim" onclick="GiveBack(<?=$ReportID?>);" />
-<?          } else { ?>
+<?php } else { ?>
             | <input id="grab<?=$ReportID?>" type="button" value="Claim" onclick="Grab(<?=$ReportID?>);" />
-<?          } ?>
+<?php } ?>
             | Multi-resolve <input type="checkbox" name="multi" id="multi<?=$ReportID?>" checked="checked" />
             | <input type="button" id="submit_<?=$ReportID?>" value="Submit" onclick="TakeResolve(<?=$ReportID?>);" />
           </td>
         </tr>
-<?        } else { ?>
+<?php } else { ?>
         <tr>
           <td class="label">Resolver:</td>
           <td colspan="3">
@@ -616,13 +616,13 @@ if (count($Reports) === 0) {
             <?=$LogMessage; echo "\n"; ?>
           </td>
         </tr>
-<?          if ($GroupID) { ?>
+<?php if ($GroupID) { ?>
         <tr>
           <td colspan="4" style="text-align: center;">
             <input id="grab<?=$ReportID?>" type="button" value="Claim" onclick="Grab(<?=$ReportID?>);" />
           </td>
         </tr>
-<?          }
+<?php }
         } ?>
       </table>
       </div>

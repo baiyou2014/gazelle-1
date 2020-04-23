@@ -11,15 +11,15 @@ View::show_header('Staff PMs', 'staffpm');
   <div class="header">
     <h2>Staff PMs - Manage common responses</h2>
     <div class="linkbox">
-<?  if ($IsStaff) { ?>
+<?php if ($IsStaff) { ?>
       <a href="staffpm.php" class="brackets">View your unanswered</a>
-<?  } ?>
+<?php } ?>
       <a href="staffpm.php?view=unanswered" class="brackets">View all unanswered</a>
       <a href="staffpm.php?view=open" class="brackets">View unresolved</a>
       <a href="staffpm.php?view=resolved" class="brackets">View resolved</a>
-<?  if ($ConvID = (int)$_GET['convid']) { ?>
+<?php if ($ConvID = (int)$_GET['convid']) { ?>
       <a href="staffpm.php?action=viewconv&amp;id=<?=$ConvID?>" class="brackets">Back to conversation</a>
-<?  } ?>
+<?php } ?>
     </div>
   </div>
   <br />

@@ -56,10 +56,10 @@ while (list($PeerUserID, $Size, $Active, $Connectable, $Uploaded, $Remaining, $U
   if (check_perms('users_mod')) {
 ?>
     <td><?=Users::format_username($PeerUserID, false, false, false)?></td>
-<?  } else {
+<?php } else {
 ?>
     <td>Peer</td>
-<?  }
+<?php }
 ?>
     <td><?=($Active) ? '<span style="color: green;">Yes</span>' : '<span style="color: red;">No</span>' ?></td>
     <td><?= ($Connectable) ? '<span style="color: green;">Yes</span>' : '<span style="color: red;">No</span>' ?></td>

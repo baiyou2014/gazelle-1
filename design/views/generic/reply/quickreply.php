@@ -66,9 +66,9 @@
         <div class="box pad">
           <table class="forum_post box vertical_margin hidden preview_wrap" id="preview_wrap_<?=$ReplyText->getID()?>">
             <colgroup>
-<?  if (Users::has_avatars_enabled()) { ?>
+<?php if (Users::has_avatars_enabled()) { ?>
               <col class="col_avatar" />
-<?  } ?>
+<?php } ?>
               <col class="col_post_body" />
             </colgroup>
             <tr class="colhead_dark">
@@ -84,11 +84,11 @@
               </td>
             </tr>
             <tr>
-<?  if (Users::has_avatars_enabled()) { ?>
+<?php if (Users::has_avatars_enabled()) { ?>
               <td class="avatar valign_top">
                 <?=Users::show_avatar(G::$LoggedUser['Avatar'], G::$LoggedUser['ID'], G::$LoggedUser['Username'], (!isset($HeavyInfo['DisableAvatars']) || $HeavyInfo['DisableAvatars']))?>
               </td>
-<?  } ?>
+<?php } ?>
               <td class="body valign_top">
                 <div id="contentpreview" style="text-align: left;">
                   <div id="preview_<?=$ReplyText->getID()?>"></div>

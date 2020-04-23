@@ -205,14 +205,14 @@ if (check_perms('admin_reports')) {
         <tr>
           <td class="label">Torrent:</td>
           <td colspan="3">
-<?    if (!$GroupID) { ?>
+<?php if (!$GroupID) { ?>
             <a href="log.php?search=Torrent+<?=$TorrentID?>"><?=$TorrentID?></a> (Deleted)
-<?    } else { ?>
+<?php } else { ?>
             <?=$LinkName?>
             <a href="torrents.php?action=download&amp;id=<?=$TorrentID?>&amp;authkey=<?=$LoggedUser['AuthKey']?>&amp;torrent_pass=<?=$LoggedUser['torrent_pass']?>" class="brackets tooltip" title="Download">DL</a>
             uploaded by <a href="user.php?id=<?=$UploaderID?>"><?=$UploaderName?></a> <?=time_diff($Time)?>
             <br />
-<?      $DB->query("
+<?php $DB->query("
         SELECT r.ID
         FROM reportsv2 AS r
           LEFT JOIN torrents AS t ON t.ID = r.TorrentID
@@ -224,7 +224,7 @@ if (check_perms('admin_reports')) {
             <div style="text-align: right;">
               <a href="reportsv2.php?view=group&amp;id=<?=$GroupID?>">There <?=(($GroupOthers > 1) ? "are $GroupOthers reports" : "is 1 other report")?> for torrent(s) in this group</a>
             </div>
-<?      }
+<?php }
 
       $DB->query("
         SELECT t.UserID
@@ -238,7 +238,7 @@ if (check_perms('admin_reports')) {
             <div style="text-align: right;">
               <a href="reportsv2.php?view=uploader&amp;id=<?=$UploaderID?>">There <?=(($UploaderOthers > 1) ? "are $UploaderOthers reports" : "is 1 other report")?> for torrent(s) uploaded by this user</a>
             </div>
-<?      }
+<?php }
 
       $DB->query("
         SELECT DISTINCT req.ID,
@@ -255,13 +255,13 @@ if (check_perms('admin_reports')) {
             <div style="text-align: right;">
               <strong class="important_text"><a href="user.php?id=<?=$FillerID?>"><?=$FillerName?></a> used this torrent to fill <a href="requests.php?action=viewrequest&amp;id=<?=$RequestID?>">this request</a> <?=time_diff($FilledTime)?></strong>
             </div>
-<?        }
+<?php }
       }
     }
     ?>
           </td>
         </tr>
-<?        // END REPORTED STUFF :|: BEGIN MOD STUFF ?>
+<?php // END REPORTED STUFF :|: BEGIN MOD STUFF ?>
         <tr>
           <td class="label">
             <a href="javascript:Load('<?=$ReportID?>')" class="tooltip" title="Click here to reset the resolution options to their default values.">Resolve:</a>
@@ -291,9 +291,9 @@ foreach ($TypeList as $IType => $Data) {
               <span class="tooltip" title="Warning length in weeks">
                 <label for="warning<?=$ReportID?>"><strong>Warning</strong></label>
                 <select name="warning" id="warning<?=$ReportID?>">
-<?  for ($i = 0; $i < 9; $i++) { ?>
+<?php for ($i = 0; $i < 9; $i++) { ?>
                   <option value="<?=$i?>"<?=(($ReportType['resolve_options']['warn'] == $i) ? ' selected="selected"' : '')?>><?=$i?></option>
-<?  } ?>
+<?php } ?>
                 </select>
               </span>
               <span class="tooltip" title="Remove upload privileges?">

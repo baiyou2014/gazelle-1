@@ -67,7 +67,7 @@ foreach ($Results as $GroupID => $FlacID) {
         <div class="tags"><?=$TorrentTags->format()?></div>
       </td>
     </tr>
-<?  } ?>
+<?php } ?>
   </table>
 </div>
 <?

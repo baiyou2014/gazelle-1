@@ -23,13 +23,13 @@
   </div>
   <div class="center pad">
     <a href="http://anonym.to/?<?=$FeaturedMerchURL . $FeaturedMerch['ProductID']?>"><em>Product Page</em></a>
-<?    if ($FeaturedMerch['ArtistID'] > 0) {
+<?php if ($FeaturedMerch['ArtistID'] > 0) {
       $UserInfo = Users::user_info($FeaturedMerch['ArtistID']);
 ?>    - Artist: <a href="user.php?id=<?=$FeaturedMerch['ArtistID']?>"><?=$UserInfo['Username']?></a>
-<?    } ?>
+<?php } ?>
   </div>
 </div>
-<?  } else { //Disabled mystery box ?>
+<?php } else { //Disabled mystery box ?>
 <div class="box" style="display: none;">
   <div class="head colhead_dark">
     <strong>It's a mystery!</strong>

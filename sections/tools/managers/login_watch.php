@@ -31,9 +31,9 @@ foreach($AttemptIPs as $IP => $Time) {
       <td>Banned</td>
       <td>Time</td>
       <td>Submit</td>
-<?  if (check_perms('admin_manage_ipbans')) { ?>
+<?php if (check_perms('admin_manage_ipbans')) { ?>
       <td>Submit</td>
-<?  } ?>
+<?php } ?>
     </tr>
 <?
 while (list($IP, $Attempts, $Banned, $BannedUntil) = array_shift($AllAttempts)) {

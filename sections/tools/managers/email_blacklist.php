@@ -91,7 +91,7 @@ list ($NumResults) = $DB->next_record();
       </td>
     </form>
   </tr>
-<?  } ?>
+<?php } ?>
 </table>
 <div class="linkbox pager">
   <br />

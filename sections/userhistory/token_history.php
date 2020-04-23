@@ -137,10 +137,10 @@ foreach ($Tokens as $Token) {
     <td><?=time_diff($Time)?></td>
     <td><?=($Expired ? 'Yes' : 'No')?><?=(check_perms('users_mod') && !$Expired) ? " <a href=\"userhistory.php?action=token_history&amp;expire=1&amp;userid=$UserID&amp;torrentid=$TorrentID\">(expire)</a>" : ''; ?>
     </td>
-<?  if (check_perms('users_mod')) { ?>
+<?php if (check_perms('users_mod')) { ?>
     <td><?=Format::get_size($Downloaded)?></td>
     <td><?=$Uses?></td>
-<?  } ?>
+<?php } ?>
   </tr>
 <?
 }

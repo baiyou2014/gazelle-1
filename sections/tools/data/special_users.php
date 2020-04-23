@@ -25,7 +25,7 @@ if ($DB->has_results()) {
       <td><?=Users::format_username($UserID, true, true, true, true)?></td>
       <td><a href="user.php?action=permissions&amp;userid=<?=$UserID?>">Manage</a></td>
     </tr>
-<?  } ?>
+<?php } ?>
   </table>
 <?
 } else { ?>

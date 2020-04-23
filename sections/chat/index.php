@@ -29,7 +29,7 @@ if (false && empty($IRCKey)) {
     <h3 id="irc">IRC Rules - Please read these carefully!</h3>
   </div>
   <div class="box pad" style="padding: 10px 10px 10px 20px;">
-<?    Rules::display_irc_chat_rules() ?>
+<?php Rules::display_irc_chat_rules() ?>
     <form class="confirm_form center" name="chat" method="post" action="chat.php">
       <input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
       <input type="submit" name="accept" value="I agree to these rules" />

@@ -82,11 +82,11 @@ while (list($ID, $CategoryID, $Sort, $Name, $Description, $MinClassRead, $MinCla
       <input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
       <td>
         <select name="categoryid">
-<?  reset($ForumCats);
+<?php reset($ForumCats);
   foreach ($ForumCats as $CurCat => $CatName) {
 ?>
           <option value="<?=$CurCat?>"<? if ($CurCat == $CategoryID) { echo ' selected="selected"'; } ?>><?=$CatName?></option>
-<?  } ?>
+<?php } ?>
         </select>
       </td>
       <td>
@@ -132,10 +132,10 @@ while (list($ID, $CategoryID, $Sort, $Name, $Description, $MinClassRead, $MinCla
       <input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
       <td>
         <select name="categoryid">
-<?  reset($ForumCats);
+<?php reset($ForumCats);
   foreach($ForumCats as $CurCat => $CatName) { ?>
           <option value="<?=$CurCat?>"<? if ($CurCat == $CategoryID) { echo ' selected="selected"'; } ?>><?=$CatName?></option>
-<?  } ?>
+<?php } ?>
         </select>
       </td>
       <td>

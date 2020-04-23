@@ -36,9 +36,9 @@ View::show_header(ucwords($Action) . ' Request');
         <input type="hidden" name="action" value="take<?=$Action?>" />
         <input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
         <input type="hidden" name="id" value="<?=$_GET['id']?>" />
-<?  if ($Action === 'delete') { ?>
+<?php if ($Action === 'delete') { ?>
         <div class="warning">You will <strong>not</strong> get your bounty back if you delete this request.</div>
-<?  } ?>
+<?php } ?>
         <strong>Reason:</strong>
         <input type="text" name="reason" size="30" />
         <input value="<?=ucwords($Action)?>" type="submit" />

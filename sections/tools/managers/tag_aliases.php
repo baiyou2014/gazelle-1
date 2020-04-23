@@ -48,9 +48,9 @@ if (check_perms('users_mod')) {
   <tr class="colhead">
     <td>Proper tag</td>
     <td>Renamed from</td>
-<?  if (check_perms('users_mod')) { ?>
+<?php if (check_perms('users_mod')) { ?>
     <td>Submit</td>
-<?  } ?>
+<?php } ?>
   </tr>
   <tr />
   <tr>
@@ -62,11 +62,11 @@ if (check_perms('users_mod')) {
       <td>
         <input type="text" name="badtag" />
       </td>
-<?  if (check_perms('users_mod')) { ?>
+<?php if (check_perms('users_mod')) { ?>
       <td>
         <input type="submit" value="Add alias" />
       </td>
-<?  } ?>
+<?php } ?>
     </form>
   </tr>
 <?
@@ -86,12 +86,12 @@ while (list($ID, $BadTag, $AliasTag) = $DB->next_record()) {
       <td>
         <input type="text" name="badtag" value="<?=$BadTag?>" />
       </td>
-<?  if (check_perms('users_mod')) { ?>
+<?php if (check_perms('users_mod')) { ?>
       <td>
         <input type="submit" name="save" value="Save alias" />
         <input type="submit" name="delete" value="Delete alias" />
       </td>
-<?  } ?>
+<?php } ?>
     </form>
   </tr>
 <?

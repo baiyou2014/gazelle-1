@@ -82,11 +82,11 @@ if ($_POST['id']) {
 ?>
 
 <div class="thin">
-<?  if ($Msg) { ?>
+<?php if ($Msg) { ?>
   <div class="center">
     <p style="color: red; text-align: center;"><?=$Msg?></p>
   </div>
-<?  } ?>
+<?php } ?>
   <form class="manage_form" name="user" action="" method="post">
     <input type="hidden" id="action" name="action" value="manipulate_tree" />
     <input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />

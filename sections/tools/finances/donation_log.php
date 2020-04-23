@@ -164,7 +164,7 @@ if (empty($_GET['email']) && empty($_GET['source']) && empty($_GET['username']) 
       <td><?=display_str($Donation['Reason'])?></td>
       <td><?=time_diff($Donation['Time'])?></td>
     </tr>
-<?  } ?>
+<?php } ?>
 <tr class="colhead">
   <td>Page Total</td>
   <td><?=$PageTotal?></td>

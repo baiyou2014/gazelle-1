@@ -210,7 +210,7 @@ if (!$OwnProfile) {
   if (!$DB->has_results()) {
 ?>
     <a href="friends.php?action=add&amp;friendid=<?=$UserID?>&amp;auth=<?=$LoggedUser['AuthKey']?>" class="brackets">Add to friends</a>
-<?  } ?>
+<?php } ?>
     <a href="reports.php?action=report&amp;type=user&amp;id=<?=$UserID?>" class="brackets">Report user</a>
 <?
 
@@ -326,14 +326,14 @@ if ($LoggedUser['Class'] >= 200 || $DB->has_results()) { ?>
     $Level = intval(((($Uploads**0.35)*1.5)+1) * max(($Upload+($Points*1000000)-$Download)/(1024**3), 1));
 ?>
       <p>This user is wild and level <?=$Level?></p>
-<?  if (!$OwnProfile) { ?>
+<?php if (!$OwnProfile) { ?>
       <p>Try to capture them with <?=BONUS_POINTS?>? The more you spend, the higher the chance of capture</p>
       <form action='store.php' method='post'>
         <input type='hidden' name='item' value='capture_user' />
         <input type='hidden' name='target' value='<?=$UserID?>' />
         <input type='text' name='amount' placeholder='<?=BONUS_POINTS?>' /><input type='submit' value='Capture' />
       </form>
-<?  }
+<?php }
   } ?>
     </div>
   </div>
@@ -342,7 +342,7 @@ if ($LoggedUser['Class'] >= 200 || $DB->has_results()) { ?>
       <div class="head colhead_dark">Statistics</div>
       <ul class="stats nobullet">
         <li>Joined: <?=$JoinedDate?></li>
-<?  if (($Override = check_paranoia_here('lastseen'))) { ?>
+<?php if (($Override = check_paranoia_here('lastseen'))) { ?>
         <li<?=($Override === 2 ? ' class="paranoia_override"' : '')?>>Last seen: <?=$LastAccess?></li>
 <?
   }
@@ -379,7 +379,7 @@ if ($LoggedUser['Class'] >= 200 || $DB->has_results()) { ?>
   if (($OwnProfile || check_perms('users_mod')) && $Warned) {
 ?>
         <li<?=($Override === 2 ? ' class="paranoia_override"' : '')?>>Warning expires in: <?=time_diff((date('Y-m-d H:i', strtotime($Warned))))?></li>
-<?  } ?>
+<?php } ?>
       </ul>
     </div>
 <?
@@ -455,7 +455,7 @@ $OverallRank = UserRank::overall_score($UploadedRank, $DownloadedRank, $UploadsR
     <div class="box box_info box_userinfo_percentile">
       <div class="head colhead_dark">Percentile Rankings (hover for values)</div>
       <ul class="stats nobullet">
-<?  if (($Override = check_paranoia_here('uploaded'))) { ?>
+<?php if (($Override = check_paranoia_here('uploaded'))) { ?>
         <li class="tooltip<?=($Override === 2 ? ' paranoia_override' : '')?>" title="<?=Format::get_size($Uploaded)?>">Data uploaded: <?=$UploadedRank === false ? 'Server busy' : number_format($UploadedRank)?></li>
 <?
   }
@@ -473,15 +473,15 @@ $OverallRank = UserRank::overall_score($UploadedRank, $DownloadedRank, $UploadsR
   }
   if (($Override = check_paranoia_here('requestsvoted_bounty'))) { ?>
         <li class="tooltip<?=($Override === 2 ? ' paranoia_override' : '')?>" title="<?=Format::get_size($TotalSpent)?>">Bounty spent: <?=$BountyRank === false ? 'Server busy' : number_format($BountyRank)?></li>
-<?  } ?>
+<?php } ?>
         <li class="tooltip" title="<?=number_format($ForumPosts)?>">Posts made: <?=$PostRank === false ? 'Server busy' : number_format($PostRank)?></li>
-<?  if (($Override = check_paranoia_here('artistsadded'))) { ?>
+<?php if (($Override = check_paranoia_here('artistsadded'))) { ?>
         <li class="tooltip<?=($Override === 2 ? ' paranoia_override' : '')?>" title="<?=number_format($ArtistsAdded)?>">Artists added: <?=$ArtistsRank === false ? 'Server busy' : number_format($ArtistsRank)?></li>
 <?
   }
   if (check_paranoia_here(array('uploaded', 'downloaded', 'uploads+', 'requestsfilled_count', 'requestsvoted_bounty', 'artistsadded'))) { ?>
         <li><strong>Overall rank: <?=$OverallRank === false ? 'Server busy' : number_format($OverallRank)?></strong></li>
-<?  } ?>
+<?php } ?>
       </ul>
     </div>
 <?
@@ -522,14 +522,14 @@ $OverallRank = UserRank::overall_score($UploadedRank, $DownloadedRank, $UploadsR
     <div class="box box_info box_userinfo_history">
       <div class="head colhead_dark">History</div>
       <ul class="stats nobullet">
-<?    if (check_perms('users_view_email', $Class)) { ?>
+<?php if (check_perms('users_view_email', $Class)) { ?>
         <li>Emails: <?=number_format($EmailChanges)?> <a href="userhistory.php?action=email2&amp;userid=<?=$UserID?>" class="brackets">View</a>&nbsp;<a href="userhistory.php?action=email&amp;userid=<?=$UserID?>" class="brackets">Legacy view</a></li>
 <?
     }
     if (check_perms('users_view_ips', $Class)) {
 ?>
         <li>IPs: <?=number_format($IPChanges)?> <a href="userhistory.php?action=ips&amp;userid=<?=$UserID?>" class="brackets">View</a>&nbsp;<a href="userhistory.php?action=ips&amp;userid=<?=$UserID?>&amp;usersonly=1" class="brackets">View users</a></li>
-<?      if (check_perms('users_view_ips', $Class) && check_perms('users_mod', $Class)) { ?>
+<?php if (check_perms('users_view_ips', $Class) && check_perms('users_mod', $Class)) { ?>
         <li>Tracker IPs: <?=number_format($TrackerIPs)?> <a href="userhistory.php?action=tracker_ips&amp;userid=<?=$UserID?>" class="brackets">View</a></li>
 <?
       }
@@ -543,10 +543,10 @@ $OverallRank = UserRank::overall_score($UploadedRank, $DownloadedRank, $UploadsR
 ?>
         <li>Passwords: <?=number_format($PasswordChanges)?> <a href="userhistory.php?action=passwords&amp;userid=<?=$UserID?>" class="brackets">View</a></li>
         <li>Stats: N/A <a href="userhistory.php?action=stats&amp;userid=<?=$UserID?>" class="brackets">View</a></li>
-<?    } ?>
+<?php } ?>
       </ul>
     </div>
-<?  } ?>
+<?php } ?>
     <div class="box box_info box_userinfo_personal">
       <div class="head colhead_dark">Personal</div>
       <ul class="stats nobullet">
@@ -561,7 +561,7 @@ if (!empty($UserInfo['ExtraClasses'])) {
   foreach ($UserInfo['ExtraClasses'] as $PermID => $Val) {
     ?>
             <li><?=$Classes[$PermID]['Name']?></li>
-<?  } ?>
+<?php } ?>
           </ul>
         </li>
 <?
@@ -580,13 +580,13 @@ if ($ParanoiaLevel == 0) {
 }
 ?>
         <li>Paranoia level: <span class="tooltip" title="<?=$ParanoiaLevel?>"><?=$ParanoiaLevelText?></span></li>
-<?  if (check_perms('users_view_email', $Class) || $OwnProfile) { ?>
+<?php if (check_perms('users_view_email', $Class) || $OwnProfile) { ?>
         <li>Email: <a href="mailto:<?=display_str($Email)?>"><?=display_str($Email)?></a>
-<?    if (check_perms('users_view_email', $Class)) { ?>
+<?php if (check_perms('users_view_email', $Class)) { ?>
           <a href="user.php?action=search&amp;email_history=on&amp;email=<?=display_str($Email)?>" title="Search" class="brackets tooltip">S</a>
-<?    } ?>
+<?php } ?>
         </li>
-<?  }
+<?php }
 
 if (check_perms('users_view_ips', $Class)) {
   $IP = apcu_exists('DBKEY') ? Crypto::decrypt($IP) : '[Encrypted]';
@@ -718,7 +718,7 @@ if (check_paranoia_here('snatched')) {
       <span class="float_right"><a onclick="$('#recent_snatches_images').gtoggle(); this.innerHTML = (this.innerHTML == 'Hide' ? 'Show' : 'Hide'); wall('#recent_snatches_images', '.collage_image', [2,3]); return false;" class="brackets">Show</a></span>&nbsp;
     </div>
     <div id="recent_snatches_images" class="collage_images hidden">
-<?    foreach ($RecentSnatches as $RS) {
+<?php foreach ($RecentSnatches as $RS) {
         $RSName = empty($RS['Name']) ? (empty($RS['NameRJ']) ? $RS['NameJP'] : $RS['NameRJ']) : $RS['Name'];
  ?>
       <div style='width: 100px;' class='collage_image' >
@@ -726,7 +726,7 @@ if (check_paranoia_here('snatched')) {
           <img class="tooltip" title="<?=display_str($RS['Artist'])?><?=display_str($RSName)?>" src="<?=ImageTools::process($RS['WikiImage'], 'thumb')?>" alt="<?=display_str($RS['Artist'])?><?=display_str($RSName)?>" width="100%" />
         </a>
       </div>
-<?    } ?>
+<?php } ?>
     </div>
   </div>
 <?
@@ -765,7 +765,7 @@ if (check_paranoia_here('uploads')) {
       <span class="float_right"><a onclick="$('#recent_uploads_images').gtoggle(); this.innerHTML = (this.innerHTML == 'Hide' ? 'Show' : 'Hide'); wall('#recent_uploads_images', '.collage_image', [2,3]); return false;" class="brackets">Show</a></span>&nbsp;
     </div>
     <div id="recent_uploads_images" class="collage_images hidden">
-<?    foreach ($RecentUploads as $RU) {
+<?php foreach ($RecentUploads as $RU) {
         $RUName = empty($RU['Name']) ? (empty($RU['NameRJ']) ? $RU['NameJP'] : $RU['NameRJ']) : $RU['Name'];
 ?>
       <div style='width: 100px;' class='collage_image' >
@@ -773,7 +773,7 @@ if (check_paranoia_here('uploads')) {
           <img class="tooltip" title="<?=$RU['Artist']?><?=$RUName?>" src="<?=ImageTools::process($RU['WikiImage'], 'thumb')?>" alt="<?=$RU['Artist']?><?=$RUName?>" width="100%" />
         </a>
       </div>
-<?    } ?>
+<?php } ?>
     </div>
   </div>
 <?
@@ -810,7 +810,7 @@ foreach ($Collages as $CollageInfo) {
       </span>
     </div>
     <div id="user_collage_images" class="collage_images" data-wall-child=".collage_image" data-wall-size="5">
-<?  foreach ($Collage as $C) {
+<?php foreach ($Collage as $C) {
       $Group = Torrents::get_groups(array($C['GroupID']), true, true, false);
       extract(Torrents::array_group($Group[$C['GroupID']]));
 
@@ -827,7 +827,7 @@ foreach ($Collages as $CollageInfo) {
           <img class="tooltip" title="<?=$Name?>" src="<?=ImageTools::process($C['WikiImage'], 'thumb')?>" alt="<?=$Name?>" width="100%" />
         </a>
       </div>
-<?  } ?>
+<?php } ?>
     </div>
   </div>
 <?
@@ -852,7 +852,7 @@ if ((check_perms('users_view_invites')) && $Invited > 0) {
         Invite Tree <span class="float_right"><a data-toggle-target="#invitetree" class="brackets">Toggle</a></span>
       </div>
       <div id="invitetree" class="hidden">
-<?        $Tree->make_tree(); ?>
+<?php $Tree->make_tree(); ?>
       </div>
     </div>
 <?
@@ -933,9 +933,9 @@ if (empty($LoggedUser['DisableRequests']) && check_paranoia_here('requestsvoted_
             </td>
             <td>
               <span id="vote_count_<?=$RequestID?>"><?=$VotesCount?></span>
-<?      if (check_perms('site_vote')) { ?>
+<?php if (check_perms('site_vote')) { ?>
               &nbsp;&nbsp; <a href="javascript:Vote(0, <?=$RequestID?>)" class="brackets">+</a>
-<?      } ?>
+<?php } ?>
             </td>
             <td>
               <span id="bounty_<?=$RequestID?>"><?=Format::get_size($Bounty)?></span>
@@ -944,7 +944,7 @@ if (empty($LoggedUser['DisableRequests']) && check_paranoia_here('requestsvoted_
               <?=time_diff($Request['TimeAdded']) ?>
             </td>
           </tr>
-<?    } ?>
+<?php } ?>
         </table>
       </div>
     </div>
@@ -1013,7 +1013,7 @@ if (check_perms('users_mod', $Class) || $IsFLS) {
           <td><?=$Assigned?></td>
           <td><?=$Resolver?></td>
         </tr>
-<?    } ?>
+<?php } ?>
       </table>
     </div>
 <?
@@ -1069,7 +1069,7 @@ if (check_perms('users_mod', $Class)) { ?>
           User Information
         </td>
       </tr>
-<?  if (check_perms('users_edit_usernames', $Class)) { ?>
+<?php if (check_perms('users_edit_usernames', $Class)) { ?>
       <tr>
         <td class="label">Username:</td>
         <td><input type="text" size="20" name="Username" value="<?=display_str($Username)?>" /></td>
@@ -1109,7 +1109,7 @@ if (check_perms('users_mod', $Class)) { ?>
       }
 ?>
             <option value="<?=$CurClass['ID']?>"<?=$Selected?>><?=$CurClass['Name'].' ('.$CurClass['Level'].')'?></option>
-<?    } ?>
+<?php } ?>
           </select>
         </td>
       </tr>
@@ -1140,13 +1140,13 @@ if (check_perms('users_mod', $Class)) { ?>
       $i++;
 ?>
         <input type="checkbox" id="perm_<?=$PermID?>" name="secondary_classes[]" value="<?=$PermID?>"<? if ($IsSet) { ?> checked="checked"<? } ?> />&nbsp;<label for="perm_<?=$PermID?>" style="margin-right: 10px;"><?=$PermName?></label>
-<?      if ($i % 3 == 0) {
+<?php if ($i % 3 == 0) {
         echo "\t\t\t\t<br />\n";
       }
     } ?>
       </td>
     </tr>
-<?  }
+<?php }
   if (check_perms('users_make_invisible')) {
 ?>
       <tr>
@@ -1271,7 +1271,7 @@ if (!$DisablePoints) {
           <button type="button" id="random_password">Generate</button>
         </td>
       </tr>
-<?  }
+<?php }
     if (check_perms('users_edit_badges')) {
 ?>
     <tr id="user_badge_edit_tr">
@@ -1286,7 +1286,7 @@ if (!$DisablePoints) {
     $i = 0;
     foreach (array_keys($AllBadges) as $BadgeID) {
       ?><input type="checkbox" name="badges[]" class="badge_checkbox" value="<?=$BadgeID?>" <?=(in_array($BadgeID, $UserBadgeIDs))?" checked":""?>/><?=Badges::display_badge($BadgeID, true)?>
-<?      $i++;
+<?php $i++;
       if ($i % 8 == 0) {
         echo "<br />";
       }
@@ -1294,10 +1294,10 @@ if (!$DisablePoints) {
 ?>
       </td>
     </tr>
-<?  } ?>
+<?php } ?>
     </table>
 
-<?  if (check_perms('users_warn')) { ?>
+<?php if (check_perms('users_warn')) { ?>
     <table class="layout box" id="warn_user_box">
       <tr class="colhead">
         <td colspan="2">
@@ -1310,7 +1310,7 @@ if (!$DisablePoints) {
           <input type="checkbox" name="Warned"<? if ($Warned) { ?> checked="checked"<? } ?> />
         </td>
       </tr>
-<?    if (!$Warned) { ?>
+<?php if (!$Warned) { ?>
       <tr>
         <td class="label">Expiration:</td>
         <td>
@@ -1323,7 +1323,7 @@ if (!$DisablePoints) {
           </select>
         </td>
       </tr>
-<?    } else { ?>
+<?php } else { ?>
       <tr>
         <td class="label">Extension:</td>
         <td>
@@ -1348,16 +1348,16 @@ if (!$DisablePoints) {
           </select>
         </td>
       </tr>
-<?    } ?>
+<?php } ?>
       <tr>
         <td class="label tooltip" title="This message *will* be sent to the user in the warning PM!">Warning reason:</td>
         <td>
           <input type="text" class="wide_input_text" name="WarnReason" />
         </td>
       </tr>
-<?  } ?>
+<?php } ?>
     </table>
-<?  if (check_perms('users_disable_any')) { ?>
+<?php if (check_perms('users_disable_any')) { ?>
     <table class="layout box">
       <tr class="colhead">
         <td colspan="2">
@@ -1380,14 +1380,14 @@ if (!$DisablePoints) {
         </td>
       </tr>
     </table>
-<?  }  ?>
+<?php }  ?>
     <table class="layout box" id="user_privs_box">
       <tr class="colhead">
         <td colspan="2">
           User Privileges
         </td>
       </tr>
-<?  if (check_perms('users_disable_posts') || check_perms('users_disable_any')) {
+<?php if (check_perms('users_disable_posts') || check_perms('users_disable_any')) {
     $DB->query("
       SELECT DISTINCT Email, IP, Time
       FROM users_history_emails
@@ -1399,7 +1399,7 @@ if (!$DisablePoints) {
         <td class="label">Disable:</td>
         <td>
           <input type="checkbox" name="DisablePosting" id="DisablePosting"<? if ($DisablePosting == 1) { ?> checked="checked"<? } ?> /> <label for="DisablePosting">Posting</label>
-<?    if (check_perms('users_disable_any')) { ?> |
+<?php if (check_perms('users_disable_any')) { ?> |
           <input type="checkbox" name="DisableAvatar" id="DisableAvatar"<? if ($DisableAvatar == 1) { ?> checked="checked"<? } ?> /> <label for="DisableAvatar">Avatar</label> |
           <input type="checkbox" name="DisableForums" id="DisableForums"<? if ($DisableForums == 1) { ?> checked="checked"<? } ?> /> <label for="DisableForums">Forums</label> |
           <input type="checkbox" name="DisableIRC" id="DisableIRC"<? if ($DisableIRC == 1) { ?> checked="checked"<? } ?> /> <label for="DisableIRC">IRC</label> |
@@ -1430,7 +1430,7 @@ if (!$DisablePoints) {
         $Address = apcu_exists('DBKEY') ? Crypto::decrypt($Address) : '[Encrypted]';
 ?>
             <option value="<?=display_str($Address)?>"><?=display_str($Address)?> - <?=display_str($IP)?></option>
-<?    } ?>
+<?php } ?>
           </select>
         </td>
       </tr>
@@ -1448,11 +1448,11 @@ if (!$DisablePoints) {
             <option value="0"<? if ($Enabled == '0') { ?> selected="selected"<? } ?>>Unconfirmed</option>
             <option value="1"<? if ($Enabled == '1') { ?> selected="selected"<? } ?>>Enabled</option>
             <option value="2"<? if ($Enabled == '2') { ?> selected="selected"<? } ?>>Disabled</option>
-<?    if (check_perms('users_delete_users')) { ?>
+<?php if (check_perms('users_delete_users')) { ?>
             <optgroup label="-- WARNING --">
               <option value="delete">Delete account</option>
             </optgroup>
-<?    } ?>
+<?php } ?>
           </select>
         </td>
       </tr>
@@ -1475,9 +1475,9 @@ if (!$DisablePoints) {
         </td>
       </tr>
 
-<?  } ?>
+<?php } ?>
     </table>
-<?  if (check_perms('users_logout')) { ?>
+<?php if (check_perms('users_logout')) { ?>
     <table class="layout box" id="session_box">
       <tr class="colhead">
         <td colspan="2">

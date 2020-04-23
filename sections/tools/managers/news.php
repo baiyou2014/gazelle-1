@@ -50,7 +50,7 @@ switch ($_GET['action']) {
 <!-- Why did someone add this?  <input type="datetime" name="datetime" value="<?=sqltime()?>" /> -->
       <br>
       <h3>Body</h3>
-<?    $Textarea = new TEXTAREA_PREVIEW('body', '', display_str($Body), 95, 15, true, false); ?>
+<?php $Textarea = new TEXTAREA_PREVIEW('body', '', display_str($Body), 95, 15, true, false); ?>
       <div class="center">
         <input type="button" value="Preview" class="hidden button_preview_<?=$Textarea->getID()?>">
         <input type="submit" value="<?= ($_GET['action'] == 'news') ? 'Create news post' : 'Edit news post';?>">

@@ -52,7 +52,7 @@ View::show_header('Gazelle Change Log');
   echo "\t\t$Pages\n";
 ?>
   </div>
-<?  if ($CanEdit) { ?>
+<?php if ($CanEdit) { ?>
   <div class="box box2 edit_changelog">
     <div class="head">
       <strong>Manually submit a new change to the change log</strong>
@@ -90,7 +90,7 @@ View::show_header('Gazelle Change Log');
   <div class="box box2 change_log_entry">
     <div class="head">
       <span><?=$Change['Time2']?> by <?=$Change['Author']?></span>
-<?    if ($CanEdit) { ?>
+<?php if ($CanEdit) { ?>
       <span class="float_right">
         <form id="delete_<?=$Change['ID']?>" method="post" action="">
           <input type="hidden" name="perform" value="remove" />
@@ -99,12 +99,12 @@ View::show_header('Gazelle Change Log');
         </form>
         <a href="#" onclick="$('#delete_<?=$Change['ID']?>').raw().submit(); return false;" class="brackets">Delete</a>
       </span>
-<?    } ?>
+<?php } ?>
     </div>
     <div class="pad">
       <?=$Change['Message']?>
     </div>
   </div>
-<?  } ?>
+<?php } ?>
 </div>
 <? View::show_footer(); ?>

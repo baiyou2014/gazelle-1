@@ -29,7 +29,7 @@ $DB->query($sql);
 
 ?>
 <div class="thin">
-<?  if ($Letter) { ?>
+<?php if ($Letter) { ?>
   <div class="header">
     <h2><?=$Title?></h2>
   </div>
@@ -40,16 +40,16 @@ $DB->query($sql);
       <td>Last updated on</td>
       <td>Last edited by</td>
     </tr>
-<?    while (list($ID, $Title, $Date, $UserID) = $DB->next_record()) { ?>
+<?php while (list($ID, $Title, $Date, $UserID) = $DB->next_record()) { ?>
     <tr>
       <td><a href="wiki.php?action=article&amp;id=<?=$ID?>"><?=$Title?></a></td>
       <td><?=$Date?></td>
       <td><?=Users::format_username($UserID, false, false, false)?></td>
     </tr>
-<?    } ?>
+<?php } ?>
   </table>
   </div>
-<?  } ?>
+<?php } ?>
   <div class="box pad center">
     <p>Search the wiki for user created tutorials and information.</p>
     <form class="search_form" name="wiki" action="wiki.php" method="get">

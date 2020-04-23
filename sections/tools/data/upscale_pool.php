@@ -80,10 +80,10 @@ if ($DB->has_results()) {
       <td><?=time_diff($RatioWatchEnds)?></td>
       <td><?//time_diff(strtotime($Joined), strtotime($RatioWatchEnds))?></td>
     </tr>
-<?  } ?>
+<?php } ?>
   </table>
   <div class="linkbox">
-<?  echo $Pages; ?>
+<?php echo $Pages; ?>
   </div>
 <?
 } else { ?>

@@ -95,15 +95,15 @@ echo "\t\t$Pages\n";
         <input type="radio" name="searchtype" value="subject"<?=(!empty($_GET['searchtype']) && $_GET['searchtype'] === 'subject' ? ' checked="checked"' : '')?> /> Subject
         <input type="radio" name="searchtype" value="message"<?=(!empty($_GET['searchtype']) && $_GET['searchtype'] === 'message' ? ' checked="checked"' : '')?> /> Message
         <span class="float_right">
-<?      // provide a temporary toggle for sorting PMs
+<?php // provide a temporary toggle for sorting PMs
     $ToggleTitle = 'Temporary toggle switch for sorting PMs. To permanently change the sorting behavior, edit the setting in your profile.';
     $BaseURL = 'inbox.php';
 
     if (isset($_GET['sort']) && $_GET['sort'] === 'unread') { ?>
           <a href="<?=$BaseURL?>" class="brackets tooltip" title="<?=$ToggleTitle?>">List latest first</a>
-<?    } else { ?>
+<?php } else { ?>
           <a href="<?=$BaseURL?>?sort=unread" class="brackets tooltip" title="<?=$ToggleTitle?>">List unread first</a>
-<?    } ?>
+<?php } ?>
         </span>
         <br />
         <input type="search" name="search" placeholder="<?=(!empty($_GET['search']) ? display_str($_GET['search']) : 'Search '.($Section === 'sentbox' ? 'sentbox' : 'inbox'))?>" />
@@ -122,16 +122,16 @@ echo "\t\t$Pages\n";
           <td width="50%">Subject</td>
           <td><?=($Section === 'sentbox' ? 'Receiver' : 'Sender')?></td>
           <td>Date</td>
-<?    if (check_perms('users_mod')) { ?>
+<?php if (check_perms('users_mod')) { ?>
           <td>Forwarded to</td>
-<?    } ?>
+<?php } ?>
         </tr>
 <?
   if ($Count == 0) { ?>
         <tr class="a">
           <td colspan="5">No results.</td>
         </tr>
-<?  } else {
+<?php } else {
     while (list($ConvID, $Subject, $Unread, $Sticky, $ForwardedID, $SenderID, $Date) = $DB->next_record()) {
       if ($Unread === '1') {
         $RowClass = 'unreadpm';
@@ -161,9 +161,9 @@ echo "\t\t$Pages\n";
           </td>
           <td><?=Users::format_username($SenderID, true, true, true, true)?></td>
           <td><?=time_diff($Date)?></td>
-<?      if (check_perms('users_mod')) { ?>
+<?php if (check_perms('users_mod')) { ?>
           <td><?=(($ForwardedID && $ForwardedID != $LoggedUser['ID']) ? Users::format_username($ForwardedID, false, false, false) : '')?></td>
-<?      } ?>
+<?php } ?>
         </tr>
 <?
     $DB->set_query_id($Results);

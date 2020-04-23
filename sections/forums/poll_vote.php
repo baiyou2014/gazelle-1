@@ -90,10 +90,10 @@ if (!isset($_POST['vote']) || !is_number($_POST['vote'])) {
   <input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
   <input type="hidden" name="large" value="<?=display_str($_POST['large'])?>" />
   <input type="hidden" name="topicid" value="<?=$TopicID?>" />
-<?  for ($i = 1, $il = count($Answers); $i <= $il; $i++) { ?>
+<?php for ($i = 1, $il = count($Answers); $i <= $il; $i++) { ?>
   <input type="radio" name="vote" id="answer_<?=$i?>" value="<?=$i?>" />
   <label for="answer_<?=$i?>"><?=display_str($Answers[$i])?></label><br />
-<?  } ?>
+<?php } ?>
   <br /><input type="radio" name="vote" id="answer_0" value="0" /> <label for="answer_0">Blank&#8202;&mdash;&#8202;Show the results!</label><br /><br />
   <input type="button" onclick="ajax.post('index.php', 'poll', function(response) { $('#poll_container').raw().innerHTML = response });" value="Vote" />
 </form>

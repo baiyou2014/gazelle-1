@@ -40,7 +40,7 @@ if ($DB->has_results()) {
       <td>User count</td>
       <td class="center">Actions</td>
     </tr>
-<?  while (list($ID, $Name, $Level, $Secondary, $UserCount) = $DB->next_record()) { ?>
+<?php while (list($ID, $Name, $Level, $Secondary, $UserCount) = $DB->next_record()) { ?>
     <tr>
       <td><?=display_str($Name); ?></td>
       <td><?=($Secondary ? 'Secondary' : $Level) ?></td>
@@ -50,7 +50,7 @@ if ($DB->has_results()) {
         <a href="#" onclick="return confirmDelete(<?=$ID?>);" class="brackets">Remove</a>
       </td>
     </tr>
-<?  } ?>
+<?php } ?>
   </table>
   </div>
 <?

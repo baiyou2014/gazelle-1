@@ -92,9 +92,9 @@ if (check_perms('admin_manage_blog')) {
         <div id="postform" class="pad<?=($_REQUEST['action'] != 'editblog') ? ' hidden' : '' ?>">
           <input type="hidden" name="action" value="<?=((empty($_GET['action'])) ? 'takenewblog' : 'takeeditblog')?>" />
           <input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
-<?    if (!empty($_GET['action']) && $_GET['action'] == 'editblog') { ?>
+<?php if (!empty($_GET['action']) && $_GET['action'] == 'editblog') { ?>
           <input type="hidden" name="blogid" value="<?=$BlogID; ?>" />
-<?    } ?>
+<?php } ?>
           <div class="field_div">
             <h3>Title</h3>
             <input type="text" name="title" size="95"<? if (!empty($Title)) { echo ' value="'.display_str($Title).'"'; } ?> />
@@ -138,10 +138,10 @@ foreach ($Blog as $BlogItem) {
       <div id="blog<?=$BlogID?>" class="box box2 blog_post">
         <div class="head">
           <strong><?=$Title?></strong> - posted <?=time_diff($BlogTime);?> by <?=$Author?>
-<?      if (check_perms('admin_manage_blog')) { ?>
+<?php if (check_perms('admin_manage_blog')) { ?>
           - <a href="staffblog.php?action=editblog&amp;id=<?=$BlogID?>" class="brackets">Edit</a>
           <a href="staffblog.php?action=deleteblog&amp;id=<?=$BlogID?>&amp;auth=<?=$LoggedUser['AuthKey']?>" onclick="return confirm('Do you want to delete this?');" class="brackets">Delete</a>
-<?      } ?>
+<?php } ?>
         </div>
         <div class="pad">
           <?=Text::full_format($Body)?>

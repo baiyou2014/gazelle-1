@@ -145,15 +145,15 @@ $Pages = Format::get_pages($Page, $NumResults, IPS_PER_PAGE, 9);
   <div class="header">
     <h2>IP address history for <a href="user.php?id=<?=$UserID?>"><?=$Username?></a></h2>
     <div class="linkbox">
-<?  if ($UsersOnly) { ?>
+<?php if ($UsersOnly) { ?>
       <a href="userhistory.php?action=ips&amp;userid=<?=$UserID?>" class="brackets">View all IP addresses</a>
-<?  } else { ?>
+<?php } else { ?>
       <a href="userhistory.php?action=ips&amp;userid=<?=$UserID?>&amp;usersonly=1" class="brackets">View IP addresses with users</a>
-<?  } ?>
+<?php } ?>
     </div>
-<?  if ($Pages) { ?>
+<?php if ($Pages) { ?>
     <div class="linkbox pager"><?=$Pages?></div>
-<?  } ?>
+<?php } ?>
   </div>
   <table>
     <tr class="colhead">

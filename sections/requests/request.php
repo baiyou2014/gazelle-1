@@ -268,7 +268,7 @@ $encoded_artist = urlencode($encoded_artist);
             <td><?= $Request['DLSiteID'] ?>
             </td>
           </tr>
-          <?  }
+          <?php }
   }
   */
 /*

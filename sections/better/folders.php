@@ -84,9 +84,9 @@ foreach ($TorrentsInfo as $TorrentID => $Info) {
           <a href="torrents.php?action=download&amp;id=<?=$TorrentID?>&amp;authkey=<?=$LoggedUser['AuthKey']?>&amp;torrent_pass=<?=$LoggedUser['torrent_pass']?>" class="brackets tooltip" title="Download">DL</a>
         </span>
         <?=$DisplayName?>
-<?  if (check_perms('admin_reports')) { ?>
+<?php if (check_perms('admin_reports')) { ?>
         <a href="better.php?method=folders&amp;remove=<?=$TorrentID?>" class="brackets">X</a>
-<?  } ?>
+<?php } ?>
         <div class="tags"><?=$TorrentTags->format()?></div>
       </td>
     </tr>

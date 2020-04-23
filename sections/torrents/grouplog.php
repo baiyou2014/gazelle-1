@@ -54,10 +54,10 @@ if (!empty($Groups[$GroupID])) {
           <td><a href="torrents.php?torrentid=<?=$TorrentID?>"><?=$TorrentID?></a></td><?
         } else { ?>
           <td><a href="torrents.php?torrentid=<?=$TorrentID?>"><?=$TorrentID?></a> (<?=$Container?>/<?=$AudioFormat?>/<?=$Media?>)</td>
-<?      }
+<?php }
       } else { ?>
         <td></td>
-<?    } ?>
+<?php } ?>
       <td><?=in_array($UserID, $AnonUsers)?'Anonymous':Users::format_username($UserID, false, false, false)?></td>
       <td><?=$Info?></td>
     </tr>

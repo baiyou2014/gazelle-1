@@ -25,7 +25,7 @@ View::show_header('Create an article', 'bbcode');
         <p>There are some situations in which the viewing or editing of an article should be restricted to a certain class.</p>
         <strong>Restrict read:</strong> <select name="minclassread"><?=class_list()?></select>
         <strong>Restrict edit:</strong> <select name="minclassedit"><?=class_list()?></select>
-<?  } ?>
+<?php } ?>
         <div style="text-align: center;">
           <input type="button" value="Preview" class="hidden button_preview_<?=$ReplyText->getID()?>" tabindex="1" />
           <input type="submit" value="Submit" />

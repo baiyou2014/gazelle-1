@@ -68,12 +68,12 @@ if ($DB->has_results()) {
       <td><?=display_str($Uses)?></td>
       <td><?=time_diff($Joined)?></td>
     </tr>
-<?  } ?>
+<?php } ?>
   </table>
   <div class="linkbox">
-<?  echo $Pages; ?>
+<?php echo $Pages; ?>
   </div>
-<?  } else { ?>
+<?php } else { ?>
   <h2 align="center">There are currently no users with more than <?=IP_OVERLAPS?> IP overlaps.</h2>
 <?
   }

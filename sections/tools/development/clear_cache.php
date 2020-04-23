@@ -55,7 +55,7 @@ if (isset($Keys) && $_GET['type'] == 'view') {
         <pre><? var_dump($Cache->get_value($Key)); ?></pre>
       </td>
     </tr>
-<?  } ?>
+<?php } ?>
   </table>
 <?
 }

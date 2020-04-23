@@ -142,7 +142,7 @@ if ($DB->has_results()) {
         <?=time_diff($InviterJoined)?>
       </td>
     </tr>
-<?  } ?>
+<?php } ?>
   </table>
   <div class="linkbox">
 <? echo $Pages; ?>

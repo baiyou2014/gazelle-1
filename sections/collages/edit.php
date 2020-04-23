@@ -37,7 +37,7 @@ if (!empty($Err)) {
     <input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
     <input type="hidden" name="collageid" value="<?=$CollageID?>" />
     <table id="edit_collage" class="layout">
-<?  if (check_perms('site_collages_delete') || ($CategoryID == 0 && $UserID == $LoggedUser['ID'] && check_perms('site_collages_renamepersonal'))) { ?>
+<?php if (check_perms('site_collages_delete') || ($CategoryID == 0 && $UserID == $LoggedUser['ID'] && check_perms('site_collages_renamepersonal'))) { ?>
       <tr>
         <td class="label">Name</td>
         <td><input type="text" name="name" size="60" value="<?=$Name?>" /></td>
@@ -57,11 +57,11 @@ if ($CategoryID > 0 || check_perms('site_collages_delete')) { ?>
     }
 ?>
     <option value="<?=$CatID?>"<?=$CatID == $CategoryID ? ' selected="selected"' : ''?>><?=$CatName?></option>
-<?  } ?>
+<?php } ?>
           </select>
         </td>
       </tr>
-<?  } ?>
+<?php } ?>
       <tr>
         <td class="label">Description</td>
         <td>
@@ -72,7 +72,7 @@ if ($CategoryID > 0 || check_perms('site_collages_delete')) { ?>
         <td class="label">Tags</td>
         <td><input type="text" name="tags" size="60" value="<?=$TagList?>" /></td>
       </tr>
-<?  if ($CategoryID == 0) { // CategoryID == 0 is for "personal" collages ?>
+<?php if ($CategoryID == 0) { // CategoryID == 0 is for "personal" collages ?>
       <tr>
         <td class="label"><span class="tooltip" title="A &quot;featured&quot; personal collage will be listed first on your profile, along with a preview of the included torrents.">Featured</span></td>
         <td><input type="checkbox" name="featured"<?=($Featured ? ' checked="checked"' : '')?> /></td>

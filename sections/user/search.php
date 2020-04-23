@@ -53,10 +53,10 @@ View::show_header('User search');
   <div class="header">
     <h3>Search results</h3>
   </div>
-<?  $Pages = Format::get_pages($Page, $NumResults, USERS_PER_PAGE, 9);
+<?php $Pages = Format::get_pages($Page, $NumResults, USERS_PER_PAGE, 9);
   if ($Pages) { ?>
   <div class="linkbox pager"><?=($Pages)?></div>
-<?  } ?>
+<?php } ?>
   <form class="search_form" name="users" action="user.php" method="get">
     <input type="hidden" name="action" value="search" />
     <table class="layout" width="100%">
@@ -85,7 +85,7 @@ View::show_header('User search');
         <td><?=Users::format_username($UserID, true, true, true, true);?></td>
         <td><?=Users::make_class_string($PermissionID);?></td>
       </tr>
-<?  } ?>
+<?php } ?>
     </table>
   </div>
   <div class="linkbox">

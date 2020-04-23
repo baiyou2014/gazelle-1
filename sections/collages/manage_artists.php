@@ -92,7 +92,7 @@ View::show_header("Manage collage $Name", 'jquery-ui,jquery.tablesorter,sort');
         </td>
       </form>
     </tr>
-<?  } ?>
+<?php } ?>
     </tbody>
   </table>
   <div class="drag_drop_save hidden">
