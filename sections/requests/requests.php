@@ -322,14 +322,14 @@ View::show_header($Title, 'requests');
         </h2>
     </div>
     <div class="linkbox">
-        <?php  if (!$BookmarkView) {
+        <?php if (!$BookmarkView) {
     if (check_perms('site_submit_requests')) { ?>
         <a href="requests.php?action=new" class="brackets">New request</a>
         <a href="requests.php?type=created" class="brackets">My requests</a>
-        <?php    }
+        <?php }
     if (check_perms('site_vote')) { ?>
         <a href="requests.php?type=voted" class="brackets">Requests I've voted on</a>
-        <?php    } ?>
+        <?php } ?>
         <a href="bookmarks.php?type=requests" class="brackets">Bookmarked requests</a>
         <?php
 } else { ?>
@@ -337,26 +337,26 @@ View::show_header($Title, 'requests');
         <a href="bookmarks.php?type=artists" class="brackets">Artists</a>
         <a href="bookmarks.php?type=collages" class="brackets">Collections</a>
         <a href="bookmarks.php?type=requests" class="brackets">Requests</a>
-        <?php  } ?>
+        <?php } ?>
     </div>
-    <?php  if ($BookmarkView && $NumResults === 0) { ?>
+    <?php if ($BookmarkView && $NumResults === 0) { ?>
     <div class="box pad" align="center">
         <h2>You have not bookmarked any requests.</h2>
     </div>
-    <?php  } else { ?>
+    <?php } else { ?>
     <form class="search_form" name="requests" action="" method="get">
-        <?php    if ($BookmarkView) { ?>
+        <?php if ($BookmarkView) { ?>
         <input type="hidden" name="action" value="view" />
         <input type="hidden" name="type" value="requests" />
-        <?php    } elseif (isset($_GET['type'])) { ?>
+        <?php } elseif (isset($_GET['type'])) { ?>
         <input type="hidden" name="type"
             value="<?=$_GET['type']?>" />
-        <?php    } ?>
+        <?php } ?>
         <input type="hidden" name="submit" value="true" />
-        <?php    if (!empty($_GET['userid']) && is_number($_GET['userid'])) { ?>
+        <?php if (!empty($_GET['userid']) && is_number($_GET['userid'])) { ?>
         <input type="hidden" name="userid"
             value="<?=$_GET['userid']?>" />
-        <?php    } ?>
+        <?php } ?>
         <div class="box pad">
             <table cellpadding="6" cellspacing="1" border="0" class="layout" width="100%">
 
@@ -448,11 +448,11 @@ View::show_header($Title, 'requests');
             </table>
         </div>
     </form>
-    <?php    if (isset($PageLinks)) { ?>
+    <?php if (isset($PageLinks)) { ?>
     <div class="linkbox">
         <?= $PageLinks?>
     </div>
-    <?php    } ?>
+    <?php } ?>
     <table id="request_table" class="request_table border" cellpadding="6" cellspacing="1" border="0" width="100%">
         <tr class="colhead_dark">
             <td class="small cats_col"></td>
@@ -580,34 +580,34 @@ View::show_header($Title, 'requests');
             </td>
             <td class="nobr">
                 <span id="vote_count_<?=$RequestID?>"><?=number_format($VoteCount)?></span>
-                <?php    if (!$IsFilled && check_perms('site_vote')) { ?>
+                <?php if (!$IsFilled && check_perms('site_vote')) { ?>
                 &nbsp;&nbsp; <a
                     href="javascript:Vote(0, <?=$RequestID?>)"
                     class="brackets"><strong>+</strong></a>
-                <?php    } ?>
+                <?php } ?>
             </td>
             <td class="number_column nobr">
                 <?=Format::get_size($Bounty)?>
             </td>
             <td class="nobr">
-                <?php    if ($IsFilled) { ?>
+                <?php if ($IsFilled) { ?>
                 <a
                     href="torrents.php?<?=(strtotime($Request['TimeFilled']) < $TimeCompare ? 'id=' : 'torrentid=') . $Request['TorrentID']?>"><strong><?=time_diff($Request['TimeFilled'], 1)?></strong></a>
-                <?php    } else { ?>
+                <?php } else { ?>
                 <strong>No</strong>
-                <?php    } ?>
+                <?php } ?>
             </td>
             <td>
-                <?php    if ($IsFilled) {
+                <?php if ($IsFilled) {
                 if ($Request['AnonymousFill']) { ?>
                 <em>Anonymous</em>
-                <?php      } else { ?>
+                <?php } else { ?>
                 <a
                     href="user.php?id=<?=$FillerInfo['ID']?>"><?=$FillerInfo['Username']?></a>
-                <?php      }
+                <?php }
             } else { ?>
                 &ndash;
-                <?php    } ?>
+                <?php } ?>
             </td>
             <td>
                 <a

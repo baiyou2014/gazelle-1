@@ -99,7 +99,7 @@ class DonationsView
     <li>
       This user hasn't donated.
     </li>
-    <?php      } ?>
+    <?php } ?>
   </ul>
 </div>
 <?php
@@ -119,7 +119,7 @@ class DonationsView
         data-toggle-replace="Show" class="brackets">Hide</a></span>
   </div>
   <div class="pad profileinfo" id="profilediv_<?=$i?>">
-    <?php          echo Text::full_format($ProfileRewards['ProfileInfo' . $i]); ?>
+    <?php echo Text::full_format($ProfileRewards['ProfileInfo' . $i]); ?>
   </div>
 </div>
 <?php
@@ -162,7 +162,7 @@ class DonationsView
             <strong>Reason</strong>
           </td>
         </tr>
-        <?php    foreach ($DonationHistory as $Donation) { ?>
+        <?php foreach ($DonationHistory as $Donation) { ?>
         <tr class="row">
           <td>
             <?=display_str($Donation['Source'])?>

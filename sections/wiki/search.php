@@ -102,18 +102,18 @@ $DB->set_query_id($RS);
           <td class="label"><strong>Order By</strong></td>
           <td>
             <select name="order">
-<?php          foreach ($OrderVals as $Cur) { ?>
+<?php foreach ($OrderVals as $Cur) { ?>
               <option value="<?=$Cur?>"<?php if ($_GET['order'] == $Cur || (!$_GET['order'] && $Cur == 'Time')) {
     echo ' selected="selected"';
 } ?>><?=$Cur?></option>
-<?php          } ?>
+<?php } ?>
             </select>
             <select name="way">
-<?php          foreach ($WayVals as $Cur) { ?>
+<?php foreach ($WayVals as $Cur) { ?>
               <option value="<?=$Cur?>"<?php if ($_GET['way'] == $Cur || (!$_GET['way'] && $Cur == 'Descending')) {
     echo ' selected="selected"';
 } ?>><?=$Cur?></option>
-<?php          } ?>
+<?php } ?>
             </select>
           </td>
         </tr>
@@ -130,20 +130,20 @@ $DB->set_query_id($RS);
   $Pages = Format::get_pages($Page, $NumResults, ARTICLES_PER_PAGE);
   if ($Pages) { ?>
   <div class="linkbox pager"><?=($Pages)?></div>
-<?php  } ?>
+<?php } ?>
 <table width="100%">
   <tr class="colhead">
     <td>Article</td>
     <td>Last updated on</td>
     <td>Last edited by</td>
   </tr>
-<?php  while (list($ID, $Title, $Date, $UserID) = $DB->next_record()) { ?>
+<?php while (list($ID, $Title, $Date, $UserID) = $DB->next_record()) { ?>
   <tr>
     <td><a href="wiki.php?action=article&amp;id=<?=$ID?>"><?=$Title?></a></td>
     <td><?=$Date?></td>
     <td><?=Users::format_username($UserID, false, false, false)?></td>
   </tr>
-<?php  } ?>
+<?php } ?>
 </table>
   <div class="linkbox"><?=$Pages?></div>
 </div>

@@ -274,7 +274,7 @@ if ($ThreadInfo['NoPoll'] == 0) {
         echo ' hidden';
     } ?>" id="threadpoll">
       <p><strong><?=display_str($Question)?></strong></p>
-      <?php  if ($UserResponse !== null || $Closed || $ThreadInfo['IsLocked'] || !Forums::check_forumperm($ForumID)) { ?>
+      <?php if ($UserResponse !== null || $Closed || $ThreadInfo['IsLocked'] || !Forums::check_forumperm($ForumID)) { ?>
       <ul class="poll nobullet">
         <?php
     if (!$RevealVoters) {
@@ -387,26 +387,26 @@ if ($ThreadInfo['NoPoll'] == 0) {
           <input type="hidden" name="topicid"
             value="<?=$ThreadID?>" />
           <ul style="list-style: none;" id="poll_options">
-            <?php    foreach ($Answers as $i => $Answer) { //for ($i = 1, $il = count($Answers); $i <= $il; $i++) {?>
+            <?php foreach ($Answers as $i => $Answer) { //for ($i = 1, $il = count($Answers); $i <= $il; $i++) {?>
             <li>
               <input type="radio" name="vote" id="answer_<?=$i?>"
                 value="<?=$i?>" />
               <label for="answer_<?=$i?>"><?=display_str($Answer)?></label>
             </li>
-            <?php    } ?>
+            <?php } ?>
             <li>
               <br />
               <input type="radio" name="vote" id="answer_0" value="0" /> <label
                 for="answer_0">Blank&#8202;&mdash;&#8202;Show the results!</label><br />
             </li>
           </ul>
-          <?php    if ($ForumID == STAFF_FORUM) { ?>
+          <?php if ($ForumID == STAFF_FORUM) { ?>
           <a href="#"
             onclick="AddPollOption(<?=$ThreadID?>); return false;"
             class="brackets">+</a>
           <br />
           <br />
-          <?php    } ?>
+          <?php } ?>
           <input type="button"
             onclick="ajax.post('index.php','poll',function(response) { $('#poll_container').raw().innerHTML = response});"
             value="Vote" />
@@ -478,9 +478,9 @@ foreach ($Thread as $Key => $Post) {
         echo ' staff_post';
     } ?>" id="post<?=$PostID?>">
     <colgroup>
-      <?php  if (Users::has_avatars_enabled()) { ?>
+      <?php if (Users::has_avatars_enabled()) { ?>
       <col class="col_avatar" />
-      <?php  } ?>
+      <?php } ?>
       <col class="col_post_body" />
     </colgroup>
     <tr class="colhead_dark">
@@ -494,7 +494,7 @@ foreach ($Thread as $Key => $Post) {
           - <a href="#quickpost" id="quote_<?=$PostID?>"
             onclick="Quote('<?=$PostID?>', '<?=$Username?>', true);"
             class="brackets">Quote</a>
-          <?php  if ((!$ThreadInfo['IsLocked'] && Forums::check_forumperm($ForumID, 'Write') && $AuthorID == $LoggedUser['ID']) || check_perms('site_moderate_forums')) { ?>
+          <?php if ((!$ThreadInfo['IsLocked'] && Forums::check_forumperm($ForumID, 'Write') && $AuthorID == $LoggedUser['ID']) || check_perms('site_moderate_forums')) { ?>
           - <a href="#post<?=$PostID?>"
             onclick="Edit_Form('<?=$PostID?>', '<?=$Key?>');"
             class="brackets">Edit</a>
@@ -508,7 +508,7 @@ foreach ($Thread as $Key => $Post) {
   }
     if ($PostID == $ThreadInfo['StickyPostID']) { ?>
           <strong><span class="sticky_post_label brackets">Sticky</span></strong>
-          <?php    if (check_perms('site_moderate_forums')) { ?>
+          <?php if (check_perms('site_moderate_forums')) { ?>
           - <a
             href="forums.php?action=sticky_post&amp;threadid=<?=$ThreadID?>&amp;postid=<?=$PostID?>&amp;remove=true&amp;auth=<?=$LoggedUser['AuthKey']?>"
             title="Unsticky this post" class="brackets tooltip">X</a>
@@ -551,29 +551,29 @@ foreach ($Thread as $Key => $Post) {
       </td>
     </tr>
     <tr>
-      <?php  if (Users::has_avatars_enabled()) { ?>
+      <?php if (Users::has_avatars_enabled()) { ?>
       <td class="avatar valign_top">
         <?=Users::show_avatar($Avatar, $AuthorID, $Username, $HeavyInfo['DisableAvatars'], 150, true)?>
       </td>
-      <?php  } ?>
+      <?php } ?>
       <td class="body valign_top" <?php if (!Users::has_avatars_enabled()) {
       echo ' colspan="2"';
   } ?>>
         <div id="content<?=$PostID?>">
           <?=Text::full_format($Body) ?>
-          <?php  if ($EditedUserID) { ?>
+          <?php if ($EditedUserID) { ?>
           <br />
           <br />
           <div class="last_edited">
-            <?php    if (check_perms('site_admin_forums')) { ?>
+            <?php if (check_perms('site_admin_forums')) { ?>
             <a href="#content<?=$PostID?>"
               onclick="LoadEdit('forums', <?=$PostID?>, 1); return false;">«</a>
-            <?php    } ?>
+            <?php } ?>
             Last edited by
             <?=Users::format_username($EditedUserID, false, false, false, false, false, $IsDonorForum) ?>
             <?=time_diff($EditedTime, 2, true, true)?>
           </div>
-          <?php  } ?>
+          <?php } ?>
         </div>
       </td>
     </tr>
@@ -704,10 +704,10 @@ if (check_perms('site_moderate_forums')) {
             $LastCategoryID = $Forum['CategoryID'];
             if ($OpenGroup) { ?>
             </optgroup>
-            <?php      } ?>
+            <?php } ?>
             <optgroup
               label="<?=$ForumCats[$Forum['CategoryID']]?>">
-              <?php      $OpenGroup = true;
+              <?php $OpenGroup = true;
         } ?>
               <option value="<?=$Forum['ID']?>"
                 <?php if ($ThreadInfo['ForumID'] == $Forum['ID']) {
@@ -720,14 +720,14 @@ if (check_perms('site_moderate_forums')) {
           </select>
         </td>
       </tr>
-      <?php  if (check_perms('site_admin_forums')) { ?>
+      <?php if (check_perms('site_admin_forums')) { ?>
       <tr>
         <td class="label"><label for="delete_thread_checkbox">Delete</label></td>
         <td>
           <input type="checkbox" id="delete_thread_checkbox" name="delete" tabindex="2" />
         </td>
       </tr>
-      <?php  } ?>
+      <?php } ?>
       <tr>
         <td colspan="2" class="center">
           <input type="submit" value="Edit" tabindex="2" />

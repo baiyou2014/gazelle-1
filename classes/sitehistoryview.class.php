@@ -127,7 +127,7 @@ class SiteHistoryView
     </form>
   </div>
 </div>
-<?php  }
+<?php }
 
     public static function render_edit_form($Event) { ?>
 <form id="event_form" method="post" action="">

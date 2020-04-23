@@ -188,7 +188,7 @@ if (empty($ThreadID)) {
         } elseif ($Columns % 5 == 0) { ?>
       </tr>
       <tr>
-<?php    } ?>
+<?php } ?>
         <td>
           <input type="checkbox" name="forums[]" value="<?=$Forum['ID']?>" data-category="forum_category_<?=$i?>" id="forum_<?=$Forum['ID']?>"<?php if (isset($_GET['forums']) && in_array($Forum['ID'], $_GET['forums'])) {
             echo ' checked="checked"';
@@ -199,7 +199,7 @@ if (empty($ThreadID)) {
     }
     if ($Columns % 5) { ?>
         <td colspan="<?=(5 - ($Columns % 5))?>"></td>
-<?php  } ?>
+<?php } ?>
       </tr>
     </table>
 <?php
@@ -335,9 +335,9 @@ while (list($ID, $Title, $ForumID, $ForumName, $LastTime, $PostID, $Body, $Threa
         <a href="forums.php?action=viewforum&amp;forumid=<?=$ForumID?>"><?=$ForumName?></a>
       </td>
       <td>
-<?php  if (empty($ThreadID)) { ?>
+<?php if (empty($ThreadID)) { ?>
         <a href="forums.php?action=viewthread&amp;threadid=<?=$ID?>"><?=Format::cut_string($Title, 80); ?></a>
-<?php  } else { ?>
+<?php } else { ?>
         <?=Format::cut_string($Title, 80); ?>
 <?php
   }
@@ -345,7 +345,7 @@ while (list($ID, $Title, $ForumID, $ForumName, $LastTime, $PostID, $Body, $Threa
         <a data-toggle-target="#post_<?=$PostID?>_text">(Show)</a> <span class="float_right tooltip last_read" title="Jump to post"><a href="forums.php?action=viewthread&amp;threadid=<?=$ID?><?php if (!empty($PostID)) {
         echo "&amp;postid=$PostID#post$PostID";
     } ?>"></a></span>
-<?php  } ?>
+<?php } ?>
       </td>
       <td>
         <?=time_diff($ThreadCreatedTime)?>
@@ -354,11 +354,11 @@ while (list($ID, $Title, $ForumID, $ForumName, $LastTime, $PostID, $Body, $Threa
         <?=time_diff($LastTime)?>
       </td>
     </tr>
-<?php  if ($Type == 'body') { ?>
+<?php if ($Type == 'body') { ?>
     <tr class="row hidden" id="post_<?=$PostID?>_text">
       <td colspan="4"><?=Text::full_format($Body)?></td>
     </tr>
-<?php  }
+<?php }
 }
 ?>
   </table>

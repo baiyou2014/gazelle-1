@@ -414,9 +414,9 @@ if ($TopicID) {
       </div>
       <div class="pad">
         <p><strong><?=display_str($Question)?></strong></p>
-        <?php  if ($UserResponse !== null || $Closed) { ?>
+        <?php if ($UserResponse !== null || $Closed) { ?>
         <ul class="poll nobullet">
-          <?php    foreach ($Answers as $i => $Answer) {
+          <?php foreach ($Answers as $i => $Answer) {
         if ($TotalVotes > 0) {
             $Ratio = $Votes[$i] / $MaxVotes;
             $Percent = $Votes[$i] / $TotalVotes;
@@ -434,7 +434,7 @@ if ($TopicID) {
     } ?>
         </ul>
         <strong>Votes:</strong> <?=number_format($TotalVotes)?><br />
-        <?php  } else { ?>
+        <?php } else { ?>
         <div id="poll_container">
           <form class="vote_form" name="poll" id="poll" action="">
             <input type="hidden" name="action" value="poll" />
@@ -442,11 +442,11 @@ if ($TopicID) {
               value="<?=$LoggedUser['AuthKey']?>" />
             <input type="hidden" name="topicid"
               value="<?=$TopicID?>" />
-            <?php    foreach ($Answers as $i => $Answer) { ?>
+            <?php foreach ($Answers as $i => $Answer) { ?>
             <input type="radio" name="vote" id="answer_<?=$i?>"
               value="<?=$i?>" />
             <label for="answer_<?=$i?>"><?=display_str($Answers[$i])?></label><br />
-            <?php    } ?>
+            <?php } ?>
             <br /><input type="radio" name="vote" id="answer_0" value="0" /> <label
               for="answer_0">Blank&#8202;&mdash;&#8202;Show the results!</label><br /><br />
             <input type="button"
@@ -454,7 +454,7 @@ if ($TopicID) {
               value="Vote" />
           </form>
         </div>
-        <?php  } ?>
+        <?php } ?>
         <br /><strong>Topic:</strong> <a
           href="forums.php?action=viewthread&amp;threadid=<?=$TopicID?>">Visit</a>
       </div>
@@ -538,10 +538,10 @@ foreach ($News as $NewsItem) {
     <div id="news<?=$NewsID?>" class="box news_post">
       <div class="head">
         <strong><?=Text::full_format($Title)?></strong> <?=time_diff($NewsTime); ?>
-        <?php  if (check_perms('admin_manage_news')) { ?>
+        <?php if (check_perms('admin_manage_news')) { ?>
         - <a href="tools.php?action=editnews&amp;id=<?=$NewsID?>"
           class="brackets">Edit</a>
-        <?php  } ?>
+        <?php } ?>
         <span class="float_right"><a
             data-toggle-target="#newsbody<?=$NewsID?>"
             data-toggle-replace="Show" class="brackets">Hide</a></span>

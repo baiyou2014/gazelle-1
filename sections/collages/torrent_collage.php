@@ -243,12 +243,12 @@ foreach ($GroupIDs as $GroupID) {
     <span class="brackets">
       <a href="torrents.php?action=download&amp;id=<?=$TorrentID?>&amp;authkey=<?=$LoggedUser['AuthKey']?>&amp;torrent_pass=<?=$LoggedUser['torrent_pass']?>"
         class="tooltip" title="Download">DL</a>
-      <?php    if (Torrents::can_use_token($Torrent)) { ?>
+      <?php if (Torrents::can_use_token($Torrent)) { ?>
       | <a
         href="torrents.php?action=download&amp;id=<?=$TorrentID ?>&amp;authkey=<?=$LoggedUser['AuthKey']?>&amp;torrent_pass=<?=$LoggedUser['torrent_pass']?>&amp;usetoken=1"
         class="tooltip" title="Use a FL Token"
         onclick="return confirm('Are you sure you want to use a freeleech token here?');">FL</a>
-      <?php    } ?>
+      <?php } ?>
       | <a href="reportsv2.php?action=report&amp;id=<?=$TorrentID?>"
         class="tooltip" title="Report">RP</a>
     </span>
@@ -350,11 +350,11 @@ View::show_header($Name, 'browse,collage,bbcode,recommend,wall');
     </h2>
     <div class="linkbox">
       <a href="collages.php" class="brackets">List of collections</a>
-      <?php  if (check_perms('site_collages_create')) { ?>
+      <?php if (check_perms('site_collages_create')) { ?>
       <a href="collages.php?action=new" class="brackets">New collection</a>
-      <?php  } ?>
+      <?php } ?>
       <br /><br />
-      <?php  if (check_perms('site_collages_subscribe')) { ?>
+      <?php if (check_perms('site_collages_subscribe')) { ?>
       <a href="#" id="subscribelink<?=$CollageID?>" class="brackets"
         onclick="CollageSubscribe(<?=$CollageID?>); return false;"><?=(in_array($CollageID, $CollageSubscriptions) ? 'Unsubscribe' : 'Subscribe')?></a>
       <?php
@@ -379,7 +379,7 @@ View::show_header($Name, 'browse,collage,bbcode,recommend,wall');
       <a href="#" id="bookmarklink_collage_<?=$CollageID?>"
         class="brackets"
         onclick="Bookmark('collage', <?=$CollageID?>, 'Remove bookmark'); return false;">Bookmark</a>
-      <?php  } ?>
+      <?php } ?>
       <!-- <a href="#" id="recommend" class="brackets">Recommend</a> -->
       <?php
   if (check_perms('site_collages_manage') && !$Locked) {
@@ -390,10 +390,10 @@ View::show_header($Name, 'browse,collage,bbcode,recommend,wall');
   } ?>
       <a href="reports.php?action=report&amp;type=collage&amp;id=<?=$CollageID?>"
         class="brackets">Report collection</a>
-      <?php  if (check_perms('site_collages_delete') || $CreatorID == $LoggedUser['ID']) { ?>
+      <?php if (check_perms('site_collages_delete') || $CreatorID == $LoggedUser['ID']) { ?>
       <a href="collages.php?action=delete&amp;collageid=<?=$CollageID?>&amp;auth=<?=$LoggedUser['AuthKey']?>"
         class="brackets" onclick="return confirm('Are you sure you want to delete this collage?');">Delete</a>
-      <?php  } ?>
+      <?php } ?>
     </div>
   </div>
   <?php /* Misc::display_recommend($CollageID, "collage"); */ ?>
@@ -505,7 +505,7 @@ foreach ($ZIPOptions as $Option) {
       </div>
     </div>
 
-    <?php  if (!empty($TopArtists)) { ?>
+    <?php if (!empty($TopArtists)) { ?>
     <div class="box box_artists">
       <div class="head"><strong>Top Artists</strong></div>
       <div class="pad">
@@ -525,7 +525,7 @@ foreach ($ZIPOptions as $Option) {
         </ol>
       </div>
     </div>
-    <?php  } ?>
+    <?php } ?>
 
     <div class="box box_contributors">
       <div class="head"><strong>Top Contributors</strong></div>

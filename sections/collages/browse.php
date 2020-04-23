@@ -165,14 +165,14 @@ View::show_header(($BookmarkView) ? 'Your bookmarked collections' : 'Collections
 
 <div class="thin">
   <div class="header">
-    <?php  if ($BookmarkView) { ?>
+    <?php if ($BookmarkView) { ?>
     <h2>Your bookmarked collections</h2>
-    <?php  } else { ?>
+    <?php } else { ?>
     <h2>Collections<?=(!empty($UserLink) ? (isset($CollageIDs) ? " with contributions by $UserLink" : " started by $UserLink") : '')?>
     </h2>
-    <?php  } ?>
+    <?php } ?>
   </div>
-  <?php  if (!$BookmarkView) { ?>
+  <?php if (!$BookmarkView) { ?>
   <div class="box pad">
     <form class="search_form" name="collages" action="" method="get">
       <div><input type="hidden" name="action" value="search" /></div>
@@ -206,13 +206,13 @@ View::show_header(($BookmarkView) ? 'Your bookmarked collections' : 'Collections
         <tr id="categories">
           <td class="label">Categories</td>
           <td>
-            <?php    foreach ($CollageCats as $ID => $Cat) { ?>
+            <?php foreach ($CollageCats as $ID => $Cat) { ?>
             <input type="checkbox" value="1" name="cats[<?=$ID?>]"
               id="cats_<?=$ID?>" <?php if (in_array($ID, $Categories)) {
                   echo ' checked="checked"' ;
               } ?> />
             <label for="cats_<?=$ID?>"><?=$Cat?></label>&nbsp;&nbsp;
-            <?php    } ?>
+            <?php } ?>
           </td>
         </tr>
         <tr id="search_name_description">
@@ -231,21 +231,21 @@ View::show_header(($BookmarkView) ? 'Your bookmarked collections' : 'Collections
           <td class="label">Order By</td>
           <td>
             <select name="order_by" class="ft_order_by">
-              <?php    foreach ($OrderVals as $Cur) { ?>
+              <?php foreach ($OrderVals as $Cur) { ?>
               <option value="<?=$Cur?>" <?php if (isset($_GET['order_by']) && $_GET['order_by']===$Cur || (!isset($_GET['order_by']) && $Cur==='Time')) {
                   echo ' selected="selected"' ;
               } ?>><?=$Cur?>
               </option>
-              <?php    } ?>
+              <?php } ?>
             </select>
             <select name="order_way" class="ft_order_way">
-              <?php    foreach ($WayVals as $Cur) { ?>
+              <?php foreach ($WayVals as $Cur) { ?>
               <option value="<?=$Cur?>" <?php if (isset($_GET['order_way']) && $_GET['order_way']===$Cur || (!isset($_GET['order_way']) &&
                 $Cur==='Descending')) {
                   echo ' selected="selected"' ;
               } ?>><?=$Cur?>
               </option>
-              <?php    } ?>
+              <?php } ?>
             </select>
           </td>
         </tr>
@@ -257,7 +257,7 @@ View::show_header(($BookmarkView) ? 'Your bookmarked collections' : 'Collections
       </table>
     </form>
   </div>
-  <?php  } // if (!$BookmarkView)?>
+  <?php } // if (!$BookmarkView)?>
   <div class="linkbox">
     <?php
   if (!$BookmarkView) {
@@ -291,7 +291,7 @@ View::show_header(($BookmarkView) ? 'Your bookmarked collections' : 'Collections
     <?php
       } ?>
     <a href="bookmarks.php?type=collages" class="brackets">Bookmarked collections</a>
-    <?php    if (check_perms('site_collages_recover')) { ?>
+    <?php if (check_perms('site_collages_recover')) { ?>
     <a href="collages.php?action=recover" class="brackets">Recover collection</a>
     <?php
     }
@@ -318,19 +318,19 @@ View::show_header(($BookmarkView) ? 'Your bookmarked collections' : 'Collections
   echo $Pages;
 ?>
   </div>
-  <?php  if (count($Collages) === 0) { ?>
+  <?php if (count($Collages) === 0) { ?>
   <div class="box pad" align="center">
-    <?php    if ($BookmarkView) { ?>
+    <?php if ($BookmarkView) { ?>
     <h2>You have not bookmarked any collections.</h2>
-    <?php    } else { ?>
+    <?php } else { ?>
     <h2>Your search did not match anything.</h2>
     <p>Make sure all names are spelled correctly, or try making your search less specific.</p>
-    <?php    } ?>
+    <?php } ?>
   </div>
   <!--box-->
 </div>
 <!--content-->
-<?php    View::show_footer();
+<?php View::show_footer();
     die();
   }
 ?>
@@ -358,13 +358,13 @@ foreach ($Collages as $Collage) {
     <td>
       <a class="torrent_title" id="collage_name"
         href="collages.php?id=<?=$ID?>"><?=$Name?></a>
-      <?php  if ($BookmarkView) { ?>
+      <?php if ($BookmarkView) { ?>
       <span class="float_right">
         <a href="#"
           onclick="Unbookmark('collage', <?=$ID?>, ''); return false;"
           class="brackets">Remove bookmark</a>
       </span>
-      <?php  } ?>
+      <?php } ?>
       <div class="tags"><?=$TorrentTags->format('collages.php?action=search&amp;tags=')?>
       </div>
     </td>

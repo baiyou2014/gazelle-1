@@ -606,7 +606,7 @@ foreach ($Categories as $CatKey => $CatName) {
   } ?>
     </table>
   </div>
-  <?php  } ?>
+  <?php } ?>
   <div class="linkbox"><?= $Pages ?>
   </div>
 </div>

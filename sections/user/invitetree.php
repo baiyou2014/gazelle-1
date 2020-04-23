@@ -36,7 +36,7 @@ View::show_header($Username.' › Invites › Tree');
       › Tree</h2>
   </div>
   <div class="box pad">
-    <?php  $Tree->make_tree(); ?>
+    <?php $Tree->make_tree(); ?>
   </div>
 </div>
 <?php View::show_footer();

@@ -279,7 +279,7 @@ foreach ($TorrentList as $Group) {
       <td colspan="5" class="big_info">
         <div class="group_info clear">
           <strong><?=$DisplayName?></strong>
-          <?php  if (Bookmarks::has_bookmarked('torrent', $GroupID)) { ?>
+          <?php if (Bookmarks::has_bookmarked('torrent', $GroupID)) { ?>
           <span class="remove_bookmark float_right">
             <a class="float_right" href="#"
               id="bookmarklink_torrent_<?=$GroupID?>"
@@ -318,7 +318,7 @@ foreach ($TorrentList as $Group) {
         <span>
           [ <a href="<?=$TorrentDL?>" class="tooltip"
             title="Download">DL</a>
-          <?php  if (isset($TorrentMG)) { ?>
+          <?php if (isset($TorrentMG)) { ?>
           | <a href="<?=$TorrentMG?>" class="tooltip"
             title="Magnet Link">MG</a>
           <?php }
@@ -442,35 +442,35 @@ foreach ($TorrentList as $Group) {
             <span>
               [ <a href="<?=$TorrentDL?>" class="tooltip"
                 title="Download">DL</a>
-              <?php  if (isset($TorrentMG)) { ?>
+              <?php if (isset($TorrentMG)) { ?>
               | <a href="<?=$TorrentMG?>" class="tooltip"
                 title="Magnet Link">MG</a>
-              <?php  }
+              <?php }
         if (Torrents::can_use_token($Torrent)) { ?>
               | <a
                 href="torrents.php?action=download&amp;id=<?=$TorrentID?>&amp;authkey=<?=$LoggedUser['AuthKey']?>&amp;torrent_pass=<?=$LoggedUser['torrent_pass']?>&amp;usetoken=1"
                 class="tooltip" title="Use a FL Token"
                 onclick="return confirm('Are you sure you want to use a freeleech token here?');">FL</a>
-              <?php    } ?>
+              <?php } ?>
               | <a
                 href="reportsv2.php?action=report&amp;id=<?=$TorrentID?>"
                 class="tooltip" title="Report">RP</a> ]
             </span>
             <br />
-            <?php  if (Bookmarks::has_bookmarked('torrent', $GroupID)) { ?>
+            <?php if (Bookmarks::has_bookmarked('torrent', $GroupID)) { ?>
             <span class="remove_bookmark float_right">
               <a href="#" id="bookmarklink_torrent_<?=$GroupID?>"
                 class="brackets"
                 onclick="Unbookmark('torrent', <?=$GroupID?>, 'Bookmark'); return false;">Remove
                 bookmark</a>
             </span>
-            <?php  } else { ?>
+            <?php } else { ?>
             <span class="add_bookmark float_right">
               <a href="#" id="bookmarklink_torrent_<?=$GroupID?>"
                 class="brackets"
                 onclick="Bookmark('torrent', <?=$GroupID?>, 'Remove bookmark'); return false;">Bookmark</a>
             </span>
-            <?php  } ?>
+            <?php } ?>
           </div>
           <?=$DisplayName?>
           <br />
@@ -513,7 +513,7 @@ View::show_header($Name, 'browse,requests,bbcode,comments,recommend,subscription
     <h2><?=display_str($Name)?><?php if ($RevisionID) { ?> (Revision #<?=$RevisionID?>)<?php } ?>
     </h2>
     <div class="linkbox">
-      <?php  if (check_perms('site_submit_requests')) { ?>
+      <?php if (check_perms('site_submit_requests')) { ?>
       <a href="requests.php?action=new&amp;artistid=<?=$ArtistID?>"
         class="brackets">Add request</a>
       <?php
@@ -552,7 +552,7 @@ if (check_perms('site_torrents_notify')) {
       <a href="#" id="bookmarklink_artist_<?=$ArtistID?>"
         onclick="Bookmark('artist', <?=$ArtistID?>, 'Remove bookmark'); return false;"
         class="brackets">Bookmark</a>
-      <?php  } ?>
+      <?php } ?>
       <a href="#" id="subscribelink_artist<?=$ArtistID?>"
         class="brackets"
         onclick="SubscribeComments('artist', <?=$ArtistID?>);return false;"><?=Subscriptions::has_subscribed_comments('artist', $ArtistID) !== false ? 'Unsubscribe' : 'Subscribe'?></a>
@@ -566,23 +566,23 @@ if (check_perms('site_torrents_notify')) {
   } ?>
       <a href="artist.php?action=history&amp;artistid=<?=$ArtistID?>"
         class="brackets">View history</a>
-      <?php  if ($RevisionID && check_perms('site_edit_wiki')) { ?>
+      <?php if ($RevisionID && check_perms('site_edit_wiki')) { ?>
       <a href="artist.php?action=revert&amp;artistid=<?=$ArtistID?>&amp;revisionid=<?=$RevisionID?>&amp;auth=<?=$LoggedUser['AuthKey']?>"
         class="brackets">Revert to this revision</a>
-      <?php  } ?>
+      <?php } ?>
       <a href="artist.php?id=<?=$ArtistID?>#info"
         class="brackets">Info</a>
       <a href="artist.php?id=<?=$ArtistID?>#artistcomments"
         class="brackets">Comments</a>
-      <?php  if (check_perms('site_delete_artist') && check_perms('torrents_delete')) { ?>
+      <?php if (check_perms('site_delete_artist') && check_perms('torrents_delete')) { ?>
       <a href="artist.php?action=delete&amp;artistid=<?=$ArtistID?>&amp;auth=<?=$LoggedUser['AuthKey']?>"
         class="brackets">Delete</a>
-      <?php  } ?>
+      <?php } ?>
     </div>
   </div>
   <?php /* Misc::display_recommend($ArtistID, "artist"); */ ?>
   <div class="sidebar">
-    <?php  if ($Image) { ?>
+    <?php if ($Image) { ?>
     <div class="box box_image">
       <div class="head"><strong><?=$Name?></strong></div>
       <div style="text-align: center; padding: 10px 0px;">
@@ -591,7 +591,7 @@ if (check_perms('site_torrents_notify')) {
           alt="<?=$Name?>" />
       </div>
     </div>
-    <?php  } ?>
+    <?php } ?>
 
     <div class="box box_search">
       <div class="head"><strong>File Lists Search</strong></div>
@@ -656,9 +656,9 @@ $OpenGroup = false;
             $LastGroupID = $GroupID;
             if ($OpenGroup) { ?>
             </optgroup>
-            <?php    } ?>
+            <?php } ?>
             <optgroup label="<?=$ZIPGroups[$GroupID]?>">
-              <?php    $OpenGroup = true;
+              <?php $OpenGroup = true;
         } ?>
               <option id="opt<?=$GroupID.$OptionID?>"
                 value="<?=$GroupID.$OptionID?>" <?php if (in_array($GroupID.$OptionID, $ZIPList)) {
@@ -698,7 +698,7 @@ END THE COLLECTOR
     <div class="box box_tags">
       <div class="head"><strong>Tags</strong></div>
       <ul class="stats nobullet">
-        <?php      Tags::format_top(50, 'torrents.php?taglist=', $Name); ?>
+        <?php Tags::format_top(50, 'torrents.php?taglist=', $Name); ?>
       </ul>
     </div>
     <?php

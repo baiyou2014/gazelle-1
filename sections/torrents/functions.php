@@ -428,21 +428,21 @@ function build_torrents_table($Cache, $DB, $LoggedUser, $GroupID, $GroupName, $G
         <span>[ <a
                 href="torrents.php?action=download&amp;id=<?=($TorrentID)?>&amp;authkey=<?=($LoggedUser['AuthKey'])?>&amp;torrent_pass=<?=($LoggedUser['torrent_pass'])?>"
                 class="tooltip" title="Download"><?=($HasFile ? 'DL' : 'Missing')?></a>
-            <?php  if (Torrents::can_use_token($Torrent)) { ?>
+            <?php if (Torrents::can_use_token($Torrent)) { ?>
             | <a href="torrents.php?action=download&amp;id=<?=($TorrentID)?>&amp;authkey=<?=($LoggedUser['AuthKey'])?>&amp;torrent_pass=<?=($LoggedUser['torrent_pass'])?>&amp;usetoken=1"
                 class="tooltip" title="Use a FL Token"
                 onclick="return confirm('Are you sure you want to use a freeleech token here?');">FL</a>
-            <?php  } ?>
+            <?php } ?>
             | <a href="reportsv2.php?action=report&amp;id=<?=($TorrentID)?>"
                 class="tooltip" title="Report">RP</a>
-            <?php  if ($CanEdit) { ?>
+            <?php if ($CanEdit) { ?>
             | <a href="torrents.php?action=edit&amp;id=<?=($TorrentID)?>"
                 class="tooltip" title="Edit">ED</a>
-            <?php  }
+            <?php }
         if (check_perms('torrents_delete') || $UserID == $LoggedUser['ID']) { ?>
             | <a href="torrents.php?action=delete&amp;torrentid=<?=($TorrentID)?>"
                 class="tooltip" title="Remove">RM</a>
-            <?php  } ?>
+            <?php } ?>
             | <a href="torrents.php?torrentid=<?=($TorrentID)?>"
                 class="tooltip" title="Permalink">PL</a>
             ]</span>

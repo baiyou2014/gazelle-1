@@ -379,12 +379,12 @@ View::show_header('Browse Torrents', 'browse');
 
               <select name="resolution" class="ft_resolution fti_advanced">
                 <option value="">Scope</option>
-                <?php  foreach ($Resolutions as $Resolution) { ?>
+                <?php foreach ($Resolutions as $Resolution) { ?>
                 <option
                   value="<?=display_str($Resolution); # pcs-comment-start; keep quote?>"
                   <?Format::selected('resolution', $Resolution)?>><?=display_str($Resolution); ?>
                 </option>
-                <?php  } ?>
+                <?php } ?>
               </select>
 
               <!-- Aligned/Censored -->
@@ -412,11 +412,11 @@ View::show_header('Browse Torrents', 'browse');
               <!-- Codec/License -->
               <select name="codec" class="ft_codec fti_advanced">
                 <option value="">License</option>
-                <?php  foreach ($Codecs as $Codec) { ?>
+                <?php foreach ($Codecs as $Codec) { ?>
                 <option value="<?=display_str($Codec); ?>"
                   <?Format::selected('codec', $Codec)?>><?=display_str($Codec); ?>
                 </option>
-                <?php  } ?>
+                <?php } ?>
               </select>
             </td>
           </tr>
@@ -668,9 +668,9 @@ die();
   class="box torrent_table cats <?=$GroupResults ? 'grouping' : 'no_grouping'?>"
   id="torrent_table">
   <tr class="colhead">
-    <?php  if ($GroupResults) { ?>
+    <?php if ($GroupResults) { ?>
     <td class="small"></td>
-    <?php  } ?>
+    <?php } ?>
     <td class="small cats_col"></td>
     <td>Name / <a
         href="<?=header_link('year')?>">Year</a>
@@ -844,7 +844,7 @@ die();
       <div class="group_info clear">
         <?=$DisplayName?>
 
-        <?php  if (in_array($GroupID, $Bookmarks)) { ?>
+        <?php if (in_array($GroupID, $Bookmarks)) { ?>
         <span class="remove_bookmark float_right">
           <a href="#" id="bookmarklink_torrent_<?=$GroupID?>"
             class="brackets"
@@ -852,13 +852,13 @@ die();
             bookmark</a>
         </span>
 
-        <?php  } else { ?>
+        <?php } else { ?>
         <span class="add_bookmark float_right">
           <a href="#" id="bookmarklink_torrent_<?=$GroupID?>"
             class="brackets"
             onclick="Bookmark('torrent', <?=$GroupID?>, 'Remove bookmark'); return false;">Bookmark</a>
         </span>
-        <?php  } ?>
+        <?php } ?>
         <br />
 
         <!-- Tags -->

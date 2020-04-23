@@ -14,7 +14,7 @@ class TestingView
   <a href="testing.php?action=comments" class="brackets">Comments</a>
   <?php } ?>
 </div>
-<?php  }
+<?php }
 
     /**
      * Render a list of classes

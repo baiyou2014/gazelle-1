@@ -163,15 +163,15 @@ echo $Val->GenerateJS('userform');
             <strong>Stylesheet</strong></td>
           <td>
             <select name="stylesheet" id="stylesheet">
-              <?php  foreach ($Stylesheets as $Style) { ?>
+              <?php foreach ($Stylesheets as $Style) { ?>
               <option value="<?=($Style['ID'])?>"
                 <?=$Style['ID'] == $StyleID ? ' selected="selected"' : ''?>><?=($Style['ProperName'])?>
               </option>
-              <?php  } ?>
+              <?php } ?>
             </select>&nbsp;&nbsp;
             <a data-toggle-target="#css_gallery" class="brackets">Show gallery</a>
             <div id="css_gallery" class="hidden">
-              <?php  foreach ($Stylesheets as $Style) { ?>
+              <?php foreach ($Stylesheets as $Style) { ?>
               <div class="preview_wrapper">
                 <div class="preview_image"
                   name="<?=($Style['Name'])?>">
@@ -185,7 +185,7 @@ echo $Val->GenerateJS('userform');
                   </p>
                 </div>
               </div>
-              <?php  } ?>
+              <?php } ?>
             </div>
           </td>
         </tr>
@@ -224,7 +224,7 @@ echo $Val->GenerateJS('userform');
               value="<?=display_str($StyleURL)?>" />
           </td>
         </tr>
-        <?php  if (check_perms('users_mod')) { ?>
+        <?php if (check_perms('users_mod')) { ?>
         <tr id="site_autostats_tr">
           <td class="label tooltip"
             title="This is a staff-only feature to bypass the &quot;Show stats&quot; button for seeding, leeching, snatched, and downloaded stats on profile pages.">
@@ -237,7 +237,7 @@ echo $Val->GenerateJS('userform');
             </label>
           </td>
         </tr>
-        <?php  } ?>
+        <?php } ?>
       </table>
       <table cellpadding="6" cellspacing="1" border="0" width="100%" class="layout border user_options"
         id="torrent_settings">
@@ -246,7 +246,7 @@ echo $Val->GenerateJS('userform');
             <strong>Torrent Settings</strong>
           </td>
         </tr>
-        <?php  if (check_perms('site_advanced_search')) { ?>
+        <?php if (check_perms('site_advanced_search')) { ?>
         <tr id="tor_searchtype_tr">
           <td class="label tooltip"
             title="This option allows you to choose whether the default torrent search menu will be basic (fewer options) or advanced (more options).">
@@ -266,7 +266,7 @@ echo $Val->GenerateJS('userform');
             </ul>
           </td>
         </tr>
-        <?php  } ?>
+        <?php } ?>
         <tr id="tor_group_tr">
           <td class="label tooltip"
             title="Enabling torrent grouping will place multiple formats of the same torrent group together beneath a common header.">
@@ -477,7 +477,7 @@ echo $Val->GenerateJS('userform');
           <td class="label tooltip" title="Select up to 5 badges to display next to your username."><strong>Displayed
               Badges</strong></td>
           <td>
-            <?php  $Badges = Badges::get_badges($UserID);
+            <?php $Badges = Badges::get_badges($UserID);
     if (empty($Badges)) {
         ?><span>You have no badges :(</span><?php
     } else {
@@ -537,7 +537,7 @@ echo $Val->GenerateJS('userform');
               value="<?=display_str($Avatar)?>" />
           </td>
         </tr>
-        <?php  if ($HasSecondAvatar) { ?>
+        <?php if ($HasSecondAvatar) { ?>
         <tr id="pers_avatar2_tr">
           <td class="label tooltip_interactive"
             title="Congratulations! You've unlocked this option by reaching Special Rank #2. Thanks for donating. Your normal avatar will &quot;flip&quot; to this one when someone runs their mouse over the image. Please link to an avatar which follows the &lt;a href=&quot;rules.php&quot;&gt;site rules&lt;/a&gt;. The avatar width should be 150 pixels and will be resized if necessary."
@@ -548,7 +548,7 @@ echo $Val->GenerateJS('userform');
               value="<?=$Rewards['SecondAvatar']?>" />
           </td>
         </tr>
-        <?php  }
+        <?php }
   if ($HasAvatarMouseOverText) { ?>
         <tr id="pers_avatarhover_tr">
           <td class="label tooltip"
@@ -559,7 +559,7 @@ echo $Val->GenerateJS('userform');
               value="<?=$Rewards['AvatarMouseOverText']?>" />
           </td>
         </tr>
-        <?php  }
+        <?php }
   if ($HasDonorIconMouseOverText) { ?>
         <tr id="pers_donorhover_tr">
           <td class="label tooltip"
@@ -570,7 +570,7 @@ echo $Val->GenerateJS('userform');
               value="<?=$Rewards['IconMouseOverText']?>" />
           </td>
         </tr>
-        <?php  }
+        <?php }
   if ($HasDonorIconLink) { ?>
         <tr id="pers_donorlink_tr">
           <td class="label tooltip"
@@ -581,7 +581,7 @@ echo $Val->GenerateJS('userform');
               value="<?=$Rewards['CustomIconLink']?>" />
           </td>
         </tr>
-        <?php  }
+        <?php }
   if ($HasCustomDonorIcon) { ?>
         <tr id="pers_donoricon_tr">
           <td class="label tooltip"
@@ -592,7 +592,7 @@ echo $Val->GenerateJS('userform');
               value="<?=$Rewards['CustomIcon']?>" />
           </td>
         </tr>
-        <?php  }
+        <?php }
   if ($HasDonorForum) { ?>
         <tr id="pers_donorforum_tr">
           <td class="label tooltip"
@@ -618,7 +618,7 @@ echo $Val->GenerateJS('userform');
             </span><span id="donor_title_suffix_preview"></span>
           </td>
         </tr>
-        <?php  } ?>
+        <?php } ?>
         <tr id="pers_proftitle_tr">
           <td class="label tooltip"
             title="You can customize your profile information with text and BBCode. Entering a title will label your profile information section. Unlock additional profile info boxes via Donor Ranks.">
@@ -635,7 +635,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <!-- Excuse this numbering confusion, we start numbering our profile info/titles at 1 in the donor_rewards table -->
-        <?php  if ($HasProfileInfo1) { ?>
+        <?php if ($HasProfileInfo1) { ?>
         <tr id="pers_proftitle2_tr">
           <td class="label tooltip"
             title="Congratulations! You've unlocked this option by reaching Donor Rank #2. Thanks for donating. You can customize your profile information with text and BBCode. Entering a title will label your profile information section.">
@@ -651,7 +651,7 @@ echo $Val->GenerateJS('userform');
           <td><?php $textarea = new TEXTAREA_PREVIEW('profile_info_1', 'profile_info_1', display_str($ProfileRewards['ProfileInfo1']), 40, 8); ?>
           </td>
         </tr>
-        <?php  }
+        <?php }
   if ($HasProfileInfo2) { ?>
         <tr id="pers_proftitle3_tr">
           <td class="label tooltip"
@@ -668,7 +668,7 @@ echo $Val->GenerateJS('userform');
           <td><?php $textarea = new TEXTAREA_PREVIEW('profile_info_2', 'profile_info_2', display_str($ProfileRewards['ProfileInfo2']), 40, 8); ?>
           </td>
         </tr>
-        <?php  }
+        <?php }
   if ($HasProfileInfo3) { ?>
         <tr id="pers_proftitle4_tr">
           <td class="label tooltip"
@@ -685,7 +685,7 @@ echo $Val->GenerateJS('userform');
           <td><?php $textarea = new TEXTAREA_PREVIEW('profile_info_3', 'profile_info_3', display_str($ProfileRewards['ProfileInfo3']), 40, 8); ?>
           </td>
         </tr>
-        <?php  }
+        <?php }
   if ($HasProfileInfo4) { ?>
         <tr id="pers_proftitle5_tr">
           <td class="label tooltip"
@@ -702,7 +702,7 @@ echo $Val->GenerateJS('userform');
           <td><?php $textarea = new TEXTAREA_PREVIEW('profile_info_4', 'profile_info_4', display_str($ProfileRewards['ProfileInfo4']), 40, 8); ?>
           </td>
         </tr>
-        <?php  } ?>
+        <?php } ?>
       </table>
       <table cellpadding="6" cellspacing="1" border="0" width="100%" class="layout border user_options"
         id="paranoia_settings">

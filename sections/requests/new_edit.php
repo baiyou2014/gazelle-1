@@ -108,10 +108,10 @@ View::show_header(($NewRequest ? 'Create Request' : 'Edit Request'), 'bbcode,req
   <div class="box pad">
     <form action="" method="post" id="request_form" onsubmit="Calculate();">
       <div>
-        <?php  if (!$NewRequest) { ?>
+        <?php if (!$NewRequest) { ?>
         <input type="hidden" name="requestid"
           value="<?= $RequestID ?>" />
-        <?php  } ?>
+        <?php } ?>
         <input type="hidden" name="auth"
           value="<?= $LoggedUser['AuthKey'] ?>" />
         <input type="hidden" name="action"
@@ -124,7 +124,7 @@ View::show_header(($NewRequest ? 'Create Request' : 'Edit Request'), 'bbcode,req
           <td colspan="2" class="center">Please make sure your request follows the
             <a href="rules.php?p=requests">request rules</a>!</td>
         </tr>
-        <?php  if ($NewRequest || $CanEdit) { ?>
+        <?php if ($NewRequest || $CanEdit) { ?>
 
         <!-- Category -->
         <tr>
@@ -143,7 +143,7 @@ View::show_header(($NewRequest ? 'Create Request' : 'Edit Request'), 'bbcode,req
                 <?php foreach (Misc::display_array($Categories) as $Cat) { ?>
                 <option value="<?= $Cat ?>" <?= (!empty($CategoryName) && ($CategoryName === $Cat) ? ' selected="selected"' : '') ?>><?=$Cat?>
                 </option>
-                <?php    } ?>
+                <?php } ?>
               </select>
           </td>
         </tr>
@@ -193,7 +193,7 @@ View::show_header(($NewRequest ? 'Create Request' : 'Edit Request'), 'bbcode,req
               <?= $Disabled ?>/>
           </td>
         </tr>
-        <?php  } # Ends if NewRequest line 123?>
+        <?php } # Ends if NewRequest line 123?>
 
         <!-- Multiple artists -->
         <tr id="artist_tr">
@@ -242,7 +242,7 @@ View::show_header(($NewRequest ? 'Create Request' : 'Edit Request'), 'bbcode,req
               <?= $Disabled ?>/>
           </td>
         </tr>
-        <?php  } ?>
+        <?php } ?>
 
         <!-- Tags -->
         <tr>
@@ -274,7 +274,7 @@ View::show_header(($NewRequest ? 'Create Request' : 'Edit Request'), 'bbcode,req
                 <?php foreach (Misc::display_array($GenreTags) as $Genre) { ?>
                 <option value="<?= $Genre ?>"><?= $Genre ?>
                 </option>
-                <?php  } ?>
+                <?php } ?>
               </select>
               <input type="text" id="tags" name="tags" size="45"
                 value="<?= (!empty($Tags) ? display_str($Tags) : '') ?>"
@@ -295,7 +295,7 @@ View::show_header(($NewRequest ? 'Create Request' : 'Edit Request'), 'bbcode,req
         </tr>
 
         <!-- Existing torrent groups -->
-        <?php  if (check_perms('site_moderate_requests')) { ?>
+        <?php if (check_perms('site_moderate_requests')) { ?>
         <tr>
           <td class="label">Torrent Group</td>
           <td>

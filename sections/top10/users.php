@@ -109,7 +109,7 @@ function generate_user_table($Caption, $Tag, $Details, $Limit)
       – <a
         href="top10.php?type=users&amp;limit=250&amp;details=<?=$Tag?>"
         class="brackets">Top 250</a>
-      <?php  break;
+      <?php break;
     case 250: ?>
       – <a href="top10.php?type=users&amp;details=<?=$Tag?>"
         class="brackets">Top 10</a>
@@ -117,7 +117,7 @@ function generate_user_table($Caption, $Tag, $Details, $Limit)
         href="top10.php?type=users&amp;limit=100&amp;details=<?=$Tag?>"
         class="brackets">Top 100</a>
       – <span class="brackets">Top 250</span>
-      <?php  break;
+      <?php break;
     default: ?>
       – <span class="brackets">Top 10</span>
       – <a

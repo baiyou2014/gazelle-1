@@ -42,8 +42,6 @@ if ($IsFilled) {
     #$DisplayLink = $ArtistLink.'<span dir="ltr">'.$Title."</span>";
 }
 
-$FullName = $ArtistName.$Title;
-
 $Extra = "";
 
 if (!empty($Request['TitleRJ']) && $Request['TitleRJ'] != $Title) {
@@ -73,7 +71,7 @@ $CanEdit = ($UserCanEdit || $ProjectCanEdit || check_perms('site_moderate_reques
 // Comments (must be loaded before View::show_header so that subscriptions and quote notifications are handled properly)
 list($NumComments, $Page, $Thread, $LastRead) = Comments::load('requests', $RequestID);
 
-View::show_header("View request: $FullName", 'comments,requests,bbcode,subscriptions');
+View::show_header("View request: $Title", 'comments,requests,bbcode,subscriptions');
 ?>
 
 <div class="thin">
@@ -82,32 +80,32 @@ View::show_header("View request: $FullName", 'comments,requests,bbcode,subscript
       <?=$DisplayLink?>
     </h2>
     <div class="linkbox">
-      <?php  if ($CanEdit) { ?>
+      <?php if ($CanEdit) { ?>
       <a href="requests.php?action=edit&amp;id=<?=$RequestID?>"
         class="brackets">Edit</a>
-      <?php  }
+      <?php }
   if ($UserCanEdit || check_perms('users_mod')) { //check_perms('site_moderate_requests')) {?>
       <a href="requests.php?action=delete&amp;id=<?=$RequestID?>"
         class="brackets">Delete</a>
-      <?php  }
+      <?php }
   if (Bookmarks::has_bookmarked('request', $RequestID)) { ?>
       <a href="#" id="bookmarklink_request_<?=$RequestID?>"
         onclick="Unbookmark('request', <?=$RequestID?>, 'Bookmark'); return false;"
         class="brackets">Remove bookmark</a>
-      <?php  } else { ?>
+      <?php } else { ?>
       <a href="#" id="bookmarklink_request_<?=$RequestID?>"
         onclick="Bookmark('request', <?=$RequestID?>, 'Remove bookmark'); return false;"
         class="brackets">Bookmark</a>
-      <?php  } ?>
+      <?php } ?>
       <a href="#" id="subscribelink_requests<?=$RequestID?>"
         class="brackets"
         onclick="SubscribeComments('requests',<?=$RequestID?>);return false;"><?=Subscriptions::has_subscribed_comments('requests', $RequestID) !== false ? 'Unsubscribe' : 'Subscribe'?></a>
       <a href="reports.php?action=report&amp;type=request&amp;id=<?=$RequestID?>"
         class="brackets">Report request</a>
-      <?php  if (!$IsFilled) { ?>
+      <?php if (!$IsFilled) { ?>
       <a href="upload.php?requestid=<?=$RequestID?><?=($Request['GroupID'] ? "&amp;groupid=$Request[GroupID]" : '')?>"
         class="brackets">Upload request</a>
-      <?php  }
+      <?php }
   if (!$IsFilled && ($Request['CategoryID'] === '0' || ($CategoryName === 'Music' && $Request['Year'] === '0'))) { ?>
       <a href="reports.php?action=report&amp;type=request_update&amp;id=<?=$RequestID?>"
         class="brackets">Request update</a>
@@ -125,7 +123,7 @@ $encoded_artist = urlencode($encoded_artist);
     </div>
   </div>
   <div class="sidebar">
-    <?php  if ($Request['CategoryID'] !== '0') { ?>
+    <?php if ($Request['CategoryID'] !== '0') { ?>
     <div class="box box_image box_image_albumart box_albumart">
       <!-- .box_albumart deprecated -->
       <div class="head"><strong>Picture</strong></div>
@@ -136,14 +134,14 @@ $encoded_artist = urlencode($encoded_artist);
         <img style="width: 100%;"
           src="<?=ImageTools::process($Request['Image'], 'thumb')?>"
           lightbox-img="<?=ImageTools::process($Request['Image'])?>"
-          alt="<?=$FullName?>" class="lightbox-init" />
+          alt="<?=$Title?>" class="lightbox-init" />
         <?php
     } else { ?>
         <img style="width: 100%;"
           src="<?=STATIC_SERVER?>common/noartwork/music.png"
           alt="<?=$CategoryName?>" class="tooltip"
           title="<?=$CategoryName?>" height="220" border="0" />
-        <?php    } ?>
+        <?php } ?>
       </div>
     </div>
     <?php
@@ -175,17 +173,17 @@ $encoded_artist = urlencode($encoded_artist);
     <div class="box box_artists">
       <div class="head"><strong><?= $ArtistVariant ?></strong></div>
       <ul class="stats nobullet">
-        <?php    foreach ($ArtistForm as $Artist) { ?>
+        <?php foreach ($ArtistForm as $Artist) { ?>
         <li class="artist">
           <?= Artists::display_artist($Artist) ?>
         </li>
-        <?php    } ?>
+        <?php } ?>
       </ul>
     </div>
     <div class="box box_tags">
       <div class="head"><strong>Tags</strong></div>
       <ul class="stats nobullet">
-        <?php  foreach ($Request['Tags'] as $TagID => $TagName) {
+        <?php foreach ($Request['Tags'] as $TagID => $TagName) {
     $Split = Tags::get_name_and_class($TagName); ?>
         <li>
           <a class="<?= $Split['class']?>"
@@ -233,7 +231,7 @@ $encoded_artist = urlencode($encoded_artist);
             <strong><?= Format::get_size($User['Bounty']) ?></strong>
           </td>
         </tr>
-        <?php      }
+        <?php }
       }
   }
 ?>
@@ -252,7 +250,7 @@ $encoded_artist = urlencode($encoded_artist);
               <strong><?= Users::format_username($Request['UserID'], false, false, false) ?></strong>
             </td>
           </tr>
-          <?php  if ($CategoryName == 'Movies') {
+          <?php if ($CategoryName == 'Movies') {
     if (!empty($Request['CatalogueNumber'])) { ?>
           <tr>
             <td class="label">Catalogue number</td>
@@ -309,13 +307,13 @@ $encoded_artist = urlencode($encoded_artist);
             <td class="label">Votes</td>
             <td>
               <span id="votecount"><?= number_format($VoteCount) ?></span>
-              <?php  if ($CanVote) { ?>
+              <?php if ($CanVote) { ?>
               &nbsp;&nbsp;<a href="javascript:Vote(0)" class="brackets"><strong>+</strong></a>
               <strong>Costs <?= Format::get_size($MinimumVote, 0) ?></strong>
-              <?php  } ?>
+              <?php } ?>
             </td>
           </tr>
-          <?php  if ($Request['LastVote'] > $Request['TimeAdded']) { ?>
+          <?php if ($Request['LastVote'] > $Request['TimeAdded']) { ?>
           <tr>
             <td class="label">Last Voted</td>
             <td><?= time_diff($Request['LastVote']) ?>
@@ -391,12 +389,12 @@ $encoded_artist = urlencode($encoded_artist);
               <strong><a
                   href="torrents.php?<?=(strtotime($Request['TimeFilled']) < $TimeCompare ? 'id=' : 'torrentid=') . $Request['TorrentID']?>">Yes</a></strong>,
               by user <?=($Request['AnonymousFill'] ? '<em>Anonymous</em>' : Users::format_username($Request['FillerID'], false, false, false))?>
-              <?php    if ($LoggedUser['ID'] == $Request['UserID'] || $LoggedUser['ID'] == $Request['FillerID'] || check_perms('site_moderate_requests')) { ?>
+              <?php if ($LoggedUser['ID'] == $Request['UserID'] || $LoggedUser['ID'] == $Request['FillerID'] || check_perms('site_moderate_requests')) { ?>
               <strong><a
                   href="requests.php?action=unfill&amp;id=<?=$RequestID?>"
                   class="brackets">Unfill</a></strong> Unfilling a request without a valid, nontrivial reason will
               result in a warning.
-              <?php    } ?>
+              <?php } ?>
             </td>
           </tr>
           <?php
@@ -418,19 +416,19 @@ $encoded_artist = urlencode($encoded_artist);
                     <pre><?= site_url() ?>torrents.php?torrentid=xxx</pre>
                   </strong>
                 </div>
-                <?php    if (check_perms('site_moderate_requests')) { ?>
+                <?php if (check_perms('site_moderate_requests')) { ?>
                 <div class="field_div">
                   <strong>For User</strong> <input type="text" size="25" name="user" <?= (!empty($FillerUsername) ? " value='$FillerUsername'" : '') ?>
                   />
                 </div>
-                <?php    } ?>
+                <?php } ?>
                 <div class="submit_div">
                   <input type="submit" value="Fill" />
                 </div>
               </form>
             </td>
           </tr>
-          <?php  } ?>
+          <?php } ?>
         </table>
       </div>
     </div>

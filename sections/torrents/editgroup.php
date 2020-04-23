@@ -230,7 +230,7 @@ if ($CategoryID == 1) {
               value="<?=$CatalogueNumber?>" />
           </td>
         </tr>
-        <?php  if (check_perms('torrents_freeleech')) { ?>
+        <?php if (check_perms('torrents_freeleech')) { ?>
         <tr>
           <td class="label">Torrent <strong>group</strong> leech status</td>
           <td>
@@ -240,15 +240,15 @@ if ($CategoryID == 1) {
               Leech</label>
             because
             <select name="freeleechtype">
-              <?php    $FL = array('N/A', 'Staff Pick', 'Perma-FL', 'Freeleechizer', 'Site-Wide FL');
+              <?php $FL = array('N/A', 'Staff Pick', 'Perma-FL', 'Freeleechizer', 'Site-Wide FL');
     foreach ($FL as $Key => $FLType) { ?>
               <option value="<?=$Key?>" <?=($Key == $Torrent['FreeLeechType'] ? ' selected="selected"' : '')?>><?=$FLType?>
               </option>
-              <?php    } ?>
+              <?php } ?>
             </select>
           </td>
         </tr>
-        <?php  } ?>
+        <?php } ?>
       </table>
       <input type="submit" value="Edit" />
     </form>
@@ -315,6 +315,6 @@ if ($CategoryID == 1) {
       </div>
     </form>
   </div>
-  <?php  } ?>
+  <?php } ?>
 </div>
 <?php View::show_footer();

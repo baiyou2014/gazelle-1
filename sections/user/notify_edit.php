@@ -97,7 +97,7 @@ foreach ($Notifications as $N) { // $N stands for Notifications
     <a data-toggle-target="#filter_<?=$N['ID']?>"
       class="brackets">Show</a>
   </h3>
-  <?php  } ?>
+  <?php } ?>
   <form
     class="box pad slight_margin <?=($NewFilter ? 'create_form' : 'edit_form')?>"
     id="<?=($NewFilter ? 'filter_form' : '')?>"
@@ -106,12 +106,12 @@ foreach ($Notifications as $N) { // $N stands for Notifications
     <input type="hidden" name="action" value="notify_handle">
     <input type="hidden" name="auth"
       value="<?=$LoggedUser['AuthKey']?>">
-    <?php  if (!$NewFilter) { ?>
+    <?php if (!$NewFilter) { ?>
     <input type="hidden" name="id<?=$i?>"
       value="<?=$N['ID']?>">
-    <?php  } ?>
+    <?php } ?>
     <table <?=(!$NewFilter ? 'id="filter_'.$N['ID'].'" class="layout hidden"' : 'class="layout"')?>>
-      <?php  if ($NewFilter) { ?>
+      <?php if ($NewFilter) { ?>
 
       <tr>
         <td class="label">
@@ -133,7 +133,7 @@ foreach ($Notifications as $N) { // $N stands for Notifications
       </tr>
       -->
 
-      <?php  } ?>
+      <?php } ?>
 
       <tr>
         <td class="label"><strong>One of these artists</strong></td>
@@ -185,7 +185,7 @@ foreach ($Notifications as $N) { // $N stands for Notifications
       <tr>
         <td class="label"><strong>Only these categories</strong></td>
         <td>
-          <?php  foreach ($Categories as $Category) { ?>
+          <?php foreach ($Categories as $Category) { ?>
           <input type="checkbox" name="categories<?=$i?>[]"
             id="<?=$Category?>_<?=$N['ID']?>"
             value="<?=$Category?>" <?php if (in_array($Category, $N['Categories'])) {
@@ -193,14 +193,14 @@ foreach ($Notifications as $N) { // $N stands for Notifications
     } ?>>
           <label
             for="<?=$Category?>_<?=$N['ID']?>"><?=$Category?></label><br />
-          <?php  } ?>
+          <?php } ?>
         </td>
       </tr>
 
       <tr>
         <td class="label"><strong>Only these media</strong></td>
         <td>
-          <?php  foreach ($Media as $Medium) { ?>
+          <?php foreach ($Media as $Medium) { ?>
           <input type="checkbox" name="media<?=$i?>[]"
             id="<?=$Medium?>_<?=$N['ID']?>"
             value="<?=$Medium?>" <?php if (in_array($Medium, $N['Media'])) {
@@ -208,14 +208,14 @@ foreach ($Notifications as $N) { // $N stands for Notifications
     } ?>>
           <label
             for="<?=$Medium?>_<?=$N['ID']?>"><?=$Medium?></label><br />
-          <?php  } ?>
+          <?php } ?>
         </td>
       </tr>
 
       <tr>
         <td class="label"><strong>Only these media</strong></td>
         <td>
-          <?php  foreach ($MediaManga as $Medium) { ?>
+          <?php foreach ($MediaManga as $Medium) { ?>
           <input type="checkbox" name="media<?=$i?>[]"
             id="<?=$Medium?>_<?=$N['ID']?>"
             value="<?=$Medium?>" <?php if (in_array($Medium, $N['Media'])) {
@@ -223,7 +223,7 @@ foreach ($Notifications as $N) { // $N stands for Notifications
     } ?>>
           <label
             for="<?=$Medium?>_<?=$N['ID']?>"><?=$Medium?></label><br />
-          <?php  } ?>
+          <?php } ?>
         </td>
       </tr>
 

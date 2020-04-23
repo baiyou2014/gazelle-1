@@ -702,7 +702,7 @@ foreach ($TorrentList as $Torrent) {
       if (check_perms('users_mod')) { ?>
                 <em class="tooltip"
                   title="<?=Users::user_info($UserID)['Username']?>">Anonymous</em>
-                <?php  } else {
+                <?php } else {
           ?><em>Anonymous</em><?php
       }
   } else {
@@ -755,7 +755,7 @@ foreach ($TorrentList as $Torrent) {
             <div id="snatches_<?=$TorrentID?>" class="hidden"></div>
             <div id="files_<?=$TorrentID?>" class="hidden"><?=$FileTable?>
             </div>
-            <?php  if ($Reported) { ?>
+            <?php if ($Reported) { ?>
             <div id="reported_<?=$TorrentID?>" class="hidden"><?=$ReportInfo?>
             </div>
             <?php
@@ -838,7 +838,7 @@ if (empty($LoggedUser['DisableRequests']) && count($Requests) > 0) {
           <td>Votes</td>
           <td>Bounty</td>
         </tr>
-        <?php  foreach ($Requests as $Request) {
+        <?php foreach ($Requests as $Request) {
         $RequestVotes = Requests::get_votes_array($Request['ID']);
 
         $RequestDesc = substr(explode('\n', Text::strip_bbcode($Request['Description']), 2)[0], 0, 70);
@@ -851,11 +851,11 @@ if (empty($LoggedUser['DisableRequests']) && count($Requests) > 0) {
           <td>
             <span
               id="vote_count_<?=$Request['ID']?>"><?=count($RequestVotes['Voters'])?></span>
-            <?php      if (check_perms('site_vote')) { ?>
+            <?php if (check_perms('site_vote')) { ?>
             &nbsp;&nbsp; <a
               href="javascript:Vote(0, <?=$Request['ID']?>)"
               class="brackets">+</a>
-            <?php      } ?>
+            <?php } ?>
           </td>
           <td><?=Format::get_size($RequestVotes['TotalBounty'])?>
           </td>
@@ -896,7 +896,7 @@ if (count($Collages) > 0) {
           </td>
           <td># torrents</td>
         </tr>
-        <?php  foreach ($Indices as $i) {
+        <?php foreach ($Indices as $i) {
         list($CollageName, $CollageTorrents, $CollageID) = $Collages[$i];
         unset($Collages[$i]); ?>
         <tr>
@@ -952,7 +952,7 @@ if (count($PersonalCollages) > 0) {
         </td>
         <td># torrents</td>
       </tr>
-      <?php  foreach ($Indices as $i) {
+      <?php foreach ($Indices as $i) {
         list($CollageName, $CollageTorrents, $CollageID) = $PersonalCollages[$i];
         unset($PersonalCollages[$i]); ?>
       <tr>

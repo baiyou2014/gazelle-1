@@ -80,12 +80,12 @@ if (check_perms('site_advanced_top10')) {
                     <td>
                         <select name="category" style="width: auto;" class="ft_format">
                             <option value="">Any</option>
-                            <?php  foreach ($Categories as $CategoryName) { ?>
+                            <?php foreach ($Categories as $CategoryName) { ?>
                             <option
                                 value="<?=display_str($CategoryName)?>"
                                 <?=(($CategoryName===($_GET['category']??false))?'selected="selected"':'')?>><?=display_str($CategoryName)?>
                             </option>
-                            <?php  } ?>
+                            <?php } ?>
                         </select>
                     </td>
                 </tr>
@@ -424,7 +424,7 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
 {
     global $LoggedUser, $Categories, $ReleaseTypes, $GroupBy; ?>
 <h3>Top <?="$Limit $Caption"?>
-    <?php  if (empty($_GET['advanced'])) { ?>
+    <?php if (empty($_GET['advanced'])) { ?>
     <small class="top10_quantity_links">
         <?php
     switch ($Limit) {
@@ -434,23 +434,23 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
         – <span class="brackets">Top 100</span>
         – <a href="top10.php?type=torrents&amp;limit=250&amp;details=<?=$Tag?>"
             class="brackets">Top 250</a>
-        <?php        break;
+        <?php break;
       case 250: ?>
         – <a href="top10.php?details=<?=$Tag?>" class="brackets">Top
             10</a>
         – <a href="top10.php?type=torrents&amp;limit=100&amp;details=<?=$Tag?>"
             class="brackets">Top 100</a>
         – <span class="brackets">Top 250</span>
-        <?php        break;
+        <?php break;
       default: ?>
         – <span class="brackets">Top 10</span>
         – <a href="top10.php?type=torrents&amp;limit=100&amp;details=<?=$Tag?>"
             class="brackets">Top 100</a>
         – <a href="top10.php?type=torrents&amp;limit=250&amp;details=<?=$Tag?>"
             class="brackets">Top 250</a>
-        <?php    } ?>
+        <?php } ?>
     </small>
-    <?php  } ?>
+    <?php } ?>
 </h3>
 <table class="torrent_table cats numbering border">
     <tr class="colhead">
@@ -628,7 +628,7 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
                     class="bookmarklink_torrent_<?=$GroupID?> brackets"
                     onclick="Bookmark('torrent', <?=$GroupID?>, 'Remove bookmark'); return false;">Bookmark</a>
             </span>
-            <?php    } ?>
+            <?php } ?>
             <div class="tags"><?=$TorrentTags->format()?>
             </div>
         </div>

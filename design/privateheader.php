@@ -194,9 +194,9 @@ if ($NotificationsManager->is_skipped(NotificationsManager::SUBSCRIPTIONS)) {
               <a href="staffpm.php">Staff Inbox</a>
               <a href="torrents.php?type=uploaded&amp;userid=<?=G::$LoggedUser['ID']?>">Uploads</a>
               <a href="bookmarks.php?type=torrents">Bookmarks</a>
-<?php  if (check_perms('site_torrents_notify')) { ?>
+<?php if (check_perms('site_torrents_notify')) { ?>
               <a href="user.php?action=notify">Notifications</a>
-<?php  } ?>
+<?php } ?>
               <a href="userhistory.php?action=subscriptions">Subscriptions</a>
               <a href="comments.php">Comments</a>
               <a href="friends.php">Friends</a>
@@ -214,9 +214,9 @@ if (isset(G::$LoggedUser['SearchType']) && G::$LoggedUser['SearchType']) { // Ad
 ?>
       <div id="searchbars">
         <form class="search_form" name="torrents" action="torrents.php" method="get">
-<?php  if ($UseAdvancedSearch) { ?>
+<?php if ($UseAdvancedSearch) { ?>
           <input type="hidden" name="action" value="advanced">
-<?php  } ?>
+<?php } ?>
           <input id="torrentssearch" aria-label="Search torrents" accesskey="t" spellcheck="false" autocomplete="off" placeholder="Torrents" type="text" name="<?=$UseAdvancedSearch ? 'advgroupname' : 'searchstr' ?>" size="17">
         </form>
         <form class="search_form" name="artists" action="artist.php" method="get">
@@ -280,12 +280,12 @@ if (check_perms('site_send_unlimited_invites')) {
           <li id="stats_ratio">
             Ratio: <span class="stat"><?=Format::get_ratio_html(G::$LoggedUser['BytesUploaded'], G::$LoggedUser['BytesDownloaded'])?></span>
           </li>
-<?php  if (!empty(G::$LoggedUser['RequiredRatio']) && G::$LoggedUser['RequiredRatio'] > 0) { ?>
+<?php if (!empty(G::$LoggedUser['RequiredRatio']) && G::$LoggedUser['RequiredRatio'] > 0) { ?>
           <li id="stats_required">
             <a href="rules.php?p=ratio">Required</a>:
             <span class="stat tooltip" title="<?=number_format(G::$LoggedUser['RequiredRatio'], 5)?>"><?=number_format(G::$LoggedUser['RequiredRatio'], 2)?></span>
           </li>
-<?php  }
+<?php }
 
   if (G::$LoggedUser['FLTokens'] > 0) { ?>
           <li id="fl_tokens">
@@ -294,7 +294,7 @@ if (check_perms('site_send_unlimited_invites')) {
               <a href="userhistory.php?action=token_history&amp;userid=<?=G::$LoggedUser['ID']?>"><?=G::$LoggedUser['FLTokens']?></a>
             </span>
           </li>
-<?php  }
+<?php }
 ?>
           <li id="bonus_points">
             <a href="wiki.php?action=article&amp;name=bonuspoints"><?=BONUS_POINTS?></a>:
@@ -302,14 +302,14 @@ if (check_perms('site_send_unlimited_invites')) {
               <a href="store.php"><?=number_format(G::$LoggedUser['BonusPoints'])?></a>
             </span>
           </li>
-<?php  if (G::$LoggedUser['HnR'] > 0) { ?>
+<?php if (G::$LoggedUser['HnR'] > 0) { ?>
           <li id="hnr">
             <a href="snatchlist.php">HnRs</a>:
             <span class="stat">
               <a><?=G::$LoggedUser['HnR']?></a>
             </span>
           </li>
-<?php  }
+<?php }
 ?>
         </ul>
       </div>
@@ -507,7 +507,7 @@ if (check_perms('users_mod') && FEATURE_EMAIL_REENABLE) {
 
 if (!empty($Alerts) || !empty($ModBar)) { ?>
       <div id="alerts">
-<?php  foreach ($Alerts as $Alert) { ?>
+<?php foreach ($Alerts as $Alert) { ?>
         <div class="alertbar"><?=$Alert?></div>
 <?php
   }
@@ -515,12 +515,12 @@ if (!empty($Alerts) || !empty($ModBar)) { ?>
         <div class="alertbar modbar">
           <?=implode(' ', $ModBar); echo "\n"?>
         </div>
-<?php  }
+<?php }
 if (check_perms('site_debug') && !apcu_exists('DBKEY')) { ?>
         <div class="alertbar error">
           Warning: <a href="tools.php?action=database_key">no DB key</a>
         </div>
-<?php  } ?>
+<?php } ?>
       </div>
 <?php
 }

@@ -165,14 +165,14 @@ if (!$Sneaky
           <input type="submit" value="Invite" />
         </div>
       </div>
-      <?php  if (check_perms('users_invite_notes')) { ?>
+      <?php if (check_perms('users_invite_notes')) { ?>
       <div class="field_div">
         <div class="label"><strong>Staff Note</strong></div>
         <div class="input">
           <input type="text" name="reason" size="60" maxlength="255" />
         </div>
       </div>
-      <?php  } ?>
+      <?php } ?>
     </form>
   </div>
 
