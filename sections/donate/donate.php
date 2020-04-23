@@ -1,24 +1,26 @@
 <?php
+
 enforce_login();
 
 // Include the header
 if (!$UserCount = $Cache->get_value('stats_user_count')) {
     $DB->query("
-    SELECT COUNT(ID)
-    FROM users_main
-    WHERE Enabled = '1'");
+      SELECT COUNT(ID)
+      FROM users_main
+      WHERE Enabled = '1'");
     list($UserCount) = $DB->next_record();
     $Cache->cache_value('stats_user_count', $UserCount, 0); // Infinite cache
 }
 
 $DonorPerms = Permissions::get_permissions(DONOR);
-
 View::show_header('Donate');
 ?>
 
 <div class="thin">
-  <span class="donation_info_title"><?= SITE_NAME ?> budget
-    breakdown</span>
+  <span class="donation_info_title">
+    <?= SITE_NAME ?> budget breakdown
+  </span>
+
   <div class="box pad donation_info">
     <p>
       <?= SITE_NAME ?> has no advertisements, is not sponsored, and
@@ -64,14 +66,19 @@ View::show_header('Donate');
 
       <li>
         <strong>Parent Company.</strong>
-        Because I'm handling personal information such as email and IP addresses, and soliciting donations from the
-        public, legal protection is prudent.
-        An LLC is forthcoming and not expected to exceed $75 per year.
+        <a href="https://wyobiz.wyo.gov/Business/FilingDetails.aspx?eFNum=002156042142181219185041207069159249164249226198"
+          target="_blank">Omics Tools LLC</a>
+        is <?=SITE_NAME?>'s parent company.
+        It costs $100 per year in filing fees plus $125 per year for resident agent services.
+        The resident agent may cost $50 in subsequent years but I wanted to do it right the first time.
       </li>
     </ul>
   </div>
 
-  <span class="donation_info_title">How to donate to <?= SITE_NAME ?></span>
+  <span class="donation_info_title">
+    How to donate to <?= SITE_NAME ?>
+  </span>
+
   <div class="box pad donation_info">
     <p>
       <?= SITE_NAME ?> accepts donations on a tactful array of
@@ -122,7 +129,62 @@ View::show_header('Donate');
     </p>
   </div>
 
-  <span class="donation_info_title">What donating means for your account</span>
+  <span class="donation_info_title">
+    Donate time and expertise instead
+  </span>
+
+  <div class="box pad donation_info">
+    <p>
+      <?=SITE_NAME?> understands that not everyone who wants to help
+      may feel comfortable donating.
+      Please consider getting involved with development and the <?=SITE_NAME?> community instead.
+      Note that Donor Points are only awarded for monetary transactions and not volunteer work.
+      There are many ways to provide alternative support, use your imagination!
+    </p>
+
+    <ul>
+      <li>
+        Contributing issues and pull requests to the
+        <a href="https://git.oppaiti.me/biotorrents/Gazelle" target="_blank">Git repo</a>
+      </li>
+
+      <li>
+        Following and retweeting the
+        <a href="https://twitter.com/biotorrents" target="_blank">Twitter account</a>
+      </li>
+
+      <li>
+        Using the Twitter hashtag
+        <a href="https://twitter.com/hashtag/P2Pbio" target="_blank">#P2Pbio</a>
+      </li>
+
+      <li>Citing <?=SITE_NAME?> in your research
+        <br /><br />
+        <pre>
+@misc{ biotorrents,
+  author = {BioTorrents.de Staff},
+  title = {Serving P2P biology data on Debian 9 with BitTorrent},
+  year = {2020},
+  url = \href{https://pjc.is/biotorrents/announcement}{biotorrents/announcement},
+  note = {Online; accessed <?=date('Y-m-d')?>},
+}
+        </pre>
+      </li>
+
+      <li>
+        Making artwork, icons, and media to advertise the site and replace the emoji
+      </li>
+
+      <li>
+        Asking friends in academic, industry, and the media to consider the project
+      </li>
+    </ul>
+  </div>
+
+  <span class="donation_info_title">
+    What donating means for your account
+  </span>
+
   <div class="box pad donation_info">
     <p>
       Please remember that when you make a donation, you aren't "purchasing" Donor Ranks, invites, or any <?= SITE_NAME ?>-specific benefit.
@@ -151,11 +213,14 @@ View::show_header('Donate');
       <li>A warm, fuzzy feeling</li>
     </ul>
 
-    <p>What you won't receive for donating:</P. <ul>
+    <p>What you won't receive for donating:</p>
+
+    <ul>
       <li>Immunity from the rules</li>
       <li>Additional upload credit</li>
-      </ul>
+    </ul>
   </div>
+
 </div>
 <!-- END Donate -->
 <?php View::show_footer();

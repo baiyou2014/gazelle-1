@@ -654,6 +654,10 @@ p.min_padding {
   padding: 1em;
 }
 
+.donation_info ul {
+  margin-left: 1em;
+}
+
 .slight_margin {
   margin: 0.5em;
   /* margin: 4px; */
