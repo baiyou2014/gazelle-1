@@ -61,7 +61,6 @@ class TorrentForm
         $this->NewTorrent = $NewTorrent;
         $this->Torrent = $Torrent;
         $this->Error = $Error;
-        $this->TorrentID = $TorrentID;
 
         # See classes/config.php
         global $UploadForm, $Categories, $TorrentID, $SeqPlatforms, $GraphPlatforms, $ImgPlatforms, $DocPlatforms, $RawPlatforms, $SeqFormats, $ProtFormats, $GraphXmlFormats, $GraphTxtFormats, $ImgFormats, $MapVectorFormats, $MapRasterFormats, $BinDocFormats, $CpuGenFormats, $PlainFormats, $Codecs, $Archives, $Resolutions;
@@ -69,6 +68,7 @@ class TorrentForm
 
         $this->UploadForm = $UploadForm;
         $this->Categories = $Categories;
+        $this->TorrentID = $TorrentID;
 
         # Platforms
         # See classes/config.php
@@ -562,8 +562,8 @@ class TorrentForm
     </td>
   </tr>
 
-    <!-- Platform: Scalars/Vectors -->
-    <tr id="media_scalars_vectors_tr">
+  <!-- Platform: Scalars/Vectors -->
+  <tr id="media_scalars_vectors_tr">
     <td class="label">
       Platform
       <strong class="important_text">*</strong>

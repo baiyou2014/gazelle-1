@@ -10,7 +10,7 @@
 enforce_login();
 authorize();
 
-require_once(SERVER_ROOT.'/classes/validate.class.php');
+require_once SERVER_ROOT.'/classes/validate.class.php';
 $Validate = new Validate;
 
 //******************************************************************************//
@@ -25,13 +25,16 @@ $TypeID = (int)$_POST['type'];
 $Type = $Categories[$TypeID-1];
 $TorrentID = (int)$_POST['torrentid'];
 
+/*
 $Properties['Remastered'] = (isset($_POST['remaster']))? 1 : 0;
 if ($Properties['Remastered']) {
     $Properties['UnknownRelease'] = (isset($_POST['unknown'])) ? 1 : 0;
 }
+
 if (!$Properties['Remastered']) {
     $Properties['UnknownRelease'] = 0;
 }
+*/
 
 $Properties['BadTags'] = (isset($_POST['bad_tags']))? 1 : 0;
 $Properties['BadFolders'] = (isset($_POST['bad_folders']))? 1 : 0;
