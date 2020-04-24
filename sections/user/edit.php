@@ -1,5 +1,6 @@
 <?php
 
+# todo: Go through this line by line
 require_once SERVER_ROOT.'/classes/twofa.class.php';
 $UserID = $_REQUEST['userid'];
 
@@ -91,58 +92,70 @@ echo $Val->GenerateJS('userform');
       › Settings
     </h2>
   </div>
+
   <form class="edit_form" name="user" id="userform" method="post" autocomplete="off">
     <div class="sidebar settings_sidebar">
       <div class="box box2" id="settings_sections">
         <div class="head">
           <strong>Sections</strong>
         </div>
+
         <ul class="nobullet">
           <li data-gazelle-section-id="all_settings">
             <h2><a href="#" class="tooltip" title="View the full list of user settings.">All Settings</a></h2>
           </li>
+
           <li data-gazelle-section-id="site_appearance_settings">
             <h2><a href="#" class="tooltip" title="These settings change the visual style of the entire site.">Site
                 Appearance Settings</a></h2>
           </li>
+
           <li data-gazelle-section-id="torrent_settings">
             <h2><a href="#" class="tooltip"
                 title="These settings change how torrents are searched for, grouped, displayed, and downloaded.">Torrent
                 Settings</a></h2>
           </li>
+
           <li data-gazelle-section-id="community_settings">
             <h2><a href="#" class="tooltip"
                 title="These settings change how interactions with other users are formatted, grouped, and displayed.">Community
                 Settings</a></h2>
           </li>
+
           <li data-gazelle-section-id="notification_settings">
             <h2><a href="#" class="tooltip"
                 title="These settings change the format and types of notifications you receive.">Notification
                 Settings</a></h2>
           </li>
+
           <li data-gazelle-section-id="personal_settings">
             <h2><a href="#" class="tooltip"
                 title="These settings alter the appearance of your profile and posts.">Personal Settings</a></h2>
           </li>
+
           <li data-gazelle-section-id="paranoia_settings">
             <h2><a href="#" class="tooltip"
                 title="These settings allow you to display or hide different categories of information from your profile.">Paranoia
                 Settings</a></h2>
           </li>
+
           <li data-gazelle-section-id="access_settings">
             <h2><a href="#" class="tooltip"
                 title="These settings control your login and access details for <?=SITE_NAME?>, the site's IRC network, and the tracker.">Access
                 Settings</a></h2>
           </li>
+
           <li data-gazelle-section-id="live_search">
             <input type="text" id="settings_search" placeholder="Live Search" />
           </li>
+
           <li>
             <input type="submit" id="submit" value="Save profile" />
           </li>
         </ul>
       </div>
     </div>
+
     <div class="main_column">
       <div>
         <input type="hidden" name="action" value="take_edit" />
@@ -150,6 +163,7 @@ echo $Val->GenerateJS('userform');
         <input type="hidden" name="auth"
           value="<?=$LoggedUser['AuthKey']?>" />
       </div>
+
       <table cellpadding="6" cellspacing="1" border="0" width="100%" class="layout border user_options"
         id="site_appearance_settings">
         <tr class="colhead_dark">
@@ -157,6 +171,7 @@ echo $Val->GenerateJS('userform');
             <strong>Site Appearance Settings</strong>
           </td>
         </tr>
+
         <tr id="site_style_tr">
           <td class="label tooltip"
             title="Selecting a stylesheet will change <?=SITE_NAME?>'s visual appearance.">
@@ -189,6 +204,7 @@ echo $Val->GenerateJS('userform');
             </div>
           </td>
         </tr>
+
         <tr id="style_additions_tr"
           class="<?=($Stylesheets[$LoggedUser['StyleID']]['Additions'][0] ?? false)?'':'hidden'?>">
           <td class="label tooltip" title="Select changes that you want made to your chosen stylesheet">
@@ -215,6 +231,7 @@ echo $Val->GenerateJS('userform');
         ?>
           </td>
         </tr>
+
         <tr id="site_extstyle_tr">
           <td class="label tooltip"
             title="Providing a link to an externally-hosted stylesheet will override your default stylesheet selection.">
@@ -224,6 +241,7 @@ echo $Val->GenerateJS('userform');
               value="<?=display_str($StyleURL)?>" />
           </td>
         </tr>
+
         <?php if (check_perms('users_mod')) { ?>
         <tr id="site_autostats_tr">
           <td class="label tooltip"
@@ -231,7 +249,12 @@ echo $Val->GenerateJS('userform');
             <strong>Profile stats</strong></td>
           <td>
             <label>
-              <input type="checkbox" name="autoload_comm_stats" <?Format::selected('AutoloadCommStats', 1, 'checked', $SiteOptions);?>
+              <input type="checkbox" name="autoload_comm_stats" <?Format::selected(
+            'AutoloadCommStats' ,
+            1,
+            'checked',
+            $SiteOptions
+        );?>
               />
               Automatically fetch the snatch and peer stats on profile pages.
             </label>
@@ -239,6 +262,7 @@ echo $Val->GenerateJS('userform');
         </tr>
         <?php } ?>
       </table>
+
       <table cellpadding="6" cellspacing="1" border="0" width="100%" class="layout border user_options"
         id="torrent_settings">
         <tr class="colhead_dark">
@@ -246,6 +270,7 @@ echo $Val->GenerateJS('userform');
             <strong>Torrent Settings</strong>
           </td>
         </tr>
+
         <?php if (check_perms('site_advanced_search')) { ?>
         <tr id="tor_searchtype_tr">
           <td class="label tooltip"
@@ -267,6 +292,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php } ?>
+
         <tr id="tor_group_tr">
           <td class="label tooltip"
             title="Enabling torrent grouping will place multiple formats of the same torrent group together beneath a common header.">
@@ -279,6 +305,7 @@ echo $Val->GenerateJS('userform');
             </div>
           </td>
         </tr>
+
         <tr id="tor_gdisp_search_tr">
           <td class="label tooltip"
             title="In torrent search results and on artist pages, &quot;open&quot; will expand torrent groups by default, and &quot;closed&quot; will collapse torrent groups by default.">
@@ -300,6 +327,7 @@ echo $Val->GenerateJS('userform');
             </div>
           </td>
         </tr>
+
         <tr id="tor_snatched_tr">
           <td class="label tooltip"
             title="Enabling the snatched torrents indicator will display &quot;Snatched!&quot; next to torrents you've snatched.">
@@ -310,6 +338,7 @@ echo $Val->GenerateJS('userform');
             <label for="showsnatched">Enable snatched torrents indicator</label>
           </td>
         </tr>
+
         <tr id="tor_magnet_tr">
           <td class="label tooltip" title="Magnet links should only be used on clients with DHT disabled globally">
             <strong>Magnet links</strong></td>
@@ -319,17 +348,23 @@ echo $Val->GenerateJS('userform');
             <label for="showmagnets">Show magnet links</label>
           </td>
         </tr>
-        <?php /* ?>
-      <tr>
-        <td class="label"><strong>Collage album art view</strong></td>
-        <td>
-          <select name="hidecollage" id="hidecollage">
-            <option value="0"<?=$SiteOptions['HideCollage'] == 0 ? ' selected="selected"' : ''?>>Show album art</option>
-            <option value="1"<?=$SiteOptions['HideCollage'] == 1 ? ' selected="selected"' : ''?>>Hide album art</option>
-          </select>
-        </td>
+
+        <?php
+        /* ?>
+        <tr>
+          <td class="label"><strong>Collage album art view</strong></td>
+          <td>
+            <select name="hidecollage" id="hidecollage">
+              <option value="0" <?=$SiteOptions['HideCollage'] == 0 ? ' selected="selected"' : ''?>>Show
+                album art</option>
+              <option value="1" <?=$SiteOptions['HideCollage'] == 1 ? ' selected="selected"' : ''?>>Hide
+                album art</option>
+            </select>
+          </td>
         </tr>
-<? */ ?>
+        <?php
+        */ ?>
+
         <tr id="tor_cover_tor_tr">
           <td class="label tooltip"
             title="Enabling cover artwork for torrents will show cover artwork next to torrent information. Enabling additional cover artwork will display all additional cover artwork as well.">
@@ -350,6 +385,7 @@ echo $Val->GenerateJS('userform');
             </ul>
           </td>
         </tr>
+
         <tr id="tor_cover_coll_tr">
           <td class="label tooltip"
             title="This option allows you to change the number of album covers to display within a single collection page.">
@@ -372,6 +408,7 @@ echo $Val->GenerateJS('userform');
             covers per page
           </td>
         </tr>
+
         <tr id="tor_showfilt_tr">
           <td class="label tooltip"
             title="Displaying filter controls will show torrent filtering options in the torrent search menu by default. Displaying filters for official tags will list clickable filters for official tags in the torrent search menu by default.">
@@ -391,6 +428,7 @@ echo $Val->GenerateJS('userform');
             </ul>
           </td>
         </tr>
+
         <tr id="tor_autocomp_tr">
           <td class="label tooltip"
             title="Autocomplete will try to predict the word or phrase that you're typing. Selecting &quot;Everywhere&quot; will enable autocomplete on artist and tag fields across the site. Selecting &quot;Searches only&quot; will enable autocomplete in searches.">
@@ -407,6 +445,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
       </table>
+
       <table cellpadding="6" cellspacing="1" border="0" width="100%" class="layout border user_options"
         id="community_settings">
         <tr class="colhead_dark">
@@ -414,6 +453,7 @@ echo $Val->GenerateJS('userform');
             <strong>Community Settings</strong>
           </td>
         </tr>
+
         <tr id="comm_ppp_tr">
           <td class="label tooltip"
             title="This option allows you to set the desired number of displayed posts per page within forum threads.">
@@ -430,6 +470,7 @@ echo $Val->GenerateJS('userform');
             posts per page
           </td>
         </tr>
+
         <tr id="comm_inbsort_tr">
           <td class="label tooltip" title="This option will force unread private messages to be listed first.">
             <strong>Inbox sorting</strong></td>
@@ -439,6 +480,7 @@ echo $Val->GenerateJS('userform');
             <label for="list_unread_pms_first">List unread private messages first</label>
           </td>
         </tr>
+
         <tr id="comm_emot_tr">
           <td class="label tooltip"
             title="Emoticons are small images which replace traditional text-based &quot;smileys&quot; like :) or :(">
@@ -449,6 +491,7 @@ echo $Val->GenerateJS('userform');
             <label for="disablesmileys">Disable emoticons</label>
           </td>
         </tr>
+
         <tr id="comm_avatars_tr">
           <td class="label tooltip"
             title="This option allows you to disable all avatars or show all avatars with a placeholder for users without avatars."
@@ -463,6 +506,7 @@ echo $Val->GenerateJS('userform');
             </select>
           </td>
         </tr>
+
         <tr id="comm_autosave_tr">
           <td class="label tooltip"
             title="As you add text to a post or reply, this text is automatically saved. If you stop and return to your post at a later time (e.g. accidentally clicking a link and then pressing the &quot;Back&quot; button in your browser), the text will remain. This option allows you to disable this feature.">
@@ -473,6 +517,7 @@ echo $Val->GenerateJS('userform');
             <label for="disableautosave">Disable text auto-saving</label>
           </td>
         </tr>
+
         <tr id="comm_badge_tr">
           <td class="label tooltip" title="Select up to 5 badges to display next to your username."><strong>Displayed
               Badges</strong></td>
@@ -493,6 +538,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
       </table>
+
       <table cellpadding="6" cellspacing="1" border="0" width="100%" class="layout border user_options"
         id="notification_settings">
         <tr class="colhead_dark">
@@ -500,6 +546,7 @@ echo $Val->GenerateJS('userform');
             <strong>Notification Settings</strong>
           </td>
         </tr>
+
         <tr id="notif_autosubscribe_tr">
           <td class="label tooltip" title="Enabling this will automatically subscribe you to any thread you post in.">
             <strong>Automatic thread subscriptions</strong></td>
@@ -509,6 +556,7 @@ echo $Val->GenerateJS('userform');
             <label for="autosubscribe">Enable automatic thread subscriptions</label>
           </td>
         </tr>
+
         <tr id="notif_unseeded_tr">
           <td class="label tooltip"
             title="Enabling this will send you a PM alert before your uploads are deleted for being unseeded.">
@@ -520,6 +568,7 @@ echo $Val->GenerateJS('userform');
         </tr>
         <?php NotificationsManagerView::render_settings(NotificationsManager::get_settings($UserID)); ?>
       </table>
+
       <table cellpadding="6" cellspacing="1" border="0" width="100%" class="layout border user_options"
         id="personal_settings">
         <tr class="colhead_dark">
@@ -527,6 +576,7 @@ echo $Val->GenerateJS('userform');
             <strong>Personal Settings</strong>
           </td>
         </tr>
+
         <tr id="pers_avatar_tr">
           <td class="label tooltip_interactive"
             title="Please link to an avatar which does not exceed 512 kiB in size or 600 pixels in height"
@@ -537,6 +587,7 @@ echo $Val->GenerateJS('userform');
               value="<?=display_str($Avatar)?>" />
           </td>
         </tr>
+
         <?php if ($HasSecondAvatar) { ?>
         <tr id="pers_avatar2_tr">
           <td class="label tooltip_interactive"
@@ -549,6 +600,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php }
+
   if ($HasAvatarMouseOverText) { ?>
         <tr id="pers_avatarhover_tr">
           <td class="label tooltip"
@@ -560,6 +612,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php }
+
   if ($HasDonorIconMouseOverText) { ?>
         <tr id="pers_donorhover_tr">
           <td class="label tooltip"
@@ -571,6 +624,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php }
+
   if ($HasDonorIconLink) { ?>
         <tr id="pers_donorlink_tr">
           <td class="label tooltip"
@@ -582,6 +636,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php }
+
   if ($HasCustomDonorIcon) { ?>
         <tr id="pers_donoricon_tr">
           <td class="label tooltip"
@@ -593,6 +648,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php }
+
   if ($HasDonorForum) { ?>
         <tr id="pers_donorforum_tr">
           <td class="label tooltip"
@@ -619,6 +675,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php } ?>
+
         <tr id="pers_proftitle_tr">
           <td class="label tooltip"
             title="You can customize your profile information with text and BBCode. Entering a title will label your profile information section. Unlock additional profile info boxes via Donor Ranks.">
@@ -627,6 +684,7 @@ echo $Val->GenerateJS('userform');
               value="<?=display_str($InfoTitle)?>" />
           </td>
         </tr>
+
         <tr id="pers_profinfo_tr">
           <td class="label tooltip"
             title="You can customize your profile information with text and BBCode. Entering a title will label your profile information section. Unlock additional profile info boxes via Donor Ranks.">
@@ -634,6 +692,7 @@ echo $Val->GenerateJS('userform');
           <td><?php $textarea = new TEXTAREA_PREVIEW('info', 'info', display_str($Info), 40, 8); ?>
           </td>
         </tr>
+
         <!-- Excuse this numbering confusion, we start numbering our profile info/titles at 1 in the donor_rewards table -->
         <?php if ($HasProfileInfo1) { ?>
         <tr id="pers_proftitle2_tr">
@@ -644,6 +703,7 @@ echo $Val->GenerateJS('userform');
               value="<?=display_str($ProfileRewards['ProfileInfoTitle1'])?>" />
           </td>
         </tr>
+
         <tr id="pers_profinfo2_tr">
           <td class="label tooltip"
             title="Congratulations! You've unlocked this option by reaching Donor Rank #2. Thanks for donating. You can customize your profile information with text and BBCode. Entering a title will label your profile information section.">
@@ -652,6 +712,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php }
+
   if ($HasProfileInfo2) { ?>
         <tr id="pers_proftitle3_tr">
           <td class="label tooltip"
@@ -661,6 +722,7 @@ echo $Val->GenerateJS('userform');
               value="<?=display_str($ProfileRewards['ProfileInfoTitle2'])?>" />
           </td>
         </tr>
+
         <tr id="pers_profinfo3_tr">
           <td class="label tooltip"
             title="Congratulations! You've unlocked this option by reaching Donor Rank #3. Thanks for donating. You can customize your profile information with text and BBCode. Entering a title will label your profile information section.">
@@ -669,6 +731,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php }
+
   if ($HasProfileInfo3) { ?>
         <tr id="pers_proftitle4_tr">
           <td class="label tooltip"
@@ -678,6 +741,7 @@ echo $Val->GenerateJS('userform');
               value="<?=display_str($ProfileRewards['ProfileInfoTitle3'])?>" />
           </td>
         </tr>
+
         <tr id="pers_profinfo4_tr">
           <td class="label tooltip"
             title="Congratulations! You've unlocked this option by reaching Donor Rank #4. Thanks for donating. You can customize your profile information with text and BBCode. Entering a title will label your profile information section.">
@@ -686,6 +750,7 @@ echo $Val->GenerateJS('userform');
           </td>
         </tr>
         <?php }
+
   if ($HasProfileInfo4) { ?>
         <tr id="pers_proftitle5_tr">
           <td class="label tooltip"
@@ -695,6 +760,7 @@ echo $Val->GenerateJS('userform');
               value="<?=display_str($ProfileRewards['ProfileInfoTitle4'])?>" />
           </td>
         </tr>
+
         <tr id="pers_profinfo5_tr">
           <td class="label tooltip"
             title="Congratulations! You've unlocked this option by reaching Donor Rank #5. Thanks for donating. You can customize your profile information with text and BBCode. Entering a title will label your profile information section.">
@@ -704,6 +770,7 @@ echo $Val->GenerateJS('userform');
         </tr>
         <?php } ?>
       </table>
+
       <table cellpadding="6" cellspacing="1" border="0" width="100%" class="layout border user_options"
         id="paranoia_settings">
         <tr class="colhead_dark">
@@ -711,6 +778,7 @@ echo $Val->GenerateJS('userform');
             <strong>Paranoia Settings</strong>
           </td>
         </tr>
+
         <tr>
           <td class="label">&nbsp;</td>
           <td>
@@ -723,6 +791,7 @@ echo $Val->GenerateJS('userform');
                 log.</span></p>
           </td>
         </tr>
+
         <tr id="para_lastseen_tr">
           <td class="label tooltip"
             title="Enable this to allow others to see when your most recent site activity occurred."><strong>Recent
@@ -732,6 +801,7 @@ echo $Val->GenerateJS('userform');
               /> Last seen</label>
           </td>
         </tr>
+
         <tr id="para_presets_tr">
           <td class="label"><strong>Presets</strong></td>
           <td>
@@ -740,6 +810,7 @@ echo $Val->GenerateJS('userform');
             <!--<input type="button" onclick="ParanoiaResetOn();" value="Show nothing" />-->
           </td>
         </tr>
+
         <tr id="para_donations_tr">
           <td class="label"><strong>Donations</strong></td>
           <td>
@@ -751,6 +822,7 @@ echo $Val->GenerateJS('userform');
             <label for="p_donor_heart">Show donor heart</label>
           </td>
         </tr>
+
         <tr id="para_stats_tr">
           <td class="label tooltip"
             title="These settings control the display of your uploaded data amount, downloaded data amount, and ratio.">
@@ -766,6 +838,7 @@ $RatioChecked = checked(!in_array('ratio', $Paranoia));
             <label><input type="checkbox" name="p_ratio" onchange="AlterParanoia();" <?=$RatioChecked?> /> Ratio</label>
           </td>
         </tr>
+
         <tr id="para_reqratio_tr">
           <td class="label"><strong>Required Ratio</strong></td>
           <td>
@@ -773,24 +846,28 @@ $RatioChecked = checked(!in_array('ratio', $Paranoia));
               /> Required Ratio</label>
           </td>
         </tr>
+
         <tr id="para_comments_tr">
           <td class="label"><strong>Comments (torrents)</strong></td>
           <td>
             <?php display_paranoia('torrentcomments'); ?>
           </td>
         </tr>
+
         <tr id="para_collstart_tr">
           <td class="label"><strong>Collections (started)</strong></td>
           <td>
             <?php display_paranoia('collages'); ?>
           </td>
         </tr>
+
         <tr id="para_collcontr_tr">
           <td class="label"><strong>Collections (contributed to)</strong></td>
           <td>
             <?php display_paranoia('collagecontribs'); ?>
           </td>
         </tr>
+
         <tr id="para_reqfill_tr">
           <td class="label"><strong>Requests (filled)</strong></td>
           <td>
@@ -806,6 +883,7 @@ $RequestsFilledListChecked = checked(!in_array('requestsfilled_list', $Paranoia)
             <label><input type="checkbox" name="p_requestsfilled_list" onchange="AlterParanoia();" <?=$RequestsFilledListChecked?> /> Show list</label>
           </td>
         </tr>
+
         <tr id="para_reqvote_tr">
           <td class="label"><strong>Requests (voted for)</strong></td>
           <td>
@@ -821,36 +899,42 @@ $RequestsVotedListChecked = checked(!in_array('requestsvoted_list', $Paranoia));
             <label><input type="checkbox" name="p_requestsvoted_list" onchange="AlterParanoia();" <?=$RequestsVotedListChecked?> /> Show list</label>
           </td>
         </tr>
+
         <tr id="para_upltor_tr">
           <td class="label"><strong>Uploaded torrents</strong></td>
           <td>
             <?php display_paranoia('uploads'); ?>
           </td>
         </tr>
+
         <tr id="para_uplunique_tr">
           <td class="label"><strong>Uploaded torrents (unique groups)</strong></td>
           <td>
             <?php display_paranoia('uniquegroups'); ?>
           </td>
         </tr>
+
         <tr id="para_torseed_tr">
           <td class="label"><strong>Torrents (seeding)</strong></td>
           <td>
             <?php display_paranoia('seeding'); ?>
           </td>
         </tr>
+
         <tr id="para_torleech_tr">
           <td class="label"><strong>Torrents (leeching)</strong></td>
           <td>
             <?php display_paranoia('leeching'); ?>
           </td>
         </tr>
+
         <tr id="para_torsnatch_tr">
           <td class="label"><strong>Torrents (snatched)</strong></td>
           <td>
             <?php display_paranoia('snatched'); ?>
           </td>
         </tr>
+
         <tr id="para_torsubscr_tr">
           <td class="label tooltip" title="This option allows other users to subscribe to your torrent uploads.">
             <strong>Torrents (upload subscriptions)</strong></td>
@@ -859,6 +943,7 @@ $RequestsVotedListChecked = checked(!in_array('requestsvoted_list', $Paranoia));
               /> Allow torrent upload subscriptions</label>
           </td>
         </tr>
+
         <?php
 $DB->query("
   SELECT COUNT(UserID)
@@ -866,6 +951,7 @@ $DB->query("
   WHERE Inviter = ?", $UserID);
 list($Invited) = $DB->next_record();
 ?>
+
         <tr id="para_invited_tr">
           <td class="label tooltip"
             title="This option controls the display of your <?=SITE_NAME?> invitees.">
@@ -875,6 +961,7 @@ list($Invited) = $DB->next_record();
               /> Show count</label>
           </td>
         </tr>
+
         <?php
 $DB->query("
   SELECT COUNT(ArtistID)
@@ -882,6 +969,7 @@ $DB->query("
   WHERE UserID = ?", $UserID);
 list($ArtistsAdded) = $DB->next_record();
 ?>
+
         <tr id="para_artistsadded_tr">
           <td class="label tooltip"
             title="This option controls the display of the artists you have added to torrent groups on the site. This number includes artists added via the torrent upload form, as well as artists added via the &quot;Add artists&quot; box on torrent group pages.">
@@ -891,11 +979,13 @@ list($ArtistsAdded) = $DB->next_record();
               /> Show count</label>
           </td>
         </tr>
+
         <tr id="para_preview_tr">
           <td></td>
           <td><a href="#" id="preview_paranoia" class="brackets">Preview paranoia</a></td>
         </tr>
       </table>
+
       <table cellpadding="6" cellspacing="1" border="0" width="100%" class="layout border user_options"
         id="access_settings">
         <tr class="colhead_dark">
@@ -903,11 +993,13 @@ list($ArtistsAdded) = $DB->next_record();
             <strong>Access Settings</strong>
           </td>
         </tr>
+
         <tr id="acc_2fa_tr">
           <td class="label tooltip" title="This page contains 2FA, U2F, and PGP settings"><strong>Account
               Security</strong></td>
           <td><a href="user.php?action=2fa">Click here to view additional account security options</a></td>
         </tr>
+
         <tr id="acc_currentpassword_tr">
           <td class="label"><strong>Current Password</strong></td>
           <td>
@@ -918,6 +1010,7 @@ list($ArtistsAdded) = $DB->next_record();
               in this field before saving your changes</strong>
           </td>
         </tr>
+
         <tr id="acc_resetpk_tr">
           <td class="label tooltip_interactive"
             title="For information about the function of your passkey, please &lt;a href=&quot;<?=site_url()?>wiki.php?action=article&amp;amp;name=Passkey&quot;&gt;read this wiki article&lt;/a&gt;."
@@ -931,6 +1024,7 @@ list($ArtistsAdded) = $DB->next_record();
             <p class="min_padding">Any active torrents must be downloaded again to continue leeching/seeding.</p>
           </td>
         </tr>
+
         <tr id="acc_irckey_tr">
           <td class="label"><strong>IRC key</strong></td>
           <td>
@@ -947,6 +1041,7 @@ list($ArtistsAdded) = $DB->next_record();
             </ul>
           </td>
         </tr>
+
         <tr id="acc_email_tr">
           <td class="label tooltip"
             title="This is the email address you want associated with your <?=SITE_NAME?> account. It will be used if you forget your password or if an alert needs to be sent to you.">
@@ -958,21 +1053,26 @@ list($ArtistsAdded) = $DB->next_record();
             </div>
           </td>
         </tr>
+
         <tr id="acc_password_tr">
           <td class="label"><strong>Password</strong></td>
           <td>
             <div class="field_div">
               <label>New password:<br />
-                <input type="password" size="40" name="new_pass_1" id="new_pass_1" maxlength="307200" value="" />
+                <input type="password" minlength="15" size="40" name="new_pass_1" id="new_pass_1" maxlength="307200"
+                  value="" />
                 <strong id="pass_strength"></strong></label>
             </div>
+
             <div class="field_div">
               <label>Confirm new password:<br />
-                <input type="password" size="40" name="new_pass_2" id="new_pass_2" maxlength="307200" value="" />
+                <input type="password" minlength="15" size="40" name="new_pass_2" id="new_pass_2" maxlength="307200"
+                  value="" />
                 <strong id="pass_match"></strong></label>
             </div>
+
             <div class="setting_description">
-              Any password of 6 characters or longer will be accepted, but a strong password:
+              Any password of 15 characters or longer will be accepted, but a strong password:
               <ul>
                 <li>is 8 characters or longer</li>
                 <li>contains at least 1 lowercase and uppercase letter</li>
@@ -985,4 +1085,5 @@ list($ArtistsAdded) = $DB->next_record();
     </div>
   </form>
 </div>
-<?php View::show_footer();
+<?php
+View::show_footer();

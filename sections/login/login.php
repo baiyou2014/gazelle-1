@@ -88,14 +88,16 @@ if ($Attempts > 0) { ?>
 } else {
     print_r('
       <p>
-        <strong>1.</strong>
+        1.
         &hellip;and
         <strong>graphs</strong> and
         <strong>scalars</strong> and
-        <strong>vectors</strong> and
+        <strong>vectors</strong>
+        <br /> and
         <strong>patterns</strong> and
         <strong>constraints</strong> and
-        <strong>models</strong> and
+        <strong>models</strong>
+        <br /> and
         much more.
       ');
 }

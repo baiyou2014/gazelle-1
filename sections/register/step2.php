@@ -1,4 +1,5 @@
 <?php
+
 View::show_header('Registration Complete');
 ?>
 

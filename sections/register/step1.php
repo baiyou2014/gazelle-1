@@ -1,4 +1,5 @@
 <?php
+
 View::show_header('Register');
 echo $Val->GenerateJS('registerform');
 ?>
@@ -6,21 +7,25 @@ echo $Val->GenerateJS('registerform');
 </script>
 <script src="<?=STATIC_SERVER?>functions/password_validate.js"
   type="text/javascript"></script>
+
 <form class="create_form" name="user" id="registerform" method="post" action="" onsubmit="return formVal();">
   <div style="width: 250px;">
+
     <input type="hidden" name="auth"
       value="<?=$LoggedUser['AuthKey']?>" />
-    <?php
 
+    <?php
 if (empty($Sent)) {
     if (!empty($_REQUEST['invite'])) {
         echo '<input type="hidden" name="invite" value="'.display_str($_REQUEST['invite']).'" />'."\n";
     }
+
     if (!empty($Err)) {
         ?>
     <strong class="important_text"><?=$Err?></strong><br /><br />
     <?php
     } ?>
+
     <table class="layout" cellpadding="2" cellspacing="1" border="0" align="center">
       <tr valign="top">
         <!-- <td align="right" style="width: 100px;">Username&nbsp;</td> -->
@@ -31,6 +36,7 @@ if (empty($Sent)) {
               your real name.</strong> If you do so, we will not be changing it for you.</p>
         </td>
       </tr>
+
       <tr valign="top">
         <!-- <td align="right">Email Address&nbsp;</td> -->
         <td align="left">
@@ -38,21 +44,26 @@ if (empty($Sent)) {
             value="<?=(!empty($_REQUEST['email']) ? display_str($_REQUEST['email']) : (!empty($InviteEmail) ? display_str($InviteEmail) : ''))?>" />
         </td>
       </tr>
+
       <tr valign="top">
         <!-- <td align="right">Password&nbsp;</td> -->
         <td align="left">
-          <input type="password" name="password" id="new_pass_1" class="inputtext" placeholder="Password" /> <strong
-            id="pass_strength"></strong>
+          <input type="password" minlength="15" name="password" id="new_pass_1" class="inputtext"
+            placeholder="Password" />
+          <strong id="pass_strength"></strong>
         </td>
       </tr>
+
       <tr valign="top">
         <!-- <td align="right">Verify Password&nbsp;</td> -->
         <td align="left">
-          <input type="password" name="confirm_password" id="new_pass_2" class="inputtext"
-            placeholder="Confirm Password" /> <strong id="pass_match"></strong>
-          <p>An acceptable password is 6 characters or longer (please make it longer).</p>
+          <input type="password" minlength="15" name="confirm_password" id="new_pass_2" class="inputtext"
+            placeholder="Confirm Password" />
+          <strong id="pass_match"></strong>
+          <p>An acceptable password is 15 characters or longer (please make it longer).</p>
         </td>
       </tr>
+
       <tr valign="top">
         <!-- <td></td> -->
         <td align="left">

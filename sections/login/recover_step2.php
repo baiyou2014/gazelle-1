@@ -20,19 +20,26 @@ if (empty($PassWasReset)) {
     <strong class="important_text"><?=display_str($Err)?></strong><br /><br />
     <?php
     } ?>
-    <p>Any password 6 characters or longer is accepted, but a strong password is 8 characters or longer, contains at
-      least 1 lowercase and uppercase letter, and contains at least a number or symbol.</p>
+    <p>
+      Any password 15 characters or longer is accepted,
+      but a strong password is 30 characters or longer,
+      contains at least 1 lowercase and uppercase letter,
+      and contains at least a number or symbol.
+    </p>
+
     <table class="layout">
       <tr>
         <td><strong id="pass_strength"></strong></td>
-        <td><input type="password" name="password" id="new_pass_1" class="inputtext" size="40"
-            placeholder="New Password" pattern=".{6,307200}" required style="width: 250px !important;"></td>
+        <td><input type="password" minlength="15" name="password" id="new_pass_1" class="inputtext" size="40"
+            placeholder="New Password" pattern=".{15,307200}" required style="width: 250px !important;"></td>
       </tr>
+
       <tr>
         <td><strong id="pass_match"></strong></td>
-        <td><input type="password" name="verifypassword" id="new_pass_2" class="inputtext" size="40"
-            placeholder="Confirm Password" pattern=".{6,307200}" required style="width: 250px !important;"></td>
+        <td><input type="password" minlength="15" name="verifypassword" id="new_pass_2" class="inputtext" size="40"
+            placeholder="Confirm Password" pattern=".{15,307200}" required style="width: 250px !important;"></td>
       </tr>
+
       <tr>
         <td></td>
         <td><input type="submit" name="reset" value="Reset" class="submit"></td>
