@@ -85,19 +85,19 @@ if ($Attempts > 0) { ?>
 </p>
 
 <?php
+} else {
+    print_r('
+      <p>
+        <strong>1.</strong>
+        &hellip;and
+        <strong>graphs</strong> and
+        <strong>scalars</strong> and
+        <strong>vectors</strong> and
+        <strong>patterns</strong> and
+        <strong>constraints</strong> and
+        <strong>models</strong> and
+        much more.
+      ');
 }
-
-print_r('
-<p>
-  <strong>1.</strong>
-  &hellip;and
-  <strong>graphs</strong> and
-  <strong>scalars</strong> and
-  <strong>vectors</strong> and
-  <strong>patterns</strong> and
-  <strong>constraints</strong> and
-  <strong>models</strong> and
-  much more.
-');
 
 View::show_footer();
