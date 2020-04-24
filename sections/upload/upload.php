@@ -15,24 +15,24 @@ View::show_header('Upload', 'upload,validate_upload,multiformat_uploader,bbcode'
 
 if (empty($Properties) && !empty($_GET['groupid']) && is_number($_GET['groupid'])) {
     $DB->query('
-    SELECT
-      tg.ID as GroupID,
-      tg.CategoryID,
-      tg.Name AS Title,
-      tg.NameRJ AS TitleRJ,
-      tg.NameJP AS TitleJP,
-      tg.Year,
-      tg.Studio,
-      tg.Series,
-      tg.CatalogueNumber,
-      tg.Pages,
-      tg.DLSiteID,
-      tg.WikiImage AS Image,
-      tg.WikiBody AS GroupDescription
-    FROM torrents_group AS tg
-      LEFT JOIN torrents AS t ON t.GroupID = tg.ID
-    WHERE tg.ID = '.$_GET['groupid'].'
-    GROUP BY tg.ID');
+      SELECT
+        tg.ID as GroupID,
+        tg.CategoryID,
+        tg.Name AS Title,
+        tg.NameRJ AS TitleRJ,
+        tg.NameJP AS TitleJP,
+        tg.Year,
+        tg.Studio,
+        tg.Series,
+        tg.CatalogueNumber,
+        tg.Pages,
+        tg.DLSiteID,
+        tg.WikiImage AS Image,
+        tg.WikiBody AS GroupDescription
+      FROM torrents_group AS tg
+        LEFT JOIN torrents AS t ON t.GroupID = tg.ID
+      WHERE tg.ID = '.$_GET['groupid'].'
+      GROUP BY tg.ID');
 
     if ($DB->has_results()) {
         list($Properties) = $DB->to_array(false, MYSQLI_BOTH);
@@ -41,11 +41,11 @@ if (empty($Properties) && !empty($_GET['groupid']) && is_number($_GET['groupid']
         $Properties['Artists'] = Artists::get_artist($_GET['groupid']);
 
         $DB->query("
-        SELECT
-          GROUP_CONCAT(tags.Name SEPARATOR ', ') AS TagList
-        FROM torrents_tags AS tt
-          JOIN tags ON tags.ID = tt.TagID
-        WHERE tt.GroupID = '$_GET[groupid]'");
+          SELECT
+            GROUP_CONCAT(tags.Name SEPARATOR ', ') AS TagList
+          FROM torrents_tags AS tt
+            JOIN tags ON tags.ID = tt.TagID
+          WHERE tt.GroupID = '$_GET[groupid]'");
         list($Properties['TagList']) = $DB->next_record();
     } else {
         unset($_GET['groupid']);
@@ -56,16 +56,16 @@ if (empty($Properties) && !empty($_GET['groupid']) && is_number($_GET['groupid']
     }
 } elseif (empty($Properties) && isset($_GET['requestid']) && is_number($_GET['requestid'])) {
     $DB->query('
-    SELECT
-      ID AS RequestID,
-      CategoryID,
-      Title AS Title,
-      TitleJP AS TitleJP,
-      CatalogueNumber,
-      DLSiteID,
-      Image
-    FROM requests
-    WHERE ID = '.$_GET['requestid']);
+      SELECT
+        ID AS RequestID,
+        CategoryID,
+        Title AS Title,
+        TitleJP AS TitleJP,
+        CatalogueNumber,
+        DLSiteID,
+        Image
+      FROM requests
+      WHERE ID = '.$_GET['requestid']);
 
     list($Properties) = $DB->to_array(false, MYSQLI_BOTH);
     $UploadForm = $Categories[$Properties['CategoryID'] - 1];
@@ -84,10 +84,10 @@ $TorrentForm = new TorrentForm($Properties ?? false, $Err ?? false);
 $GenreTags = $Cache->get_value('genre_tags');
 if (!$GenreTags) {
     $DB->query("
-    SELECT Name
-    FROM tags
-    WHERE TagType = 'genre'
-    ORDER BY Name");
+      SELECT Name
+      FROM tags
+      WHERE TagType = 'genre'
+        ORDER BY Name");
     
     $GenreTags = $DB->collect('Name');
     $Cache->cache_value('genre_tags', $GenreTags, 3600 * 6);
@@ -99,7 +99,7 @@ $DB->query('
     Comment,
     Time
   FROM do_not_upload
-  ORDER BY Sequence');
+    ORDER BY Sequence');
 
 $DNU = $DB->to_array();
 $DB->query('SELECT MAX(Time) FROM do_not_upload');
@@ -111,29 +111,36 @@ $DB->query("
   WHERE UserID = ".$LoggedUser['ID']);
 
 list($NewDNU) = $DB->next_record();
-$HideDNU = check_perms('torrents_hide_dnu') && !$NewDNU;
-// DNU list disabled in below CSS
-?>
-
+$HideDNU = check_perms('torrents_hide_dnu') && !$NewDNU; ?>
 <div
   class="<?=(check_perms('torrents_hide_dnu') ? 'box pad' : '')?>"
-  style="margin: 0px auto; width: 700px; display: none;">
+  style="margin: 0px auto; width: 700px;">
+
   <h3 id="dnu_header">Do Not Upload List</h3>
-  <p><?=$NewDNU ? '<strong class="important_text">' : '' ?>Last
-    updated: <?=time_diff($Updated)?><?=$NewDNU ? '</strong>' : '' ?>
+  <p>
+    <?=$NewDNU ? '<strong class="important_text">' : '' ?>
+    Last updated:
+    <?=time_diff($Updated)?><?=$NewDNU ? '</strong>' : '' ?>
   </p>
-  <p>The following releases are currently forbidden from being uploaded to the site. Do not upload them unless your
-    torrent meets a condition specified in the comment.
+
+  <p>
+    The following releases are currently forbidden from being uploaded to the site.
+    Do not upload them unless your torrent meets a condition specified in the comment.
     <?php if ($HideDNU) { ?>
-    <span id="showdnu"><a data-toggle-target="#dnulist" data-toggle-replace="Hide" class="brackets">Show</a></span>
+    <span id="showdnu">
+      <a data-toggle-target="#dnulist" data-toggle-replace="Hide" class="brackets">Show</a>
+    </span>
     <?php } ?>
   </p>
+
   <table id="dnulist"
     class="<?=($HideDNU ? 'hidden' : '')?>">
+
     <tr class="colhead">
       <td width="50%"><strong>Name</strong></td>
       <td><strong>Comment</strong></td>
     </tr>
+
     <?php $TimeDiff = strtotime('-1 month', strtotime('now'));
   foreach ($DNU as $BadUpload) {
       list($Name, $Comment, $Updated) = $BadUpload; ?>
@@ -144,13 +151,15 @@ $HideDNU = check_perms('torrents_hide_dnu') && !$NewDNU;
         <strong class="important_text">(New!)</strong>
         <?php } ?>
       </td>
-      <td><?=Text::full_format($Comment)?>
+      <td>
+        <?=Text::full_format($Comment)?>
       </td>
     </tr>
     <?php
   } ?>
   </table>
-</div><?=($HideDNU ? '<br />' : '')?>
+</div>
+<?=($HideDNU ? '<br />' : '')?>
 
 <?php
 $TorrentForm->upload_form();
