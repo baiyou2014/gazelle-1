@@ -1257,10 +1257,12 @@ class Torrents
 
     public static function edition_string(array $Torrent, array $Group)
     {
-        $AddExtra = '&thinsp;|&thinsp;';
+        /*
+        $AddExtra = '&thinsp;|&thinsp;'; # breaking
         $EditionName = 'Original Release';
         $EditionName .= $AddExtra . display_str($Torrent['Media']);
         return $EditionName;
+        */
     }
 
     // Used to get reports info on a unison cache in both browsing pages and torrent pages.

@@ -532,7 +532,7 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
 
         // Append extra info to torrent title
         $ExtraInfo = '';
-        $AddExtra = '&thinsp;|&thinsp;';
+        $AddExtra = '&thinsp;|&thinsp;'; # breaking
 
         if (empty($GroupBy)) {
             # Year
@@ -550,13 +550,13 @@ function generate_torrent_table($Caption, $Tag, $Details, $Limit)
             # Authors
             if ($Artists) {
                 # Emoji in classes/astists.class.php
-                $Label = '&nbsp;&nbsp;';
+                $Label = '&ensp;'; # breaking
                 $DisplayName .= $Label.Artists::display_artists($Artists[$GroupID], true, true);
             }
     
             # Catalogue Number
             if ($CatalogueNumber) {
-                $Label = '&nbsp;&nbsp;🔑&nbsp;';
+                $Label = '&ensp;🔑&nbsp;';
                 $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$CatalogueNumber'>$CatalogueNumber</a>";
             }
     

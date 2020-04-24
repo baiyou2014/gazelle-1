@@ -54,7 +54,7 @@ foreach ($Top10 as $Torrent) {
 
     // Append extra info to torrent title
     $ExtraInfo = '';
-    $AddExtra = '&thinsp;|&thinsp;';
+    $AddExtra = '&thinsp;|&thinsp;'; # breaking
 
     if ($Media) {
         $ExtraInfo .= $AddExtra.$Media;

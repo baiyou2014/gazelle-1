@@ -54,12 +54,12 @@ if ($GroupYear > 0) {
 }
 
 if ($GroupStudio) {
-    $Label = '&nbsp;&nbsp;📍&nbsp;';
+    $Label = '&ensp;📍&nbsp;';
     $DisplayName .= $Label.$GroupStudio;
 }
 
 if ($GroupCatalogueNumber) {
-    $Label = '&nbsp;&nbsp;🔑&nbsp;';
+    $Label = '&ensp;🔑&nbsp;';
     $DisplayName .= $Label.$GroupCatalogueNumber;
 }
 
@@ -74,7 +74,7 @@ if ($GroupNameJP && $GroupNameJP !== $GroupName) {
 
 if ($Artists) {
     # Emoji in classes/astists.class.php
-    $Label = '&nbsp;&nbsp;';
+    $Label = '&ensp;';
     $DisplayName .= $Label.Artists::display_artists($Artists, true);
 }
 
@@ -544,30 +544,29 @@ foreach ($TorrentList as $Torrent) {
 
     /*
     if ($AudioFormat) {
-      $ExtraInfo.=$AddExtra.display_str($AudioFormat);
-      $AddExtra=' / '; }
-      */
+        $ExtraInfo.=$AddExtra.display_str($AudioFormat);
+    }
+    */
 
     /*
     if ($Language) {
-      if ($Subber && ($GroupCategoryID == 3 || $GroupCategoryID == 4)) {
-        $ExtraInfo.=$AddExtra.display_str($Language.' ('.$Subber.')');
-        $AddExtra=' / ';
-      } else {
-        $ExtraInfo.=$AddExtra.display_str($Language); $AddExtra=' / ';
-      }
+        if ($Subber && ($GroupCategoryID == 3 || $GroupCategoryID == 4)) {
+            $ExtraInfo.=$AddExtra.display_str($Language.' ('.$Subber.')');
+        } else {
+            $ExtraInfo.=$AddExtra.display_str($Language);
+        }
     }
     */
 
     /*
     if ($Subbing) {
-      if ($Subber) {
-        if (($GroupCategoryID == 2 || $GroupCategoryID == 1) &&  $Subbing != "RAW") {
-          $ExtraInfo.=$AddExtra.display_str($Subbing)." (".display_str($Subber).")"; $AddExtra=' / ';
+        if ($Subber) {
+            if (($GroupCategoryID == 2 || $GroupCategoryID == 1) &&  $Subbing != "RAW") {
+                $ExtraInfo.=$AddExtra.display_str($Subbing)." (".display_str($Subber).")";
+            }
+        } else {
+            $ExtraInfo.=$AddExtra.display_str($Subbing);
         }
-      } else {
-        $ExtraInfo.=$AddExtra.display_str($Subbing); $AddExtra=' / ';
-      }
     }
     */
 

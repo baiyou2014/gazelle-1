@@ -132,7 +132,7 @@ if (!empty($_GET['date'])) {
 
           // Append extra info to torrent title
           $ExtraInfo = '';
-          $AddExtra = '&thinsp;|&thinsp;';
+          $AddExtra = '&thinsp;|&thinsp;'; # breaking
 
           if ($Format) {
               $ExtraInfo .= $Format;

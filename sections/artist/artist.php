@@ -207,7 +207,6 @@ foreach ($TorrentList as $Group) {
 
     if (count($Torrents) > 1) {
         $TorrentTags = new Tags($TagList, false);
-
         $DisplayName = '';
         #$DisplayName = Artists::display_artists(Artists::get_artist($GroupID), true, true);
 
@@ -217,7 +216,6 @@ foreach ($TorrentList as $Group) {
         }
 
         $GroupName = empty($GroupName) ? (empty($GroupNameRJ) ? $GroupNameJP : $GroupNameRJ) : $GroupName;
-
         # Japanese
         $DisplayName .= "dir='ltr'>$GroupName</a>";
 
@@ -237,14 +235,14 @@ foreach ($TorrentList as $Group) {
         /*
         if (isset($Artists)) {
             # Emoji in classes/astists.class.php
-            $Label = '&nbsp;&nbsp;';
+            $Label = '&ensp;'; # breaking
             $DisplayName .= $Label.Artists::display_artists(Artists::get_artist($GroupID), true, true);
         }
         */
 
         # Catalogue Number
         if ($GroupCatalogueNumber) {
-            $Label = '&nbsp;&nbsp;🔑&nbsp;';
+            $Label = '&ensp;🔑&nbsp;';
             $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
         }
 
@@ -396,14 +394,14 @@ foreach ($TorrentList as $Group) {
         /*
         if (isset($Artists)) {
             # Emoji in classes/astists.class.php
-            $Label = '&nbsp;&nbsp;';
+            $Label = '&ensp;';
             $DisplayName .= $Label.Artists::display_artists(Artists::get_artist($GroupID), true, true);
         }
         */
 
         # Catalogue Number
         if ($GroupCatalogueNumber) {
-            $Label = '&nbsp;&nbsp;🔑&nbsp;';
+            $Label = '&ensp;🔑&nbsp;';
             $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
         }
 
