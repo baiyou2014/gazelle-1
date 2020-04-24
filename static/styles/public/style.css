@@ -159,6 +159,17 @@ input[type="submit"]:hover {
   */
 }
 
+.tldr {
+  width: 200%;
+  height: 500px;
+  margin-left: -50%;
+  overflow-y: scroll;
+}
+
+ul {
+  margin-left: 2em;
+}
+
 /*
 #maincontent {
   margin: auto 0 auto auto;
