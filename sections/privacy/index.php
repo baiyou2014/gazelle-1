@@ -64,7 +64,7 @@ View::show_header('Datenschutzerklärung');
     <li>The right of restriction</li>
     <li>The right to data portability</li>
     <li>The right to withdraw consent</li>
-  </ul>
+  </ul><br />
 
 
   <h2>Log Files</h2>
