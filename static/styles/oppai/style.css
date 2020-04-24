@@ -468,6 +468,7 @@ input.hidden {
 
 /* Layout (Any page) */
 
+
 .thin {
   width: 850px;
   margin: 0px auto;
@@ -645,6 +646,7 @@ td.colhead, .colhead td, .colhead th {
   font-weight: bold;
 }
 
+
 .colhead .sign {
   padding: 0px 8px 0px 8px;
   font-size: 12pt;
@@ -703,6 +705,7 @@ table.slice {
 ul.nobullet {
   display: inline-block;
 }
+
 
 /* Layout (home page) */
 
@@ -869,6 +872,7 @@ table.forum_unread {
 
 td.avatar {
   max-width: 120px;
+  /* width: 150px; */
   padding: 0px;
 }
 
@@ -898,7 +902,9 @@ blockquote {
   border: 1px solid #BBB;
 }
 
+
 /* Layout (Inbox) */
+
 
 tr.unreadpm {
   background-color: #ECC;
@@ -1105,6 +1111,9 @@ ol {
 .torrent_info {
   font-size: 100%;
   font-weight: 100;
+}
+.group_info > a:last-of-type {
+  /* text-decoration: underline; */
 }
 
 .recent_snatches_images, .recent_uploads_images {
