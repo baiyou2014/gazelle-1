@@ -10,8 +10,7 @@ View::show_header('Datenschutzerklärung');
     At BioTorrents.de, accessible from https://biotorrents.de, one of our main priorities is the privacy of our
     visitors.
     This Privacy Policy document contains types of information that is collected and recorded by BioTorrents.de and how
-    we
-    use it.
+    we use it.
   </p>
 
   <p>
@@ -27,22 +26,20 @@ View::show_header('Datenschutzerklärung');
   </p>
 
   <p>
-    BioTorrents.de legal basis for collecting and using the personal information described in this Privacy Policy
-    depends
-    on the Personal Information we collect and the specific context in which we collect the information:
+    BioTorrents.de's legal basis for collecting and using the personal information described in this Privacy Policy
+    depends on the Personal Information we collect and the specific context in which we collect the information:
   </p>
 
   <ul>
     <li>BioTorrents.de needs to perform a contract with you</li>
     <li>You have given BioTorrents.de permission to do so</li>
-    <li>Processing your personal information is in BioTorrents.de legitimate interests</li>
+    <li>Processing your personal information is in BioTorrents.de's legitimate interests</li>
     <li>BioTorrents.de needs to comply with the law</li>
   </ul>
 
   <p>
     BioTorrents.de will retain your personal information only for as long as is necessary for the purposes set out in
-    this
-    Privacy Policy.
+    this Privacy Policy.
     We will retain and use your information to the extent necessary to comply with our legal obligations, resolve
     disputes, and enforce our policies.
   </p>
@@ -94,16 +91,14 @@ View::show_header('Datenschutzerklärung');
   <p>
     BioTorrents.de's Privacy Policy does not apply to other advertisers or websites.
     Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more
-    detailed
-    information.
+    detailed information.
     It may include their practices and instructions about how to opt-out of certain options.
   </p>
 
   <p>
     You can choose to disable cookies through your individual browser options.
     To know more detailed information about cookie management with specific web browsers, it can be found at the
-    browsers'
-    respective websites.
+    browsers' respective websites.
   </p>
 
 
@@ -117,8 +112,7 @@ View::show_header('Datenschutzerklärung');
   <p>
     BioTorrents.de does not knowingly collect any Personal Identifiable Information from children under the age of 13.
     If you think that your child provided this kind of information on our website, we strongly encourage you to contact
-    us
-    immediately and we will do our best efforts to promptly remove such information from our records.
+    us immediately and we will do our best efforts to promptly remove such information from our records.
   </p>
 
 
@@ -126,8 +120,7 @@ View::show_header('Datenschutzerklärung');
 
   <p>
     Our Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to
-    the
-    information that they shared and/or collect in BioTorrents.de.
+    the information that they shared and/or collect in BioTorrents.de.
     This policy is not applicable to any information collected offline or via channels other than this website.
   </p>
 
