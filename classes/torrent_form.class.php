@@ -639,7 +639,13 @@ class TorrentForm
       The class of technology used
     </td>
   </tr>
-  <?php } # End if NewTorrent?>
+
+  <?php
+  # End if NewTorrent
+  } else { ?>
+  <input type="hidden" name="media"
+    value="<?=$Torrent['Media']?>" />
+  <?php } ?>
 
   <!-- Format: Sequences -->
   <tr id="container_tr">
