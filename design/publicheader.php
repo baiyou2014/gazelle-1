@@ -1,14 +1,14 @@
 <?php
 
 global $LoggedUser;
-define('FOOTER_FILE', SERVER_ROOT.'/design/publicfooter.php');
-?>
+define('FOOTER_FILE', SERVER_ROOT.'/design/publicfooter.php'); ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title><?=display_str($PageTitle)?>
+  <title>
+    <?=display_str($PageTitle)?>
   </title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,19 +39,18 @@ define('FOOTER_FILE', SERVER_ROOT.'/design/publicfooter.php');
 </head>
 
 <body>
-  <div id="head"><span>
+  <div id="head">
+    <span>
       <a href="login.php">Log In</a>
       <?php if (OPEN_REGISTRATION) { ?>
       | <a href="register.php">Register</a>
       <?php } ?>
       | <a
         href="mailto:support@biotorrents.de?subject=[TxID <?= strtoupper(bin2hex(random_bytes(2))) ?>] Vague subject lines ignored">Support</a>
-    </span></div>
+    </span>
+  </div>
+
   <div id="content">
-
-    <!-- todo: Put index page stats here -->
-    <?php #include('/sections/login/stats.php');?>
-
     <table class="layout" id="maincontent">
       <tr>
         <td class="centered">
