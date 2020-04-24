@@ -83,14 +83,14 @@ if (isset($_POST['donation'])) {
 
     View::show_header('Store'); ?>
 <div class="thin">
-  <h2 id="general">Donation Successful</h2>
-  <div class="box pad" style="padding: 10px 10px 10px 20px;">
-    <p>You donated <?=number_format($Donation)?> <?=BONUS_POINTS?> to the Freeleech Pool</p>
-    <?php if ($PoolTipped) { ?>
-    <p>Your donation triggered a freeleech!</p>
-    <?php } ?>
-    <p><a href="/store.php">Back to Store</a></p>
-  </div>
+    <h2 id="general">Donation Successful</h2>
+    <div class="box pad" style="padding: 10px 10px 10px 20px;">
+        <p>You donated <?=number_format($Donation)?> <?=BONUS_POINTS?> to the Freeleech Pool</p>
+        <?php if ($PoolTipped) { ?>
+        <p>Your donation triggered a freeleech!</p>
+        <?php } ?>
+        <p><a href="/store.php">Back to Store</a></p>
+    </div>
 </div>
 <?php View::show_footer();
 } else {
@@ -106,18 +106,18 @@ if (isset($_POST['donation'])) {
 
     View::show_header('Store'); ?>
 <div class="thin">
-  <div class="box pad" style="padding: 10px 10px 10px 20px; text-align: center;">
-    <form action="store.php" method="POST">
-      <input type="hidden" name="item" value="freeleechpool">
-      <strong>
-        There are currently <?=number_format($Pool)?> <?=BONUS_POINTS?> in the Freeleech Pool
-      </strong>
-      <br><br>
-      <input type="text" name="donation" value="">
-      <input type="submit" value="Donate">
-    </form>
-    <p><a href="/store.php">Back to Store</a></p>
-  </div>
+    <div class="box pad" style="padding: 10px 10px 10px 20px; text-align: center;">
+        <form action="store.php" method="POST">
+            <input type="hidden" name="item" value="freeleechpool">
+            <strong>
+                There are currently <?=number_format($Pool)?> <?=BONUS_POINTS?> in the Freeleech Pool
+            </strong>
+            <br><br>
+            <input type="text" name="donation" value="">
+            <input type="submit" value="Donate">
+        </form>
+        <p><a href="/store.php">Back to Store</a></p>
+    </div>
 </div>
 <?php View::show_footer();
 }

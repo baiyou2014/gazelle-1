@@ -63,7 +63,6 @@ $Classes = array(
 );
 
 $To = -1;
-
 $DB->query("
   SELECT PermissionID, BonusPoints, Warned, Uploaded, Downloaded, (Uploaded / Downloaded) AS Ratio, Enabled, COUNT(torrents.ID) AS Uploads, COUNT(DISTINCT torrents.GroupID) AS Groups
   FROM users_main
@@ -100,14 +99,13 @@ if ($DB->has_results()) {
         $Err[] = "This account is disabled, how did you get here?";
     } else {
         if ($Classes[$To]['NonSmall'] > 0) {
-            //
             $DB->query("
-        SELECT COUNT(torrents.ID)
-        FROM torrents
-          JOIN torrents_group ON torrents.GroupID = torrents_group.ID
-        WHERE (torrents_group.CategoryID != 3
-          OR (torrents_group.CategoryID = 3 AND torrents_group.Pages >= 50))
-          AND torrents.UserID = $UserID");
+              SELECT COUNT(torrents.ID)
+              FROM torrents
+              JOIN torrents_group ON torrents.GroupID = torrents_group.ID
+              WHERE (torrents_group.CategoryID != 3
+                OR (torrents_group.CategoryID = 3 AND torrents_group.Pages >= 50))
+                AND torrents.UserID = $UserID");
 
             if ($DB->has_results()) {
                 list($NonSmall) = $DB->next_record();
@@ -161,15 +159,17 @@ if ($DB->has_results()) {
 
         if (!isset($Err)) {
             $DB->query("
-        UPDATE users_main
-        SET
-          BonusPoints = BonusPoints - ".$Classes[$To]['Price'].",
-          PermissionID = $To
-        WHERE ID = $UserID");
+              UPDATE users_main
+              SET
+                BonusPoints = BonusPoints - ".$Classes[$To]['Price'].",
+                PermissionID = $To
+              WHERE ID = $UserID");
+
             $DB->query("
-        UPDATE users_info
-        SET AdminComment = CONCAT('".sqltime()." - Class changed to ".Users::make_class_string($To)." via store purchase\n\n', AdminComment)
-        WHERE UserID = $UserID");
+              UPDATE users_info
+              SET AdminComment = CONCAT('".sqltime()." - Class changed to ".Users::make_class_string($To)." via store purchase\n\n', AdminComment)
+              WHERE UserID = $UserID");
+
             $Cache->delete_value("user_info_$UserID");
             $Cache->delete_value("user_info_heavy_$UserID");
         }
@@ -181,9 +181,13 @@ View::show_header('Store'); ?>
   <h2 id="general">Purchase <?=isset($Err)?"Failed":"Successful"?>
   </h2>
   <div class="box pad" style="padding: 10px 10px 10px 20px;">
-    <p><?=isset($Err)?"Error: ".implode("<br />Error: ", $Err):"You have been promoted to ".$Classes[$To]['Name']."!"?>
+    <p>
+      <?=isset($Err)?"Error: ".implode("<br />Error: ", $Err):"You have been promoted to ".$Classes[$To]['Name']."!"?>
     </p>
-    <p><a href="/store.php">Back to Store</a></p>
+    <p>
+      <a href="/store.php">Back to Store</a>
+    </p>
   </div>
 </div>
-<?php View::show_footer();
+<?php
+View::show_footer();
