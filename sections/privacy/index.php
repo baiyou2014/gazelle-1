@@ -45,8 +45,6 @@ View::show_header('Datenschutzerklärung');
     Privacy Policy.
     We will retain and use your information to the extent necessary to comply with our legal obligations, resolve
     disputes, and enforce our policies.
-    Our Privacy Policy was generated with the help of <a href="https://www.gdprprivacynotice.com/">GDPR Privacy Policy
-      Generator</a>.
   </p>
 
   <p>
