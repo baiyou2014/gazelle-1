@@ -145,8 +145,9 @@ input[type="submit"]:hover {
 
 #content {
   width: 250px;
+  height: calc(80% - 60px);
   margin: 0 auto;
-  padding: 10%;
+  padding: 10% 0;
   /*
   height: calc(100% - 60px);
   overflow-y: auto;
