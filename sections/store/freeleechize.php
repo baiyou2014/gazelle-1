@@ -92,7 +92,9 @@ if (isset($_POST['torrent'])) {
       <a href="/torrents.php?torrentid=<?php print $TorrentID ?>">this
         torrent</a>
     </p>
-    <p><a href="/store.php">Back to Store</a></p>
+    <p>
+      <a href="/store.php">Back to Store</a>
+    </p>
   </div>
 </div>
 <?php
@@ -101,6 +103,7 @@ View::show_footer();
     View::show_header('Store'); ?>
 <div class="thin">
   <div class="box pad" style="padding: 10px 10px 10px 20px; text-align: center;">
+
     <form action="store.php" method="POST">
       <input type="hidden" name="item" value="freeleechize">
       <strong>
@@ -110,7 +113,10 @@ View::show_footer();
       <input type="text" name="torrent" value="">
       <input type="submit">
     </form>
-    <p><a href="/store.php">Back to Store</a></p>
+
+    <p>
+      <a href="/store.php">Back to Store</a>
+    </p>
   </div>
 </div>
 <?php

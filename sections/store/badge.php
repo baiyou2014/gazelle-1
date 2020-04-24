@@ -19,9 +19,10 @@ if (!$BadgeID) {
 if (isset($_GET['confirm']) && $_GET['confirm'] === 1) {
     if (!isset($Err)) {
         $DB->query("
-      SELECT BonusPoints
-      FROM users_main
-      WHERE ID = $UserID");
+          SELECT BonusPoints
+          FROM users_main
+          WHERE ID = $UserID");
+
         if ($DB->has_results()) {
             list($BP) =  $DB->next_record();
             $BP = (int)$BP;
@@ -31,14 +32,14 @@ if (isset($_GET['confirm']) && $_GET['confirm'] === 1) {
                     $Err = 'Could not award badge, unknown error occurred.';
                 } else {
                     $DB->query("
-            UPDATE users_main
-            SET BonusPoints = BonusPoints - " . $Prices[$BadgeID] ."
-            WHERE ID = $UserID");
+                      UPDATE users_main
+                      SET BonusPoints = BonusPoints - " . $Prices[$BadgeID] ."
+                      WHERE ID = $UserID");
 
                     $DB->query("
-            UPDATE users_info
-            SET AdminComment = CONCAT('".sqltime()." - Purchased badge $BadgeID from store\n\n', AdminComment)
-            WHERE UserID = $UserID");
+                      UPDATE users_info
+                      SET AdminComment = CONCAT('".sqltime()." - Purchased badge $BadgeID from store\n\n', AdminComment)
+                      WHERE UserID = $UserID");
 
                     $Cache->delete_value("user_info_heavy_$UserID");
                 }
@@ -50,34 +51,47 @@ if (isset($_GET['confirm']) && $_GET['confirm'] === 1) {
 
     View::show_header('Store'); ?>
 <div class='thin'>
-  <h2 id='general'>Purchase <?=isset($Err)?'Failed':'Successful'?>
-  </h2>
-  <div class='box pad' style='padding: 10px 10px 10px 20px;'>
-    <p><?=isset($Err)?'Error: '.$Err:'You have purchased a badge'?>
-    </p>
-    <p><a href='/store.php'>Back to Store</a></p>
-  </div>
+    <h2 id='general'>
+        Purchase <?=isset($Err)?'Failed':'Successful'?>
+    </h2>
+    <div class='box pad' style='padding: 10px 10px 10px 20px;'>
+        <p>
+            <?=isset($Err)?'Error: '.$Err:'You have purchased a badge'?>
+        </p>
+
+        <p>
+            <a href='/store.php'>Back to Store</a>
+        </p>
+    </div>
 </div>
 <?php
 } else {
         View::show_header('Store'); ?>
 <div class='thin'>
-  <h2 id='general'>Purchase Badge?</h2>
-  <div class='box pad' style='padding: 10px 10px 10px 20px;'>
-    <p>Badge cost: <?=number_format($Prices[$BadgeID])?> <?=BONUS_POINTS?>
-    </p>
-    <?php if (isset($Err)) { ?>
-    <p>Error: <?=$Err?>
-    </p>
-    <?php } else { ?>
-    <form action="store.php">
-      <input type="hidden" name="item" value="badge">
-      <input type="hidden" name="badge" value="<?=$BadgeID?>">
-      <input type="hidden" name="confirm" value="1">
-      <input type="submit" value="Purchase">
-      <?php } ?>
-      <p><a href='/store.php'>Back to Store</a></p>
-  </div>
+    <h2 id='general'>Purchase Badge?</h2>
+    <div class='box pad' style='padding: 10px 10px 10px 20px;'>
+        <p>
+            Badge cost:
+            <?=number_format($Prices[$BadgeID])?>
+            <?=BONUS_POINTS?>
+        </p>
+
+        <?php if (isset($Err)) { ?>
+        <p>Error: <?=$Err?>
+        </p>
+
+        <?php } else { ?>
+        <form action="store.php">
+            <input type="hidden" name="item" value="badge">
+            <input type="hidden" name="badge" value="<?=$BadgeID?>">
+            <input type="hidden" name="confirm" value="1">
+            <input type="submit" value="Purchase">
+            <?php } ?>
+
+            <p>
+                <a href='/store.php'>Back to Store</a>
+            </p>
+    </div>
 </div>
 <?php
     }
