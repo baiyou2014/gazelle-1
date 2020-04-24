@@ -5,7 +5,7 @@ View::show_header('Login');
 
 <p style="text-align: center;">
   A platform to share <strong>biological sequence</strong><br />
-  and <strong>medical imaging</strong> data<sup>1</sup>
+  and <strong>medical imaging</strong> data<?=($Attempts > 0) ? '' : '<sup>1</sup>'?>
 </p>
 
 <p id="no-cookies" class="hidden warning">You appear to have cookies disabled.</p>
@@ -53,8 +53,8 @@ if (!$Banned) { ?>
 
     <tr>
       <td>
-        <input type="password" name="password" id="password" class="inputtext" required="required" maxlength="307200"
-          pattern=".{6,307200}" placeholder="Password" autocomplete="current-password" />
+        <input type="password" minlength="15" name="password" id="password" class="inputtext" required="required"
+          maxlength="307200" pattern=".{15,307200}" placeholder="Password" autocomplete="current-password" />
       </td>
       <td>
         <input type="text" name="twofa" id="twofa" class="inputtext" maxlength="6" pattern="[0-9]{6}"
