@@ -90,6 +90,20 @@ if ($Attempts > 0) { ?>
       <p>
         1.
         &hellip;and
+        graphs,
+        scalars,
+        vectors,
+        patterns,
+        constraints,
+        models,
+        and more.
+    ');
+
+    /*
+    print_r('
+      <p>
+        1.
+        &hellip;and
         <strong>graphs</strong> and
         <strong>scalars</strong> and
         <strong>vectors</strong>
@@ -100,6 +114,7 @@ if ($Attempts > 0) { ?>
         <br /> and
         much more.
       ');
+      */
 }
 
 View::show_footer();

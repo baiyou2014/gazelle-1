@@ -88,6 +88,7 @@ if (!$DB->has_results()) {
             }
 
             $Title .= ' / '.trim($Media);
+            
             if ($Scene == '1') {
                 $Title .= ' / Scene';
             }

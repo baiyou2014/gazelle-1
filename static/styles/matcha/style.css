@@ -702,6 +702,7 @@ p.min_padding {
 .tags a,
 a.search_link {
   color: black;
+  font-weight: normal;
 }
 
 .tags a:hover,
@@ -908,9 +909,11 @@ ul.poll li.graph {
   border: none;
 }
 
+/*
 .torrent_table tr.torrent, .torrent_table tr.group {
   font-weight: bold;
 }
+*/
 
 .torrent_table tr.group {
   background-color: white;
