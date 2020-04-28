@@ -29,9 +29,10 @@ if (!empty($_GET['searchstr']) || !empty($_GET['groupname'])) {
     if ($InfoHash = is_valid_torrenthash($InfoHash)) {
         $InfoHash = db_string(pack('H*', $InfoHash));
         $DB->query("
-      SELECT ID, GroupID
-      FROM torrents
-      WHERE info_hash = '$InfoHash'");
+          SELECT ID, GroupID
+          FROM torrents
+          WHERE info_hash = '$InfoHash'");
+
         if ($DB->has_results()) {
             list($ID, $GroupID) = $DB->next_record();
             header("Location: torrents.php?id=$GroupID&torrentid=$ID");
@@ -46,16 +47,19 @@ if (!empty($_GET['setdefault'])) {
     $UnsetRegexp = '/(&|^)('.implode('|', $UnsetList).')=.*?(&|$)/i';
 
     $DB->query("
-    SELECT SiteOptions
-    FROM users_info
-    WHERE UserID = ?", $LoggedUser['ID']);
+      SELECT SiteOptions
+      FROM users_info
+      WHERE UserID = ?", $LoggedUser['ID']);
+
     list($SiteOptions) = $DB->next_record(MYSQLI_NUM, false);
     $SiteOptions = json_decode($SiteOptions, true) ?? [];
     $SiteOptions['DefaultSearch'] = preg_replace($UnsetRegexp, '', $_SERVER['QUERY_STRING']);
+
     $DB->query("
-    UPDATE users_info
-    SET SiteOptions = ?
-    WHERE UserID = ?", json_encode($SiteOptions), $LoggedUser['ID']);
+      UPDATE users_info
+      SET SiteOptions = ?
+      WHERE UserID = ?", json_encode($SiteOptions), $LoggedUser['ID']);
+
     $Cache->begin_transaction("user_info_heavy_$UserID");
     $Cache->update_row(false, ['DefaultSearch' => $SiteOptions['DefaultSearch']]);
     $Cache->commit_transaction(0);
@@ -63,16 +67,19 @@ if (!empty($_GET['setdefault'])) {
 // Clearing default search options
 } elseif (!empty($_GET['cleardefault'])) {
     $DB->query("
-    SELECT SiteOptions
-    FROM users_info
-    WHERE UserID = ?", $LoggedUser['ID']);
+      SELECT SiteOptions
+      FROM users_info
+      WHERE UserID = ?", $LoggedUser['ID']);
+
     list($SiteOptions) = $DB->next_record(MYSQLI_NUM, false);
     $SiteOptions = json_decode($SiteOptions, true) ?? [];
     $SiteOptions['DefaultSearch'] = '';
+
     $DB->query("
-    UPDATE users_info
-    SET SiteOptions = ?
-    WHERE UserID = ?", json_encode($SiteOptions), $LoggedUser['ID']);
+      UPDATE users_info
+      SET SiteOptions = ?
+      WHERE UserID = ?", json_encode($SiteOptions), $LoggedUser['ID']);
+
     $Cache->begin_transaction("user_info_heavy_$UserID");
     $Cache->update_row(false, ['DefaultSearch' => '']);
     $Cache->commit_transaction(0);
@@ -156,6 +163,7 @@ View::show_header('Browse Torrents', 'browse');
   <div class="header">
     <h2>Torrents</h2>
   </div>
+  
   <form class="search_form" name="torrents" method="get" onsubmit="$(this).disableUnset();">
     <div class="box filter_torrents">
       <div class="head">

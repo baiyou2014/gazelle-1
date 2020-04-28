@@ -11,11 +11,10 @@ View::show_header('Connectability Checker');
     </h2>
   </div>
 
-  <!-- <div class="linkbox"></div> -->
   <div class="box pad">
     This page has been disabled because the results have been inaccurate.
     Try a smarter and more reliable service like
-    <a href="https://www.canyouseeme.org" target="_blank">CanYouSeeMe.org</a>.
+    <a href="https://www.canyouseeme.org" target="_blank">Can You See Me</a>.
   </div>
 </div>
 <?php

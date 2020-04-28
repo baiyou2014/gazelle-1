@@ -78,43 +78,19 @@ if (!$Banned) { ?>
   }
 
 if ($Attempts > 0) { ?>
-
 <p>
   Forgot your password?
   <a href="login.php?act=recover" class="tooltip" title="Recover your password">Reset it here!</a>
 </p>
-
 <?php
 } else {
     print_r('
       <p>
-        1.
-        &hellip;and
-        graphs,
-        scalars,
-        vectors,
-        patterns,
-        constraints,
-        models,
-        and more.
+        1. …and graphs, scalars, vectors, patterns,
+        <br />
+        constraints, models, and more
+      </p>
     ');
-
-    /*
-    print_r('
-      <p>
-        1.
-        &hellip;and
-        <strong>graphs</strong> and
-        <strong>scalars</strong> and
-        <strong>vectors</strong>
-        <br /> and
-        <strong>patterns</strong> and
-        <strong>constraints</strong> and
-        <strong>models</strong>
-        <br /> and
-        much more.
-      ');
-      */
 }
 
 View::show_footer();
