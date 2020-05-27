@@ -474,9 +474,11 @@ ul.thin li { margin: 0px 0px; padding: 0px; }
 
 #cat-selector ul li {
   display: inline;
+  /*
   width: 12em;
   height: 1em;
   float: left;
+  */
 }
 
 /* Alerts, Toolbox, etc. */
@@ -1340,6 +1342,7 @@ input.inputtext:focus {
 
 #userinfo {
   box-shadow: 0 2px 10px -2px slategray;
+}
 
 /*
 .last_edited {
@@ -1400,20 +1403,35 @@ caption {
   font-weight: bold;
 }
 
+
+/* Torrent labels for the Format class */
+
+.tl_free {
+  color: green;
+}
+
 .tl_reported {
   color: red;
 }
 
-.tl_snatched {
-  color: black;
+.tl_approved {
+  color: green;
+}
+
+.tl_seeding {
+  color: green;
 }
 
 .tl_leeching {
   color: orange;
 }
 
-.tl_seeding {
-  color: green;
+.tl_notice {
+  color: black;
+}
+
+.tl_snatched {
+  color: black;
 }
 
 /*
