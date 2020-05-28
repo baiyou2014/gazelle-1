@@ -115,15 +115,16 @@ class Torrents
             if ($Torrents) {
                 $QueryID = G::$DB->get_query_id();
                 G::$DB->query("
-                SELECT
-                ID, GroupID, Media, Container, Codec, Resolution, AudioFormat,
-                  Language, Subbing, Subber, Censored, Archive, FileCount, FreeTorrent,
-                  Size, Leechers, Seeders, Snatched, Time, f.ExpiryTime, ID AS HasFile,
-                  FreeLeechType, hex(info_hash) as info_hash
-                FROM torrents
-                  LEFT JOIN shop_freeleeches AS f ON f.TorrentID=ID
-                  WHERE GroupID IN ($IDs)
-                ORDER BY GroupID, Media, Container, Codec, ID");
+                  SELECT
+                  ID, GroupID, Media, Container, Codec, Resolution, AudioFormat,
+                    Language, Subbing, Subber, Censored, Archive, FileCount, FreeTorrent,
+                    Size, Leechers, Seeders, Snatched, Time, f.ExpiryTime, ID AS HasFile,
+                    FreeLeechType, hex(info_hash) as info_hash
+                  FROM torrents
+                    LEFT JOIN shop_freeleeches AS f ON f.TorrentID=ID
+                    WHERE GroupID IN ($IDs)
+                  ORDER BY GroupID, Media, Container, Codec, ID");
+                  
                 while ($Torrent = G::$DB->next_record(MYSQLI_ASSOC, true)) {
                     $NotFound[$Torrent['GroupID']]['Torrents'][$Torrent['ID']] = $Torrent;
                 }

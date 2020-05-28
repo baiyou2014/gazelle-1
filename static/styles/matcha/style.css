@@ -958,10 +958,12 @@ ul.poll li.graph {
   /* text-align: center; */
 }
 
+/*
 #collage_name,
 #request_name {
   font-weight: bold;
 }
+*/
 
 .group_torrent span {
   float: right;

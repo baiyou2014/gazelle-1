@@ -111,12 +111,14 @@ if ($TorrentTags !== '') {
 $CoverArt = $Cache->get_value("torrents_cover_art_$GroupID");
 if (!$CoverArt) {
     $DB->query("
-    SELECT ID, Image, Summary, UserID, Time
-    FROM cover_art
+      SELECT ID, Image, Summary, UserID, Time
+      FROM cover_art
       WHERE GroupID = '$GroupID'
-    ORDER BY Time ASC");
+      ORDER BY Time ASC");
+
     $CoverArt = [];
     $CoverArt = $DB->to_array();
+    
     if ($DB->has_results()) {
         $Cache->cache_value("torrents_cover_art_$GroupID", $CoverArt, 0);
     }
@@ -131,8 +133,10 @@ View::show_header($Title, 'browse,comments,torrent,bbcode,recommend,cover_art,su
 
 <div class="thin">
   <div class="header">
-    <h2><?=$DisplayName?>
+    <h2>
+      <?=$DisplayName?>
     </h2>
+
     <div class="linkbox">
       <?php if (check_perms('site_edit_wiki')) { ?>
       <a href="torrents.php?action=editgroup&amp;groupid=<?=$GroupID?>"
@@ -175,6 +179,7 @@ View::show_header($Title, 'browse,comments,torrent,bbcode,recommend,cover_art,su
         class="brackets">View log</a>
     </div>
   </div>
+
   <?php Misc::display_recommend($GroupID, "torrent"); ?>
   <div class="sidebar">
     <div class="box box_image box_image_albumart box_albumart">
@@ -219,6 +224,7 @@ View::show_header($Title, 'browse,comments,torrent,bbcode,recommend,cover_art,su
         }
         ?>
       </div>
+
       <?php $Index = 0; ?>
       <div id="covers">
         <div id="cover_div_<?=$Index?>">
@@ -238,6 +244,7 @@ View::show_header($Title, 'browse,comments,torrent,bbcode,recommend,cover_art,su
 $Index++;
 ?>
         </div>
+
         <?php
         foreach ($CoverArt as $Cover) {
             list($ImageID, $Image, $Summary, $AddedBy) = $Cover; ?>
@@ -252,6 +259,7 @@ $Index++;
             <img id="cover_<?=$Index?>" class="lightbox-init"
               width="100%" <?=$Src?> alt="<?=$Summary?>" />
           </div>
+
           <ul class="stats nobullet">
             <li>
               <?=$Summary?>
@@ -275,6 +283,7 @@ $Index++;
             <a onclick="addCoverField(); return false;" href="#" class="brackets">Add alternate cover</a>
           </span>
         </div>
+
         <div class="body">
           <form class="add_form" name="covers" id="add_covers_form" action="torrents.php" method="post">
             <div id="add_cover">
@@ -288,12 +297,13 @@ $Index++;
         </div>
       </div>
       <?php } ?>
-
     </div>
+
     <div class="box box_artists">
       <div class="head"><strong>Author(s)</strong>
         <?=check_perms('torrents_edit') ? '<span class="edit_artists"><a onclick="ArtistManager(); return false;" href="#" class="brackets float_right">Edit</a></span>' : ''?>
       </div>
+
       <ul class="stats nobullet" id="artist_list">
         <?php foreach ($Artists as $Num => $Artist) { ?>
         <li class="artist"><?=Artists::display_artist($Artist)?>
@@ -306,6 +316,7 @@ $Index++;
         <?php } ?>
       </ul>
     </div>
+
     <?php
     if (check_perms('torrents_add_artist')) { ?>
     <div class="box box_addartists">
@@ -343,9 +354,9 @@ $Index++;
           <input type="hidden" name="undo" value="true" />
         </form>
         <a class="brackets" href="#" onclick="$('#undo_tag_delete_form').raw().submit(); return false;">Undo delete</a>
-
         <?php } ?>
       </div>
+
       <?php
       if (count($Tags) > 0) {
           ?>
@@ -434,6 +445,7 @@ function filelist($Str)
         return "</td><td>".Format::get_size($Str[1])."</td></tr>";
     }
 
+# FreeTorrent is a string
 foreach ($TorrentList as $Torrent) {
     list($TorrentID, $Media, $Container, $Codec, $Resolution, $AudioFormat, $Subbing,
     $Subber, $Language, $Censored, $Anonymous, $Archive, $FileCount, $Size, $Seeders, $Leechers,
@@ -588,16 +600,16 @@ foreach ($TorrentList as $Torrent) {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Snatched', 'bold');
     }
 
-    if ($FreeTorrent === 1) {
+    if ($FreeTorrent === '1') {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Freeleech', 'important_text_alt');
     }
 
-    if ($FreeTorrent === 2) {
+    if ($FreeTorrent === '2') {
         $ExtraInfo .= $AddExtra . Format::torrent_label('Neutral Leech', 'bold');
     }
 
     // Freleechizer
-    if ($FreeLeechType === 3) {
+    if ($FreeLeechType === '3') {
         $DB->query("
           SELECT UNIX_TIMESTAMP(ExpiryTime)
           FROM shop_freeleeches
@@ -804,7 +816,8 @@ $filename = "BioTorrents.de-$TorrentID";
               -->
 
               <!-- Both tags must be on the same line -->
-              <input type="button" class="spoilerButton" value="Show BibTeX" /><pre class="hidden">
+              <input type="button" class="spoilerButton" value="Show BibTeX" />
+              <pre class="hidden">
                 <?=$bibtex?>
               </pre>
             </div>
