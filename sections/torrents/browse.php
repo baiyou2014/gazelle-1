@@ -783,31 +783,31 @@ die();
           # Year
           if ($GroupYear) {
               $Label = '<br />📅&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=search&year=$GroupYear'>$GroupYear</a>";
+              $DisplayName .= $Label."<a href='torrents.php?".Format::get_url($_GET)."&year=$GroupYear'>$GroupYear</a>";
           }
         
           # Studio
           if ($GroupStudio) {
               $Label = '&ensp;📍&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
+              $DisplayName .= $Label."<a href='torrents.php?".Format::get_url($_GET)."&location=$GroupStudio'>$GroupStudio</a>";
           }
 
           # Catalogue Number
           if ($GroupCatalogueNumber) {
               $Label = '&ensp;🔑&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
+              $DisplayName .= $Label."<a href='torrents.php?".Format::get_url($_GET)."&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
           }
 
           # Organism
           if ($GroupNameRJ) {
               $Label = '&ensp;🦠&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
+              $DisplayName .= $Label."<a href='torrents.php?".Format::get_url($_GET)."&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
           }
                           
           # Strain/Variety
           if ($GroupNameJP) {
               $Label = '&nbsp;';
-              $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
+              $DisplayName .= $Label."<a href='torrents.php?".Format::get_url($_GET)."&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
           }
         
           # Authors
@@ -992,30 +992,30 @@ die();
               # Sh!t h4x; Year is mandatory
               if ($GroupYear) {
                   $Label = '<br />📅&nbsp;';
-                  $DisplayName .= $Label."<a href='torrents.php?action=search&year=$GroupYear'>$GroupYear</a>";
+                  $DisplayName .= $Label."<a href='torrents.php?".Format::get_url($_GET)."&year=$GroupYear'>$GroupYear</a>";
               }
             
               # Studio
               if ($GroupStudio) {
-                  $DisplayName .= "&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?action=search&location=$GroupStudio'>$GroupStudio</a>";
+                  $DisplayName .= "&nbsp;&nbsp;📍&nbsp;<a href='torrents.php?".Format::get_url($_GET)."&location=$GroupStudio'>$GroupStudio</a>";
               }
 
               # Catalogue Number
               if ($GroupCatalogueNumber) {
                   $Label = '&ensp;🔑&nbsp;';
-                  $DisplayName .= $Label."<a href='torrents.php?action=search&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
+                  $DisplayName .= $Label."<a href='torrents.php?".Format::get_url($_GET)."&numbers=$GroupCatalogueNumber'>$GroupCatalogueNumber</a>";
               }
           
               # Organism
               if ($GroupNameRJ) {
                   $Label = '&ensp;🦠&nbsp;';
-                  $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
+                  $DisplayName .= $Label."<a href='torrents.php?".Format::get_url($_GET)."&advgroupname=$GroupNameRJ'><em>$GroupNameRJ</em></a>";
               }
                 
               # Strain/Variety
               if ($GroupNameJP) {
                   $Label = '&nbsp;';
-                  $DisplayName .= $Label."<a href='torrents.php?action=search&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
+                  $DisplayName .= $Label."<a href='torrents.php?".Format::get_url($_GET)."&advgroupname=$GroupNameJP'>$GroupNameJP</a>";
               }
 
               # Authors
