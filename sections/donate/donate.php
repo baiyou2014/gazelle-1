@@ -145,7 +145,7 @@ View::show_header('Donate');
     <ul>
       <li>
         Contributing issues and pull requests to the
-        <a href="https://git.oppaiti.me/biotorrents/Gazelle" target="_blank">Git repo</a>
+        <a href="https://github.com/biotorrents/gazelle" target="_blank">Git repo</a>
       </li>
 
       <li>
